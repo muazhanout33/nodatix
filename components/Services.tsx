@@ -1,0 +1,116 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
+const services = [
+  {
+    icon: "⚙️",
+    title: "AI Automation Systems",
+    description:
+      "End-to-end automation pipelines that eliminate manual work. We design, build, and deploy AI workflows that run 24/7 — reducing costs and boosting output.",
+    tag: "Core Service",
+  },
+  {
+    icon: "🎯",
+    title: "Lead Management Automation",
+    description:
+      "Never lose a lead again. Our AI systems capture, qualify, follow up, and nurture prospects automatically — keeping your pipeline full without lifting a finger.",
+    tag: "CRM & Sales",
+  },
+  {
+    icon: "✍️",
+    title: "Content Automation",
+    description:
+      "Generate high-quality blog posts, social captions, emails, and ad copy at scale using AI. Stay consistent and visible across every channel effortlessly.",
+    tag: "Marketing",
+  },
+  {
+    icon: "🤖",
+    title: "Custom AI Agents",
+    description:
+      "Bespoke AI agents trained on your business data — from customer support bots to internal assistants that handle tasks your team shouldn't spend time on.",
+    tag: "Advanced AI",
+  },
+];
+
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[0];
+  index: number;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="gradient-border group relative p-6 rounded-2xl bg-[#0f1117] hover:bg-[#161b26] transition-all duration-300 cursor-default"
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div className="w-12 h-12 rounded-xl bg-[#00FF87]/10 flex items-center justify-center text-xl group-hover:bg-[#00FF87]/20 transition-colors duration-300">
+          {service.icon}
+        </div>
+        <span className="text-xs text-[#00FF87] font-medium px-3 py-1 rounded-full bg-[#00FF87]/10 border border-[#00FF87]/20">
+          {service.tag}
+        </span>
+      </div>
+      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#00FF87] transition-colors duration-300">
+        {service.title}
+      </h3>
+      <p className="text-gray-400 text-sm leading-relaxed">
+        {service.description}
+      </p>
+
+      {/* hover glow line */}
+      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#00FF87]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    </motion.div>
+  );
+}
+
+export default function Services() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section id="services" className="py-28 px-6 relative">
+      {/* Glow */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#00FF87] opacity-[0.03] blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block text-xs text-[#00FF87] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00FF87]/20 bg-[#00FF87]/5">
+            What We Do
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+            Our <span className="gradient-text">Services</span>
+          </h2>
+          <p className="text-gray-400 max-w-xl mx-auto">
+            We build AI systems that replace repetitive human work — saving
+            time, cutting costs, and scaling your business on autopilot.
+          </p>
+        </motion.div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.map((service, i) => (
+            <ServiceCard key={service.title} service={service} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
