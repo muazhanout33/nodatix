@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
-const floatVariants = {
+const floatVariants: Variants = {
   animate: {
     y: [0, -16, 0],
     transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
