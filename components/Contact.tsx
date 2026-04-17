@@ -2,16 +2,34 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { sendToN8n } from "@/lib/n8n";
 
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      await sendToN8n({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        source: "website",
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -154,11 +172,15 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-[#00FF87] text-black font-bold text-sm hover:bg-[#00cc6a] transition-all duration-200 hover:scale-[1.02] active:scale-95"
+                  disabled={isLoading}
+                  className="w-full py-4 rounded-xl bg-[#00FF87] text-black font-bold text-sm hover:bg-[#00cc6a] transition-all duration-200 hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ boxShadow: "0 0 25px rgba(0,255,135,0.2)" }}
                 >
-                  Send Message →
+                  {isLoading ? "Sending..." : "Send Message →"}
                 </button>
+                {error && (
+                  <p className="text-center text-xs text-red-500">{error}</p>
+                )}
                 <p className="text-center text-xs text-gray-600">
                   We&apos;ll respond within 24 hours. No spam, ever.
                 </p>
