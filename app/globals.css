@@ -1,43 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* =========================
-   CSS Variables (Design System)
-========================= */
-:root {
-  --color-background: #1a0b2e;
-  --color-foreground: #f0f0f0;
-
-  --color-accent: #00FF87;
-  --color-accent-dim: #00cc6a;
-
-  --color-surface: #24123a;
-  --color-surface-2: #34215a;
-  --color-surface-hover: #3f2a6b;
-
-  --color-border: #3b2a5a;
-  --color-muted: #6b7280;
-
+@theme inline {
+--color-background: #1a0b2e;
+  --color-foreground: 
+#f0f0f0;
+  --color-accent: 
+#00FF87;
+  --color-accent-dim: 
+#00cc6a;
+--color-surface: #24123a;
+ --color-surface-2: #34215a;
+  --color-border: 
+#1e2433;
+  --color-muted: 
+#6b7280;
   --font-sans: var(--font-inter);
-
+}
+:root {
+  --background: #1a0b2e;   
+   --foreground: #f0f0f0;
   scroll-behavior: smooth;
 }
-
-/* =========================
-   Base Reset
-========================= */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
-
-html,
-body {
-  height: 100%;
-}
-
 body {
   background: var(--color-background);
   color: var(--color-foreground);
@@ -46,106 +32,60 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-
-/* =========================
-   Selection
-========================= */
 ::selection {
   background: rgba(0, 255, 135, 0.25);
   color: #fff;
 }
-
-/* =========================
-   Scrollbar (Webkit)
-========================= */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: 
+#08090d;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: 
+#00FF87;
   border-radius: 9999px;
 }
-
-/* =========================
-   Utility Effects
-========================= */
-
 .glow-accent {
   box-shadow: 0 0 40px rgba(0, 255, 135, 0.15);
 }
-
 .glow-text {
   text-shadow: 0 0 30px rgba(0, 255, 135, 0.5);
 }
-
 .gradient-text {
-  background: linear-gradient(135deg, #00FF87 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, 
+#00FF87 0%, 
+#00ccff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* =========================
-   Gradient Border
-========================= */
 .gradient-border {
   position: relative;
-  border-radius: inherit;
 }
-
 .gradient-border::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 135, 0.4),
-    rgba(139, 92, 246, 0.2)
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  background: linear-gradient(135deg, rgba(0,255,135,0.4), rgba(0,204,255,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
-
-/* =========================
-   Animations
-========================= */
-
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
-
 @keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 50px rgba(0, 255, 135, 0.7);
-  }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 135, 0.3); }
+  50% { box-shadow: 0 0 50px rgba(0, 255, 135, 0.7); }
 }
-
 @keyframes scan-line {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
 }
-
