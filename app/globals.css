@@ -1,5 +1,11 @@
-"tailwindcss";
-@theme inline {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   CSS Variables (Design System)
+========================= */
+:root {
   --color-background: #1a0b2e;
   --color-foreground: #f0f0f0;
 
@@ -14,14 +20,22 @@
   --color-muted: #6b7280;
 
   --font-sans: var(--font-inter);
-}
 
-:root {
   scroll-behavior: smooth;
 }
 
+/* =========================
+   Base Reset
+========================= */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
@@ -33,11 +47,17 @@ body {
   overflow-x: hidden;
 }
 
+/* =========================
+   Selection
+========================= */
 ::selection {
   background: rgba(0, 255, 135, 0.25);
   color: #fff;
 }
 
+/* =========================
+   Scrollbar (Webkit)
+========================= */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -51,7 +71,9 @@ body {
   border-radius: 9999px;
 }
 
-/* ===== Effects ===== */
+/* =========================
+   Utility Effects
+========================= */
 
 .glow-accent {
   box-shadow: 0 0 40px rgba(0, 255, 135, 0.15);
@@ -68,36 +90,62 @@ body {
   background-clip: text;
 }
 
+/* =========================
+   Gradient Border
+========================= */
 .gradient-border {
   position: relative;
+  border-radius: inherit;
 }
 
 .gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0,255,135,0.4), rgba(139,92,246,0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 135, 0.4),
+    rgba(139, 92, 246, 0.2)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
 
-/* ===== Animations ===== */
+/* =========================
+   Animations
+========================= */
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 135, 0.3); }
-  50% { box-shadow: 0 0 50px rgba(0, 255, 135, 0.7); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(0, 255, 135, 0.7);
+  }
 }
 
 @keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
+
