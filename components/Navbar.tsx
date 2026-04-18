@@ -3,6 +3,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const CALENDLY_URL = "https://calendly.com/muazomohamed2006/30min";
+
+function loadCalendlyScript() {
+  if (typeof window === "undefined" || document.getElementById("calendly-script")) return;
+  const script = document.createElement("script");
+  script.id = "calendly-script";
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  document.body.appendChild(script);
+}
+
+function openCalendlyPopup() {
+  loadCalendlyScript();
+  if ((window as any).Calendly) {
+    (window as any).Calendly.initPopupWidget({ url: CALENDLY_URL });
+  }
+}
+
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#problems", label: "Problems" },
@@ -58,12 +76,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#booking"
-            className="px-5 py-2.5 rounded-lg bg-[#00FF87] text-black text-sm font-semibold hover:bg-[#00cc6a] transition-all duration-200 hover:scale-[1.03] active:scale-95"
+          <button
+            onClick={openCalendlyPopup}
+            className="px-5 py-2.5 rounded-lg bg-[#00FF87] text-black text-sm font-semibold hover:bg-[#00cc6a] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer"
           >
             Book a Call
-          </a>
+          </button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -99,13 +117,12 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#booking"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 px-5 py-2.5 rounded-lg bg-[#00FF87] text-black text-sm font-semibold text-center"
+              <button
+                onClick={() => { setMenuOpen(false); openCalendlyPopup(); }}
+                className="mt-2 px-5 py-2.5 rounded-lg bg-[#00FF87] text-black text-sm font-semibold text-center cursor-pointer"
               >
                 Book a Call
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
