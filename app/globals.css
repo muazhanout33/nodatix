@@ -1,27 +1,23 @@
 @import "tailwindcss";
-
 @theme inline {
-  --color-background: #0a0612;
-  --color-foreground: #f0eef5;
-  --color-accent: #9b1a4e;
-  --color-accent-dim: #7a1040;
-  --color-surface: #130d24;
-  --color-surface-2: #1c1535;
-  --color-border: #2d1f4e;
-  --color-muted: #8b7aa0;
+  --color-background: #0a0514;
+  --color-foreground: #f0e6ff;
+  --color-accent: #9b1a3a;
+  --color-accent-dim: #7a1530;
+  --color-surface: #110820;
+  --color-surface-2: #1a0f2e;
+  --color-border: #2d1545;
+  --color-muted: #7c6b8a;
   --font-sans: var(--font-inter);
 }
-
 :root {
-  --background: #0a0612;
-  --foreground: #f0eef5;
+  --background: #0a0514;
+  --foreground: #f0e6ff;
   scroll-behavior: smooth;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -30,67 +26,55 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-
 ::selection {
-  background: rgba(155, 26, 78, 0.35);
+  background: rgba(155, 26, 58, 0.35);
   color: #fff;
 }
-
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0a0612;
+  background: #0a0514;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #9b1a4e;
+  background: #9b1a3a;
   border-radius: 9999px;
 }
-
 .glow-accent {
-  box-shadow: 0 0 40px rgba(155, 26, 78, 0.2);
+  box-shadow: 0 0 40px rgba(155, 26, 58, 0.2);
 }
-
 .glow-text {
-  text-shadow: 0 0 30px rgba(155, 26, 78, 0.6);
+  text-shadow: 0 0 30px rgba(155, 26, 58, 0.6);
 }
-
 .gradient-text {
   background: linear-gradient(135deg, #c2185b 0%, #6a0dad 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .gradient-border {
   position: relative;
 }
-
 .gradient-border::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(155,26,78,0.5), rgba(106,13,173,0.3));
+  background: linear-gradient(135deg, rgba(155,26,58,0.5), rgba(106,13,173,0.2));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
-
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(155, 26, 78, 0.4); }
-  50% { box-shadow: 0 0 55px rgba(155, 26, 78, 0.8); }
+  0%, 100% { box-shadow: 0 0 20px rgba(155, 26, 58, 0.4); }
+  50% { box-shadow: 0 0 50px rgba(155, 26, 58, 0.8); }
 }
-
 @keyframes scan-line {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
