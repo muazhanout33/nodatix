@@ -29,13 +29,13 @@ export default function About() {
             <span className="inline-block text-xs text-[#00FF87] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00FF87]/20 bg-[#00FF87]/5">
               About Nodatix
             </span>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight">
               Built by a specialist who{" "}
               <span className="gradient-text">lives and breathes</span> AI
             </h2>
-            <div className="space-y-4 text-gray-400 leading-relaxed">
+            <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Hi, I&apos;m <span className="text-white font-semibold">Moaaz Hanout</span> — a young AI Automation specialist
+                Hi, I&apos;m <span className="text-gray-900 font-semibold">Moaaz Hanout</span> — a young AI Automation specialist
                 on a mission to help businesses break free from manual, time-consuming processes.
               </p>
               <p>
@@ -45,7 +45,7 @@ export default function About() {
                 don&apos;t have to.
               </p>
               <p>
-                Nodatix was born from a simple belief: <span className="text-white">every business deserves to operate at the
+                Nodatix was born from a simple belief: <span className="text-gray-900 font-semibold">every business deserves to operate at the
                 speed of AI.</span> Whether you&apos;re a solo founder or a growing team, I help you automate the
                 tasks that are holding you back — and scale the ones that matter most.
               </p>
@@ -60,7 +60,7 @@ export default function About() {
               </a>
               <a
                 href="#services"
-                className="px-6 py-3 rounded-xl border border-[#1e2433] text-gray-300 font-semibold text-sm hover:border-[#00FF87]/30 hover:text-white transition-all duration-200"
+                className="px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold text-sm hover:border-[#00FF87]/30 hover:text-gray-900 transition-all duration-200"
               >
                 See Services
               </a>
@@ -76,18 +76,18 @@ export default function About() {
             className="flex flex-col gap-5"
           >
             {/* Profile card */}
-            <div className="gradient-border p-6 rounded-2xl bg-[#0f1117]">
+            <div className="gradient-border p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00FF87] to-[#00ccff] flex items-center justify-center text-2xl font-black text-black">
                   M
                 </div>
                 <div>
-                  <div className="text-white font-bold text-lg">Moaaz Hanout</div>
+                  <div className="text-gray-900 font-bold text-lg">Moaaz Hanout</div>
                   <div className="text-[#00FF87] text-sm font-medium">AI Automation Specialist</div>
                   <div className="text-gray-500 text-xs mt-0.5">Founder @ Nodatix</div>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed border-t border-[#1e2433] pt-4">
+              <p className="text-gray-600 text-sm leading-relaxed border-t border-gray-200 pt-4">
                 &quot;My goal is simple — help businesses do more with less. AI automation
                 is the single biggest lever you can pull right now.&quot;
               </p>
@@ -102,7 +102,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="p-4 rounded-xl bg-[#0f1117] border border-[#1e2433] text-center"
+                  className="p-4 rounded-xl bg-white border border-gray-200 text-center shadow-sm"
                 >
                   <div className="text-2xl font-black text-[#00FF87]">{h.value}</div>
                   <div className="text-xs text-gray-500 mt-1 leading-tight">{h.label}</div>
@@ -115,7 +115,7 @@ export default function About() {
               {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python"].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-xs border border-[#1e2433] text-gray-400 bg-[#0f1117]"
+                  className="px-3 py-1 rounded-full text-xs border border-gray-200 text-gray-600 bg-white"
                 >
                   {tag}
                 </span>

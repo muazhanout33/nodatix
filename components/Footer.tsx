@@ -17,7 +17,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1e2433] pt-16 pb-8 px-6">
+    <footer className="border-t border-gray-200 pt-16 pb-8 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
@@ -26,7 +26,7 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-[#00FF87] flex items-center justify-center">
                 <span className="text-black font-black text-sm">N</span>
               </div>
-              <span className="text-white font-bold text-xl tracking-tight">
+              <span className="text-gray-900 font-bold text-xl tracking-tight">
                 Noda<span className="text-[#00FF87]">tix</span>
               </span>
             </a>
