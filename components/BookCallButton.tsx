@@ -3,37 +3,34 @@
 import { useEffect } from "react";
 import { PopupButton } from "react-calendly";
 
-const CALENDLY_URL = "https://calendly.com/muazomohamed2006/30min";
+const CALENDLY_URL =
+  "https://calendly.com/muazomohamed2006/30min";
 
-export function BookCallButton({ className, onClick }: { className?: string; onClick?: () => void }) {
-
+export default function BookCallButton({
+  className = "",
+}: {
+  className?: string;
+}) {
   useEffect(() => {
-    if (typeof document === "undefined") return;
-
-    const existing = document.getElementById("calendly-script");
-    if (existing) return;
+    if (document.getElementById("calendly-script")) return;
 
     const script = document.createElement("script");
     script.id = "calendly-script";
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.src =
+      "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
   }, []);
+
+  const rootElement =
+    typeof window !== "undefined" ? document.body : undefined;
 
   return (
     <PopupButton
       url={CALENDLY_URL}
       text="Book a Call"
-      rootElement={typeof document !== "undefined" ? document.body : undefined}
+      rootElement={rootElement as HTMLElement}
       className={className}
-      // @ts-expect-error
-      onClick={() => {
-        if (onClick) onClick();
-
-        setTimeout(() => {
-          document.body.click();
-        }, 0);
-      }}
     />
   );
 }
