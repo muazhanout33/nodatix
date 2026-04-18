@@ -4,19 +4,16 @@ import { PopupButton } from "react-calendly";
 
 const CALENDLY_URL = "https://calendly.com/muazomohamed2006/30min";
 
-function getRootElement() {
-  if (typeof document === "undefined") return undefined;
-  return document.body;
-}
-
 export function BookCallButton({ className, onClick }: { className?: string; onClick?: () => void }) {
+  const rootElement = typeof document !== "undefined" ? document.body : null;
+
   return (
     <PopupButton
       url={CALENDLY_URL}
       text="Book a Call"
-      rootElement={getRootElement() as HTMLElement}
+      rootElement={rootElement as unknown as HTMLElement}
       className={className}
-      // @ts-expect-error - onClick is not in types but supported at runtime
+      // @ts-expect-error - onClick supported at runtime
       onClick={onClick}
     />
   );
