@@ -36,12 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#00FF87] flex items-center justify-center">
-            <span className="text-black font-black text-sm">N</span>
-          </div>
-          <span className="text-white font-bold text-xl tracking-tight">
-            Scala<span className="text-[#00FF87]">ryX</span>
-          </span>
+          <img src="/logo.jpg" alt="ScalaryX" height={40} style={{ width: "auto" }} />
         </a>
 
         {/* Desktop Nav */}
