@@ -63,8 +63,8 @@ export default function Contact() {
                 {
                   icon: "📧",
                   label: "Email",
-                  value: "hello@nodatix.com",
-                  href: "mailto:hello@nodatix.com",
+                  value: "hello@scalaryx.com",
+                  href: "mailto:hello@scalaryx.com",
                 },
                 {
                   icon: "💬",
