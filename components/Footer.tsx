@@ -22,14 +22,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[#0084FF] flex items-center justify-center">
-                <span className="text-black font-black text-sm">N</span>
-              </div>
-              <span className="text-white font-bold text-xl tracking-tight">
-                Scala<span className="text-[#0084FF]">ryX</span>
-              </span>
-            </a>
+           <a href="#" className="flex items-center gap-2 mb-4"> 
+  
+  <img 
+    src="/logo.jpg.jpeg" 
+    alt="ScalaryX Logo"
+    className="h-10 w-auto object-contain"
+  />
+
+  <span className="text-white font-bold text-xl tracking-tight">
+    Scalary<span className="text-[#0084FF]">X</span>
+  </span>
+
+</a>
             <p className="text-[#94a3b8] text-sm leading-relaxed max-w-xs">
               AI Automation Agency helping businesses save time, reduce errors,
               and scale using intelligent systems.

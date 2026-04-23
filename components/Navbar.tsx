@@ -39,7 +39,7 @@ export default function Navbar() {
        <img src="/logo.jpg.jpeg" alt="ScalaryX" style={{ height: "100px", width: "auto", objectFit: "contain" }} />
            <span style={{ fontWeight: "bold", fontSize: "40px" }}>
   <span style={{ color: "#ffffff" }}>Scalary</span>
-  <span style={{ color: "#00cfff" }}>X</span>
+  <span style={{ color: "#027bed" }}>X</span>
 </span>
      </a>
 
