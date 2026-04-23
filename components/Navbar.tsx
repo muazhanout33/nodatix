@@ -37,7 +37,13 @@ export default function Navbar() {
         {/* Logo */}
       <a href="#" className="flex items-center gap-2 group">  
        <img src="/logo.jpg.jpeg" alt="ScalaryX" style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-        <span>ScalaryX</span>
+            <span style={{ 
+              background: "linear-gradient(90deg, #00cfff, #a855f7)", 
+              WebkitBackgroundClip: "text", 
+              WebkitTextFillColor: "transparent",
+              fontWeight: "bold",
+              fontSize: "20px"
+      }}>ScalaryX</span>
      </a>
 
         {/* Desktop Nav */}
