@@ -27,7 +27,7 @@ export default function Footer() {
                 <span className="text-black font-black text-sm">N</span>
               </div>
               <span className="text-gray-900 font-bold text-xl tracking-tight">
-                Noda<span className="text-[#00FF87]">tix</span>
+                Scala<span className="text-[#00FF87]">ryX</span>
               </span>
             </a>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
@@ -72,7 +72,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-[#1e2433] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-xs">
-            © {new Date().getFullYear()} Nodatix. All rights reserved.
+            © {new Date().getFullYear()} ScalaryX. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-xs text-gray-600">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse" />

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://scalaryx.com",
-    title: "Nodatix | AI Automation Agency",
+    title: "ScalaryX | AI Automation Agency",
     description:
       "Automate repetitive tasks, manage leads, and generate content using smart AI systems. Book a free strategy call today.",
     siteName: "ScalaryX",

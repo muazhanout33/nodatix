@@ -27,7 +27,7 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block text-xs text-[#00FF87] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00FF87]/20 bg-[#00FF87]/5">
-              About Nodatix
+              About ScalaryX
             </span>
             <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-6 leading-tight">
               Built by a specialist who{" "}
@@ -45,7 +45,7 @@ export default function About() {
                 don&apos;t have to.
               </p>
               <p>
-                Nodatix was born from a simple belief: <span className="text-gray-900 font-semibold">every business deserves to operate at the
+                ScalaryX was born from a simple belief: <span className="text-gray-900 font-semibold">every business deserves to operate at the
                 speed of AI.</span> Whether you&apos;re a solo founder or a growing team, I help you automate the
                 tasks that are holding you back — and scale the ones that matter most.
               </p>
@@ -84,7 +84,7 @@ export default function About() {
                 <div>
                   <div className="text-gray-900 font-bold text-lg">Moaaz Hanout</div>
                   <div className="text-[#00FF87] text-sm font-medium">AI Automation Specialist</div>
-                  <div className="text-gray-500 text-xs mt-0.5">Founder @ Nodatix</div>
+                  <div className="text-gray-500 text-xs mt-0.5">Founder @ ScalaryX</div>
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed border-t border-gray-200 pt-4">

@@ -40,7 +40,7 @@ export default function Navbar() {
             <span className="text-black font-black text-sm">N</span>
           </div>
           <span className="text-white font-bold text-xl tracking-tight">
-            Noda<span className="text-[#00FF87]">tix</span>
+            Scala<span className="text-[#00FF87]">ryX</span>
           </span>
         </a>
 
