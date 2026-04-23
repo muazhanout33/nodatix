@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* --- 1. الخلفية (أسود غامق جدًا Pure Black كما طلبت) --- */
   --color-background: #000000;
   --color-foreground: #ffffff;
-  --color-accent: #00cfff;
-  --color-accent-dim: #00a8cc;
+
+  /* --- 2. اللون الرئيسي (Neon Blue / Electric Blue) --- */
+  /* هذا هو اللون الأهم في البراند */
+  --color-accent: #0084FF; /* أزرق زاهي (Electric Blue) للأزرار والنصوص المميزة */
+  --color-accent-dim: #003BFF; /* أزرق أعمق (Base) للظلال والتدرجات */
+  
   --color-surface: #000000;
-  --color-surface-2: #000000;
-  --color-border: rgba(0, 207, 255, 0.2);
+  --color-surface-2: #05070A; /* لمسة خفيفة جدًا مائلة للكحلي الداكن عند الحاجة */
+  
+  /* حدود زرقاء شفافة (كما طلبت) */
+  --color-border: rgba(0, 132, 255, 0.2); 
+  
   --color-muted: #94a3b8;
   --font-sans: var(--font-inter);
 }
@@ -31,11 +39,13 @@ body {
   overflow-x: hidden;
 }
 
+/* لون تحديد النص عند السحب (أزرق شفاف كما طلبت) */
 ::selection {
-  background: rgba(0, 207, 255, 0.30);
+  background: rgba(0, 132, 255, 0.30);
   color: #fff;
 }
 
+/* --- تخصيص شريط التمرير (Scrollbar) --- */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -45,25 +55,32 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00cfff;
+  background: #0084FF; /* تغيير لون شريط التمرير ليتناسب مع الأزرق الجديد */
   border-radius: 9999px;
 }
 
+/* --- 3. تأثيرات التوهج (Neon Glow) --- */
+
+/* توهج حول الأزرار أو العناصر (بحذر كما طلبت) */
 .glow-accent {
-  box-shadow: 0 0 40px rgba(0, 207, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 132, 255, 0.6); 
 }
 
+/* توهج للنص الأزرق ليظهر كأنه "مكهرب" */
 .glow-text {
-  text-shadow: 0 0 30px rgba(0, 207, 255, 0.6);
+  text-shadow: 0 0 10px rgba(0, 132, 255, 0.5); 
 }
 
+/* --- 4. التدرج في النص (اللون الداخلي للنص المميز) --- */
+/* تدرج من أزرق زاهي إلى أزرق أعمق ليعطي عمقاً (كما طلبت) */
 .gradient-text {
-  background: linear-gradient(135deg, #00cfff 0%, #00cfff 100%);
+  background: linear-gradient(135deg, #0084FF 0%, #003BFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* --- حدود متدرجة (اختياري، مستوحاة من تفاصيل اللوجو المعدني) --- */
 .gradient-border {
   position: relative;
 }
@@ -74,21 +91,24 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0,207,255,0.5), rgba(0,207,255,0.2));
+  background: linear-gradient(135deg, rgba(0,132,255,0.5), rgba(0,132,255,0.2));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
 
+/* --- تأثيرات الحركة (Motion Effects) --- */
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
 
+/* توهج ينبض (إحساس بالـ AI والتكنولوجيا) */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 207, 255, 0.4); }
-  50%       { box-shadow: 0 0 50px rgba(0, 207, 255, 0.8); }
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 132, 255, 0.5); }
+  50%       { box-shadow: 0 0 40px rgba(0, 132, 255, 0.9); }
 }
 
 @keyframes scan-line {
