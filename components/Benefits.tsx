@@ -61,7 +61,7 @@ export default function Benefits() {
   return (
     <section id="benefits" className="py-28 px-6 relative">
       {/* Background glow */}
-      <div className="absolute right-0 top-1/2 w-[500px] h-[500px] bg-[#00FF87] opacity-[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-1/2 w-[500px] h-[500px] bg-[#00cfff] opacity-[0.04] blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -71,7 +71,7 @@ export default function Benefits() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs text-[#00FF87] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00FF87]/20 bg-[#00FF87]/5">
+          <span className="inline-block text-xs text-[#00cfff] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00cfff]/20 bg-[#00cfff]/5">
             Why Automate
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
@@ -91,19 +91,19 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-6 rounded-2xl bg-[#0f1117] border border-[#1e2433] hover:border-[#00FF87]/25 transition-all duration-300 relative overflow-hidden"
+              className="group p-6 rounded-2xl bg-[#000000] border border-[rgba(0,207,255,0.2)] hover:border-[#00cfff]/25 transition-all duration-300 relative overflow-hidden"
             >
               {/* Stat watermark */}
-              <div className="absolute top-4 right-4 text-5xl font-black text-[#00FF87]/5 select-none">
+              <div className="absolute top-4 right-4 text-5xl font-black text-[#00cfff]/5 select-none">
                 {benefit.stat}
               </div>
 
-              <div className="w-11 h-11 rounded-xl bg-[#00FF87]/10 flex items-center justify-center text-lg mb-4 group-hover:bg-[#00FF87]/20 transition-colors duration-300">
+              <div className="w-11 h-11 rounded-xl bg-[#00cfff]/10 flex items-center justify-center text-lg mb-4 group-hover:bg-[#00cfff]/20 transition-colors duration-300">
                 {benefit.icon}
               </div>
 
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-2xl font-black text-[#00FF87]">
+                <span className="text-2xl font-black text-[#00cfff]">
                   {benefit.stat}
                 </span>
                 <span className="text-xs text-gray-500 uppercase tracking-wider">

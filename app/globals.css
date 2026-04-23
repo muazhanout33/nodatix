@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #0a0514;
-  --color-foreground: #f0e6ff;
-  --color-accent: #9b1a3a;
-  --color-accent-dim: #7a1530;
-  --color-surface: #110820;
-  --color-surface-2: #1a0f2e;
-  --color-border: #2d1545;
-  --color-muted: #7c6b8a;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-accent: #00cfff;
+  --color-accent-dim: #00a8cc;
+  --color-surface: #000000;
+  --color-surface-2: #000000;
+  --color-border: rgba(0, 207, 255, 0.2);
+  --color-muted: #94a3b8;
   --font-sans: var(--font-inter);
 }
 
 :root {
-  --background: #0a0514;
-  --foreground: #f0e6ff;
+  --background: #000000;
+  --foreground: #ffffff;
   scroll-behavior: smooth;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 ::selection {
-  background: rgba(155, 26, 58, 0.30);
+  background: rgba(0, 207, 255, 0.30);
   color: #fff;
 }
 
@@ -41,24 +41,24 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0514;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9b1a3a;
+  background: #00cfff;
   border-radius: 9999px;
 }
 
 .glow-accent {
-  box-shadow: 0 0 40px rgba(155, 26, 58, 0.2);
+  box-shadow: 0 0 40px rgba(0, 207, 255, 0.2);
 }
 
 .glow-text {
-  text-shadow: 0 0 30px rgba(155, 26, 58, 0.6);
+  text-shadow: 0 0 30px rgba(0, 207, 255, 0.6);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #c2185b 0%, #6a0dad 100%);
+  background: linear-gradient(135deg, #00cfff 0%, #00cfff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -74,7 +74,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(155,26,58,0.5), rgba(106,13,173,0.2));
+  background: linear-gradient(135deg, rgba(0,207,255,0.5), rgba(0,207,255,0.2));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -87,8 +87,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(155, 26, 58, 0.4); }
-  50%       { box-shadow: 0 0 50px rgba(155, 26, 58, 0.8); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 207, 255, 0.4); }
+  50%       { box-shadow: 0 0 50px rgba(0, 207, 255, 0.8); }
 }
 
 @keyframes scan-line {

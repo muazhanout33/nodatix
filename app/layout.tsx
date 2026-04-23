@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased bg-[#08090d] text-white`}>
+      <body className={`${inter.variable} antialiased bg-[#000000] text-white`}>
         {children}
       </body>
     </html>

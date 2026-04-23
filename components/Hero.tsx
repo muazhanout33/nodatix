@@ -17,22 +17,22 @@ export default function Hero() {
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(#00FF87 1px, transparent 1px), linear-gradient(90deg, #00FF87 1px, transparent 1px)",
+            "linear-gradient(#00cfff 1px, transparent 1px), linear-gradient(90deg, #00cfff 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
       {/* Radial glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#00FF87] opacity-[0.05] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#00ccff] opacity-[0.04] blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#00cfff] opacity-[0.05] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#00cfff] opacity-[0.04] blur-[100px] pointer-events-none" />
 
       {/* Floating badge */}
       <motion.div
         variants={floatVariants}
         animate="animate"
-        className="absolute top-36 right-[10%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f1117] border border-[#1e2433] text-xs text-gray-400"
+        className="absolute top-36 right-[10%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,207,255,0.2)] text-xs text-gray-400"
       >
-        <span className="w-2 h-2 rounded-full bg-[#00FF87] animate-pulse" />
+        <span className="w-2 h-2 rounded-full bg-[#00cfff] animate-pulse" />
         AI Automation Active
       </motion.div>
 
@@ -40,9 +40,9 @@ export default function Hero() {
         variants={floatVariants}
         animate="animate"
         style={{ animationDelay: "2s" }}
-        className="absolute bottom-40 left-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f1117] border border-[#1e2433] text-xs text-gray-400"
+        className="absolute bottom-40 left-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,207,255,0.2)] text-xs text-gray-400"
       >
-        <span className="text-[#00FF87]">⚡</span>
+        <span className="text-[#00cfff]">⚡</span>
         80% Time Saved
       </motion.div>
 
@@ -53,9 +53,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF87]/30 bg-[#00FF87]/5 text-[#00FF87] text-xs font-medium mb-8 tracking-wider uppercase"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00cfff]/30 bg-[#00cfff]/5 text-[#00cfff] text-xs font-medium mb-8 tracking-wider uppercase"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00cfff]" />
           AI Automation Agency
         </motion.div>
 
@@ -92,15 +92,15 @@ export default function Hero() {
         >
           <a
             href="#booking"
-            className="group relative px-8 py-4 rounded-xl bg-[#00FF87] text-black font-bold text-base hover:bg-[#00cc6a] transition-all duration-200 hover:scale-[1.03] active:scale-95"
-            style={{ boxShadow: "0 0 30px rgba(0,255,135,0.3)" }}
+            className="group relative px-8 py-4 rounded-xl bg-[#00cfff] text-black font-bold text-base hover:bg-[#00a8cc] transition-all duration-200 hover:scale-[1.03] active:scale-95"
+            style={{ boxShadow: "0 0 30px rgba(0,207,255,0.3)" }}
           >
             Book a Free Call
             <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
           </a>
           <a
             href="#services"
-            className="px-8 py-4 rounded-xl border border-[#1e2433] text-gray-300 font-medium text-base hover:border-[#00FF87]/40 hover:text-white transition-all duration-200"
+            className="px-8 py-4 rounded-xl border border-[rgba(0,207,255,0.2)] text-gray-300 font-medium text-base hover:border-[#00cfff]/40 hover:text-white transition-all duration-200"
           >
             See Our Services
           </a>
@@ -119,7 +119,7 @@ export default function Hero() {
             { value: "0", label: "Human Errors" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-3xl sm:text-4xl font-black text-[#00FF87] glow-text">
+              <div className="text-3xl sm:text-4xl font-black text-[#00cfff] glow-text">
                 {stat.value}
               </div>
               <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">
@@ -131,7 +131,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08090d] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000000] to-transparent pointer-events-none" />
     </section>
   );
 }

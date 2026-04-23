@@ -46,11 +46,11 @@ export default function Problems() {
           <span className="inline-block text-xs text-red-400 font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-red-400/20 bg-red-400/5">
             The Problem
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
             Sound{" "}
             <span className="text-red-500">Familiar?</span>
           </h2>
-          <p className="text-gray-600 max-w-xl mx-auto">
+          <p className="text-[#94a3b8] max-w-xl mx-auto">
             These are the exact pain points slowing most businesses down.
             We&apos;ve built solutions for all of them.
           </p>
@@ -64,7 +64,7 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative p-7 rounded-2xl bg-white border border-gray-200 hover:border-red-200 transition-all duration-300 shadow-sm"
+              className="group relative p-7 rounded-2xl bg-[#000000] border border-[rgba(0,207,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
             >
               {/* Problem number */}
               <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none">
@@ -77,7 +77,7 @@ export default function Problems() {
               <h3 className="text-lg font-bold text-white mb-3">
                 {problem.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
                 {problem.description}
               </p>
               <div className="inline-flex items-center gap-2 text-xs text-red-400 font-medium">
@@ -96,9 +96,9 @@ export default function Problems() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-500 text-sm">
+          <p className="text-[#94a3b8] text-sm">
             We eliminate all of these — with systems built specifically for your business.{" "}
-            <a href="#services" className="text-[#00FF87] hover:underline">
+            <a href="#services" className="text-[#00cfff] hover:underline">
               See how →
             </a>
           </p>
