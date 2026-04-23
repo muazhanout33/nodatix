@@ -54,14 +54,14 @@ function ServiceCard({
       className="gradient-border group relative p-6 rounded-2xl bg-[#000000] hover:bg-[#000000] transition-all duration-300 cursor-default"
     >
       <div className="flex items-start justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-[#00cfff]/10 flex items-center justify-center text-xl group-hover:bg-[#00cfff]/20 transition-colors duration-300">
+        <div className="w-12 h-12 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-xl group-hover:bg-[#0084FF]/20 transition-colors duration-300">
           {service.icon}
         </div>
-        <span className="text-xs text-[#00cfff] font-medium px-3 py-1 rounded-full bg-[#00cfff]/10 border border-[#00cfff]/20">
+        <span className="text-xs text-[#0084FF] font-medium px-3 py-1 rounded-full bg-[#0084FF]/10 border border-[#0084FF]/20">
           {service.tag}
         </span>
       </div>
-      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#00cfff] transition-colors duration-300">
+      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#0084FF] transition-colors duration-300">
         {service.title}
       </h3>
       <p className="text-gray-400 text-sm leading-relaxed">
@@ -69,7 +69,7 @@ function ServiceCard({
       </p>
 
       {/* hover glow line */}
-      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#00cfff]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#0084FF]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </motion.div>
   );
 }
@@ -81,7 +81,7 @@ export default function Services() {
   return (
     <section id="services" className="py-28 px-6 relative">
       {/* Glow */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#00cfff] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -92,7 +92,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs text-[#00cfff] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00cfff]/20 bg-[#00cfff]/5">
+          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
             What We Do
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">

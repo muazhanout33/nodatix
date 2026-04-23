@@ -29,7 +29,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-[rgba(0,207,255,0.2)]"
+          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-[rgba(0,132,255,0.2)]"
           : "bg-transparent"
       }`}
     >
@@ -58,7 +58,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <BookCallButton className="px-5 py-2.5 rounded-lg bg-[#00cfff] text-black text-sm font-semibold hover:bg-[#00a8cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer" />
+          <BookCallButton className="px-5 py-2.5 rounded-lg bg-[#0084FF] text-black text-sm font-semibold hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer" />
         </div>
 
         {/* Mobile Hamburger */}
@@ -81,7 +81,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#000000] border-t border-[rgba(0,207,255,0.2)] overflow-hidden"
+            className="md:hidden bg-[#000000] border-t border-[rgba(0,132,255,0.2)] overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
@@ -89,7 +89,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-gray-300 hover:text-[#00cfff] transition-colors py-1"
+                  className="text-gray-300 hover:text-[#0084FF] transition-colors py-1"
                 >
                   {link.label}
                 </a>
@@ -99,7 +99,7 @@ export default function Navbar() {
                 className="mt-2"
               >
                 <BookCallButton 
-                  className="px-5 py-2.5 rounded-lg bg-[#00cfff] text-black text-sm font-semibold text-center cursor-pointer" 
+                  className="px-5 py-2.5 rounded-lg bg-[#0084FF] text-black text-sm font-semibold text-center cursor-pointer" 
                 />
               </div>
             </div>

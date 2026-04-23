@@ -34,7 +34,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-28 px-6 relative">
-      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#00cfff] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -45,7 +45,7 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-xs text-[#00cfff] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00cfff]/20 bg-[#00cfff]/5">
+            <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
               Contact
             </span>
             <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 leading-tight">
@@ -80,7 +80,7 @@ export default function Contact() {
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#00cfff]/10 flex items-center justify-center text-lg shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-lg shrink-0">
                     {item.icon}
                   </div>
                   <div>
@@ -88,7 +88,7 @@ export default function Contact() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-white hover:text-[#00cfff] transition-colors font-medium"
+                        className="text-white hover:text-[#0084FF] transition-colors font-medium"
                       >
                         {item.value}
                       </a>
@@ -115,7 +115,7 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-12 gap-4 text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-[#00cfff]/10 flex items-center justify-center text-3xl">
+                <div className="w-16 h-16 rounded-full bg-[#0084FF]/10 flex items-center justify-center text-3xl">
                   ✅
                 </div>
                 <h3 className="text-xl font-bold text-white">Message Sent!</h3>
@@ -124,7 +124,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", message: "" }); }}
-                  className="mt-2 text-[#00cfff] text-sm hover:underline"
+                  className="mt-2 text-[#0084FF] text-sm hover:underline"
                 >
                   Send another message
                 </button>
@@ -141,7 +141,7 @@ export default function Contact() {
                     placeholder="John Smith"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,207,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#00cfff]/50 focus:ring-1 focus:ring-[#00cfff]/20 transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
                   />
                 </div>
                 <div>
@@ -154,7 +154,7 @@ export default function Contact() {
                     placeholder="john@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,207,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#00cfff]/50 focus:ring-1 focus:ring-[#00cfff]/20 transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
                   />
                 </div>
                 <div>
@@ -167,14 +167,14 @@ export default function Contact() {
                     placeholder="Tell us about your business and what you're looking to automate..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,207,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#00cfff]/50 focus:ring-1 focus:ring-[#00cfff]/20 transition-all duration-200 text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 rounded-xl bg-[#00cfff] text-black font-bold text-sm hover:bg-[#00a8cc] transition-all duration-200 hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ boxShadow: "0 0 25px rgba(0,207,255,0.2)" }}
+                  className="w-full py-4 rounded-xl bg-[#0084FF] text-black font-bold text-sm hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ boxShadow: "0 0 25px rgba(0,132,255,0.2)" }}
                 >
                   {isLoading ? "Sending..." : "Send Message →"}
                 </button>

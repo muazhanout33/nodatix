@@ -17,17 +17,17 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[rgba(0,207,255,0.2)] pt-16 pb-8 px-6 bg-[#000000]">
+    <footer className="border-t border-[rgba(0,132,255,0.2)] pt-16 pb-8 px-6 bg-[#000000]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[#00cfff] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-[#0084FF] flex items-center justify-center">
                 <span className="text-black font-black text-sm">N</span>
               </div>
               <span className="text-white font-bold text-xl tracking-tight">
-                Scala<span className="text-[#00cfff]">ryX</span>
+                Scala<span className="text-[#0084FF]">ryX</span>
               </span>
             </a>
             <p className="text-[#94a3b8] text-sm leading-relaxed max-w-xs">
@@ -39,7 +39,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-lg border border-[rgba(0,207,255,0.2)] flex items-center justify-center text-gray-400 hover:border-[#00cfff]/30 hover:text-[#00cfff] transition-all duration-200 text-sm"
+                  className="w-9 h-9 rounded-lg border border-[rgba(0,132,255,0.2)] flex items-center justify-center text-gray-400 hover:border-[#00cfff]/30 hover:text-[#0084FF] transition-all duration-200 text-sm"
                 >
                   {icon}
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-[#94a3b8] text-sm hover:text-[#00cfff] transition-colors duration-200"
+                      className="text-[#94a3b8] text-sm hover:text-[#0084FF] transition-colors duration-200"
                     >
                       {link.label}
                     </a>
@@ -70,12 +70,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[rgba(0,207,255,0.2)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[rgba(0,132,255,0.2)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[#94a3b8] text-xs">
             © {new Date().getFullYear()} ScalaryX. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-xs text-gray-600">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00cfff] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0084FF] animate-pulse" />
             AI Systems Running 24/7
           </div>
           <div className="flex gap-5">

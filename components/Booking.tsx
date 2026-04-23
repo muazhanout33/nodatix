@@ -9,7 +9,7 @@ export default function Booking() {
 
   return (
     <section id="booking" className="py-28 px-6 relative">
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00cfff] opacity-[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -19,7 +19,7 @@ export default function Booking() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-xs text-[#00cfff] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#00cfff]/20 bg-[#00cfff]/5">
+          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
             Get Started
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
@@ -42,7 +42,7 @@ export default function Booking() {
           {/* Calendly embed placeholder */}
           <div className="flex flex-col items-center justify-center py-20 px-8 gap-6">
             {/* Calendly UI simulation */}
-            <div className="w-16 h-16 rounded-2xl bg-[#00cfff]/10 border border-[#00cfff]/20 flex items-center justify-center text-3xl">
+            <div className="w-16 h-16 rounded-2xl bg-[#0084FF]/10 border border-[#0084FF]/20 flex items-center justify-center text-3xl">
               📅
             </div>
             <div className="text-center">
@@ -60,7 +60,7 @@ export default function Booking() {
                 (slot) => (
                   <button
                     key={slot}
-                    className="px-3 py-2 rounded-lg border border-[rgba(0,207,255,0.2)] text-xs text-gray-400 hover:border-[#00cfff]/40 hover:text-[#00cfff] transition-all duration-200 text-center"
+                    className="px-3 py-2 rounded-lg border border-[rgba(0,132,255,0.2)] text-xs text-gray-400 hover:border-[#0084FF]/40 hover:text-[#0084FF] transition-all duration-200 text-center"
                   >
                     {slot}
                   </button>
@@ -72,8 +72,8 @@ export default function Booking() {
               href="https://calendly.com/YOUR_LINK"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-[#00cfff] text-black font-bold text-base hover:bg-[#00a8cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2"
-              style={{ boxShadow: "0 0 30px rgba(0,207,255,0.25)" }}
+              className="px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2"
+              style={{ boxShadow: "0 0 30px rgba(0,132,255,0.25)" }}
             >
               Book Your Free Call →
             </a>

@@ -43,12 +43,12 @@ export default function Problems() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs text-red-400 font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-red-400/20 bg-red-400/5">
+          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-red-400/20 bg-[#0084FF]/5">
             The Problem
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
             Sound{" "}
-            <span className="text-red-500">Familiar?</span>
+            <span className="text-[#0084FF]">Familiar?</span>
           </h2>
           <p className="text-[#94a3b8] max-w-xl mx-auto">
             These are the exact pain points slowing most businesses down.
@@ -64,14 +64,14 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative p-7 rounded-2xl bg-[#000000] border border-[rgba(0,207,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
+              className="group relative p-7 rounded-2xl bg-[#000000] border border-[rgba(0,132,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
             >
               {/* Problem number */}
               <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-red-400/10 flex items-center justify-center text-xl mb-5">
+              <div className="w-12 h-12 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-xl mb-5">
                 {problem.icon}
               </div>
               <h3 className="text-lg font-bold text-white mb-3">
@@ -80,8 +80,8 @@ export default function Problems() {
               <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
                 {problem.description}
               </p>
-              <div className="inline-flex items-center gap-2 text-xs text-red-400 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+              <div className="inline-flex items-center gap-2 text-xs text-[#0084FF] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0084FF]" />
                 {problem.pain}
               </div>
             </motion.div>
