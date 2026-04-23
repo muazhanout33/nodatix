@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <img src="/logo.jpg" alt="ScalaryX" height={40} style={{ width: "auto" }} />
+          <img src="/logo.jpg.jpeg" alt="ScalaryX" height={40} style={{ width: "auto" }} />
         </a>
 
         {/* Desktop Nav */}
