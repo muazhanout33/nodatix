@@ -33,24 +33,23 @@ export default function About() {
               Built by a specialist who{" "}
               <span className="gradient-text">lives and breathes</span> AI
             </h2>
-            <div className="space-y-4 text-[#94a3b8] leading-relaxed">
+          <div className="space-y-4 text-[#94a3b8] leading-relaxed">
               <p>
-                Hi, I&apos;m <span className="text-white font-semibold">Moaaz Hanout</span> — a young AI Automation specialist
-                on a mission to help businesses break free from manual, time-consuming processes.
+                Hi, we&apos;re <span className="text-[#0084FF] font-semibold">Muaz Hanout and Omar Gamal</span> — two independent specialists helping businesses grow through modern digital systems.
               </p>
               <p>
-                After discovering how powerful AI-driven automation could be, I dedicated myself to mastering
-                tools and systems that replace human repetition with intelligent, always-on workflows. From
-                lead management pipelines to fully custom AI agents — I build systems that do the work, so you
-                don&apos;t have to.
+                <span className="text-[#0084FF] font-semibold">Muaz</span> focuses on AI Automation, building smart systems that <span className="text-[#0084FF] font-semibold">replace manual work</span> and help businesses run <span className="text-[#0084FF] font-semibold">faster and more efficiently.</span>
               </p>
               <p>
-                ScalaryX was born from a simple belief: <span className="text-white font-semibold">every business deserves to operate at the
-                speed of AI.</span> Whether you&apos;re a solo founder or a growing team, I help you automate the
-                tasks that are holding you back — and scale the ones that matter most.
+                <span className="text-[#0084FF] font-semibold">Omar</span> specializes in Digital Marketing, creating <span className="text-[#0084FF] font-semibold">performance-driven strategies</span> that turn traffic into <span className="text-[#0084FF] font-semibold">real growth and revenue.</span>
+              </p>
+              <p>
+                Together under <span className="text-[#0084FF] font-semibold">ScalaryX</span>, we help businesses scale using the power of <span className="text-[#0084FF] font-semibold">automation and marketing</span> — but each service is delivered <span className="text-[#0084FF] font-semibold">separately based on your needs.</span>
+              </p>
+              <p>
+                Whether you need automation or marketing, <span className="text-[#0084FF] font-semibold">ScalaryX</span> is built to help you <span className="text-[#0084FF] font-semibold">grow faster</span> with modern, <span className="text-[#0084FF] font-semibold">results-driven systems.</span>
               </p>
             </div>
-
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#booking"
