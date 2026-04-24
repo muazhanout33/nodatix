@@ -34,7 +34,7 @@ export default function Hero() {
         className="absolute top-36 right-[10%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,132,255,0.2)] text-xs text-gray-400"
       >
         <span className="w-2 h-2 rounded-full bg-[#0084FF] animate-pulse" />
-        AI Automation Active
+        AI Automation & Marketing Active
       </motion.div>
 
       <motion.div
@@ -59,8 +59,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00cfff]/30 bg-[#0084FF]/5 text-[#0084FF] text-xs font-medium mb-8 tracking-wider uppercase"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0084FF]" />
-            AI Automation Agency
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#0084FF] mr-2" />
+           AI Automation & Marketing Agency
           </motion.div>
 
           {/* Headline */}
