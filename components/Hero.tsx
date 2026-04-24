@@ -80,9 +80,7 @@ export default function Hero() {
         >
           Automate your operations and scale your brand with high-performance systems.
         </motion.p>
-
-        {/* 🔥 NEW: Service Cards */}
-       <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -90,27 +88,26 @@ export default function Hero() {
         >
 
           {/* AI Automation Card */}
-          <div className="p-6 rounded-2xl border border-[rgba(0,132,255,0.2)] bg-gradient-to-br from-[#FF6B1A]/10 via-[#0a0a0a] to-[#0a0a0a] hover:border-[#FF6B1A] hover:from-[#FF6B1A]/15 transition-all duration-300">
+          <div className="p-6 rounded-2xl border border-[rgba(0,132,255,0.2)] bg-[#FF6B1A] hover:border-[#0084FF] transition-all duration-300">
             <h3 className="text-xl font-bold text-white mb-3">
               🤖 AI Automation
             </h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
+            <p className="text-white/80 leading-relaxed text-sm">
               Automate repetitive tasks, manage workflows, and streamline your operations using smart AI systems — so you can focus on growth.
             </p>
           </div>
 
           {/* Marketing Card */}
-          <div className="p-6 rounded-2xl border border-[rgba(0,132,255,0.2)] bg-gradient-to-br from-[#FF6B1A]/10 via-[#0a0a0a] to-[#0a0a0a] hover:border-[#FF6B1A] hover:from-[#FF6B1A]/15 transition-all duration-300">
+          <div className="p-6 rounded-2xl border border-[rgba(0,132,255,0.2)] bg-[#FF6B1A] hover:border-[#0084FF] transition-all duration-300">
             <h3 className="text-xl font-bold text-white mb-3">
               📈 Digital Marketing
             </h3>
-            <p className="text-gray-400 leading-relaxed text-sm">
+            <p className="text-white/80 leading-relaxed text-sm">
               Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.
             </p>
           </div>
 
-</motion.div>
-
+        </motion.div>
         {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
