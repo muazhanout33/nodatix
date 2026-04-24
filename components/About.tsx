@@ -75,7 +75,7 @@ export default function About() {
             className="flex flex-col gap-5"
           >
             {/* Profile card */}
-            <div className="gradient-border p-6 rounded-2xl bg-[#000000] border border-[rgba(0,132,255,0.2)] shadow-sm">
+            <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
                   M
@@ -101,7 +101,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="p-4 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-center shadow-sm"
+                  className="p-4 rounded-xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] text-center shadow-sm"
                 >
                   <div className="text-2xl font-black text-[#0084FF]">{h.value}</div>
                   <div className="text-xs text-[#94a3b8] mt-1 leading-tight">{h.label}</div>

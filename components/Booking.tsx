@@ -37,7 +37,7 @@ export default function Booking() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="gradient-border rounded-2xl bg-[#000000] overflow-hidden"
+          className="gradient-border rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] overflow-hidden"
         >
           {/* Calendly embed placeholder */}
           <div className="flex flex-col items-center justify-center py-20 px-8 gap-6">

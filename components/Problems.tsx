@@ -64,7 +64,7 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative p-7 rounded-2xl bg-[#000000] border border-[rgba(0,132,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
+              className="group relative p-7 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
             >
               {/* Problem number */}
               <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none">

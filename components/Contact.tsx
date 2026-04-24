@@ -107,7 +107,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="gradient-border rounded-2xl bg-[#000000] p-8"
+            className="gradient-border rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] p-8"
           >
             {submitted ? (
               <motion.div

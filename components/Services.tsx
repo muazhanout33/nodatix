@@ -51,7 +51,7 @@ function ServiceCard({
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="gradient-border group relative p-6 rounded-2xl bg-[#000000] hover:bg-[#000000] transition-all duration-300 cursor-default"
+      className="gradient-border group relative p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] hover:bg-[#000000] transition-all duration-300 cursor-default"
     >
       <div className="flex items-start justify-between mb-4">
         <div className="w-12 h-12 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-xl group-hover:bg-[#0084FF]/20 transition-colors duration-300">

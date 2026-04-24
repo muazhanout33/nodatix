@@ -91,7 +91,7 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-6 rounded-2xl bg-[#000000] border border-[rgba(0,132,255,0.2)] hover:border-[#00cfff]/25 transition-all duration-300 relative overflow-hidden"
+              className="group p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] hover:border-[#00cfff]/25 transition-all duration-300 relative overflow-hidden"
             >
               {/* Stat watermark */}
               <div className="absolute top-4 right-4 text-5xl font-black text-[#0084FF]/5 select-none">
