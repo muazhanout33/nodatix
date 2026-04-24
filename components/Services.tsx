@@ -33,6 +33,34 @@ const services = [
       "Bespoke AI agents trained on your business data — from customer support bots to internal assistants that handle tasks your team shouldn't spend time on.",
     tag: "Advanced AI",
   },
+  {
+    icon: "📣",
+    title: "Performance Digital Marketing Systems",
+    description:
+      "Data-driven marketing systems built to generate consistent growth. We create and optimize campaigns, funnels, and content strategies that turn attention into real revenue.",
+    tag: "Core Service",
+  },
+  {
+    icon: "🎯",
+    title: "Paid Ads & Lead Generation",
+    description:
+      "High-performance ad campaigns designed to attract the right audience, generate qualified leads, and maximize ROI across platforms like Meta and Google.",
+    tag: "Growth Engine",
+  },
+  {
+    icon: "✍️",
+    title: "Content Marketing Strategy",
+    description:
+      "Strategic content systems that build brand awareness and trust. From social media content to ad creatives, we ensure your brand stays visible and impactful.",
+    tag: "Content & Branding",
+  },
+  {
+    icon: "📊",
+    title: "Funnels & Optimization",
+    description:
+      "We design and optimize conversion funnels that turn traffic into customers. Every step is tracked, tested, and improved for maximum performance.",
+    tag: "Conversion Focus",
+  },
 ];
 
 function ServiceCard({
