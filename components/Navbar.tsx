@@ -22,8 +22,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
-    <motion.header
+<motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -33,15 +44,14 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
-      <a href="#" className="flex items-center gap-2 group">  
-       <img src="/logo.jpg.jpeg" alt="ScalaryX" style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-           <span style={{ fontWeight: "bold", fontSize: "40px" }}>
-  <span style={{ color: "#ffffff" }}>Scalary</span>
-  <span style={{ color: "#027bed" }}>X</span>
-</span>
-     </a>
+        <a href="#" className="flex items-center gap-2 group">  
+          <img src="/logo.jpg.jpeg" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
+          <span className="text-xl sm:text-3xl font-bold">
+            <span className="text-white">Scalary</span><span className="text-[#0084FF]">X</span>
+          </span>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
@@ -64,12 +74,14 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden p-2"
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          <div className="flex flex-col gap-1.5">
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </div>
         </button>
       </div>
 
@@ -88,8 +100,8 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-gray-300 hover:text-[#0084FF] transition-colors py-1"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-gray-300 hover:text-[#0084FF] transition-colors py-2 text-lg"
                 >
                   {link.label}
                 </a>
