@@ -66,31 +66,51 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right: Stats + Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="flex flex-col gap-5"
-          >
-            {/* Profile card */}
-            <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
-                  M
+{/* Right: Stats + Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="flex flex-col gap-5"
+            >
+              {/* Profile cards - 2 column grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Moaaz card */}
+                <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
+                      M
+                    </div>
+                    <div>
+                      <div className="text-white font-bold text-lg">Moaaz Hanout</div>
+                      <div className="text-[#0084FF] text-sm font-medium">AI Automation Specialist</div>
+                      <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
+                    </div>
+                  </div>
+                  <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
+                    &quot;My goal is simple — help businesses do more with less. AI automation
+                    is the single biggest lever you can pull right now.&quot;
+                  </p>
                 </div>
-                <div>
-                  <div className="text-white font-bold text-lg">Moaaz Hanout</div>
-                  <div className="text-[#0084FF] text-sm font-medium">AI Automation Specialist</div>
-                  <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
+
+                {/* Omar card */}
+                <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
+                      O
+                    </div>
+                    <div>
+                      <div className="text-white font-bold text-lg">Omar Gamal</div>
+                      <div className="text-[#0084FF] text-sm font-medium">Digital Marketing Specialist</div>
+                      <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
+                    </div>
+                  </div>
+                  <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
+                    &quot;My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue.&quot;
+                  </p>
                 </div>
               </div>
-              <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
-                &quot;My goal is simple — help businesses do more with less. AI automation
-                is the single biggest lever you can pull right now.&quot;
-              </p>
-            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4">

@@ -6,24 +6,24 @@ import { useRef } from "react";
 const problems = [
   {
     icon: "🔁",
-    title: "Drowning in Repetitive Tasks",
+    title: "Drowning in Repetitive Work",
     description:
-      "Your team wastes hours every week on copy-paste work, manual data entry, follow-up emails, and repetitive processes that a well-built AI system could handle in seconds.",
-    pain: "Wasted hours = lost revenue",
+      "Your team wastes hours on manual tasks like data entry, follow-ups, and repetitive operations — work that smart AI automation systems can handle instantly.",
+    pain: "Lost time = lost scalability",
   },
   {
     icon: "📉",
-    title: "Poor Lead Follow-Up",
+    title: "Poor Lead Conversion & Follow-Up",
     description:
-      "Leads go cold because follow-ups are slow, inconsistent, or forgotten. Without automation, you're leaving money on the table — every single day.",
-    pain: "Lost leads = lost sales",
+      "Leads go cold due to slow or inconsistent follow-ups. Without automation and structured marketing systems, potential customers slip away every day.",
+    pain: "Missed follow-ups = lost revenue",
   },
   {
     icon: "🐢",
-    title: "Slow Content Production",
+    title: "Slow Marketing & Content Execution",
     description:
-      "Creating blogs, emails, social posts, and ad copy manually is exhausting and time-consuming. Your competitors are using AI to publish 10x faster while you're stuck.",
-    pain: "Slower content = weaker brand",
+      "Creating content, ads, and campaigns manually slows your growth. Meanwhile, competitors using AI-driven marketing systems are moving faster and scaling harder.",
+    pain: "Slow execution = weak market presence",
   },
 ];
 

@@ -3,9 +3,12 @@
 const footerLinks = {
   Services: [
     { label: "AI Automation Systems", href: "#services" },
+    { label: "Digital Marketing Strategy", href: "#services" },
     { label: "Lead Management", href: "#services" },
     { label: "Content Automation", href: "#services" },
+      { label: "Paid Ads & Lead Generation", href: "#services" },
     { label: "Custom AI Agents", href: "#services" },
+    { label: "Conversion Optimization Funnels", href: "#services" },
   ],
   Company: [
     { label: "About", href: "#about" },
@@ -37,8 +40,8 @@ export default function Footer() {
 
 </a>
             <p className="text-[#94a3b8] text-sm leading-relaxed max-w-xs">
-              AI Automation Agency helping businesses save time, reduce errors,
-              and scale using intelligent systems.
+              AI Automation & Marketing Agency helping businesses save time, reduce errors,
+               and scale faster with intelligent systems and high-performance marketing.
             </p>
             <div className="mt-5 flex gap-3">
               {["𝕏", "in", "📧"].map((icon, i) => (

@@ -54,7 +54,7 @@ export default function Contact() {
               Together
             </h2>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Have a question or want to explore what automation could do for your business?
+              Have a question or want to explore what automation or marketing could do for your business?
               Drop us a message and we&apos;ll get back to you within 24 hours.
             </p>
 
@@ -63,8 +63,8 @@ export default function Contact() {
                 {
                   icon: "📧",
                   label: "Email",
-                  value: "hello@scalaryx.com",
-                  href: "mailto:hello@scalaryx.com",
+                  value: "scalaryx@gmail.com",
+                  href: "mailto:scalaryx@gmail.com",
                 },
                 {
                   icon: "💬",
@@ -151,7 +151,7 @@ export default function Contact() {
                   <input
                     type="email"
                     required
-                    placeholder="john@company.com"
+                    placeholder="scalaryx@gmail.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
