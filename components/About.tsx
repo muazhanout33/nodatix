@@ -74,54 +74,43 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="flex flex-col gap-5"
             >
-              {/* Profile cards - 2 column grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* Moaaz card */}
-                <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
-                      M
-                    </div>
-                    <div>
-                      <div className="text-white font-bold text-lg">Muaz Hanout</div>
-                      <div className="text-[#0084FF] text-sm font-medium">AI Automation Specialist | Front-End Developer</div>
-                      <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
-                    </div>
-                  </div>
-                  <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
-                    &quot;specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
-                  </p>
-                </div>
+             {/* Profile cards - 2 column grid */}
+<div className="grid grid-cols-2 gap-4">
+  {/* Muaz card */}
+  <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
+    <div className="w-full aspect-square max-h-48 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-6xl font-black text-black mb-5">
+      M
+    </div>
+    <div className="w-full">
+      <div className="text-white font-bold text-lg">Muaz Hanout</div>
+      <div className="text-[#0084FF] text-sm font-medium mt-1">AI Automation Specialist</div>
+      <div className="text-[#0084FF] text-sm font-medium">Front-End Developer</div>
+      <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
+    </div>
+    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4 mt-4">
+      &quot;I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
+    </p>
+  </div>
 
-                {/* Omar card */}
-              <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
-                <div className="flex items-center gap-4 mb-5">
-                  
-                  {/* Avatar Image */}
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)]">
-                    <img
-                      src="/logo2.jpeg"
-                      alt="Omar Gamal"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div>
-                    <div className="text-white font-bold text-lg">Omar Gamal</div>
-                    <div className="text-[#0084FF] text-sm font-medium">
-                      Digital Marketing Specialist
-                    </div>
-                    <div className="text-[#94a3b8] text-xs mt-0.5">
-                      Founder @ ScalaryX
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
-                  "My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue."
-                </p>
-              </div>
-              </div>
+  {/* Omar card */}
+  <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
+    <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
+      <img
+        src="/logo2.jpeg"
+        alt="Omar Gamal"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div className="w-full">
+      <div className="text-white font-bold text-lg">Omar Gamal</div>
+      <div className="text-[#0084FF] text-sm font-medium mt-1">Digital Marketing Specialist</div>
+      <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
+    </div>
+    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4 mt-4">
+      &quot;My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue.&quot;
+    </p>
+  </div>
+</div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4">
