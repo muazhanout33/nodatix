@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { BookCallButton } from "./BookCallButton";
 
 const highlights = [
   { label: "AI Automations Built", value: "50+" },
@@ -51,12 +52,7 @@ export default function About() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#booking"
-                className="px-6 py-3 rounded-xl bg-[#0084FF] text-black font-semibold text-sm hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]"
-              >
-                Work With Me
-              </a>
+              <BookCallButton className="px-6 py-3 rounded-xl bg-[#0084FF] text-black font-semibold text-sm hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
               <a
                 href="#services"
                 className="px-6 py-3 rounded-xl border border-[rgba(0,132,255,0.2)] text-[#94a3b8] font-semibold text-sm hover:border-[#00cfff]/30 hover:text-white transition-all duration-200"

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { BookCallButton } from "./BookCallButton";
 
 const floatVariants: Variants = {
   animate: {
@@ -122,13 +123,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#booking"
-            className="group relative px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]"
-            style={{ boxShadow: "0 0 30px rgba(0,132,255,0.3)" }}
-          >
-            Book a Free Call →
-          </a>
+          <BookCallButton className="group relative px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
 
           <a
             href="#services"

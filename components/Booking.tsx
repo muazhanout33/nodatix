@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { BookCallButton } from "./BookCallButton";
 
 export default function Booking() {
   const ref = useRef(null);
@@ -68,15 +69,7 @@ export default function Booking() {
               )}
             </div>
 
-            <a
-              href="https://calendly.com/YOUR_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2"
-              style={{ boxShadow: "0 0 30px rgba(0,132,255,0.25)" }}
-            >
-              Book Your Free Call →
-            </a>
+            <BookCallButton className="px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2" />
             <p className="text-gray-600 text-xs">
               No credit card required · 100% free · Calendly powered
             </p>
