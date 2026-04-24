@@ -78,8 +78,12 @@ export default function About() {
 <div className="grid grid-cols-2 gap-4">
   {/* Muaz card */}
   <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
-    <div className="w-full aspect-square max-h-48 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-6xl font-black text-black mb-5">
-      M
+   <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
+      <img
+        src="/Muazprofile.jpeg"
+        alt="Muaz Hanout"
+        className="w-full h-full object-cover"
+      />
     </div>
     <div className="w-full">
       <div className="text-white font-bold text-lg">Muaz Hanout</div>
@@ -96,7 +100,7 @@ export default function About() {
   <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
     <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
       <img
-        src="/logo2.jpeg"
+        src="/Omarprofile.jpeg"
         alt="Omar Gamal"
         className="w-full h-full object-cover"
       />
