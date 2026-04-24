@@ -67,8 +67,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.08] tracking-tight mb-6 text-white"
         >
-          We help businesses{" "}
-          <span className="gradient-text">scale faster</span> with AI Automation & Marketing
+           Scale your business{" "}
+          <span className="gradient-text">faster with AI Automation</span>& Performance Marketing 
         </motion.h1>
 
         {/* Subheadline */}
@@ -78,7 +78,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Choose the solution your business needs — automate operations or grow your brand with high-performance digital marketing systems.
+          Automate your operations and scale your brand with high-performance systems.
         </motion.p>
 
         {/* 🔥 NEW: Service Cards */}
