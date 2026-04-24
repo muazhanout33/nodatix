@@ -28,6 +28,7 @@ export default function Footer() {
     src="/logo.jpg.jpeg" 
     alt="ScalaryX Logo"
     className="h-10 w-auto object-contain"
+    style={{ height: "60px", width: "auto", objectFit: "contain" }}
   />
 
   <span className="text-white font-bold text-xl tracking-tight">
