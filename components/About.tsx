@@ -83,33 +83,44 @@ export default function About() {
                       M
                     </div>
                     <div>
-                      <div className="text-white font-bold text-lg">Moaaz Hanout</div>
-                      <div className="text-[#0084FF] text-sm font-medium">AI Automation Specialist</div>
+                      <div className="text-white font-bold text-lg">Muaz Hanout</div>
+                      <div className="text-[#0084FF] text-sm font-medium">AI Automation Specialist | Front-End Developer</div>
                       <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
                     </div>
                   </div>
                   <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
-                    &quot;My goal is simple — help businesses do more with less. AI automation
-                    is the single biggest lever you can pull right now.&quot;
+                    &quot;specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
                   </p>
                 </div>
 
                 {/* Omar card */}
-                <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00cfff] to-[#00cfff] flex items-center justify-center text-2xl font-black text-black">
-                      O
+              <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm">
+                <div className="flex items-center gap-4 mb-5">
+                  
+                  {/* Avatar Image */}
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)]">
+                    <img
+                      src="/logo2.jpeg"
+                      alt="Omar Gamal"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="text-white font-bold text-lg">Omar Gamal</div>
+                    <div className="text-[#0084FF] text-sm font-medium">
+                      Digital Marketing Specialist
                     </div>
-                    <div>
-                      <div className="text-white font-bold text-lg">Omar Gamal</div>
-                      <div className="text-[#0084FF] text-sm font-medium">Digital Marketing Specialist</div>
-                      <div className="text-[#94a3b8] text-xs mt-0.5">Founder @ ScalaryX</div>
+                    <div className="text-[#94a3b8] text-xs mt-0.5">
+                      Founder @ ScalaryX
                     </div>
                   </div>
-                  <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
-                    &quot;My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue.&quot;
-                  </p>
                 </div>
+
+                <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4">
+                  "My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue."
+                </p>
+              </div>
               </div>
 
             {/* Stats */}
@@ -131,7 +142,7 @@ export default function About() {
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
-              {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python"].map((tag) => (
+              {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python" ,"Meta Ads" , "Google Ads"].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1 rounded-full text-xs border border-[rgba(0,132,255,0.2)] text-[#94a3b8] bg-[#000000]"

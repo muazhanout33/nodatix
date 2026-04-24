@@ -3,12 +3,14 @@
 const footerLinks = {
   Services: [
     { label: "AI Automation Systems", href: "#services" },
-    { label: "Digital Marketing Strategy", href: "#services" },
     { label: "Lead Management", href: "#services" },
     { label: "Content Automation", href: "#services" },
-      { label: "Paid Ads & Lead Generation", href: "#services" },
     { label: "Custom AI Agents", href: "#services" },
-    { label: "Conversion Optimization Funnels", href: "#services" },
+  ],
+  servicesmarketing: [
+     { label: "Digital Marketing Strategy", href: "#services" },
+    { label: "Paid Ads & Lead Generation", href: "#services" },
+     { label: "Conversion Optimization Funnels", href: "#services" },
   ],
   Company: [
     { label: "About", href: "#about" },
