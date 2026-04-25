@@ -1,6 +1,7 @@
 interface N8nPayload {
   name: string;
   email: string;
+  phone?: string;
   message?: string;
   source: "website";
 }
