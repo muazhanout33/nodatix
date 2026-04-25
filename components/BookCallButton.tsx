@@ -1,6 +1,7 @@
 "use client";
 
 import { PopupButton } from "react-calendly";
+import { useEffect } from "react";
 
 const CALENDLY_URL =
   "https://calendly.com/muazomohamed2006/30min";
@@ -15,8 +16,21 @@ export function BookCallButton({
   onClick,
 }: {
   className?: string;
-  onClick?: () => void;
-}) {
+onClick?: () => void;
+  }) {
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "script";
+    link.href = "https://assets.calendly.com/assets/external/widget.js";
+    document.head.appendChild(link);
+
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.head.appendChild(script);
+  }, []);
+
   return (
     <PopupButton
       url={CALENDLY_URL}

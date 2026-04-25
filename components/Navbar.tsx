@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BookCallButton } from "./BookCallButton";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
   { href: "#problems", label: "Problems" },
+  { href: "#services", label: "Services" },
   { href: "#benefits", label: "Benefits" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
-];
+]; 
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
