@@ -10,7 +10,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ export default function Contact() {
       await sendToN8n({
         name: formData.name,
         email: formData.email,
+        phone: formData.phone,
         message: formData.message,
         source: "website",
       });
@@ -123,7 +124,7 @@ export default function Contact() {
                   Thanks for reaching out. We&apos;ll get back to you within 24 hours.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", message: "" }); }}
+                  onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", message: "" }); }}
                   className="mt-2 text-[#0084FF] text-sm hover:underline"
                 >
                   Send another message
@@ -154,6 +155,18 @@ export default function Contact() {
                     placeholder="scalaryx@gmail.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+1 234 567 8900"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
                   />
                 </div>
