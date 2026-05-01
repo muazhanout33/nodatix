@@ -23,6 +23,11 @@ export function BookCallButton({
     if (initialized.current || typeof window === "undefined") return;
     initialized.current = true;
 
+    if (window.Cal) {
+      wireCalButtons();
+      return;
+    }
+
     const script = document.createElement("script");
     script.src = "https://app.cal.com/embed/embed.js";
     script.async = true;
@@ -30,23 +35,43 @@ export function BookCallButton({
       window.Cal("init", {
         origin: "https://cal.com",
       });
-      window.Cal("ui", {
-        theme: "dark",
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
+      wireCalButtons();
     };
     document.head.appendChild(script);
   }, []);
 
+  const wireCalButtons = () => {
+    window.Cal("ui", {
+      theme: "dark",
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.Cal) {
+      e.preventDefault();
+      window.Cal("ui", {
+        action: "open",
+        mode: "popup",
+        calLink: CAL_URL.replace("https://cal.com/", ""),
+        config: { layout: "month_view" },
+      });
+    }
+    onClick?.();
+  };
+
   return (
-    <button
-      data-cal-link={CAL_URL}
+    <a
+      href={CAL_URL}
+      data-cal-link="mezo-hanout-0qmbfk/scalaryx-meeting"
       data-cal-config='{"layout":"month_view"}'
       className={className}
-      onClick={onClick}
+      onClick={handleClick}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       Book a Call
-    </button>
+    </a>
   );
 }
