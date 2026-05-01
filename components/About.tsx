@@ -75,11 +75,12 @@ export default function About() {
   {/* Muaz card */}
   <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
    <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
-      <img
-        src="/Muazprofile.jpeg"
-        alt="Muaz Hanout"
-        className="w-full h-full object-cover"
-      />
+<img
+         src="/Muazprofile.jpeg"
+         alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
+         className="w-full h-full object-cover"
+         loading="lazy"
+       />
     </div>
     <div className="w-full">
       <div className="text-white font-bold text-lg">Muaz Hanout</div>
@@ -97,7 +98,8 @@ export default function About() {
     <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
       <img
         src="/Omarprofile.jpeg"
-        alt="Omar Gamal"
+        alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
+        loading="lazy"
         className="w-full h-full object-cover"
       />
     </div>
@@ -107,7 +109,7 @@ export default function About() {
       <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
     </div>
     <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4 mt-4">
-      &quot;My goal is simple — help businesses grow faster. The right marketing system turns attention into real, scalable revenue.&quot;
+      &quot; specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.&quot;
     </p>
   </div>
 </div>
