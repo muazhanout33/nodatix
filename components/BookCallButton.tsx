@@ -1,14 +1,13 @@
 "use client";
 
-import { PopupButton } from "react-calendly";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const CALENDLY_URL =
-  "https://calendly.com/muazomohamed2006/30min";
+const CAL_URL = "https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting";
 
-function getRootElement() {
-  if (typeof document === "undefined") return undefined;
-  return document.body;
+declare global {
+  interface Window {
+    Cal?: any;
+  }
 }
 
 export function BookCallButton({
@@ -16,29 +15,38 @@ export function BookCallButton({
   onClick,
 }: {
   className?: string;
-onClick?: () => void;
-  }) {
+  onClick?: () => void;
+}) {
+  const initialized = useRef(false);
+
   useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "script";
-    link.href = "https://assets.calendly.com/assets/external/widget.js";
-    document.head.appendChild(link);
+    if (initialized.current || typeof window === "undefined") return;
+    initialized.current = true;
 
     const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.src = "https://app.cal.com/embed/embed.js";
     script.async = true;
+    script.onload = () => {
+      window.Cal("init", {
+        origin: "https://cal.com",
+      });
+      window.Cal("ui", {
+        theme: "dark",
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
     document.head.appendChild(script);
   }, []);
 
   return (
-    <PopupButton
-      url={CALENDLY_URL}
-      text="Book a Call"
-      rootElement={getRootElement() as HTMLElement}
+    <button
+      data-cal-link={CAL_URL}
+      data-cal-config='{"layout":"month_view"}'
       className={className}
-      // @ts-expect-error - onClick is not in types but supported at runtime
       onClick={onClick}
-    />
+    >
+      Book a Call
+    </button>
   );
 }

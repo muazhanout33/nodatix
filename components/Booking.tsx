@@ -40,9 +40,9 @@ export default function Booking() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="gradient-border rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] overflow-hidden"
         >
-          {/* Calendly embed placeholder */}
+          {/* Cal.com embed placeholder */}
           <div className="flex flex-col items-center justify-center py-20 px-8 gap-6">
-            {/* Calendly UI simulation */}
+            {/* Cal.com UI simulation */}
             <div className="w-16 h-16 rounded-2xl bg-[#0084FF]/10 border border-[#0084FF]/20 flex items-center justify-center text-3xl">
               📅
             </div>
@@ -71,7 +71,7 @@ export default function Booking() {
 
             <BookCallButton className="px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2" />
             <p className="text-gray-600 text-xs">
-              No credit card required · 100% free · Calendly powered
+              No credit card required · 100% free · Cal.com powered
             </p>
           </div>
         </motion.div>
