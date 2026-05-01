@@ -15,7 +15,7 @@ const footerLinks = {
   Company: [
     { label: "About", href: "#about" },
     { label: "Benefits", href: "#benefits" },
-    { label: "Book a Call", href: "#booking" },
+    { label: "Book a Call", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ],
 };
