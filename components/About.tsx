@@ -182,37 +182,6 @@ export default function About() {
     </div>
   </div>
 </div>
-    <div className="w-full">
-      <div className="text-white font-bold text-lg">Muaz Hanout</div>
-      <div className="text-[#0084FF] text-sm font-medium mt-1">AI Automation Specialist</div>
-      <div className="text-[#0084FF] text-sm font-medium">Front-End Developer</div>
-      <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
-    </div>
-    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.15)] pt-3 mt-3">
-      &quot;I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
-    </p>
-  </div>
-
-  {/* Omar card */}
-  <div className="group gradient-border p-5 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:border-[#0084FF]/40 hover:shadow-lg hover:shadow-[#0084FF]/5">
-    <div className="w-full aspect-square max-h-44 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.3)] mb-4 group-hover:border-[#0084FF]/50 transition-colors duration-300">
-      <img
-        src="/Omarprofile.jpeg"
-        alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
-        loading="lazy"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      />
-    </div>
-    <div className="w-full">
-      <div className="text-white font-bold text-lg">Omar Gamal</div>
-      <div className="text-[#0084FF] text-sm font-medium mt-1">Digital Marketing Specialist</div>
-      <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
-    </div>
-    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.15)] pt-3 mt-3">
-      &quot;I specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.&quot;
-    </p>
-  </div>
-</div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4">
