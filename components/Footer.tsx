@@ -90,15 +90,18 @@ export default function Footer() {
             AI Systems Running 24/7
           </div>
           <div className="flex gap-5">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-[#94a3b8] text-xs hover:text-gray-400 transition-colors"
-              >
-                {item}
-              </a>
-            ))}
+            <a
+              href="/privacy-policy"
+              className="text-[#94a3b8] text-xs hover:text-gray-400 transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-of-service"
+              className="text-[#94a3b8] text-xs hover:text-gray-400 transition-colors"
+            >
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>
