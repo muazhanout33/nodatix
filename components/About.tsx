@@ -1,5 +1,6 @@
 "use client";
 
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
@@ -70,17 +71,17 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="flex flex-col gap-5"
             >
-             {/* Profile cards - 2 column grid */}
+{/* Profile cards - 2 column grid */}
 <div className="grid grid-cols-2 gap-4">
   {/* Muaz card */}
-  <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
-   <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
-<img
-         src="/Muazprofile.jpeg"
-         alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
-         className="w-full h-full object-cover"
-         loading="lazy"
-       />
+  <div className="group gradient-border p-5 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:border-[#0084FF]/40 hover:shadow-lg hover:shadow-[#0084FF]/5">
+    <div className="w-full aspect-square max-h-44 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.3)] mb-4 group-hover:border-[#0084FF]/50 transition-colors duration-300">
+      <img
+        src="/Muazprofile.jpeg"
+        alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
     </div>
     <div className="w-full">
       <div className="text-white font-bold text-lg">Muaz Hanout</div>
@@ -88,19 +89,19 @@ export default function About() {
       <div className="text-[#0084FF] text-sm font-medium">Front-End Developer</div>
       <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
     </div>
-    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4 mt-4">
+    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.15)] pt-3 mt-3">
       &quot;I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
     </p>
   </div>
 
   {/* Omar card */}
-  <div className="gradient-border p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center">
-    <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border border-[rgba(0,132,255,0.3)] mb-5">
+  <div className="group gradient-border p-5 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:border-[#0084FF]/40 hover:shadow-lg hover:shadow-[#0084FF]/5">
+    <div className="w-full aspect-square max-h-44 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.3)] mb-4 group-hover:border-[#0084FF]/50 transition-colors duration-300">
       <img
         src="/Omarprofile.jpeg"
         alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
         loading="lazy"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
     <div className="w-full">
@@ -108,8 +109,8 @@ export default function About() {
       <div className="text-[#0084FF] text-sm font-medium mt-1">Digital Marketing Specialist</div>
       <div className="text-[#94a3b8] text-xs mt-1">Founder @ ScalaryX</div>
     </div>
-    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.2)] pt-4 mt-4">
-      &quot; specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.&quot;
+    <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.15)] pt-3 mt-3">
+      &quot;I specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.&quot;
     </p>
   </div>
 </div>

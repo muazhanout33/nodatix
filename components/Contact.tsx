@@ -4,6 +4,13 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { sendToN8n } from "@/lib/n8n";
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
+
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -11,9 +18,93 @@ export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const validateEmail = (email: string): string | undefined => {
+    if (!email.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return "Please enter a valid email (e.g., name@example.com)";
+    return undefined;
+  };
+
+  const validatePhone = (phone: string): string | undefined => {
+    if (!phone.trim()) return undefined;
+    const digitsOnly = phone.replace(/\D/g, "");
+    if (digitsOnly.length > 0 && digitsOnly.length < 8) return "Phone must be at least 8 digits";
+    if (digitsOnly.length > 15) return "Phone must be no more than 15 digits";
+    return undefined;
+  };
+
+  const validateName = (name: string): string | undefined => {
+    if (!name.trim()) return "Name is required";
+    if (name.trim().length < 2) return "Name must be at least 2 characters";
+    return undefined;
+  };
+
+  const validateMessage = (message: string): string | undefined => {
+    if (!message.trim()) return "Message is required";
+    if (message.trim().length < 10) return "Message must be at least 10 characters";
+    return undefined;
+  };
+
+  const validateField = (field: string, value: string): string | undefined => {
+    switch (field) {
+      case "name":
+        return validateName(value);
+      case "email":
+        return validateEmail(value);
+      case "phone":
+        return validatePhone(value);
+      case "message":
+        return validateMessage(value);
+      default:
+        return undefined;
+    }
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched({ ...touched, [field]: true });
+    const error = validateField(field, formData[field as keyof typeof formData]);
+    setErrors({ ...errors, [field]: error });
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^\d\s\+\-\(\)]/g, "");
+    setFormData({ ...formData, phone: value });
+    if (touched.phone) {
+      setErrors({ ...errors, phone: validatePhone(value) });
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (touched[name]) {
+      setErrors({ ...errors, [name]: validateField(name, value) });
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {
+      name: validateName(formData.name),
+      email: validateEmail(formData.email),
+      phone: validatePhone(formData.phone),
+      message: validateMessage(formData.message),
+    };
+    setErrors(newErrors);
+    setTouched({ name: true, email: true, phone: true, message: true });
+    return !Object.values(newErrors).some((error) => error !== undefined);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      setError("Please fix the errors above before submitting");
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -26,11 +117,21 @@ export default function Contact() {
         source: "website",
       });
       setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setTouched({});
+      setErrors({});
     } catch (err) {
       setError("Failed to send message. Please try again.");
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const getInputClassName = (fieldName: string, baseClass: string): string => {
+    const hasError = touched[fieldName] && errors[fieldName as keyof typeof errors];
+    return hasError
+      ? `${baseClass} border-red-500 focus:border-red-500 focus:ring-red-500/20`
+      : baseClass;
   };
 
   return (
@@ -131,19 +232,23 @@ export default function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Full Name
                   </label>
                   <input
                     type="text"
-                    required
+                    name="name"
                     placeholder="John Smith"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("name")}
+                    className={getInputClassName("name", "w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm")}
                   />
+                  {touched.name && errors.name && (
+                    <p className="mt-1.5 text-xs text-red-500">{errors.name}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -151,37 +256,50 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
-                    required
+                    name="email"
                     placeholder="scalaryx@gmail.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("email")}
+                    className={getInputClassName("email", "w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm")}
                   />
+                  {touched.email && errors.email && (
+                    <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Phone Number
+                    Phone Number <span className="text-gray-500 font-normal">(optional)</span>
                   </label>
                   <input
                     type="tel"
+                    name="phone"
                     placeholder="+1 234 567 8900"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm"
+                    onChange={handlePhoneChange}
+                    onBlur={() => handleBlur("phone")}
+                    className={getInputClassName("phone", "w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm")}
                   />
+                  {touched.phone && errors.phone && (
+                    <p className="mt-1.5 text-xs text-red-500">{errors.phone}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
                     Message
                   </label>
                   <textarea
-                    required
+                    name="message"
                     rows={5}
                     placeholder="Tell us about your business and what you're looking to automate..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm resize-none"
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("message")}
+                    className={getInputClassName("message", "w-full px-4 py-3 rounded-xl bg-[#000000] border border-[rgba(0,132,255,0.2)] text-white placeholder-gray-600 focus:outline-none focus:border-[#0084FF]/50 focus:ring-1 focus:ring-[#0084FF]/20 transition-all duration-200 text-sm resize-none")}
                   />
+                  {touched.message && errors.message && (
+                    <p className="mt-1.5 text-xs text-red-500">{errors.message}</p>
+                  )}
                 </div>
                 <button
                   type="submit"
@@ -192,7 +310,7 @@ export default function Contact() {
                   {isLoading ? "Sending..." : "Send Message →"}
                 </button>
                 {error && (
-                  <p className="text-center text-xs text-red-500">{error}</p>
+                  <p className="text-center text-sm text-red-500">{error}</p>
                 )}
                 <p className="text-center text-xs text-gray-600">
                   We&apos;ll respond within 24 hours. No spam, ever.

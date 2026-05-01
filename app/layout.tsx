@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 import "./globals.css";
 
 const inter = Inter({
@@ -69,6 +71,25 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Analytics 4 */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-B0EQ5V5MDM`}
+        />
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-B0EQ5V5MDM', {
+                page_title: document.title,
+                page_location: window.location.href
+              });
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -110,6 +131,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased bg-[#000000] text-white`}>
         {children}
+        <AnalyticsTracker />
       </body>
     </html>
   );

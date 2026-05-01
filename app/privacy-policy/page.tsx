@@ -9,10 +9,14 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-[#08090d] overflow-x-hidden">
+    <main className="min-h-screen bg-[#000000] overflow-x-hidden">
       <Navbar />
-      <div className="pt-32 pb-20 px-6">
+      <section className="py-28 px-6 relative">
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
         <div className="max-w-4xl mx-auto">
+          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
+            Legal
+          </span>
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
             Privacy <span className="gradient-text">Policy</span>
           </h1>
@@ -22,7 +26,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-xl font-bold text-white mb-4">1. Introduction</h2>
               <p>
-                ScalaryX (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is an AI automation and digital marketing agency committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or engage with our automation and marketing solutions.
+                ScalaryX is an AI automation and digital marketing agency committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or engage with our automation and marketing solutions.
               </p>
             </section>
 
@@ -126,7 +130,7 @@ export default function PrivacyPolicy() {
             </section>
           </div>
         </div>
-      </div>
+      </section>
       <Footer />
     </main>
   );
