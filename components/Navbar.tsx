@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">  
-          <img src="/logo.jpg.jpeg" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
+          <img src="/scalaryxphoto.jpeg" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
           <span className="text-xl sm:text-3xl font-bold">
             <span className="text-white">Scalary</span><span className="text-[#0084FF]">X</span>
           </span>

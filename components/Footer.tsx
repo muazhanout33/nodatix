@@ -30,7 +30,7 @@ export default function Footer() {
            <a href="#" className="flex items-center gap-2 mb-4"> 
   
   <img 
-    src="/logo.jpg.jpeg" 
+    src="/scalaryxphoto.jpeg" 
     alt="ScalaryX Logo"
     className="h-10 w-auto object-contain"
     style={{ height: "60px", width: "auto", objectFit: "contain" }}
