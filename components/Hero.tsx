@@ -81,11 +81,29 @@ export default function Hero() {
         >
           Automate your operations and scale your brand with high-performance systems.
         </motion.p>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+        >
+          <BookCallButton className="group relative flex-1 px-5 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
+
+          <a
+            href="#services"
+            className="px-8 py-4 rounded-xl border border-[rgba(0,132,255,0.2)] text-gray-300 hover:text-white transition"
+          >
+            See Services
+          </a>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
           {/* AI Automation Card */}
           <div className="p-6 rounded-2xl border border-[rgba(0,132,255,0.2)] bg-gradient-to-br from-[
@@ -116,22 +134,6 @@ export default function Hero() {
             </p>
           </div>
        </motion.div>
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <BookCallButton className="group relative flex-1 px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
-
-          <a
-            href="#services"
-            className="px-8 py-4 rounded-xl border border-[rgba(0,132,255,0.2)] text-gray-300 hover:text-white transition"
-          >
-            See Services
-          </a>
-        </motion.div>
 
       </div>
 
