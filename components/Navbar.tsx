@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">  
-          <img src="/تصميم بدون عنوان.png" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
+          <img src="/Gemini_Generated_Image_vtug5ovtug5ovtug-removebg-preview (1).png" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
           <span className="text-xl sm:text-3xl font-bold">
             <span className="text-white">Scalary</span><span className="text-[#0084FF]">X</span>
           </span>
