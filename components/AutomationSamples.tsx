@@ -13,6 +13,7 @@ const allProjects = [
 
 export default function AutomationSamples() {
   const [showAll, setShowAll] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
 
   return (
@@ -44,7 +45,8 @@ export default function AutomationSamples() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#111111] hover:border-[rgba(168,85,247,0.3)] hover:shadow-[0_0_30px_rgba(168,85,247,0.1)] transition-all duration-300"
+                className="group relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#111111] hover:border-[rgba(168,85,247,0.3)] hover:shadow-[0_0_30px_rgba(168,85,247,0.1)] transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(project.src)}
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -76,6 +78,46 @@ export default function AutomationSamples() {
           </button>
         </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors duration-200"
+              aria-label="Close"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <motion.img
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              src={selectedImage}
+              alt="Enlarged workflow preview"
+              className="relative z-10 max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
