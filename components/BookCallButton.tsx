@@ -71,7 +71,7 @@ export function BookCallButton({
       target="_blank"
       rel="noopener noreferrer"
     >
-      Book a Call
+      Book Your Free Strategy Call
     </a>
   );
 }

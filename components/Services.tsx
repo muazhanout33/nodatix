@@ -107,7 +107,18 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-28 px-6 relative">
+    <section id="services" className="py-28 px-6 relative overflow-hidden">
+      {/* Mesh Gradient Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 50% 40% at 30% 50%, rgba(47,107,255,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 35% at 70% 40%, rgba(61,125,255,0.04) 0%, transparent 55%),
+            linear-gradient(180deg, transparent 0%, rgba(6,6,8,0.5) 50%, transparent 100%)
+          `,
+        }}
+      />
       {/* Glow */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
 

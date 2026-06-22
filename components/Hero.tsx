@@ -76,8 +76,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.08] tracking-tight mb-6 text-white"
         >
-           Scale your business{" "}
-          <span className="gradient-text">faster with AI Automation</span>& Performance Marketing 
+           Scale your business faster{" "}
+          <span className="gradient-text"> with Automation</span>& Marketing 
         </motion.h1>
 
         {/* Subheadline */}
@@ -87,7 +87,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Automate your operations and scale your brand with high-performance systems.
+          We build intelligent n8n workflows that save hours of manual work, streamline operations, and support high-performing marketing strategies — so you can focus on growth while automation handles the rest.
         </motion.p>
 
         {/* CTA buttons */}
@@ -97,7 +97,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <BookCallButton className="group relative flex-1 px-5 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
+          <BookCallButton className="group relative flex-1 px-2.5 py-2 rounded-xl bg-[#0084FF] text-black font-bold text-xs hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
 
           <a
             href="#services"

@@ -17,7 +17,18 @@ export default function AutomationSamples() {
   const visibleProjects = showAll ? allProjects : allProjects.slice(0, 3);
 
   return (
-    <section className="py-20 px-6 bg-[#08090d]">
+    <section className="py-20 px-6 relative overflow-hidden">
+      {/* Mesh Gradient Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 40% 35% at 50% 40%, rgba(47,107,255,0.05) 0%, transparent 55%),
+            radial-gradient(ellipse 35% 30% at 60% 60%, rgba(61,125,255,0.03) 0%, transparent 50%),
+            linear-gradient(180deg, rgba(6,6,8,0.3) 0%, transparent 30%, transparent 70%, rgba(6,6,8,0.3) 100%)
+          `,
+        }}
+      />
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-12">
