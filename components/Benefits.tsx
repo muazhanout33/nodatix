@@ -15,10 +15,9 @@ const benefits = [
   {
     icon: "📈",
     title: "Increase Productivity",
-    description:
-      "Your AI systems work 24/7, never take breaks, and handle multiple workflows simultaneously — multiplying your team's output without multiplying headcount.",
-    stat: "3×",
-    statLabel: "Output Boost",
+    description:"Your AI systems work 24/7, never take breaks, and handle multiple workflows simultaneously — multiplying your team's output without multiplying headcount.",
+    stat: "3X", 
+    statLabel: "Error Rate",
   },
   {
     icon: "✅",
@@ -29,12 +28,10 @@ const benefits = [
     statLabel: "Error Rate",
   },
   {
-    icon: "💡",
-    title: "Smarter Decision Making",
+    icon: "📈",
+    title: "Higher ROI",
     description:
-      "AI agents surface insights, patterns, and opportunities from your data — giving you a real-time view of your business that humans simply can&apos;t process manually.",
-    stat: "10×",
-    statLabel: "Better Insights",
+      "Stop guessing, start growing. Every dollar you spend is tracked, optimized, and turned into measurable results.",
   },
   {
     icon: "💰",
@@ -45,12 +42,10 @@ const benefits = [
     statLabel: "Cost Reduction",
   },
   {
-    icon: "🚀",
-    title: "Scale Without Limits",
+    icon: "🎯",
+    title: "Laser-Sharp Targeting",
     description:
-      "AI systems don&apos;t have a cap. Whether you&apos;re handling 10 leads or 10,000, the system performs the same — so you grow without friction or growing pains.",
-    stat: "∞",
-    statLabel: "Scalability",
+      "Reach the exact people who need your product — by age, interest, behavior, and location.",
   },
 ];
 

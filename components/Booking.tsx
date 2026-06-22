@@ -23,6 +23,18 @@ const testimonials = [
     role: "E-commerce Founder",
     initials: "MK",
   },
+  {
+    quote: "ScalaryX helped us significantly improve our ad performance. Our campaigns are now optimized automatically, which reduced our ad costs and made results much faster and more efficient.",
+    name: "Youssef Laila",
+    role: "Performance Marketing Lead",
+    initials: "YL",
+  },
+  {
+    quote: "One of the biggest changes for us was marketing automation. We now save a huge amount of time on reporting and monitoring, and everything runs faster, cleaner, and more efficiently.",
+    name: "Nour Reda",
+    role: "Digital Marketing Manager",
+    initials: "NR",
+  },
 ];
 
 export default function Booking() {

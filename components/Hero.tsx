@@ -14,19 +14,27 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
 
-      {/* Background Grid */}
+      {/* Mesh Gradient Background */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            "linear-gradient(#00cfff 1px, transparent 1px), linear-gradient(90deg, #00cfff 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          background: `
+            radial-gradient(ellipse 60% 50% at 60% 45%, rgba(47,107,255,0.12) 0%, rgba(61,125,255,0.06) 40%, transparent 70%),
+            radial-gradient(ellipse 40% 35% at 55% 50%, rgba(90,155,255,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 60% at 40% 55%, rgba(47,107,255,0.05) 0%, transparent 65%),
+            linear-gradient(180deg, #060608 0%, #0B0D12 40%, #111318 100%)
+          `,
         }}
       />
 
-      {/* Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#0084FF] opacity-[0.05] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#0084FF] opacity-[0.04] blur-[100px] pointer-events-none" />
+      {/* Soft Radial Glow */}
+      <div
+        className="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(47,107,255,0.10) 0%, rgba(61,125,255,0.05) 35%, transparent 65%)",
+          filter: "blur(80px)",
+        }}
+      />
 
       {/* Floating badges */}
       <motion.div
