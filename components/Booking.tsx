@@ -116,25 +116,6 @@ export default function Booking() {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="gradient-border rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] overflow-hidden"
-        >
-          <div className="flex flex-col items-center justify-center py-16 px-8 text-center gap-4">
-            <h3 className="text-3xl sm:text-4xl font-black text-white">
-              Ready to get <span className="gradient-text">similar results?</span>
-            </h3>
-            <p className="text-gray-400 max-w-md mx-auto mb-2">
-              Let's build your automation system
-            </p>
-            <BookCallButton className="px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2" />
-          </div>
-        </motion.div>
-
         {/* Trust badges */}
         <motion.div
           initial={{ opacity: 0 }}
