@@ -55,6 +55,71 @@ export default function Footer() {
                   {icon}
                 </a>
               ))}
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/YOUR_USERNAME"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-9 h-9 rounded-xl bg-[#1a1a2e] border border-[rgba(255,255,255,0.08)] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:border-transparent hover:shadow-[0_0_20px_rgba(131,58,180,0.4)]"
+              >
+                <svg
+                  className="w-[18px] h-[18px] transition-all duration-300"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#feda75" />
+                      <stop offset="25%" stopColor="#fa7e1e" />
+                      <stop offset="50%" stopColor="#d62976" />
+                      <stop offset="75%" stopColor="#962fbf" />
+                      <stop offset="100%" stopColor="#4f5bd5" />
+                    </linearGradient>
+                  </defs>
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="5"
+                    stroke="url(#ig-gradient)"
+                    strokeWidth="2"
+                    className="transition-all duration-300 group-hover:stroke-[2.5]"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                    stroke="url(#ig-gradient)"
+                    strokeWidth="2"
+                    className="transition-all duration-300 group-hover:r-[5.5]"
+                  />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1.5"
+                    fill="url(#ig-gradient)"
+                  />
+                </svg>
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/share/1Lf3Sf82Qh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-9 h-9 rounded-xl bg-[#1a1a2e] border border-[rgba(255,255,255,0.08)] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:border-transparent hover:shadow-[0_0_20px_rgba(24,119,242,0.4)]"
+              >
+                <svg
+                  className="w-[18px] h-[18px] fill-[#94a3b8] transition-all duration-300 group-hover:fill-[#1877f2]"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
             </div>
           </div>
 
