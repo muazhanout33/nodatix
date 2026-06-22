@@ -58,7 +58,7 @@ export default function Footer() {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com/YOUR_USERNAME"
+                href="https://www.instagram.com/scalary_x?igsh=MWJ4eDJ6bWNsZWdhdw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-9 h-9 rounded-xl bg-[#1a1a2e] border border-[rgba(255,255,255,0.08)] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:border-transparent hover:shadow-[0_0_20px_rgba(131,58,180,0.4)]"

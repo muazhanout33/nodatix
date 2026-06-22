@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -132,6 +133,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-[#000000] text-white`}>
         {children}
         <AnalyticsTracker />
+        <WhatsAppButton />
       </body>
     </html>
   );
