@@ -23,12 +23,13 @@ export default function AutomationSamples() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our{" "}
             <span className="bg-gradient-to-r from-[#a855f7] to-[#7c3aed] bg-clip-text text-transparent">
-              Automation
+             Automation 
             </span>{" "}
-            Samples
+            Examples
           </h2>
           <p className="text-[#94a3b8] text-base max-w-xl mx-auto">
             How we transform manual processes into automated workflows
+            
           </p>
         </div>
 

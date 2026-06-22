@@ -123,7 +123,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <BookCallButton className="group relative px-16 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
+          <BookCallButton className="group relative flex-1 px-8 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
 
           <a
             href="#services"

@@ -89,7 +89,6 @@ export default function About() {
         <h3 className="text-xl font-bold text-white tracking-tight">Muaz Hanout</h3>
         <div className="mt-2 space-y-1">
           <p className="text-[#0084FF] font-semibold text-sm">AI Automation Specialist</p>
-          <p className="text-[#0084FF] font-semibold text-sm">Front-End Developer</p>
           <p className="text-[#64748b] text-xs mt-2">Founder @ ScalaryX</p>
         </div>
       </div>
