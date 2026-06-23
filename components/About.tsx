@@ -71,10 +71,10 @@ export default function About() {
 {/* Profile cards - 2 column grid */}
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
   {/* Muaz card */}
-  <div className="group relative p-6 rounded-2xl bg-[#0a0a0a]/80 backdrop-blur-xl border border-[rgba(0,132,255,0.15)] shadow-lg shadow-[#0084FF]/0 transition-all duration-300 hover:border-[rgba(0,132,255,0.35)] hover:shadow-[0_0_30px_rgba(0,132,255,0.08)]">
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0084FF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+  <div className="group relative p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
+    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2F6BFF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative flex flex-col items-center">
-      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.25)] mb-5 group-hover:border-[#0084FF]/60 group-hover:shadow-[0_0_20px_rgba(0,132,255,0.2)] transition-all duration-300">
+      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
         <img
           src="/Muazprofile.jpeg"
           alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
@@ -85,11 +85,11 @@ export default function About() {
       <div className="w-full text-center">
         <h3 className="text-xl font-bold text-white tracking-tight">Muaz Hanout</h3>
         <div className="mt-2 space-y-1">
-          <p className="text-[#0084FF] font-semibold text-sm">AI Automation Specialist</p>
-          <p className="text-[#64748b] text-xs mt-2">Founder @ ScalaryX</p>
+          <p className="text-[#5A9BFF] font-semibold text-sm">AI Automation Specialist</p>
+          <p className="text-[#6B7A8D] text-xs mt-2">Founder @ ScalaryX</p>
         </div>
       </div>
-      <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.12)] pt-4 mt-4 text-center max-w-xs">
+      <p className="text-[#8899B0] text-sm leading-relaxed border-t border-[#1E3A5F] pt-4 mt-4 text-center max-w-xs">
         "I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems."
       </p>
       <div className="flex items-center gap-3 mt-5">
@@ -125,10 +125,10 @@ export default function About() {
   </div>
 
   {/* Omar card */}
-  <div className="group relative p-6 rounded-2xl bg-[#0a0a0a]/80 backdrop-blur-xl border border-[rgba(0,132,255,0.15)] shadow-lg shadow-[#0084FF]/0 transition-all duration-300 hover:border-[rgba(0,132,255,0.35)] hover:shadow-[0_0_30px_rgba(0,132,255,0.08)]">
+  <div className="group relative p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative flex flex-col items-center">
-      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.25)] mb-5 group-hover:border-[#0084FF]/60 group-hover:shadow-[0_0_20px_rgba(0,132,255,0.2)] transition-all duration-300">
+      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
         <img
           src="/Omarprofile.jpeg"
           alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
@@ -139,8 +139,8 @@ export default function About() {
       <div className="w-full text-center">
         <h3 className="text-xl font-bold text-white tracking-tight">Omar Gamal</h3>
         <div className="mt-2 space-y-1">
-          <p className="text-[#0084FF] font-semibold text-sm">Digital Marketing Specialist</p>
-          <p className="text-[#64748b] text-xs mt-2">Founder @ ScalaryX</p>
+          <p className="text-[#5A9BFF] font-semibold text-sm">Digital Marketing Specialist</p>
+          <p className="text-[#6B7A8D] text-xs mt-2">Founder @ ScalaryX</p>
         </div>
       </div>
       <p className="text-[#94a3b8] text-sm leading-relaxed border-t border-[rgba(0,132,255,0.12)] pt-4 mt-4 text-center max-w-xs">
@@ -188,7 +188,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="p-4 rounded-xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] text-center shadow-sm"
+                  className="p-4 rounded-xl border border-[#1E3A5F] bg-[#0F1B2D] text-center shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300"
                 >
                   <div className="text-2xl font-black text-[#0084FF]">{h.value}</div>
                   <div className="text-xs text-[#94a3b8] mt-1 leading-tight">{h.label}</div>

@@ -64,24 +64,24 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative p-7 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] hover:border-red-200 transition-all duration-300 shadow-sm"
+              className="group relative p-7 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300"
             >
               {/* Problem number */}
               <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-xl mb-5">
+              <div className="w-12 h-12 rounded-xl bg-[#2F6BFF]/15 flex items-center justify-center text-xl mb-5">
                 {problem.icon}
               </div>
               <h3 className="text-lg font-bold text-white mb-3">
                 {problem.title}
               </h3>
-              <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
+              <p className="text-[#8899B0] text-sm leading-relaxed mb-5">
                 {problem.description}
               </p>
-              <div className="inline-flex items-center gap-2 text-xs text-[#0084FF] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0084FF]" />
+              <div className="inline-flex items-center gap-2 text-xs text-[#5A9BFF] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5A9BFF]" />
                 {problem.pain}
               </div>
             </motion.div>

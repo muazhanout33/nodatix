@@ -79,25 +79,25 @@ function ServiceCard({
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="gradient-border group relative p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] hover:bg-[#000000] transition-all duration-300 cursor-default"
+      className="group relative p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-default"
     >
       <div className="flex items-start justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-xl group-hover:bg-[#0084FF]/20 transition-colors duration-300">
+        <div className="w-12 h-12 rounded-xl bg-[#2F6BFF]/15 flex items-center justify-center text-xl group-hover:bg-[#2F6BFF]/25 transition-colors duration-300">
           {service.icon}
         </div>
-        <span className="text-xs text-[#0084FF] font-medium px-3 py-1 rounded-full bg-[#0084FF]/10 border border-[#0084FF]/20">
+        <span className="text-xs text-[#5A9BFF] font-medium px-3 py-1 rounded-full bg-[#2F6BFF]/10 border border-[#2F6BFF]/20">
           {service.tag}
         </span>
       </div>
-      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#0084FF] transition-colors duration-300">
+      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#5A9BFF] transition-colors duration-300">
         {service.title}
       </h3>
-      <p className="text-gray-400 text-sm leading-relaxed">
+      <p className="text-[#8899B0] text-sm leading-relaxed">
         {service.description}
       </p>
 
       {/* hover glow line */}
-      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#0084FF]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#2F6BFF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </motion.div>
   );
 }

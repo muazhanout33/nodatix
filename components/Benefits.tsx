@@ -86,22 +86,22 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-6 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/20 via-[#0a0a0a] to-[#0a0a0a] border border-[rgba(0,132,255,0.2)] hover:border-[#00cfff]/25 transition-all duration-300 relative overflow-hidden"
+              className="group p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300 relative overflow-hidden"
             >
               {/* Stat watermark */}
-              <div className="absolute top-4 right-4 text-5xl font-black text-[#0084FF]/5 select-none">
+              <div className="absolute top-4 right-4 text-5xl font-black text-[#2F6BFF]/5 select-none">
                 {benefit.stat}
               </div>
 
-              <div className="w-11 h-11 rounded-xl bg-[#0084FF]/10 flex items-center justify-center text-lg mb-4 group-hover:bg-[#0084FF]/20 transition-colors duration-300">
+              <div className="w-11 h-11 rounded-xl bg-[#2F6BFF]/15 flex items-center justify-center text-lg mb-4 group-hover:bg-[#2F6BFF]/25 transition-colors duration-300">
                 {benefit.icon}
               </div>
 
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-2xl font-black text-[#0084FF]">
+                <span className="text-2xl font-black text-[#5A9BFF]">
                   {benefit.stat}
                 </span>
-                <span className="text-xs text-gray-500 uppercase tracking-wider">
+                <span className="text-xs text-[#6B7A8D] uppercase tracking-wider">
                   {benefit.statLabel}
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function Benefits() {
               <h3 className="text-base font-bold text-white mt-2 mb-2">
                 {benefit.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-[#8899B0] text-sm leading-relaxed">
                 {benefit.description.replace(/&apos;/g, "'")}
               </p>
             </motion.div>
