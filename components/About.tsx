@@ -3,6 +3,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { BookCallButton } from "./BookCallButton";
 
 const highlights = [
@@ -75,9 +76,11 @@ export default function About() {
     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2F6BFF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative flex flex-col items-center">
       <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
-        <img
-          src="/Muazprofile.jpeg"
+        <Image
+          src="/Muazprofile.webp"
           alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
+          width={384}
+          height={384}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
@@ -129,9 +132,11 @@ export default function About() {
     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative flex flex-col items-center">
       <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
-        <img
-          src="/Omarprofile.jpeg"
+        <Image
+          src="/Omarprofile.webp"
           alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
+          width={384}
+          height={384}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />

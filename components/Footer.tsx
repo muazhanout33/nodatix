@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const footerLinks = {
   Services: [
     { label: "AI Automation Systems", href: "#services" },
@@ -29,9 +31,11 @@ export default function Footer() {
           <div>
            <a href="#" className="flex items-center gap-2 mb-4"> 
   
-  <img 
-    src="/favicon.ico.png" 
+  <Image 
+    src="/favicon.ico.webp" 
     alt="ScalaryX Logo"
+    width={60}
+    height={60}
     className="h-10 w-auto object-contain"
     style={{ height: "60px", width: "auto", objectFit: "contain" }}
   />

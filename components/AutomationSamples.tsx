@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const allProjects = [
-  { src: "/project1.png", alt: "Workflow 1" },
-  { src: "/project2.png", alt: "Workflow 2" },
-  { src: "/project3.png", alt: "Workflow 3" },
-  { src: "/project4.png", alt: "Workflow 4" },
-  { src: "/project5.png", alt: "Workflow 5" },
+  { src: "/project1.webp", alt: "Workflow 1" },
+  { src: "/project2.webp", alt: "Workflow 2" },
+  { src: "/project3.webp", alt: "Workflow 3" },
+  { src: "/project4.webp", alt: "Workflow 4" },
+  { src: "/project5.webp", alt: "Workflow 5" },
 ];
 
 export default function AutomationSamples() {
@@ -60,10 +61,14 @@ export default function AutomationSamples() {
                 onClick={() => setSelectedImage(project.src)}
               >
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={project.src}
                     alt={project.alt}
+                    width={640}
+                    height={360}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
               </motion.div>
@@ -123,6 +128,8 @@ export default function AutomationSamples() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               src={selectedImage}
               alt="Enlarged workflow preview"
+              width={1200}
+              height={675}
               className="relative z-10 max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />

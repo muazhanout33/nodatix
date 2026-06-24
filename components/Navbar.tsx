@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { BookCallButton } from "./BookCallButton";
 
 const navLinks = [
@@ -47,7 +48,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">  
-          <img src="/favicon.ico.png" alt="ScalaryX" className="h-10 sm:h-12 w-auto" />
+          <Image src="/favicon.ico.webp" alt="ScalaryX" width={48} height={48} className="h-10 sm:h-12 w-auto" priority />
           <span className="text-xl sm:text-3xl font-bold">
             <span className="text-white">Scalary</span><span className="text-[#0084FF]">X</span>
           </span>
