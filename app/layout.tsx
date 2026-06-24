@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "ScalaryX | AI Automation & Performance Marketing Agency in Egypt",
   description:
     "ScalaryX helps businesses scale faster using AI Automation and Performance Marketing. Save time, convert more leads, and grow smarter.",
+  icons: {
+    icon: "/icon.png",
+  },
   keywords: [
     "AI Automation Agency Egypt",
     "Marketing Automation Cairo",
