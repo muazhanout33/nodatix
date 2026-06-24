@@ -88,8 +88,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          We help startups and SMEs save time, generate more leads, and scale
-          faster — using smart automation workflows powered by AI.
+        We build intelligent n8n workflows that save hours of manual work,
+         streamline operations, and support high-performing 
+         marketing strategies — so you can focus on growth while automation handles the rest.
         </motion.p>
 
         {/* CTA buttons */}
