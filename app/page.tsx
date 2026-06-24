@@ -5,8 +5,10 @@ import Services from "@/components/Services";
 import Problems from "@/components/Problems";
 import Benefits from "@/components/Benefits";
 import About from "@/components/About";
+import Blog from "@/components/Blog";
 import Booking from "@/components/Booking";
 import Contact from "@/components/Contact";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,8 +21,10 @@ export default function Home() {
       <Services />
       <Benefits />
       <About />
+      <Blog />
       <Booking />
       <Contact />
+      <FAQ />
       <Footer />
     </main>
   );

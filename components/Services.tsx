@@ -9,7 +9,7 @@ const services = [
     icon: "⚙️",
     title: "AI Automation Systems",
     description:
-      "End-to-end automation pipelines that eliminate manual work. We design, build, and deploy AI workflows that run 24/7 — reducing costs and boosting output.",
+      "End-to-end business automation pipelines that eliminate manual work. We design, build, and deploy AI workflows that run 24/7 — reducing costs and boosting output.",
     tag: "Core Service",
   },
   {
@@ -138,8 +138,9 @@ export default function Services() {
             Our <span className="gradient-text">Services</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            We build AI systems that replace repetitive human work — saving
-            time, cutting costs, and scaling your business on autopilot.
+            We build n8n automation and marketing automation systems that replace
+            repetitive human work — saving time, cutting costs, and scaling your
+            business on autopilot.
           </p>
         </motion.div>
 

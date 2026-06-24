@@ -13,9 +13,11 @@ declare global {
 export function BookCallButton({
   className,
   onClick,
+  children,
 }: {
   className?: string;
   onClick?: () => void;
+  children?: React.ReactNode;
 }) {
   const initialized = useRef(false);
 
@@ -71,7 +73,7 @@ export function BookCallButton({
       target="_blank"
       rel="noopener noreferrer"
     >
-      Book Your Free Strategy Call
+      {children || "Book Your Free Strategy Call"}
     </a>
   );
 }

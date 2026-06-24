@@ -12,9 +12,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ScalaryX | AI Automation & Performance Marketing Agency in Egypt",
+  title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
   description:
-    "ScalaryX helps businesses scale faster using AI Automation and Performance Marketing. Save time, convert more leads, and grow smarter.",
+    "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
   icons: {
     icon: "/icon.png",
   },
@@ -37,25 +37,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://scalaryx.com",
-    title: "ScalaryX | AI Automation & Performance Marketing Agency in Egypt",
+    url: "https://www.scalaryx.com",
+    title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
     description:
-      "ScalaryX helps businesses scale faster using AI Automation and Performance Marketing. Save time, convert more leads, and grow smarter.",
-    siteName: "ScalaryX",
+      "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
+    siteName: "Scalaryx",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ScalaryX - AI Automation & Performance Marketing Agency",
+        alt: "Scalaryx - AI Automation & Marketing Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ScalaryX | AI Automation & Performance Marketing Agency in Egypt",
+    title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
     description:
-      "ScalaryX helps businesses scale faster using AI Automation and Performance Marketing. Save time, convert more leads, and grow smarter.",
+      "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
     creator: "@scalaryx",
   },
   robots: {
@@ -104,7 +104,7 @@ export default function RootLayout({
               url: "https://scalaryx.com",
               logo: "https://scalaryx.com/logo.jpg.jpeg",
               description:
-                "ScalaryX helps businesses scale faster using AI Automation and Performance Marketing. Save time, convert more leads, and grow smarter.",
+                "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "EG",
@@ -116,8 +116,9 @@ export default function RootLayout({
               },
               serviceType: [
                 "AI Automation",
-                "Performance Marketing",
-                "Lead Management",
+                "n8n Workflow Automation",
+                "Marketing Automation",
+                "Business Automation",
                 "Digital Marketing",
               ],
               sameAs: [

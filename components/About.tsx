@@ -38,10 +38,10 @@ export default function About() {
             </h2>
           <div className="space-y-4 text-[#94a3b8] leading-relaxed">
               <p>
-                ScalaryX is a modern growth-focused startup helping businesses scale using AI automation systems and high-performance marketing strategies.
+                ScalaryX is a modern growth-focused startup helping businesses scale using AI automation systems and high-performance digital marketing strategies.
               </p>
               <p>
-                We design and build smart systems that replace manual work, optimize business operations, and generate consistent growth through automation and data-driven marketing.
+                We design and build smart workflow automation systems that replace manual work, optimize business operations, and generate consistent growth through automation and data-driven marketing.
               </p>
               <p>
                 Our goal is simple: help businesses work smarter, grow faster, and scale without limits.
@@ -77,7 +77,7 @@ export default function About() {
     <div className="relative flex flex-col items-center">
       <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
         <Image
-          src="/Muazprofile.webp"
+          src="/muaznew.jpeg"
           alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
           width={384}
           height={384}

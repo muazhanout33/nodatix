@@ -52,7 +52,7 @@ export default function Hero() {
         className="absolute bottom-40 left-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,132,255,0.2)] text-xs text-gray-400"
       >
         <span className="text-[#0084FF]">⚡</span>
-        80% Time Saved
+        Workflow Automation Active
       </motion.div>
 
       {/* MAIN CONTENT */}
@@ -66,7 +66,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00cfff]/30 bg-[#0084FF]/5 text-[#0084FF] text-xs font-medium mb-8 tracking-wider uppercase"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#0084FF]" />
-            AI Automation & Marketing Agency
+            AI Automation &amp; Workflow Systems
         </motion.div>
 
         {/* Headline */}
@@ -76,8 +76,9 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.08] tracking-tight mb-6 text-white"
         >
-           Scale your business faster{" "}
-          <span className="gradient-text"> with Automation</span>& Marketing 
+          AI Automation &amp; Marketing{" "}
+          <span className="gradient-text">Systems</span>{" "}
+          For Growing Businesses
         </motion.h1>
 
         {/* Subheadline */}
@@ -87,7 +88,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          We build intelligent n8n workflows that save hours of manual work, streamline operations, and support high-performing marketing strategies — so you can focus on growth while automation handles the rest.
+          We help startups and SMEs save time, generate more leads, and scale
+          faster — using smart automation workflows powered by AI.
         </motion.p>
 
         {/* CTA buttons */}
@@ -97,13 +99,15 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <BookCallButton className="group relative w-1/2 px-6 py-4  rounded-xl bg-[#0084FF] text-black font-bold text-xs hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]" />
+          <BookCallButton className="group relative w-1/2 px-6 py-4  rounded-xl bg-[#0084FF] text-black font-bold text-xs hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]">
+            Get Your Free Automation Audit
+          </BookCallButton>
 
           <a
             href="#services"
             className="px-8 py-4 rounded-xl border border-[rgba(0,132,255,0.2)] text-gray-300 hover:text-white transition"
           >
-            See Services
+            See How It Works →
           </a>
         </motion.div>
 
