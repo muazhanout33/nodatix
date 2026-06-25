@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
+import NetworkOverlay from "./NetworkOverlay";
 
 const contactItems = [
   {
@@ -42,7 +43,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-28 px-6 relative overflow-hidden">
+    <section id="contact" className="py-28 px-6 relative overflow-hidden cyber-network">
       {/* Mesh Gradient Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -57,6 +58,7 @@ export default function Contact() {
       <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
+        <NetworkOverlay columns={3} />
         {/* Header */}
         <motion.div
           ref={ref}

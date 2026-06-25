@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
+import NetworkOverlay from "./NetworkOverlay";
 
 const testimonials = [
   {
@@ -42,7 +43,7 @@ export default function Booking() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="testimonials" className="py-28 px-6 relative overflow-hidden">
+    <section id="testimonials" className="py-28 px-6 relative overflow-hidden cyber-network">
       {/* Mesh Gradient Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -56,7 +57,8 @@ export default function Booking() {
       />
       <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <NetworkOverlay columns={3} />
         {/* Section Header */}
         <motion.div
           ref={ref}

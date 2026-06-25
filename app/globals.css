@@ -117,32 +117,51 @@ body {
 }
 
 /* ============================================================
-   PREMIUM AI CARD DESIGN SYSTEM — ScalaryX
+   PREMIUM CYBER-AI CARD DESIGN SYSTEM — ScalaryX
    ============================================================ */
 
-/* Base card: glassmorphism panel */
+/* --- Cyber Network Grid Background --- */
+.cyber-network {
+  position: relative;
+}
+
+.cyber-network::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,132,255,0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0,132,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Base card: glassmorphism panel --- */
 .card-premium {
   position: relative;
   background: linear-gradient(
-    135deg,
-    rgba(10, 18, 36, 0.85) 0%,
-    rgba(6, 13, 26, 0.88) 50%,
-    rgba(8, 14, 30, 0.85) 100%
+    160deg,
+    rgba(8, 16, 32, 0.88) 0%,
+    rgba(5, 10, 22, 0.92) 40%,
+    rgba(8, 14, 30, 0.88) 100%
   );
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(0, 132, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  border: 1px solid rgba(0, 132, 255, 0.07);
   border-radius: 22px;
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    0 0 0 0.5px rgba(0, 132, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    inset 0 0 30px rgba(0, 132, 255, 0.02);
+    0 4px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 0.5px rgba(0, 132, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    inset 0 0 40px rgba(0, 132, 255, 0.015);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Glass reflection at top */
+/* Glass reflection sheen at top */
 .card-premium::before {
   content: '';
   position: absolute;
@@ -153,15 +172,15 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.06) 20%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.06) 80%,
+    rgba(255, 255, 255, 0.04) 15%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.04) 85%,
     transparent 100%
   );
-  z-index: 1;
+  z-index: 3;
 }
 
-/* Ambient inner glow */
+/* Inner electric cyan glow */
 .card-premium::after {
   content: '';
   position: absolute;
@@ -169,26 +188,37 @@ body {
   border-radius: inherit;
   background: radial-gradient(
     ellipse at 50% 0%,
-    rgba(0, 132, 255, 0.04) 0%,
-    transparent 60%
+    rgba(0, 132, 255, 0.05) 0%,
+    transparent 55%
   );
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.45s ease;
 }
 
-/* Hover: lift + glow increase */
+/* --- Hover: lift + vibrant halo + light streak --- */
 .card-premium:hover {
   transform: translateY(-6px);
-  border-color: rgba(0, 132, 255, 0.2);
+  border-color: rgba(0, 132, 255, 0.22);
   box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 132, 255, 0.06),
-    0 0 0 0.5px rgba(0, 132, 255, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 0 40px rgba(0, 132, 255, 0.04);
+    0 14px 44px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(0, 132, 255, 0.08),
+    0 0 80px rgba(0, 132, 255, 0.04),
+    0 0 0 0.5px rgba(0, 132, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 50px rgba(0, 132, 255, 0.03);
 }
 
-/* Light sweep animation on hover */
+.card-premium:hover::after {
+  opacity: 1.5;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(0, 132, 255, 0.08) 0%,
+    transparent 55%
+  );
+}
+
+/* --- Cyan light sweep around border --- */
 .card-premium > .card-sweep {
   position: absolute;
   inset: 0;
@@ -208,14 +238,16 @@ body {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 280deg,
-    rgba(0, 132, 255, 0.08) 300deg,
-    transparent 320deg,
+    transparent 270deg,
+    rgba(0, 200, 255, 0.1) 295deg,
+    rgba(0, 132, 255, 0.15) 310deg,
+    rgba(0, 200, 255, 0.1) 325deg,
+    transparent 340deg,
     transparent 360deg
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: sweep-rotate 6s linear infinite;
+  transition: opacity 0.35s ease;
+  animation: sweep-rotate 4s linear infinite;
   animation-play-state: paused;
 }
 
@@ -229,29 +261,84 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Icon circle inside cards */
+/* --- Icon circle: glowing glass badge --- */
 .card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background: linear-gradient(
-    135deg,
+    145deg,
     rgba(0, 132, 255, 0.1) 0%,
-    rgba(0, 59, 255, 0.06) 100%
+    rgba(0, 59, 255, 0.05) 100%
   );
   border: 1px solid rgba(0, 132, 255, 0.12);
   box-shadow:
-    0 0 16px rgba(0, 132, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+    0 0 20px rgba(0, 132, 255, 0.08),
+    0 0 40px rgba(0, 132, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
 }
 
-/* Tag pill inside cards */
+.card-premium:hover .card-icon {
+  box-shadow:
+    0 0 24px rgba(0, 132, 255, 0.12),
+    0 0 50px rgba(0, 132, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 132, 255, 0.2);
+}
+
+/* --- Tag pill: neon-tinted glass --- */
 .card-tag {
   background: rgba(0, 132, 255, 0.06);
-  border: 1px solid rgba(0, 132, 255, 0.12);
+  border: 1px solid rgba(0, 132, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  transition: all 0.35s ease;
+}
+
+.card-premium:hover .card-tag {
+  border-color: rgba(0, 132, 255, 0.18);
+  background: rgba(0, 132, 255, 0.08);
+}
+
+/* ============================================================
+   NETWORK CONNECTIVITY OVERLAY
+   ============================================================ */
+
+.network-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.network-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Pulse animation for network nodes */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.3; r: 2; }
+  50% { opacity: 0.8; r: 3.5; }
+}
+
+@keyframes data-flow {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes core-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 4px rgba(0,132,255,0.3));
+  }
+  50% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(0,132,255,0.6));
+  }
 }

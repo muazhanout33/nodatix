@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import NetworkOverlay from "./NetworkOverlay";
 
 const problems = [
   {
@@ -32,10 +33,11 @@ export default function Problems() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="problems" className="py-28 px-6 relative">
+    <section id="problems" className="py-28 px-6 relative cyber-network">
       <div className="absolute left-0 top-1/2 w-[400px] h-[400px] bg-red-500 opacity-[0.03] blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <NetworkOverlay columns={3} />
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
