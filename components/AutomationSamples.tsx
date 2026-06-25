@@ -57,10 +57,11 @@ export default function AutomationSamples() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl overflow-hidden border border-[#1E3A5F] bg-[#0F1B2D] shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+                className="card-premium group relative overflow-hidden cursor-pointer"
                 onClick={() => setSelectedImage(project.src)}
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="card-sweep" />
+                <div className="aspect-video overflow-hidden relative z-10">
                   <Image
                     src={project.src}
                     alt={project.alt}

@@ -64,23 +64,24 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative p-7 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300"
+              className="card-premium p-7 group relative"
             >
+              <div className="card-sweep" />
               {/* Problem number */}
-              <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none">
+              <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none z-0">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-[#2F6BFF]/15 flex items-center justify-center text-xl mb-5">
+              <div className="card-icon w-12 h-12 text-xl mb-5 relative z-10">
                 {problem.icon}
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">
+              <h3 className="text-lg font-bold text-white mb-3 relative z-10">
                 {problem.title}
               </h3>
-              <p className="text-[#8899B0] text-sm leading-relaxed mb-5">
+              <p className="text-[#8899B0] text-sm leading-relaxed mb-5 relative z-10">
                 {problem.description}
               </p>
-              <div className="inline-flex items-center gap-2 text-xs text-[#5A9BFF] font-medium">
+              <div className="inline-flex items-center gap-2 text-xs text-[#5A9BFF] font-medium relative z-10">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5A9BFF]" />
                 {problem.pain}
               </div>

@@ -86,18 +86,19 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300 relative overflow-hidden"
+              className="card-premium p-6 group relative overflow-hidden"
             >
+              <div className="card-sweep" />
               {/* Stat watermark */}
-              <div className="absolute top-4 right-4 text-5xl font-black text-[#2F6BFF]/5 select-none">
+              <div className="absolute top-4 right-4 text-5xl font-black text-[#2F6BFF]/5 select-none z-0">
                 {benefit.stat}
               </div>
 
-              <div className="w-11 h-11 rounded-xl bg-[#2F6BFF]/15 flex items-center justify-center text-lg mb-4 group-hover:bg-[#2F6BFF]/25 transition-colors duration-300">
+              <div className="card-icon w-11 h-11 text-lg mb-4 group-hover:bg-[#2F6BFF]/25 transition-colors duration-300 relative z-10">
                 {benefit.icon}
               </div>
 
-              <div className="flex items-baseline gap-2 mb-1">
+              <div className="flex items-baseline gap-2 mb-1 relative z-10">
                 <span className="text-2xl font-black text-[#5A9BFF]">
                   {benefit.stat}
                 </span>
@@ -106,10 +107,10 @@ export default function Benefits() {
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-white mt-2 mb-2">
+              <h3 className="text-base font-bold text-white mt-2 mb-2 relative z-10">
                 {benefit.title}
               </h3>
-              <p className="text-[#8899B0] text-sm leading-relaxed">
+              <p className="text-[#8899B0] text-sm leading-relaxed relative z-10">
                 {benefit.description.replace(/&apos;/g, "'")}
               </p>
             </motion.div>

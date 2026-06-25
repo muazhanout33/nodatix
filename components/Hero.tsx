@@ -119,20 +119,22 @@ export default function Hero() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
           {/* AI Automation Card */}
-          <div className="p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
-            <h3 className="text-xl font-bold text-white mb-3">
+          <div className="card-premium p-6">
+            <div className="card-sweep" />
+            <h3 className="text-xl font-bold text-white mb-3 relative z-10">
               🤖 AI Automation
             </h3>
-            <p className="text-[#8899B0] leading-relaxed text-sm">
+            <p className="text-[#8899B0] leading-relaxed text-sm relative z-10">
               Automate repetitive tasks, manage workflows, and streamline your operations using smart AI systems — so you can focus on growth.
             </p>
           </div>
           {/* Marketing Card */}
-          <div className="p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
-            <h3 className="text-xl font-bold text-white mb-3">
+          <div className="card-premium p-6">
+            <div className="card-sweep" />
+            <h3 className="text-xl font-bold text-white mb-3 relative z-10">
               📈 Digital Marketing
             </h3>
-            <p className="text-[#8899B0] leading-relaxed text-sm">
+            <p className="text-[#8899B0] leading-relaxed text-sm relative z-10">
               Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.
             </p>
           </div>

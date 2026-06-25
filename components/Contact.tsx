@@ -92,11 +92,11 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="group relative p-5 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] backdrop-blur-md hover:border-[rgba(0,132,255,0.25)] hover:bg-[rgba(0,132,255,0.03)] transition-all duration-300"
+              className="card-premium p-5 group"
             >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0084FF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="relative flex flex-col items-center text-center gap-3">
-                <div className="w-11 h-11 rounded-xl bg-[#0084FF]/10 border border-[rgba(0,132,255,0.15)] flex items-center justify-center text-[#0084FF] group-hover:bg-[#0084FF]/15 group-hover:border-[rgba(0,132,255,0.3)] transition-all duration-300">
+              <div className="card-sweep" />
+              <div className="relative flex flex-col items-center text-center gap-3 z-10">
+                <div className="card-icon w-11 h-11 text-[#0084FF] group-hover:bg-[#0084FF]/15 group-hover:border-[rgba(0,132,255,0.3)] transition-all duration-300">
                   {item.icon}
                 </div>
                 <div>

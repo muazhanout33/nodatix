@@ -63,15 +63,16 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+              className="card-premium p-6 group cursor-pointer"
             >
-              <span className="inline-block text-xs text-[#0084FF] font-medium px-3 py-1 rounded-full bg-[#0084FF]/10 border border-[#0084FF]/20 mb-4">
+              <div className="card-sweep" />
+              <span className="card-tag inline-block text-xs text-[#0084FF] font-medium px-3 py-1 rounded-full mb-4 relative z-10">
                 {post.tag}
               </span>
-              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#5A9BFF] transition-colors duration-300 leading-snug">
+              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#5A9BFF] transition-colors duration-300 leading-snug relative z-10">
                 {post.title}
               </h3>
-              <p className="text-[#8899B0] text-sm leading-relaxed">
+              <p className="text-[#8899B0] text-sm leading-relaxed relative z-10">
                 {post.excerpt}
               </p>
             </motion.article>

@@ -51,10 +51,10 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border border-[#1E3A5F] rounded-2xl bg-[#0F1B2D] overflow-hidden transition-all duration-300 hover:border-[#2F6BFF]/40">
+    <div className="card-premium overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-6 text-left cursor-pointer"
+        className="w-full flex items-center justify-between p-6 text-left cursor-pointer relative z-10"
         aria-expanded={isOpen}
       >
         <span className="text-white font-semibold text-base pr-4">

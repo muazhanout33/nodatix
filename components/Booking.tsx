@@ -86,21 +86,22 @@ export default function Booking() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)] p-6 hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300"
+              className="card-premium p-6 group"
             >
+              <div className="card-sweep" />
               {/* Quote Icon */}
-              <div className="w-10 h-10 rounded-lg bg-[#2F6BFF]/15 flex items-center justify-center text-[#5A9BFF] text-xl mb-4">
+              <div className="card-icon w-10 h-10 text-[#5A9BFF] text-xl mb-4 relative z-10">
                 "
               </div>
 
               {/* Quote Text */}
-              <p className="text-[#B0BEC5] leading-relaxed mb-6 text-sm">
+              <p className="text-[#B0BEC5] leading-relaxed mb-6 text-sm relative z-10">
                 {testimonial.quote}
               </p>
 
               {/* Client Info */}
-              <div className="flex items-center gap-3 pt-4 border-t border-[#1E3A5F]">
-                <div className="w-10 h-10 rounded-full bg-[#2F6BFF]/20 flex items-center justify-center text-[#5A9BFF] font-bold text-sm">
+              <div className="flex items-center gap-3 pt-4 border-t border-[rgba(0,132,255,0.08)] relative z-10">
+                <div className="card-icon w-10 h-10 text-[#5A9BFF] font-bold text-sm">
                   {testimonial.initials}
                 </div>
                 <div>

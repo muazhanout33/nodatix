@@ -72,10 +72,10 @@ export default function About() {
 {/* Profile cards - 2 column grid */}
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
   {/* Muaz card */}
-  <div className="group relative p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2F6BFF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <div className="relative flex flex-col items-center">
-      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
+  <div className="card-premium p-6 group relative">
+    <div className="card-sweep" />
+    <div className="relative flex flex-col items-center z-10">
+      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.1)] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
         <Image
           src="/muaznew.jpeg"
           alt="Muaz Hanout - AI Automation Specialist at ScalaryX"
@@ -128,10 +128,10 @@ export default function About() {
   </div>
 
   {/* Omar card */}
-  <div className="group relative p-6 rounded-2xl border border-[#1E3A5F] bg-[#0F1B2D]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300">
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FF6B1A]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <div className="relative flex flex-col items-center">
-      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[#1E3A5F] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
+  <div className="card-premium p-6 group relative">
+    <div className="card-sweep" />
+    <div className="relative flex flex-col items-center z-10">
+      <div className="w-full aspect-square max-h-48 rounded-2xl overflow-hidden border-2 border-[rgba(0,132,255,0.1)] mb-5 group-hover:border-[#2F6BFF]/60 group-hover:shadow-[0_0_20px_rgba(47,107,255,0.2)] transition-all duration-300">
         <Image
           src="/Omarprofile.webp"
           alt="Omar Gamal - Digital Marketing Specialist at ScalaryX"
@@ -193,7 +193,7 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="p-4 rounded-xl border border-[#1E3A5F] bg-[#0F1B2D] text-center shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-[#2F6BFF]/40 hover:shadow-[0_0_30px_rgba(47,107,255,0.12)] hover:scale-[1.03] transition-all duration-300"
+                  className="card-premium p-4 text-center"
                 >
                   <div className="text-2xl font-black text-[#0084FF]">{h.value}</div>
                   <div className="text-xs text-[#94a3b8] mt-1 leading-tight">{h.label}</div>
@@ -206,7 +206,7 @@ export default function About() {
               {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python" ,"Meta Ads" , "Google Ads"].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-xs border border-[rgba(0,132,255,0.2)] text-[#94a3b8] bg-[#000000]"
+                  className="card-tag px-3 py-1 rounded-full text-xs text-[#94a3b8]"
                 >
                   {tag}
                 </span>
