@@ -55,7 +55,7 @@ export default function Booking() {
           `,
         }}
       />
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[60px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <NetworkOverlay columns={3} />

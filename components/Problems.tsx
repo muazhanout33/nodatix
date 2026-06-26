@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import NetworkOverlay from "./NetworkOverlay";
 
 const problems = [
@@ -92,7 +92,6 @@ export default function Problems() {
               className="card-premium p-7 group relative"
             >
               <div className="card-sweep" />
-              {/* Problem number */}
               <div className="absolute top-5 right-5 text-6xl font-black text-white/[0.03] select-none z-0">
                 {String(i + 1).padStart(2, "0")}
               </div>
@@ -114,7 +113,6 @@ export default function Problems() {
           ))}
         </div>
 
-        {/* Bridge line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

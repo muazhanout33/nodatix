@@ -31,7 +31,7 @@ export default function Blog() {
   return (
     <section id="blog" className="py-28 px-6 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute right-0 top-1/2 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-1/2 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}

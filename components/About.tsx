@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-28 px-6 relative">
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

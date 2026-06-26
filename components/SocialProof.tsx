@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const stats = [
   {
@@ -40,7 +40,7 @@ export default function SocialProof() {
   return (
     <section
       ref={ref}
-      className="relative py-12 px-6 border-y border-[rgba(0,153,255,0.1)] bg-[#000000]/60 backdrop-blur-sm"
+      className="relative py-12 px-6 border-y border-[rgba(0,153,255,0.1)] bg-[#000000]/80"
     >
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -57,7 +57,7 @@ export default function SocialProof() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="flex items-center gap-4 group"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#0099FF]/10 border border-[#0099FF]/20 text-[#0099FF] group-hover:bg-[#0099FF]/15 transition-all duration-300">
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#0099FF]/10 border border-[#0099FF]/20 text-[#0099FF] group-hover:bg-[#0099FF]/15 transition-colors duration-300">
                 {stat.icon}
               </div>
               <div>

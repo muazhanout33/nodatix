@@ -119,10 +119,10 @@ export default function Services() {
         }}
       />
       {/* Glow */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <NetworkOverlay columns={4} rows={2} />
+        <NetworkOverlay columns={4} />
         {/* Header */}
         <motion.div
           ref={ref}

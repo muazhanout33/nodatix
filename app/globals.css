@@ -1,21 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* --- 1. الخلفية (أسود غامق جدًا Pure Black كما طلبت) --- */
   --color-background: #000000;
   --color-foreground: #ffffff;
-
-  /* --- 2. اللون الرئيسي (Neon Blue / Electric Blue) --- */
-  /* هذا هو اللون الأهم في البراند */
-  --color-accent: #0099FF; /* أزرق زاهي مُعزّز (Enhanced Electric Blue) للأزرار والنصوص المميزة */
-  --color-accent-dim: #0044FF; /* أزرق أعمق (Base) للظلال والتدرجات */
-  
+  --color-accent: #0099FF;
+  --color-accent-dim: #0044FF;
   --color-surface: #000000;
-  --color-surface-2: #05070A; /* لمسة خفيفة جدًا مائلة للكحلي الداكن عند الحاجة */
-  
-  /* حدود زرقاء شفافة (كما طلبت) */
-  --color-border: rgba(0, 132, 255, 0.2); 
-  
+  --color-surface-2: #05070A;
+  --color-border: rgba(0, 132, 255, 0.2);
   --color-muted: #94a3b8;
   --font-sans: var(--font-inter);
 }
@@ -39,13 +31,11 @@ body {
   overflow-x: hidden;
 }
 
-/* لون تحديد النص عند السحب (أزرق شفاف كما طلبت) */
 ::selection {
   background: rgba(0, 132, 255, 0.30);
   color: #fff;
 }
 
-/* --- تخصيص شريط التمرير (Scrollbar) --- */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -55,24 +45,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0084FF; /* تغيير لون شريط التمرير ليتناسب مع الأزرق الجديد */
+  background: #0084FF;
   border-radius: 9999px;
 }
 
-/* --- 3. تأثيرات التوهج (Neon Glow) --- */
-
-/* توهج حول الأزرار أو العناصر (بحذر كما طلبت) */
 .glow-accent {
-  box-shadow: 0 0 25px rgba(0, 153, 255, 0.65); 
+  box-shadow: 0 0 25px rgba(0, 153, 255, 0.65);
 }
 
-/* توهج للنص الأزرق ليظهر كأنه "مكهرب" */
 .glow-text {
-  text-shadow: 0 0 12px rgba(0, 153, 255, 0.55); 
+  text-shadow: 0 0 12px rgba(0, 153, 255, 0.55);
 }
 
-/* --- 4. التدرج في النص (اللون الداخلي للنص المميز) --- */
-/* تدرج من أزرق زاهي إلى أزرق أعمق ليعطي عمقاً (كما طلبت) */
 .gradient-text {
   background: linear-gradient(135deg, #0099FF 0%, #0044FF 100%);
   -webkit-background-clip: text;
@@ -80,7 +64,6 @@ body {
   background-clip: text;
 }
 
-/* --- حدود متدرجة (اختياري، مستوحاة من تفاصيل اللوجو المعدني) --- */
 .gradient-border {
   position: relative;
 }
@@ -98,7 +81,6 @@ body {
   pointer-events: none;
 }
 
-/* --- Purple Accent for Secondary Buttons & Hover States --- */
 .btn-secondary {
   background: transparent;
   border: 1.5px solid rgba(139, 92, 246, 0.4);
@@ -131,69 +113,15 @@ body {
   transform: translateY(0);
 }
 
-/* --- Micro-Animation Classes --- */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-scale {
-  animation: fadeInScale 0.5s ease-out forwards;
-}
-
-.animate-slide-up-fade {
-  animation: slideUpFade 0.5s ease-out forwards;
-}
-
-/* Card hover micro-animation enhancement */
-.card-premium {
-  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s ease;
-}
-
-.card-premium:hover {
-  transform: translateY(-6px) scale(1.01);
-}
-
-/* --- تأثيرات الحركة (Motion Effects) --- */
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-/* توهج ينبض (إحساس بالـ AI والتكنولوجيا) */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 15px rgba(0, 153, 255, 0.5); }
-  50%       { box-shadow: 0 0 40px rgba(0, 153, 255, 0.9); }
-}
-
-@keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+@keyframes sweep-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* ============================================================
-   PREMIUM CYBER-AI CARD DESIGN SYSTEM — ScalaryX
+   PREMIUM CARD DESIGN SYSTEM — ScalaryX (Optimized)
    ============================================================ */
 
-/* --- Cyber Network Grid Background --- */
 .cyber-network {
   position: relative;
 }
@@ -212,29 +140,20 @@ body {
   z-index: 0;
 }
 
-/* --- Base card: glassmorphism panel --- */
+/* Base card — GPU-friendly: removed backdrop-filter blur */
 .card-premium {
   position: relative;
-  background: linear-gradient(
-    160deg,
-    rgba(8, 16, 32, 0.88) 0%,
-    rgba(5, 10, 22, 0.92) 40%,
-    rgba(8, 14, 30, 0.88) 100%
-  );
-  backdrop-filter: blur(28px) saturate(1.5);
-  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  background: rgba(8, 14, 28, 0.95);
   border: 1px solid rgba(0, 153, 255, 0.07);
   border-radius: 22px;
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.45),
-    0 0 0 0.5px rgba(0, 153, 255, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    inset 0 0 40px rgba(0, 153, 255, 0.015);
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
   overflow: hidden;
-  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
 }
 
-/* Glass reflection sheen at top */
 .card-premium::before {
   content: '';
   position: absolute;
@@ -253,45 +172,16 @@ body {
   z-index: 3;
 }
 
-/* Inner electric cyan glow */
-.card-premium::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(0, 153, 255, 0.05) 0%,
-    transparent 55%
-  );
-  pointer-events: none;
-  z-index: 0;
-  transition: opacity 0.45s ease;
-}
-
-/* --- Hover: lift + vibrant halo + light streak --- */
 .card-premium:hover {
   transform: translateY(-6px);
   border-color: rgba(0, 153, 255, 0.22);
   box-shadow:
     0 14px 44px rgba(0, 0, 0, 0.55),
     0 0 40px rgba(0, 153, 255, 0.08),
-    0 0 80px rgba(0, 153, 255, 0.04),
-    0 0 0 0.5px rgba(0, 153, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 0 50px rgba(0, 153, 255, 0.03);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.card-premium:hover::after {
-  opacity: 1.5;
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(0, 153, 255, 0.08) 0%,
-    transparent 55%
-  );
-}
-
-/* --- Cyan light sweep around border --- */
+/* Card sweep — only animates on hover */
 .card-premium > .card-sweep {
   position: absolute;
   inset: 0;
@@ -322,6 +212,7 @@ body {
   transition: opacity 0.35s ease;
   animation: sweep-rotate 4s linear infinite;
   animation-play-state: paused;
+  will-change: transform;
 }
 
 .card-premium:hover > .card-sweep::before {
@@ -329,46 +220,26 @@ body {
   animation-play-state: running;
 }
 
-@keyframes sweep-rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* --- Icon circle: glowing glass badge --- */
+/* Icon circle — removed backdrop-filter */
 .card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(
-    145deg,
-    rgba(0, 153, 255, 0.1) 0%,
-    rgba(0, 68, 255, 0.05) 100%
-  );
+  background: rgba(0, 153, 255, 0.1);
   border: 1px solid rgba(0, 153, 255, 0.12);
-  box-shadow:
-    0 0 20px rgba(0, 153, 255, 0.08),
-    0 0 40px rgba(0, 153, 255, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition: all 0.35s ease;
 }
 
 .card-premium:hover .card-icon {
-  box-shadow:
-    0 0 24px rgba(0, 153, 255, 0.12),
-    0 0 50px rgba(0, 153, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: rgba(0, 153, 255, 0.15);
   border-color: rgba(0, 153, 255, 0.2);
 }
 
-/* --- Tag pill: neon-tinted glass --- */
+/* Tag pill — removed backdrop-filter */
 .card-tag {
   background: rgba(0, 153, 255, 0.06);
   border: 1px solid rgba(0, 153, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   transition: all 0.35s ease;
 }
 
@@ -378,7 +249,7 @@ body {
 }
 
 /* ============================================================
-   NETWORK CONNECTIVITY OVERLAY
+   NETWORK OVERLAY
    ============================================================ */
 
 .network-overlay {
@@ -392,26 +263,4 @@ body {
 .network-overlay svg {
   width: 100%;
   height: 100%;
-}
-
-/* Pulse animation for network nodes */
-@keyframes node-pulse {
-  0%, 100% { opacity: 0.3; r: 2; }
-  50% { opacity: 0.8; r: 3.5; }
-}
-
-@keyframes data-flow {
-  0% { stroke-dashoffset: 20; }
-  100% { stroke-dashoffset: 0; }
-}
-
-@keyframes core-pulse {
-  0%, 100% {
-    opacity: 0.4;
-    filter: drop-shadow(0 0 4px rgba(0,153,255,0.3));
-  }
-  50% {
-    opacity: 0.9;
-    filter: drop-shadow(0 0 10px rgba(0,153,255,0.6));
-  }
 }

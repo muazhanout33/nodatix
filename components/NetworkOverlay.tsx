@@ -1,16 +1,14 @@
 "use client";
 
+import { useMemo } from "react";
+
 interface NetworkOverlayProps {
   columns: number;
   rows?: number;
   className?: string;
 }
 
-export default function NetworkOverlay({
-  columns,
-  rows = 1,
-  className = "",
-}: NetworkOverlayProps) {
+function NetworkOverlay({ columns, rows = 1, className = "" }: NetworkOverlayProps) {
   const W = 1000;
   const H = rows > 1 ? 400 : 200;
   const PAD_X = 80;
@@ -21,15 +19,18 @@ export default function NetworkOverlay({
   const colSpacing = innerW / (columns - 1 || 1);
   const rowSpacing = rows > 1 ? innerH / (rows - 1) : 0;
 
-  const nodePositions: { x: number; y: number }[] = [];
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < columns; c++) {
-      nodePositions.push({
-        x: PAD_X + c * colSpacing,
-        y: rows > 1 ? PAD_Y + r * rowSpacing : H / 2,
-      });
+  const nodePositions = useMemo(() => {
+    const positions: { x: number; y: number }[] = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < columns; c++) {
+        positions.push({
+          x: PAD_X + c * colSpacing,
+          y: rows > 1 ? PAD_Y + r * rowSpacing : H / 2,
+        });
+      }
     }
-  }
+    return positions;
+  }, [columns, rows, colSpacing, rowSpacing, H, PAD_X, PAD_Y]);
 
   const coreX = W / 2;
   const coreY = H / 2;
@@ -43,66 +44,26 @@ export default function NetworkOverlay({
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
-          <filter id="glow-line" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <filter id="glow-node" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <filter id="glow-core" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
           <radialGradient id="core-gradient">
             <stop offset="0%" stopColor="#0099FF" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#0044FF" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        {/* Horizontal backbone lines */}
-        {rows > 1
-          ? Array.from({ length: rows }).map((_, r) => {
-              const y = PAD_Y + r * rowSpacing;
-              return (
-                <line
-                  key={`h-${r}`}
-                  x1={PAD_X}
-                  y1={y}
-                  x2={PAD_X + innerW}
-                  y2={y}
-                  stroke="rgba(0,153,255,0.06)"
-                  strokeWidth="0.5"
-                  filter="url(#glow-line)"
-                />
-              );
-            })
-          : (
-              <line
-                x1={PAD_X}
-                y1={H / 2}
-                x2={PAD_X + innerW}
-                y2={H / 2}
-                stroke="rgba(0,132,255,0.06)"
-                strokeWidth="0.5"
-                filter="url(#glow-line)"
-              />
-            )}
+        {/* Horizontal backbone line */}
+        <line
+          x1={PAD_X}
+          y1={H / 2}
+          x2={PAD_X + innerW}
+          y2={H / 2}
+          stroke="rgba(0,153,255,0.06)"
+          strokeWidth="0.5"
+        />
 
-        {/* Vertical branch lines from each node to center horizontal */}
-        {nodePositions.map((pos, i) => {
-          const isTopRow = rows > 1 && pos.y < coreY;
-          const isBottomRow = rows > 1 && pos.y > coreY;
+        {/* Vertical branch lines */}
+        {rows > 1 && nodePositions.map((pos, i) => {
+          const isTopRow = pos.y < coreY;
+          const isBottomRow = pos.y > coreY;
           if (isTopRow || isBottomRow) {
             return (
               <line
@@ -114,7 +75,6 @@ export default function NetworkOverlay({
                 stroke="rgba(0,153,255,0.04)"
                 strokeWidth="0.5"
                 strokeDasharray="4 4"
-                filter="url(#glow-line)"
               />
             );
           }
@@ -135,31 +95,7 @@ export default function NetworkOverlay({
               stroke="rgba(0,132,255,0.04)"
               strokeWidth="0.5"
               fill="none"
-              filter="url(#glow-line)"
             />
-          );
-        })}
-
-        {/* Data flow particles along connections */}
-        {nodePositions.filter((_, i) => i % 2 === 0).map((pos, i) => {
-          const dx = coreX - pos.x;
-          const dy = coreY - pos.y;
-          const midX = (pos.x + coreX) / 2;
-          const midY = (pos.y + coreY) / 2;
-          return (
-            <circle
-              key={`particle-${i}`}
-              r="1.5"
-              fill="#0099FF"
-              opacity="0.5"
-              filter="url(#glow-node)"
-            >
-              <animateMotion
-                dur={`${3 + i * 0.7}s`}
-                repeatCount="indefinite"
-                path={`M ${pos.x} ${pos.y} Q ${midX} ${midY - 10} ${coreX} ${coreY}`}
-              />
-            </circle>
           );
         })}
 
@@ -169,39 +105,17 @@ export default function NetworkOverlay({
           cy={coreY}
           r="18"
           fill="url(#core-gradient)"
-          filter="url(#glow-core)"
           opacity="0.5"
-        >
-          <animate
-            attributeName="opacity"
-            values="0.3;0.7;0.3"
-            dur="3s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="r"
-            values="16;20;16"
-            dur="3s"
-            repeatCount="indefinite"
-          />
-        </circle>
+        />
         <circle
           cx={coreX}
           cy={coreY}
           r="4"
-          fill="#0084FF"
+          fill="#0099FF"
           opacity="0.8"
-          filter="url(#glow-node)"
-        >
-          <animate
-            attributeName="opacity"
-            values="0.5;1;0.5"
-            dur="2s"
-            repeatCount="indefinite"
-          />
-        </circle>
+        />
 
-        {/* Node dots at each card position */}
+        {/* Node dots */}
         {nodePositions.map((pos, i) => (
           <g key={`node-${i}`}>
             <circle
@@ -210,15 +124,7 @@ export default function NetworkOverlay({
               r="3"
               fill="#0099FF"
               opacity="0.25"
-              filter="url(#glow-node)"
-            >
-              <animate
-                attributeName="opacity"
-                values="0.15;0.5;0.15"
-                dur={`${2.5 + (i % 3) * 0.5}s`}
-                repeatCount="indefinite"
-              />
-            </circle>
+            />
             <circle
               cx={pos.x}
               cy={pos.y}
@@ -232,3 +138,5 @@ export default function NetworkOverlay({
     </div>
   );
 }
+
+export default NetworkOverlay;

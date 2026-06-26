@@ -55,7 +55,7 @@ export default function Contact() {
           `,
         }}
       />
-      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <NetworkOverlay columns={3} />
@@ -132,8 +132,8 @@ export default function Contact() {
           </div>
 
           {/* Soft glow edges */}
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.08] blur-[60px] pointer-events-none" />
-          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.06] blur-[60px] pointer-events-none" />
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.08] blur-[40px] pointer-events-none" />
+            <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.06] blur-[40px] pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center py-12 px-8 gap-4">

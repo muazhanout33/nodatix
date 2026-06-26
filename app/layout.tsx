@@ -75,13 +75,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Google Analytics 4 */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Google Analytics 4 — deferred */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-B0EQ5V5MDM`}
         />
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

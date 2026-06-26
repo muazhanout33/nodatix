@@ -1,20 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { memo } from "react";
+import { motion } from "framer-motion";
 import { BookCallButton } from "./BookCallButton";
 
-const floatVariants: Variants = {
-  animate: {
-    y: [0, -16, 0],
-    transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-  },
-};
-
-export default function Hero() {
+const Hero = memo(function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-
-      {/* Mesh Gradient Background */}
+      {/* Mesh Gradient Background — pure CSS, no blur */}
       <div
         className="absolute inset-0"
         style={{
@@ -24,40 +17,23 @@ export default function Hero() {
             radial-gradient(ellipse 80% 60% at 40% 55%, rgba(47,107,255,0.05) 0%, transparent 65%),
             linear-gradient(180deg, #060608 0%, #0B0D12 40%, #111318 100%)
           `,
+          willChange: "auto",
         }}
       />
 
-      {/* Soft Radial Glow */}
-      <div
-        className="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, rgba(47,107,255,0.10) 0%, rgba(61,125,255,0.05) 35%, transparent 65%)",
-          filter: "blur(80px)",
-        }}
-      />
-
-      {/* Floating badges */}
-      <motion.div
-        variants={floatVariants}
-        animate="animate"
-        className="absolute top-36 right-[10%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,153,255,0.2)] text-xs text-gray-400"
-      >
+      {/* Floating badges — hidden on mobile, GPU-accelerated */}
+      <div className="absolute top-36 right-[10%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,153,255,0.2)] text-xs text-gray-400 will-change-transform" style={{ animation: "float 5s ease-in-out infinite" }}>
         <span className="w-2 h-2 rounded-full bg-[#0099FF] animate-pulse" />
-      AI Automation & Marketing Active
-      </motion.div>
+        AI Automation & Marketing Active
+      </div>
 
-      <motion.div
-        variants={floatVariants}
-        animate="animate"
-        className="absolute bottom-40 left-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,153,255,0.2)] text-xs text-gray-400"
-      >
+      <div className="absolute bottom-40 left-[8%] hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-[#000000] border border-[rgba(0,153,255,0.2)] text-xs text-gray-400 will-change-transform" style={{ animation: "float 5s ease-in-out infinite 1.5s" }}>
         <span className="text-[#0099FF]">⚡</span>
         Workflow Automation Active
-      </motion.div>
+      </div>
 
       {/* MAIN CONTENT */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +42,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00cfff]/30 bg-[#0099FF]/5 text-[#0099FF] text-xs font-medium mb-8 tracking-wider uppercase"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#0099FF]" />
-            AI Automation &amp; Workflow Systems
+          AI Automation &amp; Workflow Systems
         </motion.div>
 
         {/* Headline */}
@@ -88,9 +64,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-        We build intelligent n8n workflows that save hours of manual work,
-         streamline operations, and support high-performing 
-         marketing strategies — so you can focus on growth while automation handles the rest.
+          We build intelligent n8n workflows that save hours of manual work,
+          streamline operations, and support high-performing
+          marketing strategies — so you can focus on growth while automation handles the rest.
         </motion.p>
 
         {/* CTA buttons */}
@@ -122,7 +98,6 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
         >
-          {/* AI Automation Card */}
           <div className="card-premium p-6">
             <div className="card-sweep" />
             <h3 className="text-xl font-bold text-white mb-3 relative z-10">
@@ -132,7 +107,6 @@ export default function Hero() {
               Automate repetitive tasks, manage workflows, and streamline your operations using smart AI systems — so you can focus on growth.
             </p>
           </div>
-          {/* Marketing Card */}
           <div className="card-premium p-6">
             <div className="card-sweep" />
             <h3 className="text-xl font-bold text-white mb-3 relative z-10">
@@ -142,12 +116,13 @@ export default function Hero() {
               Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.
             </p>
           </div>
-       </motion.div>
-
+        </motion.div>
       </div>
 
       {/* Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000000] to-transparent pointer-events-none" />
     </section>
   );
-}
+});
+
+export default Hero;

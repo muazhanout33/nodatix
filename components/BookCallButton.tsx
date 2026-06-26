@@ -10,6 +10,8 @@ declare global {
   }
 }
 
+let calInitialized = false;
+
 export function BookCallButton({
   className,
   onClick,
@@ -22,24 +24,47 @@ export function BookCallButton({
   const initialized = useRef(false);
 
   useEffect(() => {
-    if (initialized.current || typeof window === "undefined") return;
+    if (initialized.current || calInitialized || typeof window === "undefined") return;
     initialized.current = true;
 
-    if (window.Cal) {
-      wireCalButtons();
-      return;
+    const loadCal = () => {
+      if (window.Cal) {
+        wireCalButtons();
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://app.cal.com/embed/embed.js";
+      script.async = true;
+      script.onload = () => {
+        window.Cal("init", {
+          origin: "https://cal.com",
+        });
+        wireCalButtons();
+        calInitialized = true;
+      };
+      document.head.appendChild(script);
+    };
+
+    // Only load Cal.com when user interacts with any BookCallButton
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadCal();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" }
+    );
+
+    const el = document.querySelector("[data-cal-link]");
+    if (el) {
+      observer.observe(el);
     }
 
-    const script = document.createElement("script");
-    script.src = "https://app.cal.com/embed/embed.js";
-    script.async = true;
-    script.onload = () => {
-      window.Cal("init", {
-        origin: "https://cal.com",
-      });
-      wireCalButtons();
-    };
-    document.head.appendChild(script);
+    return () => observer.disconnect();
   }, []);
 
   const wireCalButtons = () => {

@@ -57,10 +57,10 @@ export default function Benefits() {
   return (
     <section id="benefits" className="py-28 px-6 relative cyber-network">
       {/* Background glow */}
-      <div className="absolute right-0 top-1/2 w-[500px] h-[500px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-1/2 w-[500px] h-[500px] bg-[#0084FF] opacity-[0.04] blur-[60px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <NetworkOverlay columns={3} rows={2} />
+        <NetworkOverlay columns={3} />
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
