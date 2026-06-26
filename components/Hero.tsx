@@ -77,7 +77,7 @@ const Hero = memo(function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <BookCallButton className="group relative w-1/2 px-6 py-4 rounded-xl bg-[#0099FF] text-black font-bold text-xs hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03]">
-            Get Your Free Automation Audit
+            Book Your Free Strategy Call
           </BookCallButton>
 
           <a
@@ -88,7 +88,7 @@ const Hero = memo(function Hero() {
           </a>
 
           <BookCallButton className="btn-secondary px-8 py-4 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03]">
-            احصل على Audit مجاني
+             Get Your Free  Audit
           </BookCallButton>
         </motion.div>
 
