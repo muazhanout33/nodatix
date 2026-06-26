@@ -61,7 +61,7 @@ function FAQItem({
           {faq.question}
         </span>
         <span
-          className={`text-[#0084FF] text-xl flex-shrink-0 transition-transform duration-300 ${
+          className={`text-[#0099FF] text-xl flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-45" : ""
           }`}
         >
@@ -77,7 +77,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 text-[#8899B0] text-sm leading-relaxed">
+            <div className="px-6 pb-6 text-gray-300 text-sm leading-relaxed">
               {faq.answer}
             </div>
           </motion.div>
@@ -98,14 +98,14 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
+          <span className="inline-block text-xs text-[#0099FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0099FF]/20 bg-[#0099FF]/5">
             FAQ
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
             Frequently Asked{" "}
             <span className="gradient-text">Questions</span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-gray-300 max-w-xl mx-auto">
             Everything you need to know about AI automation and how we can help
             your business grow.
           </p>

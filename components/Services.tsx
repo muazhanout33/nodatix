@@ -31,7 +31,7 @@ const services = [
     icon: "🤖",
     title: "Custom AI Agents",
     description:
-      "Bespoke AI agents trained on your business data — from customer support bots to internal assistants that handle tasks your team shouldn't spend time on.",
+      "built AI agents designed around your business workflows. From customer support and sales to HR, operations, and internal processes, we create intelligent AI assistants that automate repetitive tasks, improve decision-making, and integrate seamlessly with your existing tools.",
     tag: "Advanced AI",
   },
   {

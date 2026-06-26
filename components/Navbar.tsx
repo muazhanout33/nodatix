@@ -42,16 +42,16 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-[rgba(0,132,255,0.2)]"
+          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-[rgba(0,153,255,0.2)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">  
-          <Image src="/favicon.ico.webp" alt="ScalaryX" width={48} height={48} className="h-10 sm:h-12 w-auto" priority />
+          <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-12 sm:h-14 w-auto" priority />
           <span className="text-xl sm:text-3xl font-bold">
-            <span className="text-white">Scalary</span><span className="text-[#0084FF]">X</span>
+            <span className="text-white">Scalary</span><span className="text-[#0099FF]">X</span>
           </span>
         </a>
 
@@ -70,7 +70,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <BookCallButton className="px-5 py-2.5 rounded-lg bg-[#0084FF] text-black text-sm font-semibold hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer" />
+          <BookCallButton className="px-5 py-2.5 rounded-lg bg-[#0099FF] text-black text-sm font-semibold hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer" />
         </div>
 
         {/* Mobile Hamburger */}
@@ -95,7 +95,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#000000] border-t border-[rgba(0,132,255,0.2)] overflow-hidden"
+            className="md:hidden bg-[#000000] border-t border-[rgba(0,153,255,0.2)] overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
@@ -103,7 +103,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-300 hover:text-[#0084FF] transition-colors py-2 text-lg"
+                  className="text-gray-300 hover:text-[#0099FF] transition-colors py-2 text-lg"
                 >
                   {link.label}
                 </a>
@@ -113,7 +113,7 @@ export default function Navbar() {
                 className="mt-2"
               >
                 <BookCallButton 
-                  className="px-5 py-2.5 rounded-lg bg-[#0084FF] text-black text-sm font-semibold text-center cursor-pointer" 
+                  className="px-5 py-2.5 rounded-lg bg-[#0099FF] text-black text-sm font-semibold text-center cursor-pointer" 
                 />
               </div>
             </div>

@@ -65,8 +65,8 @@ export default function NetworkOverlay({
             </feMerge>
           </filter>
           <radialGradient id="core-gradient">
-            <stop offset="0%" stopColor="#0084FF" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#003BFF" stopOpacity="0" />
+            <stop offset="0%" stopColor="#0099FF" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#0044FF" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -81,7 +81,7 @@ export default function NetworkOverlay({
                   y1={y}
                   x2={PAD_X + innerW}
                   y2={y}
-                  stroke="rgba(0,132,255,0.06)"
+                  stroke="rgba(0,153,255,0.06)"
                   strokeWidth="0.5"
                   filter="url(#glow-line)"
                 />
@@ -111,7 +111,7 @@ export default function NetworkOverlay({
                 y1={pos.y}
                 x2={pos.x}
                 y2={coreY}
-                stroke="rgba(0,132,255,0.04)"
+                stroke="rgba(0,153,255,0.04)"
                 strokeWidth="0.5"
                 strokeDasharray="4 4"
                 filter="url(#glow-line)"
@@ -150,7 +150,7 @@ export default function NetworkOverlay({
             <circle
               key={`particle-${i}`}
               r="1.5"
-              fill="#0084FF"
+              fill="#0099FF"
               opacity="0.5"
               filter="url(#glow-node)"
             >
@@ -208,7 +208,7 @@ export default function NetworkOverlay({
               cx={pos.x}
               cy={pos.y}
               r="3"
-              fill="#0084FF"
+              fill="#0099FF"
               opacity="0.25"
               filter="url(#glow-node)"
             >

@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
+  title: "ScalaryX | AI Automation & Marketing Systems That Save Time and Grow Revenue",
   description:
     "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
   icons: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.scalaryx.com",
-    title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
+    title: "ScalaryX | AI Automation & Marketing Systems That Save Time and Grow Revenue",
     description:
       "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
     siteName: "Scalaryx",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scalaryx | AI Automation, n8n Workflows & Business Growth",
+    title: "ScalaryX | AI Automation & Marketing Systems That Save Time and Grow Revenue",
     description:
       "Scalaryx helps businesses automate workflows, save time, and scale faster with AI automation, n8n integrations, and smart marketing systems.",
     creator: "@scalaryx",
@@ -130,6 +130,73 @@ export default function RootLayout({
                 email: "scalaryx@gmail.com",
                 contactType: "Sales",
               },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What is AI Automation?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "AI Automation is using artificial intelligence tools — like ChatGPT, n8n, and Zapier — to handle repetitive business tasks automatically. This includes replying to customers, sending emails, generating leads, and managing workflows, all without manual effort.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How can automation help my business?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Automation frees your team from time-consuming tasks by handling things like customer support replies, lead generation, email marketing campaigns, and social media posting — so you can focus on growth instead of operations.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How much does automation cost?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Pricing depends on your business needs and the complexity of the system. Simple automations can start at a low budget, while advanced AI-powered workflows are scoped and priced based on integrations and tools required.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Do you work with small businesses?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely. In fact, business automation is one of the most powerful advantages for small and medium-sized businesses — it lets them compete with larger companies without needing a large team.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What tools do you use?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We use a modern tech stack including n8n for workflow automation, Zapier and Make for integrations, OpenAI APIs for AI-driven tasks, Google Sheets, CRMs, and leading email marketing platforms.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How does digital marketing automation work?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We combine proven digital marketing strategies with automation tools to capture leads automatically, send personalized email sequences, track customer behavior, and run campaigns with minimal manual effort.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How long does setup take?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Most automation systems are ready within a few days to a few weeks, depending on the scope and complexity of your business requirements.",
+                  },
+                },
+              ],
             }),
           }}
         />
