@@ -11,7 +11,7 @@ const stats = [
       </svg>
     ),
     number: "50+",
-    label: "AI Automations Built",
+    label: "AI Systems Built",
   },
   {
     icon: (
@@ -21,6 +21,15 @@ const stats = [
     ),
     number: "10,000+",
     label: "Hours Saved",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8M21 7h-6m6 0v6" />
+      </svg>
+    ),
+    number: "100+",
+    label: "Marketing Campaigns",
   },
   {
     icon: (
