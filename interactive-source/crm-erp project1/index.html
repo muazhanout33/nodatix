@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scalary X — Custom CRM + ERP Systems</title>
+<script>
+/* ══ 1) THEME — standalone, runs BEFORE paint, zero dependencies ══ */
+(function(){
+function rd(k,d){try{var v=localStorage.getItem(k);if(v==null)return d;v=String(v).replace(/"/g,'').trim().toLowerCase();return v||d}catch(e){return d}}
+try{document.documentElement.setAttribute('data-theme',rd('sx_theme','light')==='dark'?'dark':'light')}catch(e){}
+try{if(rd('sx_lang','en')==='ar'){document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl')}}catch(e){}
+/* global toggle — called by inline onclick, can never be undefined */
+window.sxTheme=function(){
+var d=document.documentElement.getAttribute('data-theme')==='dark';
+var t=d?'light':'dark';
+document.documentElement.setAttribute('data-theme',t);
+try{localStorage.setItem('sx_theme',t)}catch(e){}
+};
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--navy:#0A1B33;--navy2:#10294D;--deep:#12336B;--blue:#1E56C8;--blue-h:#1747A8;
+--ink:#0A1B33;--ink2:#33455F;--mut:#66758D;--faint:#8B99AF;
+--bg:#F5F7FA;--card:#FFFFFF;--sky:#EDF3FB;--sky2:#DFEAF8;--line:#E4EAF2;--line2:#D2DBE8;
+--pos:#0E8A5F;--posbg:#E5F4ED;--neg:#BF3B3B;--negbg:#F9ECEC;--warn:#A9740E;--warnbg:#FBF2DF;
+--wa:#0E8A5F;--wa-h:#0B7350;
+--r:14px;--sh:0 1px 2px rgba(10,27,51,.05),0 8px 28px -8px rgba(10,27,51,.10);
+--sh-lg:0 2px 4px rgba(10,27,51,.06),0 24px 60px -16px rgba(10,27,51,.22);
+--fd:'Sora',sans-serif;--fb:'Instrument Sans',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+html[data-theme="dark"]{
+--bg:#0C1626;--card:#111F36;--sky:#152A47;--sky2:#1D3659;--line:#1E2F4D;--line2:#2B405F;
+--ink:#E9EEF6;--ink2:#C3CFE0;--mut:#8DA0BC;--faint:#66799B;--deep:#9FC2F2;
+--pos:#41C98D;--posbg:#0F2C20;--neg:#F08383;--negbg:#301616;--warn:#E5B04F;--warnbg:#2B230F;
+--wa:#12805C;--wa-h:#0E6B4C;
+--sh:0 1px 2px rgba(0,0,0,.35),0 10px 30px -10px rgba(0,0,0,.5);
+--sh-lg:0 2px 6px rgba(0,0,0,.4),0 28px 70px -18px rgba(0,0,0,.65);
+color-scheme:dark;
+}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--ink);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background-color .25s ease,color .25s ease}
+html[dir="rtl"] body,html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] h4{font-family:'IBM Plex Sans Arabic','Instrument Sans',sans-serif}
+html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] h4{letter-spacing:0}
+img{max-width:100%}button{font-family:inherit;cursor:pointer}input,select,textarea{font-family:inherit;font-size:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--fm);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+h1,h2,h3,h4{font-family:var(--fd);letter-spacing:-.015em;line-height:1.16;font-weight:600}
+.kicker{font-family:var(--fm);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:600}
+html[dir="rtl"] .kicker{letter-spacing:.04em;font-family:'IBM Plex Sans Arabic',sans-serif}
+svg{display:block}
+.rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+html.anim .rv{opacity:0;transform:translateY(26px)}
+html.anim .rv.in{opacity:1;transform:none}
+html[dir="rtl"] #toasts{right:auto;left:24px}
+html[dir="rtl"] .wa-float{right:20px;left:auto}
+html[dir="rtl"] .mnav .links{margin-left:0;margin-right:auto}
+html[dir="rtl"] .live{margin-left:0;margin-right:auto}
+html[dir="rtl"] .statline>div{border-right:none;border-left:1px solid var(--line)}
+html[dir="rtl"] .statline>div:last-child{border-left:none}
+html[dir="rtl"] .trust div{border-right:none;border-left:1px solid var(--line)}
+html[dir="rtl"] .trust div:last-child{border-left:none}
+html[dir="rtl"] .callout{border-left:none;border-right:4px solid var(--blue)}
+html[dir="rtl"] .solve-tab{text-align:right;border-left:none;border-right:2px solid var(--line2)}
+html[dir="rtl"] .solve-tab.on{border-right-color:var(--blue);background:linear-gradient(to left,rgba(30,86,200,.07),transparent)}
+html[dir="rtl"] .farrow svg{transform:scaleX(-1)}
+html[dir="rtl"] .ccard .cs,html[dir="rtl"] .vbar .vt b,html[dir="rtl"] .badge{font-family:'IBM Plex Sans Arabic',sans-serif}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--navy);background:var(--navy);color:#fff;font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:10px;transition:transform .18s,background .18s,box-shadow .18s;white-space:nowrap}
+.btn:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 10px 24px -10px rgba(10,27,51,.45)}
+.btn.blue{background:var(--blue);border-color:var(--blue)}.btn.blue:hover{background:var(--blue-h)}
+.btn.wa{background:var(--wa);border-color:var(--wa)}.btn.wa:hover{background:var(--wa-h)}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line2)}.btn.o:hover{background:var(--card);border-color:var(--faint);box-shadow:var(--sh)}
+.btn.sm{padding:8px 14px;font-size:13px;border-radius:8px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:3.5px 10px;border-radius:99px;font-family:var(--fm)}
+.b-blue{background:var(--sky);color:var(--deep)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);transition:background-color .25s,border-color .25s}
+.pad{padding:22px 24px}
+.tbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:grid;place-items:center;color:var(--ink2);transition:.15s;flex:none;grid-auto-flow:column}
+.tbtn:hover{border-color:var(--faint);transform:translateY(-1px)}
+.tbtn.lang{width:auto;padding:0 12px;font-weight:700;font-size:13px;font-family:var(--fd)}
+.igbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:grid;place-items:center;color:var(--ink2);transition:.15s;flex:none}
+.igbtn:hover{color:var(--blue);border-color:var(--blue)}
+/ theme icons — swapped by pure CSS, cannot break /
+.tbtn .ic-sun{display:none}
+html[data-theme="dark"] .tbtn .ic-sun{display:block}
+html[data-theme="dark"] .tbtn .ic-moon{display:none}
+.mnav{position:sticky;top:0;z-index:60;background:rgba(245,247,250,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background-color .25s}
+html[data-theme="dark"] .mnav{background:rgba(12,22,38,.88)}
+.mnav .wrap{display:flex;align-items:center;gap:10px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:19px;letter-spacing:-.02em}
+.logo small{font-family:var(--fm);font-weight:500;font-size:10px;color:var(--mut);letter-spacing:.14em;margin-top:4px}
+html[dir="rtl"] .logo small{letter-spacing:.04em}
+.logo-slot{display:inline-flex;align-items:center}
+.logo-slot:empty{display:none}
+.logo-slot img{height:34px;width:auto;display:block}
+.mnav .links{display:flex;gap:22px;margin-left:auto}
+.mnav .links a{font-size:14px;font-weight:500;color:var(--ink2)}
+.mnav .links a:hover{color:var(--blue)}
+@media(max-width:960px){.mnav .links{display:none}.mnav .hide-s{display:none}}
+.hero{padding:84px 0 96px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:64px;align-items:center}
+@media(max-width:1080px){.hero .wrap{grid-template-columns:1fr;gap:52px}}
+.hero h1{font-size:clamp(34px,4.4vw,54px);margin:18px 0 20px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p.sub{font-size:17.5px;color:var(--ink2);max-width:540px;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.hero-alt{font-size:14px;font-weight:600;color:var(--blue);display:inline-flex;gap:6px;align-items:center;margin-bottom:30px}
+.hero-alt:hover{text-decoration:underline}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;font-size:13px;color:var(--mut)}
+.hero-meta b{display:block;font-family:var(--fd);font-size:17px;color:var(--ink)}
+@media(max-width:640px){.hero-cta .btn{width:100%;justify-content:center}}
+.pv-scene{perspective:1400px}
+.pv{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.pv-main{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-lg);padding:20px}
+.pv-head{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.pv-head .nm{font-weight:600;font-size:14px}.pv-head .sb{font-size:11.5px;color:var(--mut);font-family:var(--fm)}
+html[dir="rtl"] .pv-head .sb{font-family:'IBM Plex Sans Arabic',sans-serif}
+.live{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10.5px;color:var(--pos);font-weight:600;letter-spacing:.08em;margin-left:auto}
+.pv-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.pv-kpi{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+.pv-kpi .l{font-size:10.5px;color:var(--mut);text-transform:uppercase;font-family:var(--fm)}
+html[dir="rtl"] .pv-kpi .l{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0}
+.pv-kpi .v{font-family:var(--fm);font-weight:600;font-size:17px;margin-top:2px}
+.pv-kpi .d{font-size:11px;font-weight:600;margin-top:2px}
+.up{color:var(--pos)}.dn{color:var(--neg)}
+.pv-auto{background:var(--sky);border:1px solid var(--sky2);border-radius:10px;padding:11px 13px;font-size:12.5px;color:var(--deep);margin-top:12px;line-height:1.5}
+.pv-auto b{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--pos);display:block;margin-bottom:2px}
+html[dir="rtl"] .pv-auto b{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:.04em}
+.pv-chips{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.pv-chip{display:flex;gap:9px;align-items:center;font-size:12.5px;font-weight:600;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 12px}
+.sec{padding:96px 0}
+.sec.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);transition:background-color .25s}
+.sec-head{max-width:700px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(27px,3vw,38px);margin:14px 0 14px}
+.sec-head p{color:var(--ink2);font-size:16.5px}
+.prob-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+@media(max-width:1080px){.prob-grid{grid-template-columns:1fr}}
+.scattered{position:relative;height:380px}
+.snode{position:absolute;background:var(--card);border:1px dashed var(--line2);border-radius:11px;padding:10px 15px;font-size:13px;font-weight:600;color:var(--ink2);box-shadow:var(--sh);display:flex;gap:8px;align-items:center;animation:drift 7s ease-in-out infinite;white-space:nowrap}
+.snode svg{color:var(--faint);flex:none}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(var(--rot))}50%{transform:translateY(-7px) rotate(var(--rot))}}
+.scenter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--fd);font-weight:600;font-size:13px;line-height:1.3;z-index:2;box-shadow:var(--sh-lg);padding:12px}
+.scenter .q{font-family:var(--fm);font-size:26px;display:block;margin-bottom:2px;color:#9DB6E4}
+.pains{margin-top:26px;display:grid;gap:10px}
+.pains li{list-style:none;display:flex;gap:10px;font-size:14.5px;color:var(--ink2);align-items:baseline}
+.pains li::before{content:"";width:6px;height:6px;background:var(--neg);border-radius:1px;flex:none;transform:translateY(-2px) rotate(45deg)}
+.flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:12px 2px 20px}
+.fnode{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px}
+.fnode .ic{width:36px;height:36px;border-radius:9px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:12px}
+.fnode h4{font-size:14.5px;margin-bottom:5px}
+.fnode p{font-size:12.5px;color:var(--mut);line-height:1.45}
+.farrow{display:grid;place-items:center;color:var(--line2);padding:0 6px;flex:none}
+@media(max-width:900px){.farrow{transform:rotate(90deg)}}
+.callout{display:flex;gap:16px;align-items:flex-start;background:var(--sky);border:1px solid var(--sky2);border-left:4px solid var(--blue);border-radius:14px;padding:22px 26px;margin-top:34px}
+.callout .cic{width:40px;height:40px;border-radius:10px;background:var(--card);color:var(--blue);display:grid;place-items:center;flex:none}
+.callout h4{font-size:15.5px;margin-bottom:5px}
+.callout p{font-size:14px;color:var(--ink2)}
+.statline{display:flex;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;margin-top:34px}
+.statline>div{flex:1;padding:24px 26px;border-right:1px solid var(--line)}
+.statline>div:last-child{border-right:none}
+.statline b{font-family:var(--fd);font-size:22px;display:block}
+.statline span{font-size:12.5px;color:var(--mut)}
+@media(max-width:860px){.statline{flex-direction:column}.statline>div{border-right:none;border-left:none;border-bottom:1px solid var(--line)}}
+.solves{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
+@media(max-width:960px){.solves{grid-template-columns:1fr}}
+.solve-tab{width:100%;text-align:left;background:none;border:none;border-left:2px solid var(--line2);padding:13px 18px;font-size:15px;font-weight:600;color:var(--mut);transition:.2s;display:flex;gap:12px;align-items:center}
+.solve-tab:hover{color:var(--ink)}
+.solve-tab.on{color:var(--blue);border-left-color:var(--blue);background:linear-gradient(to right,rgba(30,86,200,.07),transparent)}
+.solve-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:30px 32px;min-height:340px}
+.solve-panel h3{font-size:21px;margin-bottom:6px}
+.solve-panel .lede{color:var(--mut);font-size:14px;margin-bottom:18px}
+.solve-panel ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;margin-bottom:22px}
+@media(max-width:640px){.solve-panel ul{grid-template-columns:1fr}}
+.solve-panel ul li{font-size:14px;color:var(--ink2);display:flex;gap:9px;align-items:baseline}
+.solve-panel ul li::before{content:"";width:5px;height:5px;background:var(--blue);border-radius:50%;flex:none;transform:translateY(-2px)}
+.vbar{margin-bottom:13px}
+.vbar .vt{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;gap:10px}
+.vbar .vt span{font-weight:600;color:var(--ink2)}
+.vbar .vt b{font-family:var(--fm);font-weight:600;color:var(--deep);white-space:nowrap}
+.vbar .vb{height:9px;background:var(--bg);border-radius:99px;overflow:hidden}
+.vbar .vb i{display:block;height:100%;border-radius:99px;background:var(--blue)}
+.vrow{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;padding:11px 14px;background:var(--bg);border-radius:9px;margin-bottom:8px}
+.vrow .vl{font-weight:600;color:var(--ink2);display:flex;gap:9px;align-items:center;min-width:0}
+.vrow .vl svg{flex:none}
+.vrow b{font-family:var(--fm);white-space:nowrap}
+.vstats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
+.vstat{background:var(--bg);border-radius:10px;padding:14px 16px}
+.vstat .l{font-size:11.5px;color:var(--mut);font-weight:600}
+.vstat .v{font-family:var(--fm);font-weight:600;font-size:19px;margin-top:2px}
+.vnote{font-size:12px;color:var(--mut);margin-top:10px;display:flex;gap:8px;align-items:center}
+.mbars{display:flex;align-items:flex-end;gap:10px;height:120px;padding-top:6px}
+.mbars .mb{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.mbars .mb i{display:block;width:100%;max-width:38px;border-radius:6px 6px 0 0;background:var(--blue)}
+.mbars .mb span{font-size:10.5px;color:var(--faint);font-family:var(--fm)}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}
+@media(max-width:1080px){.contact-grid{grid-template-columns:1fr}}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 30px;display:flex;gap:18px;align-items:flex-start;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s}
+.ccard:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
+.ccard.primary{border-color:var(--wa);box-shadow:0 0 0 1px var(--wa),var(--sh)}
+.ccard .cic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;flex:none}
+.ccard h3{font-size:18px;margin-bottom:6px}
+.ccard p{font-size:13.5px;color:var(--ink2);margin-bottom:16px}
+.ccard .cs{font-size:12px;color:var(--mut);font-family:var(--fm);margin-top:12px}
+.consult-strip{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sky);border:1px solid var(--sky2);border-radius:12px;padding:16px 22px;margin-top:18px;font-size:14.5px;font-weight:600;color:var(--deep)}
+.contact-note{display:flex;gap:10px;align-items:center;margin-top:18px;color:var(--mut);font-size:13.5px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink2)}
+.field label span{color:var(--neg)}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line2);border-radius:9px;padding:11px 14px;font-size:14.5px;background:var(--card);color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,86,200,.12)}
+.field .err{color:var(--neg);font-size:12.5px;margin-top:5px;display:none}
+.field.bad input,.field.bad textarea,.field.bad select{border-color:var(--neg)}
+.field.bad .err{display:block}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.req-note{font-size:12.5px;color:var(--mut);margin-top:14px}
+.success-box{background:var(--posbg);border:1px solid #BFE3D2;border-radius:12px;padding:28px;text-align:center}
+html[data-theme="dark"] .success-box{border-color:#1E4634}
+.success-box .big{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--pos);margin:10px 0 6px}
+.trust{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.trust div{flex:1;min-width:200px;padding:22px 24px;font-size:14px;font-weight:600;color:var(--ink2);border-right:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.trust div:last-child{border-right:none}
+.trust svg{color:var(--blue);flex:none}
+.band{background:var(--navy);border-radius:20px;color:#fff;padding:64px 56px;display:flex;gap:40px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.band h2{font-size:clamp(24px,3vw,34px);max-width:560px}
+.band p{color:#AFC2E4;margin-top:10px;font-size:15.5px;max-width:520px}
+.band .btn.wa{background:var(--wa);border-color:var(--wa)}
+.band .btn.o{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.band .btn.o:hover{background:rgba(255,255,255,.08)}
+@media(max-width:860px){.band{padding:44px 30px}}
+footer.m{background:var(--navy);color:#8FA3C4;padding:60px 0 40px}
+footer.m .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer.m h5{color:#fff;font-size:13px;font-family:var(--fm);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+html[dir="rtl"] footer.m h5{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0}
+footer.m a{display:block;font-size:14px;padding:4.5px 0}
+footer.m a:hover{color:#fff}
+footer.m .fine{display:flex;justify-content:space-between;padding-top:26px;font-size:12.5px;flex-wrap:wrap;gap:12px;align-items:center}
+footer.m .soc{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 14px;font-size:13px;color:#B9C8E2;margin-top:16px}
+footer.m .soc:hover{color:#fff;border-color:#fff}
+.wa-float{position:fixed;bottom:22px;left:22px;z-index:80;width:54px;height:54px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(14,138,95,.6);transition:transform .2s}
+.wa-float:hover{transform:translateY(-3px) scale(1.05)}
+.modal-bg{position:fixed;inset:0;background:rgba(10,27,51,.5);backdrop-filter:blur(3px);z-index:100;display:grid;place-items:center;padding:24px}
+.modal{background:var(--card);border-radius:16px;max-width:620px;width:100%;max-height:86vh;overflow-y:auto;box-shadow:var(--sh-lg)}
+#toasts{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:11px;font-size:13.5px;box-shadow:var(--sh-lg);display:flex;gap:10px;align-items:center;max-width:400px}
+#errbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#B3261E;color:#fff;font:12px/1.4 monospace;padding:8px 12px}
+@media(prefers-reduced-motion:reduce){,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}html.anim .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="i-user"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1-4 4-6 7.5-6s6.5 2 7.5 6"/></g>
+<g id="i-users"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.8 20c.7-3.5 3.2-5.3 6.2-5.3s5.5 1.8 6.2 5.3M16 5.4a3.5 3.5 0 0 1 0 6.2M17.8 14.9c2 .7 3.1 2.3 3.5 4.6"/></g>
+<g id="i-target"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></g>
+<g id="i-cart"><circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M3 3.5h2.5L8 15h10.5l2.5-8.5H6"/></g>
+<g id="i-invoice"><path d="M6 2.5h12v19l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></g>
+<g id="i-cash"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v.01M18 14.5v.01"/></g>
+<g id="i-chart"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></g>
+<g id="i-box"><path d="M12 2.7l8.5 4.6v9.4L12 21.3 3.5 16.7V7.3z"/><path d="M3.5 7.3L12 12l8.5-4.7M12 12v9.3"/></g>
+<g id="i-db"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+<g id="i-zap"><path d="M13 2.5L4.5 13.5H11L10 21.5l8.5-11H12z"/></g>
+<g id="i-spark"><path d="M12 3l1.9 5.6L20 10l-6.1 1.4L12 17l-1.9-5.6L4 10l6.1-1.4z"/></g>
+<g id="i-link"><path d="M10 14a4.5 4.5 0 0 0 6.4.4l3-3a4.5 4.5 0 0 0-6.4-6.4l-1.5 1.5M14 10a4.5 4.5 0 0 0-6.4-.4l-3 3a4.5 4.5 0 0 0 6.4 6.4l1.5-1.5"/></g>
+<g id="i-arrow-ur"><path d="M6 18L18 6M9 6h9v9"/></g>
+<g id="i-alert"><path d="M12 3.5L22 20H2z"/><path d="M12 10v4.5M12 17.4v.2"/></g>
+<g id="i-check"><path d="M4.5 12.5l5 5L19.5 7"/></g>
+<g id="i-x"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></g>
+<g id="i-ig"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></g>
+<g id="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g>
+<g id="i-moon"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></g>
+<g id="i-mail"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></g>
+<g id="i-wa"><path d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 8.8c-.3.8-.3 2 .6 3.5 1 1.7 2.4 2.9 4.3 3.6 1.4.5 2.4.3 3-.4l.5-.8-2.1-1.3-1 .8c-1-.4-1.9-1.2-2.5-2.3l.8-1-1.2-2.1z"/></g>
+<g id="i-sheet"><rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M4 9.5h16M4 15h16M9.5 9.5V20.5M15 9.5V20.5"/></g>
+</defs></svg>
+
+<div id="marketing">
+<nav class="mnav"><div class="wrap">
+<!-- ══ مكان اللوجو: حط <img src="logo.png" alt="Scalary X"> جوه الـ span الفاضي ده ══ -->
+<a class="logo" href="#top"><span class="logo-slot"></span><span>Scalary X</span> <small data-i18n="brand_tag"></small></a>
+<div class="links">
+<a href="#problem" data-i18n="nav_problem"></a>
+<a href="#solution" data-i18n="nav_solution"></a>
+<a href="#system" data-i18n="nav_system"></a>
+<a href="#contact" data-i18n="nav_contact"></a>
+</div>
+<a class="igbtn hide-s" href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ig"/></svg></a>
+<button type="button" class="tbtn" onclick="sxTheme()" aria-label="Toggle dark mode">
+<svg class="ic-sun" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sun"/></svg>
+<svg class="ic-moon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-moon"/></svg>
+</button>
+<button type="button" class="tbtn lang" data-lang-btn onclick="sxLang()">عربي</button>
+<a class="btn o sm hide-s" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener" data-i18n="nav_consult"></a>
+<a class="btn wa sm" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="nav_wa"></span></a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+<div>
+<span class="kicker" data-i18n="hero_kicker"></span>
+<h1 data-i18n-html="hero_title_h"></h1>
+<p class="sub" data-i18n="hero_sub"></p>
+<div class="hero-cta">
+<a class="btn wa" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="cta_wa"></span></a>
+<a class="btn o" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="cta_consult"></span> ↗</a>
+</div>
+<a class="hero-alt" href="#request"><span data-i18n="cta_request"></span><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></a>
+<div class="hero-meta">
+<div><b data-i18n="hm1b"></b><span data-i18n="hm1s"></span></div>
+<div><b data-i18n="hm2b"></b><span data-i18n="hm2s"></span></div>
+<div><b data-i18n="hm3b"></b><span data-i18n="hm3s"></span></div>
+</div>
+</div>
+<div class="pv-scene" id="pvScene"><div class="pv" id="pv">
+<div class="pv-main">
+<div class="pv-head"><div><div class="nm">Horizon Trading Co.</div><div class="sb" data-i18n="pv_sb"></div></div><span class="live"><i></i>LIVE</span></div>
+<div class="pv-kpis">
+<div class="pv-kpi"><div class="l" data-i18n="pv_sales"></div><div class="v">EGP 1.24M</div><div class="d up mono">▲ 7.6%</div></div>
+<div class="pv-kpi"><div class="l" data-i18n="pv_out"></div><div class="v">EGP 186.5k</div><div class="d dn mono" data-i18n="pv_d2"></div></div>
+<div class="pv-kpi"><div class="l" data-i18n="pv_pipe"></div><div class="v">EGP 542k</div><div class="d up mono" data-i18n="pv_d3"></div></div>
+</div>
+<svg width="100%" height="36" viewBox="0 0 110 36" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28L18,26L36,27L54,21L72,23L90,12L110,6L110,36L0,36Z" fill="rgba(30,86,200,.08)"/><path d="M0,28L18,26L36,27L54,21L72,23L90,12L110,6" fill="none" stroke="#1E56C8" stroke-width="1.8" stroke-linecap="round"/></svg>
+<div class="pv-auto"><div><b data-i18n="pv_auto_b"></b><span data-i18n="pv_auto"></span></div></div>
+<div class="pv-chips">
+<div class="pv-chip"><svg width="15" height="15" color="#BF3B3B" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-alert"/></svg><span data-i18n="pv_f1"></span></div>
+<div class="pv-chip"><svg width="15" height="15" color="#0E8A5F" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span data-i18n="pv_f2"></span></div>
+</div>
+</div>
+</div></div>
+</div></header>
+
+<section class="sec alt" id="problem"><div class="wrap">
+<div class="sec-head rv"><span class="kicker" data-i18n="prob_kicker"></span>
+<h2 data-i18n="prob_title"></h2><p data-i18n="prob_sub"></p></div>
+<div class="prob-grid">
+<div class="scattered rv">
+<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+<line x1="16" y1="13" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+<line x1="66" y1="8" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+<line x1="80" y1="37" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+<line x1="13" y1="52" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+<line x1="70" y1="68" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+<line x1="35" y1="86" x2="50" y2="50" stroke="var(--line2)" stroke-width=".5" stroke-dasharray="2 2.4"/>
+</svg>
+<div class="snode" style="left:2%;top:5%;--rot:-3deg"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-user"/></svg><span data-i18n="sc1"></span></div>
+<div class="snode" style="left:50%;top:0%;--rot:2deg;animation-delay:.6s"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sheet"/></svg><span data-i18n="sc2"></span></div>
+<div class="snode" style="left:68%;top:30%;--rot:-2deg;animation-delay:1.2s"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-box"/></svg><span data-i18n="sc3"></span></div>
+<div class="snode" style="left:1%;top:44%;--rot:2deg;animation-delay:1.8s"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="sc4"></span></div>
+<div class="snode" style="left:56%;top:60%;--rot:3deg;animation-delay:2.4s"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cash"/></svg><span data-i18n="sc5"></span></div>
+<div class="snode" style="left:22%;top:78%;--rot:-2deg;animation-delay:3s"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-db"/></svg><span data-i18n="sc6"></span></div>
+<div class="scenter"><span class="q">?</span><span style="font-size:13px;font-family:var(--fd)" data-i18n="sc_q"></span></div>
+</div>
+<div class="rv">
+<h3 style="font-size:20px;margin-bottom:8px" data-i18n="prob_ct"></h3>
+<p style="color:var(--ink2);font-size:14.5px" data-i18n="prob_cs"></p>
+<ul class="pains">
+<li data-i18n-html="p1"></li><li data-i18n-html="p2"></li><li data-i18n-html="p3"></li>
+<li data-i18n-html="p4"></li><li data-i18n-html="p5"></li><li data-i18n-html="p6"></li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<section class="sec" id="solution"><div class="wrap">
+<div class="sec-head rv"><span class="kicker" data-i18n="sol_kicker"></span>
+<h2 data-i18n="sol_title"></h2><p data-i18n="sol_sub"></p></div>
+<div class="flow rv">
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-user"/></svg></div><h4 data-i18n="flow1t"></h4><p data-i18n="flow1s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg></div><h4 data-i18n="flow2t"></h4><p data-i18n="flow2s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-target"/></svg></div><h4 data-i18n="flow3t"></h4><p data-i18n="flow3s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cart"/></svg></div><h4 data-i18n="flow4t"></h4><p data-i18n="flow4s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-invoice"/></svg></div><h4 data-i18n="flow5t"></h4><p data-i18n="flow5s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cash"/></svg></div><h4 data-i18n="flow6t"></h4><p data-i18n="flow6s"></p></div>
+<div class="farrow"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></div>
+<div class="fnode"><div class="ic"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chart"/></svg></div><h4 data-i18n="flow7t"></h4><p data-i18n="flow7s"></p></div>
+</div>
+<div class="callout rv">
+<div class="cic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-alert"/></svg></div>
+<div><h4 data-i18n="callout_t"></h4><p data-i18n="callout_b"></p></div>
+</div>
+<div class="statline rv">
+<div><b data-i18n="st1b"></b><span data-i18n="st1s"></span></div>
+<div><b data-i18n="st2b"></b><span data-i18n="st2s"></span></div>
+<div><b data-i18n="st3b"></b><span data-i18n="st3s"></span></div>
+</div>
+</div></section>
+
+<section class="sec alt" id="system"><div class="wrap">
+<div class="sec-head rv"><span class="kicker" data-i18n="sys_kicker"></span>
+<h2 data-i18n="sys_title"></h2><p data-i18n="sys_sub"></p></div>
+<div class="solves rv">
+<div id="solveTabs" role="tablist">
+<button type="button" class="solve-tab on" onclick="sxTab(0)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-target"/></svg><span data-i18n="sv1t"></span></button>
+<button type="button" class="solve-tab" onclick="sxTab(1)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg><span data-i18n="sv2t"></span></button>
+<button type="button" class="solve-tab" onclick="sxTab(2)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-invoice"/></svg><span data-i18n="sv3t"></span></button>
+<button type="button" class="solve-tab" onclick="sxTab(3)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-box"/></svg><span data-i18n="sv4t"></span></button>
+<button type="button" class="solve-tab" onclick="sxTab(4)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg><span data-i18n="sv5t"></span></button>
+<button type="button" class="solve-tab" onclick="sxTab(5)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-spark"/></svg><span data-i18n="sv6t"></span></button>
+</div>
+<div class="solve-panel" id="solvePanel" role="tabpanel">
+<h3 data-i18n="sv1t"></h3><div class="lede" data-i18n="sv1l"></div>
+<ul>
+<li data-i18n="sv1i1"></li><li data-i18n="sv1i2"></li><li data-i18n="sv1i3"></li><li data-i18n="sv1i4"></li><li data-i18n="sv1i5"></li>
+</ul>
+<div class="vbar"><div class="vt"><span data-i18n="stg_new"></span><b>EGP 96k · 4</b></div><div class="vb"><i style="width:57%"></i></div></div>
+<div class="vbar"><div class="vt"><span data-i18n="stg_qualified"></span><b>EGP 118k · 3</b></div><div class="vb"><i style="width:70%"></i></div></div>
+<div class="vbar"><div class="vt"><span data-i18n="stg_proposal"></span><b>EGP 168k · 3</b></div><div class="vb"><i style="width:100%"></i></div></div>
+<div class="vbar"><div class="vt"><span data-i18n="stg_negotiation"></span><b>EGP 160k · 2</b></div><div class="vb"><i style="width:95%"></i></div></div>
+</div>
+</div>
+</div></section>
+
+<section class="sec" id="contact"><div class="wrap">
+<div class="sec-head rv"><span class="kicker" data-i18n="ct_kicker"></span>
+<h2 data-i18n="ct_title"></h2><p data-i18n="ct_sub"></p></div>
+<div class="contact-grid rv">
+<div class="ccard primary"><div class="cic" style="background:var(--posbg);color:var(--wa)"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg></div>
+<div><h3 data-i18n="ct_wa_t"></h3><p data-i18n="ct_wa_d"></p>
+<a class="btn wa" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="ct_wa_b"></span></a>
+<div class="cs" data-i18n="ct_wa_s"></div></div></div>
+<div class="ccard"><div class="cic" style="background:var(--sky);color:var(--blue)"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg></div>
+<div><h3 data-i18n="ct_mail_t"></h3><p data-i18n="ct_mail_d"></p>
+<a class="btn" href="mailto:xscalary@gmail.com"><span data-i18n="ct_mail_b"></span></a>
+<div class="cs" data-i18n="ct_mail_s"></div></div></div>
+<div class="ccard"><div class="cic" style="background:var(--sky);color:var(--deep)"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ig"/></svg></div>
+<div><h3 data-i18n="ct_ig_t"></h3><p data-i18n="ct_ig_d"></p>
+<a class="btn" href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener">@scalary_x ↗</a>
+<div class="cs" data-i18n="ct_ig_s"></div></div></div>
+</div>
+<div class="consult-strip rv">
+<span data-i18n="ct_consult"></span>
+<a class="btn blue sm" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="nav_consult"></span> ↗</a>
+</div>
+<div class="contact-note rv"><svg width="16" height="16" color="#0E8A5F" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span data-i18n="ct_note"></span></div>
+</div></section>
+
+<section class="sec alt" id="request"><div class="wrap">
+<div class="sec-head rv"><span class="kicker" data-i18n="rq_kicker"></span>
+<h2 data-i18n="rq_title"></h2><p data-i18n="rq_sub"></p></div>
+<div class="rv" style="max-width:820px"><div class="card pad" id="reqBox">
+<form id="reqForm" novalidate onsubmit="return sxSubmit(event)">
+<h3 style="font-size:17px;margin-bottom:4px" data-i18n="rq_head"></h3>
+<p style="font-size:13.5px;color:var(--mut);margin-bottom:22px" data-i18n="rq_head_s"></p>
+<div class="form-grid">
+<div class="field"><label><span data-i18n="f_name"></span> <span>*</span></label><input name="name" required/><div class="err" data-i18n="e_req"></div></div>
+<div class="field"><label><span data-i18n="f_company"></span> <span>*</span></label><input name="company" required/><div class="err" data-i18n="e_req"></div></div>
+<div class="field"><label><span data-i18n="f_btype"></span> <span>*</span></label>
+<select name="btype" required>
+<option value="" data-i18n="ph_btype"></option>
+<option data-i18n="opt1"></option><option data-i18n="opt2"></option><option data-i18n="opt3"></option>
+<option data-i18n="opt4"></option><option data-i18n="opt5"></option><option data-i18n="opt6"></option>
+</select><div class="err" data-i18n="e_req"></div></div>
+<div class="field"><label><span data-i18n="f_email"></span> <span>*</span></label><input name="email" type="email" required/><div class="err" data-i18n="e_email"></div></div>
+<div class="field"><label><span data-i18n="f_phone"></span> <span>*</span></label><input name="phone" type="tel" required/><div class="err" data-i18n="e_req"></div></div>
+<div class="field"><label data-i18n="f_systems"></label><input name="systems" data-i18n-ph="ph_systems"/></div>
+<div class="field" style="grid-column:1/-1"><label><span data-i18n="f_problem"></span> <span>*</span></label><textarea name="problem" rows="2" required data-i18n-ph="ph_problem"></textarea><div class="err" data-i18n="e_problem"></div></div>
+<div class="field"><label data-i18n="f_sources"></label><input name="sources" data-i18n-ph="ph_sources"/></div>
+<div class="field"><label data-i18n="f_reporting"></label><input name="reporting" data-i18n-ph="ph_reporting"/></div>
+<div class="field" style="grid-column:1/-1"><label data-i18n="f_automate"></label><input name="automate" data-i18n-ph="ph_automate"/></div>
+<div class="field" style="grid-column:1/-1"><label data-i18n="f_msg"></label><textarea name="msg" rows="2"></textarea></div>
+</div>
+<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+<button class="btn blue" type="submit" data-i18n="rq_submit"></button>
+<a class="btn wa" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="cta_wa"></span></a>
+<span class="req-note" data-i18n="rq_note"></span>
+</div>
+</form>
+</div></div>
+</div></section>
+
+<section class="sec" style="padding-top:20px"><div class="wrap">
+<div class="trust rv">
+<div><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-db"/></svg><span data-i18n="tr1"></span></div>
+<div><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg><span data-i18n="tr2"></span></div>
+<div><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-box"/></svg><span data-i18n="tr3"></span></div>
+<div><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-spark"/></svg><span data-i18n="tr4"></span></div>
+<div><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-link"/></svg><span data-i18n="tr5"></span></div>
+</div>
+<div class="band rv" style="margin-top:70px">
+<div><h2 data-i18n-html="band_t"></h2><p data-i18n="band_s"></p></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a class="btn wa" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="band_cta1"></span></a>
+<a class="btn o" href="#request" data-i18n="band_cta2"></a>
+</div>
+</div>
+</div></section>
+
+<footer class="m"><div class="wrap">
+<div class="cols">
+<div>
+<a class="logo" style="margin-bottom:16px" href="#top"><span class="logo-slot"></span>Scalary X</a>
+<p style="font-size:13.5px;max-width:280px;line-height:1.6" data-i18n="ft_desc"></p>
+<a class="soc" href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ig"/></svg>@scalary_x</a></div>
+<div><h5 data-i18n="ft_sol"></h5><a href="#solution" data-i18n="fs1"></a><a href="#system" data-i18n="fs2"></a><a href="#system" data-i18n="fs3"></a><a href="#system" data-i18n="fs4"></a></div>
+<div><h5 data-i18n="ft_comp"></h5><a href="#contact" data-i18n="fc1"></a><a href="#" onclick="sxDoc('privacy');return false" data-i18n="fc2"></a><a href="#" onclick="sxDoc('terms');return false" data-i18n="fc3"></a></div>
+<div><h5 data-i18n="ft_start"></h5>
+<a href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener" data-i18n="fg1"></a>
+<a href="mailto:xscalary@gmail.com" data-i18n="fg2"></a>
+<a href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener" data-i18n="fg3"></a>
+<a href="#request" data-i18n="fg4"></a></div>
+</div>
+<div class="fine">
+<span>© <span id="yr">2025</span> Scalary X · <span data-i18n="ft_rights"></span></span>
+<span style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+<a href="https://wa.me/201105920342" target="_blank" rel="noopener" style="display:inline-flex;gap:7px;align-items:center"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg>+20 110 592 0342</a>
+<a href="mailto:xscalary@gmail.com">xscalary@gmail.com</a>
+<a href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener" style="display:inline-flex;gap:7px;align-items:center"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ig"/></svg>@scalary_x</a>
+</span>
+</div>
+</div></footer>
+</div>
+
+<a class="wa-float" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener" aria-label="WhatsApp">
+<svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg>
+</a>
+
+<div id="toasts" aria-live="polite"></div>
+<div id="errbar"></div>
+
+<script>
+/* ══ 2) ERROR DIAGNOSTIC — لو حصل أي خطأ هيرسم شريط أحمر تحت ══ */
+window.addEventListener('error',function(e){
+try{
+var b=document.getElementById('errbar');
+b.style.display='block';
+b.textContent='⚠ JS Error: '+(e && e.message ? e.message : 'unknown');
+}catch(x){}
+});
+
+/* ══ 3) LANGUAGE ENGINE — standalone ══ */
+window.LANG=(function(){try{var v=String(localStorage.getItem('sx_lang')||'en').replace(/"/g,'').trim().toLowerCase();return v==='ar'?'ar':'en'}catch(e){return 'en'}})();
+var DICT={
+en:{
+brand_tag:'CRM + ERP SYSTEM',nav_problem:'The Problem',nav_solution:'How It Works',nav_system:'The System',nav_contact:'Contact',nav_consult:'Free Consultation',nav_wa:'WhatsApp Us',
+hero_kicker:'Custom CRM + ERP Systems — Built Around Your Business',
+hero_title_h:'Sales and Operations,<br/><em>One Connected System.</em>',
+hero_sub:'We don\u2019t sell you another tool. We build a CRM + ERP system connected to your business \u2014 leads, deals, inventory, orders, invoices, and payments flowing in one connected workflow, from first contact to collected payment.',
+cta_wa:'WhatsApp Us',cta_consult:'Book a Free Consultation',cta_request:'Or request your system',
+hm1b:'One system',hm1s:'for CRM + ERP',hm2b:'Lead \u2192 Payment',hm2s:'one connected flow',hm3b:'Zero',hm3s:'double data entry',
+pv_sb:'DISTRIBUTION \u00b7 EGP',pv_sales:'Sales \u00b7 6 months',pv_out:'Outstanding',pv_pipe:'Open pipeline',
+pv_d2:'6 open invoices',pv_d3:'12 active deals',pv_auto_b:'LIVE AUTOMATION',
+pv_auto:'Deal won \u2192 Order ORD-1042 + Invoice INV-2087 created automatically \u2014 stock reserved, customer profile updated.',
+pv_f1:'3 invoices overdue \u2014 sales team notified',pv_f2:'Low stock: 2 products flagged for reorder',
+prob_kicker:'The operational problem',prob_title:'Sales in One Place. Stock in Another. Invoices in a Third.',
+prob_sub:'Most companies track leads in a notebook or WhatsApp, invoice from Excel, and follow stock on paper. Every deal that closes gets re-typed somewhere else \u2014 and things fall through the cracks.',
+prob_ct:'What this costs you every week',prob_cs:'When sales and operations live in different places:',
+p1:'<b>Double data entry</b> \u2014 the same customer and order written in 2\u20133 places.',
+p2:'<b>Slow invoicing</b> \u2014 days between closing a deal and sending the invoice.',
+p3:'<b>Cash-flow blindness</b> \u2014 who owes you what, and since when, is hard to answer.',
+p4:'<b>Stock surprises</b> \u2014 sales promises items the warehouse can\u2019t confirm.',
+p5:'<b>Lost follow-ups</b> \u2014 interested leads go cold because nobody tracked them.',
+p6:'<b>Manual reports</b> \u2014 hours of consolidation that are outdated the moment they\u2019re done.',
+sc1:'CRM / sales notebook',sc2:'Excel \u2014 invoices',sc3:'Stock on paper',sc4:'WhatsApp orders',sc5:'Bank statements',sc6:'Accounting tool',sc_q:'Where is the real number?',
+sol_kicker:'The solution',sol_title:'One Connected Workflow: Lead \u2192 Payment \u2192 Report',
+sol_sub:'We connect customer management and business operations into a single flow inside your system. When a deal is won, the order is created, the invoice is generated, the payment is tracked, and management dashboards update \u2014 automatically.',
+callout_t:'Important \u2014 read this first',
+callout_b:'We don\u2019t sell a ready-made platform. We build a system around YOUR business: your products, your workflow, your team \u2014 then connect it to the way you already work. The result feels like it was always yours, because it was built for you.',
+flow1t:'Lead',flow1s:'Captured & qualified',flow2t:'Customer',flow2s:'Full profile & history',flow3t:'Deal',flow3s:'Stages, value & owner',flow4t:'Order',flow4s:'Created on deal-won',flow5t:'Invoice',flow5s:'Generated from the order',flow6t:'Payment',flow6s:'Paid / unpaid / overdue',flow7t:'Reports',flow7s:'Dashboards update instantly',
+st1b:'Built for you',st1s:'A system shaped around your business \u2014 not a one-size tool',st2b:'Automated',st2s:'Won deals become orders and invoices by themselves',st3b:'One database',st3s:'CRM and ERP share the same data \u2014 never two systems',
+sys_kicker:'The system',sys_title:'Everything Sales and Operations Need \u2014 Connected',sys_sub:'A quick look at what the system manages. The first area is open below \u2014 click any area to explore it.',
+sv1t:'Sales & Pipeline',sv1l:'A clean pipeline that keeps every deal moving \u2014 from first contact to closed.',sv1i1:'Lead capture & qualification',sv1i2:'Deal stages with values & owners',sv1i3:'Expected close dates',sv1i4:'Sales team performance',sv1i5:'Follow-up activities & reminders',
+sv2t:'Customer 360',sv2l:'One profile with the customer\u2019s entire relationship with your company.',sv2i1:'Contact & company details',sv2i2:'Open & won deals',sv2i3:'All orders & invoices',sv2i4:'Payment status & total spend',sv2i5:'Notes, follow-ups & full timeline',
+sv3t:'Invoicing & Payments',sv3l:'Get paid faster with invoices generated straight from closed deals.',sv3i1:'Invoices auto-created from orders',sv3i2:'Paid / Unpaid / Overdue status',sv3i3:'One-click payment recording',sv3i4:'Outstanding receivables at a glance',sv3i5:'Customer payment history',
+sv4t:'Inventory & Suppliers',sv4l:'Know your stock before you promise it \u2014 and reorder before it runs out.',sv4i1:'Products with live stock levels',sv4i2:'Low-stock alerts & PO drafts',sv4i3:'Suppliers & purchase records',sv4i4:'Stock updated by every order',sv4i5:'Category & valuation view',
+sv5t:'Automation',sv5l:'The workflow connects itself \u2014 so nobody re-types anything.',sv5i1:'Deal won \u2192 order created',sv5i2:'Order \u2192 invoice generated',sv5i3:'Payment \u2192 status updated',sv5i4:'Low stock \u2192 alert & PO draft',sv5i5:'Every event logged',
+sv6t:'Reports & AI',sv6l:'Management sees the whole business \u2014 and the AI explains it.',sv6i1:'Sales & revenue dashboards',sv6i2:'Outstanding receivables report',sv6i3:'Top products & top salespeople',sv6i4:'Expense breakdown',sv6i5:'AI assistant over your data',
+vis_deals:'deals',vis_spend:'Total spend',vis_custs:'Active customers',vis_aov:'Avg order value',vis_repeat:'Repeat rate',vis_invoices:'invoices',vis_sup:'suppliers',vis_po:'PO drafts ready',vis_left:'left',vis_revh:'Monthly sales \u2014 last 6 months',
+stg_new:'New',stg_qualified:'Qualified',stg_proposal:'Proposal',stg_negotiation:'Negotiation',inv_paid:'Paid',inv_unpaid:'Unpaid',inv_overdue:'Overdue',
+ct_kicker:'Talk to us',ct_title:'Let\u2019s Map Your Business \u2014 Then Build The System Around It',ct_sub:'The fastest way to start is WhatsApp. Prefer email or a scheduled call? Whatever works for you.',
+ct_wa_t:'WhatsApp \u2014 fastest response',ct_wa_d:'Message us directly: tell us about your business and we\u2019ll reply with the next step \u2014 usually within the hour during work hours.',ct_wa_b:'Start WhatsApp Chat',ct_wa_s:'+20 110 592 0342 \u00b7 primary channel',
+ct_mail_t:'Email',ct_mail_d:'Send us the details of your workflow, systems, and what you want to connect \u2014 we\u2019ll come back with a clear plan.',ct_mail_b:'xscalary@gmail.com',ct_mail_s:'Replies within one business day',
+ct_ig_t:'Instagram',ct_ig_d:'See the system in action, ask questions, or DM us \u2014 whatever is easiest.',ct_ig_s:'DMs open',
+ct_consult:'Prefer a scheduled call? Book a free 30-minute consultation:',ct_note:'The consultation is completely free and comes with no obligation.',
+rq_kicker:'Client request',rq_title:'Request Your System',rq_sub:'Tell us how your business runs today \u2014 we\u2019ll map the workflow and design the system around it.',
+rq_head:'Business assessment request',rq_head_s:'Takes about 3 minutes. Everything you share stays confidential.',
+f_name:'Full name',f_company:'Company',f_btype:'Business type',f_email:'Email',f_phone:'Phone',f_systems:'Current systems & tools',f_problem:'Main business problem',f_sources:'Teams & tools in use',f_reporting:'Current reporting process',f_automate:'What should be connected first?',f_msg:'Message (optional)',
+ph_btype:'Select\u2026',ph_systems:'e.g. Excel invoices, notebook CRM, paper stock\u2026',ph_problem:'e.g. invoices take days, stock is never sure\u2026',ph_sources:'Sales team, warehouse, accounting\u2026',ph_reporting:'e.g. manual monthly consolidation',ph_automate:'deals \u2192 orders \u2192 invoices\u2026',
+opt1:'Distribution / Trading',opt2:'Retail',opt3:'Manufacturing',opt4:'Services',opt5:'Healthcare',opt6:'Other',
+e_req:'Required.',e_email:'Valid email required.',e_problem:'Tell us the core problem.',
+rq_submit:'Submit Request',rq_note:'We only ask for what\u2019s needed to prepare your assessment \u2014 no sensitive credentials, ever.',
+rq_ok_t:'Request received \u2014 reference',rq_ok_b:'We\u2019ll review your workflow and come back within one business day. For a faster reply, message us on WhatsApp.',rq_ok_cta:'Message us on WhatsApp',
+tr1:'CRM and ERP on one connected database',tr2:'Deals become invoices \u2014 automatically',tr3:'Inventory connected to every sale',tr4:'AI assistant over your business data',tr5:'A system built around your business \u2014 not a one-size tool',
+band_t:'Stop running sales and operations<br/>in disconnected tools.',band_s:'Message us on WhatsApp, or book a free consultation \u2014 we\u2019ll walk through your current workflow and show you what the connected system looks like.',band_cta1:'WhatsApp Us',band_cta2:'Request Your System',
+ft_desc:'Custom CRM + ERP systems built around your business. Leads, deals, inventory, orders, invoices, and payments \u2014 one connected workflow.',
+ft_sol:'The System',fs1:'How It Works',fs2:'Sales & Pipeline',fs3:'Invoicing & Payments',fs4:'Inventory & Suppliers',
+ft_comp:'Company',fc1:'Contact',fc2:'Privacy',fc3:'Terms',ft_start:'Get started',fg1:'WhatsApp Us',fg2:'Email Us',fg3:'Book a Free Consultation',fg4:'Request Your System',ft_rights:'All rights reserved.',
+t_fix:'Please fix the highlighted fields',t_req:'Request submitted \u00b7 ref',
+priv_t:'Privacy',priv_b:'This website stores your preferences and request-form submissions only in your own browser (localStorage). Nothing is sent to any server from this page.',
+terms_t:'Terms of use',terms_b:'This is a marketing demonstration page. Numbers shown in the preview are illustrative examples \u2014 never presented as verified client results.'
+},
+ar:{
+brand_tag:'نظام CRM + ERP متكامل',nav_problem:'المشكلة',nav_solution:'كيف يعمل',nav_system:'السيستم',nav_contact:'تواصل',nav_consult:'استشارة مجانية',nav_wa:'تواصل واتساب',
+hero_kicker:'أنظمة CRM + ERP مخصصة — مبنية حول عملك',
+hero_title_h:'المبيعات والعمليات،<br/><em>في سيستم واحد مترابط.</em>',
+hero_sub:'إحنا مش بنبيعك أداة جاهزة. إحنا نبني سيستم CRM + ERP مربوط بعملك أنت — العملاء المحتملون والصفقات والمخزون والطلبات والفواتير والمدفوعات في مسار واحد مترابط، من أول تواصل حتى تحصيل الفاتورة.',
+cta_wa:'تواصل واتساب',cta_consult:'احجز استشارة مجانية',cta_request:'أو اطلب سيستمك',
+hm1b:'سيستم واحد',hm1s:'للـ CRM والـ ERP',hm2b:'عميل → تحصيل',hm2s:'مسار واحد مترابط',hm3b:'صفر',hm3s:'إدخال بيانات مزدوج',
+pv_sb:'توزيع · EGP',pv_sales:'المبيعات · 6 أشهر',pv_out:'مبالغ مستحقة',pv_pipe:'صفقات مفتوحة',
+pv_d2:'6 فواتير مفتوحة',pv_d3:'12 صفقة نشطة',pv_auto_b:'أتمتة مباشرة',
+pv_auto:'فوز صفقة ← إنشاء الطلب ORD-1042 والفاتورة INV-2087 تلقائيًا — حجز المخزون وتحديث ملف العميل.',
+pv_f1:'3 فواتير متأخرة — تم تنبيه فريق المبيعات',pv_f2:'مخزون منخفض: منتجان معلَّمان لإعادة التوريد',
+prob_kicker:'المشكلة التشغيلية',prob_title:'المبيعات في مكان، والمخزون في مكان، والفواتير في مكان تالت.',
+prob_sub:'معظم الشركات بتتابع العملاء في دفتر أو واتساب، وبتصدر الفواتير من إكسل، وبتتابع المخزون على ورق. كل صفقة بتقفل تُعاد كتابتها في مكان تاني — وحاجات بتضيع في الطريق.',
+prob_ct:'ماذا يكلّفك هذا كل أسبوع',prob_cs:'عندما تعيش المبيعات والعمليات في أماكن منفصلة:',
+p1:'<b>إدخال بيانات مزدوج</b> — نفس العميل والطلب يُكتب في 2–3 أماكن.',
+p2:'<b>فواتير بطيئة</b> — أيام تفصل إغلاق الصفقة عن إرسال الفاتورة.',
+p3:'<b>عمى في التدفق النقدي</b> — مين مديون لك بمقاب إيه ومن إمتى؟ سؤال صعب.',
+p4:'<b>مفاجآت مخزون</b> — المبيعات تَعِد بأصناف المخزن مش قادر يؤكدها.',
+p5:'<b>متابعات ضايعة</b> — عملاء مهتمون باردوا لأن حد ما تابعهمش.',
+p6:'<b>تقارير يدوية</b> — ساعات تجميع بتطلع قديمة لحظة ما تخلص.',
+sc1:'دفتر CRM / مبيعات',sc2:'إكسل — فواتير',sc3:'المخزون على ورق',sc4:'طلبات واتساب',sc5:'كشوف البنك',sc6:'برنامج محاسبة',sc_q:'الرقم الحقيقي فين؟',
+sol_kicker:'الحل',sol_title:'مسار واحد مترابط: عميل → تحصيل → تقرير',
+sol_sub:'نربط إدارة العملاء بالعمليات في مسار واحد جوه سيستمك. الصفقة تتقفل؟ الطلب بيتنشأ، والفاتورة بتتولد، والدفعة بتتتابع، ولوحات الإدارة تتحدث — تلقائيًا.',
+callout_t:'مهم — اقرأ ده الأول',
+callout_b:'إحنا مش بنبيع برنامج جاهز. إحنا نبني سيستم حول عملك أنت: منتجاتك، ومسار شغلك، وفريقك — ونربطه بطريقتك الحالية في العمل. النتيجة تحس إنها كانت بتاعتك من الأول، لأنها اتعملت ليك خصيصًا.',
+flow1t:'عميل محتمل',flow1s:'يُسجَّل ويُؤهَّل',flow2t:'عميل',flow2s:'ملف كامل وسجل',flow3t:'صفقة',flow3s:'مراحل وقيمة ومسؤول',flow4t:'طلب',flow4s:'يُنشأ عند الفوز',flow5t:'فاتورة',flow5s:'تُولَّد من الطلب',flow6t:'دفعة',flow6s:'مدفوع / مستحق / متأخر',flow7t:'تقارير',flow7s:'اللوحات تتحدث فورًا',
+st1b:'مبني ليك',st1s:'سيستم مشكَّل حول عملك — مش أداة موحّدة للكل',st2b:'مؤتمت',st2s:'الصفقات الرابحة تتحول لطلبات وفواتير بنفسها',st3b:'قاعدة بيانات واحدة',st3s:'الـ CRM والـ ERP على نفس البيانات — مش نظامين',
+sys_kicker:'السيستم',sys_title:'كل ما تحتاجه المبيعات والعمليات — مترابط',sys_sub:'نظرة سريعة على ما يديره السيستم. المجال الأول مفتوح تحت — واضغط على أي مجال تستكشفه.',
+sv1t:'المبيعات والمسار',sv1l:'مسار واضح يحافظ على حركة كل صفقة — من أول تواصل حتى الإغلاق.',sv1i1:'تسجيل وتأهيل العملاء المحتملين',sv1i2:'مراحل الصفقات بالقيم والمسؤولين',sv1i3:'تواريخ الإغلاق المتوقعة',sv1i4:'أداء فريق المبيعات',sv1i5:'أنشطة متابعة وتذكيرات',
+sv2t:'العميل 360',sv2l:'ملف واحد بعلاقة العميل الكاملة مع شركتك.',sv2i1:'بيانات التواصل والشركة',sv2i2:'الصفقات المفتوحة والرابحة',sv2i3:'كل الطلبات والفواتير',sv2i4:'حالة الدفع وإجمالي الإنفاق',sv2i5:'ملاحظات ومتابعات وسجل كامل',
+sv3t:'الفواتير والمدفوعات',sv3l:'تحصّل أسرع بفواتير تتولد مباشرة من الصفقات المغلقة.',sv3i1:'فواتير تُنشأ تلقائيًا من الطلبات',sv3i2:'حالة مدفوعة / مستحقة / متأخرة',sv3i3:'تسجيل الدفع بنقرة واحدة',sv3i4:'المستحقات في لمحة',sv3i5:'سجل مدفوعات كل عميل',
+sv4t:'المخزون والموردون',sv4l:'اعرف مخزونك قبل ما تَعِد بيه — وأعد الطلب قبل النفاد.',sv4i1:'منتجات بمستويات مخزون حية',sv4i2:'تنبيهات نقص ومسودات أوامر شراء',sv4i3:'الموردون وسجلات الشراء',sv4i4:'المخزون يتحدّث مع كل طلب',sv4i5:'عرض الفئات والتقييم',
+sv5t:'الأتمتة',sv5l:'المسار بيربط نفسه — فمحدش بيعيد كتابة أي حاجة.',sv5i1:'فوز صفقة ← إنشاء طلب',sv5i2:'طلب ← إصدار فاتورة',sv5i3:'دفعة ← تحديث الحالة',sv5i4:'نقص مخزون ← تنبيه ومسودة أمر شراء',sv5i5:'كل حدث يُسجَّل',
+sv6t:'التقارير والذكاء الاصطناعي',sv6l:'الإدارة تشوف العمل كله — والذكاء الاصطناعي يشرحه.',sv6i1:'لوحات المبيعات والإيرادات',sv6i2:'تقرير المستحقات',sv6i3:'أفضل المنتجات وأفضل المناديب',sv6i4:'تحليل المصروفات',sv6i5:'مساعد ذكي فوق بياناتك',
+vis_deals:'صفقات',vis_spend:'إجمالي الإنفاق',vis_custs:'عملاء نشطون',vis_aov:'متوسط قيمة الطلب',vis_repeat:'نسبة تكرار الشراء',vis_invoices:'فاتورة',vis_sup:'موردين',vis_po:'مسودة أمر شراء جاهزة',vis_left:'متبقي',vis_revh:'المبيعات الشهرية — آخر 6 أشهر',
+stg_new:'جديدة',stg_qualified:'مؤهلة',stg_proposal:'عرض مُقدَّم',stg_negotiation:'تفاوض',inv_paid:'مدفوعة',inv_unpaid:'مستحقة',inv_overdue:'متأخرة',
+ct_kicker:'تواصل معنا',ct_title:'نرسم مسار عملك معك — وبعدها نبني السيستم حوله',ct_sub:'أسرع طريق للبداية هو الواتساب. تفضل الإيميل أو مكالمة مجدولة؟ اللي يريحك.',
+ct_wa_t:'واتساب — أسرع رد',ct_wa_d:'كلمنا مباشرة: احكِ لنا عن عملك وهنرد عليك بالخطوة الجاية — عادة خلال ساعة في مواعيد العمل.',ct_wa_b:'ابدأ محادثة واتساب',ct_wa_s:'+20 110 592 0342 · القناة الأساسية',
+ct_mail_t:'البريد الإلكتروني',ct_mail_d:'ابعتلنا تفاصيل مسار شغلك وأنظمتك واللي عايز تربطه — وهنرجع لك بخطة واضحة.',ct_mail_b:'xscalary@gmail.com',ct_mail_s:'رد خلال يوم عمل واحد',
+ct_ig_t:'إنستغرام',ct_ig_d:'شوف السيستم شغال، اسأل أسئلتك، أو ابعتلنا رسالة — أي طريقة تريحك.',ct_ig_s:'الرسائل مفتوحة',
+ct_consult:'تفضل مكالمة مجدولة؟ احجز استشارة مجانية 30 دقيقة:',ct_note:'الاستشارة مجانية بالكامل وبدون أي التزام.',
+rq_kicker:'طلب العميل',rq_title:'اطلب سيستمك',rq_sub:'أخبرنا كيف يعمل عملك اليوم — هنرسم المسار ونصمم السيستم حوله.',
+rq_head:'طلب تقييم الأعمال',rq_head_s:'يستغرق حوالي 3 دقائق. كل ما تشاركه يبقى سريًا.',
+f_name:'الاسم الكامل',f_company:'الشركة',f_btype:'نوع النشاط',f_email:'البريد الإلكتروني',f_phone:'الهاتف',f_systems:'الأنظمة والأدوات الحالية',f_problem:'المشكلة الرئيسية في عملك',f_sources:'الفرق والأدوات المستخدمة',f_reporting:'عملية التقارير الحالية',f_automate:'ما أول ما نربطه؟',f_msg:'رسالة (اختياري)',
+ph_btype:'اختر…',ph_systems:'مثال: فواتير إكسل، دفتر للعملاء، مخزون ورقي…',ph_problem:'مثال: الفواتير بتاخد أيام، والمخزون مش مؤكد أبدًا…',ph_sources:'فريق المبيعات، المخزن، الحسابات…',ph_reporting:'مثال: تجميع شهري يدوي',ph_automate:'الصفقات ← الطلبات ← الفواتير…',
+opt1:'توزيع / تجارة',opt2:'تجزئة',opt3:'تصنيع',opt4:'خدمات',opt5:'رعاية صحية',opt6:'أخرى',
+e_req:'مطلوب.',e_email:'بريد إلكتروني صحيح مطلوب.',e_problem:'أخبرنا بالمشكلة الأساسية.',
+rq_submit:'أرسل الطلب',rq_note:'لا نطلب سوى ما يلزم لإعداد تقييمك — ولا نطلب أي بيانات دخول حساسة أبدًا.',
+rq_ok_t:'تم استلام طلبك — المرجع',rq_ok_b:'سنراجع مسار عملك ونعود إليك خلال يوم عمل. لرد أسرع، كلمنا واتساب.',rq_ok_cta:'كلمنا واتساب',
+tr1:'الـ CRM والـ ERP على قاعدة بيانات واحدة مترابطة',tr2:'الصفقات تتحول لفواتير — تلقائيًا',tr3:'المخزون مرتبط بكل عملية بيع',tr4:'مساعد ذكي فوق بيانات عملك',tr5:'سيستم مبني حول عملك أنت — مش أداة موحّدة للكل',
+band_t:'بطل تدير المبيعات والعمليات<br/>في أدوات متفرقة.',band_s:'كلمنا واتساب أو احجز استشارة مجانية — هنستعرض مسارك الحالي ونريك شكل السيستم المترابط.',band_cta1:'تواصل واتساب',band_cta2:'اطلب سيستمك',
+ft_desc:'أنظمة CRM + ERP مخصصة مبنية حول عملك. العملاء المحتملون والصفقات والمخزون والطلبات والفواتير والمدفوعات — مسار واحد مترابط.',
+ft_sol:'السيستم',fs1:'كيف يعمل',fs2:'المبيعات والمسار',fs3:'الفواتير والمدفوعات',fs4:'المخزون والموردون',
+ft_comp:'الشركة',fc1:'تواصل',fc2:'الخصوصية',fc3:'الشروط',ft_start:'ابدأ الآن',fg1:'تواصل واتساب',fg2:'راسلنا بالإيميل',fg3:'احجز استشارة مجانية',fg4:'اطلب سيستمك',ft_rights:'جميع الحقوق محفوظة.',
+t_fix:'صحّح الحقول المظللة من فضلك',t_req:'تم إرسال الطلب · مرجع',
+priv_t:'الخصوصية',priv_b:'هذا الموقع يحفظ تفضيلاتك وطلباتك في متصفحك فقط (localStorage). لا يُرسل أي شيء إلى أي خادم من هذه الصفحة.',
+terms_t:'شروط الاستخدام',terms_b:'هذه صفحة عرض تسويقي. الأرقام في المعاينة أمثلة توضيحية — ولا تُقدَّم أبدًا كنتائج عملاء موثقة.'
+}};
+function T(k){var v=(window.LANG==='ar'&&DICT.ar[k]!=null)?DICT.ar[k]:DICT.en[k];return v!=null?v:k}
+function qsa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+function applyLang(){
+document.documentElement.lang=window.LANG;
+document.documentElement.dir=window.LANG==='ar'?'rtl':'ltr';
+qsa('[data-i18n]').forEach(function(el){el.textContent=T(el.getAttribute('data-i18n'))});
+qsa('[data-i18n-html]').forEach(function(el){el.innerHTML=T(el.getAttribute('data-i18n-html'))});
+qsa('[data-i18n-ph]').forEach(function(el){el.setAttribute('placeholder',T(el.getAttribute('data-i18n-ph')))});
+qsa('[data-lang-btn]').forEach(function(b){b.textContent=window.LANG==='ar'?'EN':'عربي'});
+}
+window.sxLang=function(){
+window.LANG=window.LANG==='ar'?'en':'ar';
+try{localStorage.setItem('sx_lang',window.LANG)}catch(e){}
+applyLang();
+try{sxTab(0)}catch(e){}
+};
+
+/* ══ 4) SYSTEM TABS — standalone, inline onclick ══ */
+window.sxTab=function(i){
+var d=function(k){var v=T(k);return v!=null?String(v).replace(/</g,'<').replace(/>/g,'>'):''};
+var h='<h3>'+d('sv'+(i+1)+'t')+'</h3><div class="lede">'+d('sv'+(i+1)+'l')+'</div><ul>';
+for(var j=1;j<=5;j++)h+='<li>'+d('sv'+(i+1)+'i'+j)+'</li>';
+h+='</ul>';
+if(i===0){
+var st=[['stg_new','EGP 96k · 4',57],['stg_qualified','EGP 118k · 3',70],['stg_proposal','EGP 168k · 3',100],['stg_negotiation','EGP 160k · 2',95]];
+st.forEach(function(s){h+='<div class="vbar"><div class="vt"><span>'+d(s[0])+'</span><b>'+s[1]+'</b></div><div class="vb"><i style="width:'+s[2]+'%"></i></div></div>'});
+h+='<div class="vnote">EGP 542k · 12 '+d('vis_deals')+'</div>';
+}else if(i===1){
+h+='<div class="vstats"><div class="vstat"><div class="l">'+d('vis_spend')+'</div><div class="v">EGP 2.16M</div></div>'+
+'<div class="vstat"><div class="l">'+d('vis_custs')+'</div><div class="v">22</div></div>'+
+'<div class="vstat"><div class="l">'+d('vis_aov')+'</div><div class="v">EGP 78k</div></div>'+
+'<div class="vstat"><div class="l">'+d('vis_repeat')+'</div><div class="v">64%</div></div></div>';
+}else if(i===2){
+h+='<div class="vrow"><span class="vl">'+d('inv_paid')+'</span><b>14 '+d('vis_invoices')+' · EGP 1.05M</b></div>'+
+'<div class="vrow"><span class="vl">'+d('inv_unpaid')+'</span><b>3 '+d('vis_invoices')+' · EGP 96k</b></div>'+
+'<div class="vrow"><span class="vl">'+d('inv_overdue')+'</span><b>3 '+d('vis_invoices')+' · EGP 90.5k</b></div>'+
+'<div class="vnote">EGP 186.5k outstanding</div>';
+}else if(i===3){
+h+='<div class="vrow"><span class="vl">Welding Machine 200A</span><b style="color:var(--neg)">2 '+d('vis_left')+'</b></div>'+
+'<div class="vrow"><span class="vl">Circuit Breaker 32A</span><b style="color:var(--neg)">3 '+d('vis_left')+'</b></div>'+
+'<div class="vrow"><span class="vl">Generator 5KVA</span><b>6 '+d('vis_left')+'</b></div>'+
+'<div class="vrow"><span class="vl">Cordless Drill 20V</span><b>31 '+d('vis_left')+'</b></div>'+
+'<div class="vnote">6 '+d('vis_sup')+' · 2 '+d('vis_po')+'</div>';
+}else if(i===4){
+h+='<div class="vrow"><span class="vl">Deal won \u2192 ORD-1046 + INV-2086</span><b>auto</b></div>'+
+'<div class="vrow"><span class="vl">Payment \u2192 INV-2084 '+d('inv_paid')+'</span><b>auto</b></div>'+
+'<div class="vrow"><span class="vl">Low stock \u2192 PO draft \u2192 supplier</span><b>auto</b></div>'+
+'<div class="vrow"><span class="vl">New lead \u2192 assigned + follow-up</span><b>auto</b></div>';
+}else{
+h+='<div style="font-size:12.5px;color:var(--mut);margin-bottom:8px;font-weight:600">'+d('vis_revh')+'</div><div class="mbars">';
+var ms=[['F',172],['M',186],['A',178],['M',210],['J',238],['J',256]];
+ms.forEach(function(m){h+='<div class="mb"><i style="height:'+Math.round(m[1]/256*80)+'%"></i><span>'+m[0]+'</span></div>'});
+h+='</div>';
+}
+var p=document.getElementById('solvePanel');
+if(p)p.innerHTML=h;
+var tabs=document.querySelectorAll('#solveTabs .solve-tab');
+for(var k=0;k<tabs.length;k++)tabs[k].classList.toggle('on',k===i);
+};
+
+/* ══ 5) REQUEST FORM — standalone ══ */
+window.sxSubmit=function(e){
+e.preventDefault();
+var f=document.getElementById('reqForm');
+var ok=true;
+qsa('input,select,textarea',f).forEach(function(inp){
+var bad=false;
+if(inp.hasAttribute('required')&&!String(inp.value).trim())bad=true;
+if(inp.name==='email'&&inp.value&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inp.value))bad=true;
+    if(inp.name==='phone'&&inp.value&&!/^[+0-9 ()-]{7,}$/.test(inp.value))bad=true;
+if(inp.closest('.field'))inp.closest('.field').classList.toggle('bad',bad);
+if(bad)ok=false;
+});
+if(!ok){sxToast(T('t_fix'));return false}
+var ref='SX-'+Math.random().toString(36).slice(2,7).toUpperCase();
+try{
+var leads=[];try{leads=JSON.parse(localStorage.getItem('sx_leads')||'[]')}catch(x){}
+var data={};new FormData(f).forEach(function(v,k){data[k]=v});
+data.ref=ref;leads.push(data);
+localStorage.setItem('sx_leads',JSON.stringify(leads));
+}catch(x){}
+document.getElementById('reqBox').innerHTML='<div class="success-box">'+
+'<svg width="34" height="34" color="#0E8A5F" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto"><use href="#i-check"/></svg>'+
+'<div class="big">'+T('rq_ok_t')+' '+ref+'</div>'+
+'<p style="font-size:14px;color:var(--ink2);max-width:440px;margin:0 auto">'+T('rq_ok_b')+'</p>'+
+'<a class="btn wa" style="margin-top:18px" href="https://wa.me/201105920342" target="_blank" rel="noopener">'+T('rq_ok_cta')+'</a></div>';
+sxToast(T('t_req')+' '+ref);
+return false;
+};
+function sxToast(msg){
+try{
+var t=document.createElement('div');t.className='toast';
+t.innerHTML='<svg width="16" height="16" color="#7FD6AC" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#i-check"/></svg><span></span>';
+t.querySelector('span').textContent=msg;
+document.getElementById('toasts').appendChild(t);
+setTimeout(function(){t.remove()},3800);
+}catch(e){}
+}
+
+/* ══ 6) DOC MODALS — standalone ══ */
+window.sxDoc=function(id){
+var t=T(id+'_t'),b=T(id+'_b');
+var bg=document.createElement('div');bg.className='modal-bg';
+bg.innerHTML='<div class="modal" role="dialog"><div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)"><h3 style="font-size:16px"></h3><button type="button" class="tbtn" onclick="this.closest(\'.modal-bg\').remove()" aria-label="Close"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><use href="#i-x"/></svg></button></div><div style="padding:22px 24px;font-size:14px;color:var(--ink2);line-height:1.65"></div></div>';
+bg.querySelector('h3').textContent=t;
+bg.querySelectorAll('div')[3].textContent=b;
+document.body.appendChild(bg);
+bg.addEventListener('click',function(e){if(e.target===bg)bg.remove()});
+};
+
+/* ══ 7) BOOT — every piece isolated ══ */
+(function(){
+try{applyLang()}catch(e){}
+try{sxTab(0)}catch(e){}
+try{document.getElementById('yr').textContent=new Date().getFullYear()}catch(e){}
+try{
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!RM&&'IntersectionObserver' in window){
+document.documentElement.classList.add('anim');
+var RO=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');RO.unobserve(en.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+qsa('.rv').forEach(function(el){RO.observe(el)});
+}
+}catch(e){}
+try{
+var scene=document.getElementById('pvScene'),pv=document.getElementById('pv');
+if(scene&&pv&&!RM){
+scene.addEventListener('pointermove',function(e){
+var r=scene.getBoundingClientRect();
+var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+pv.style.transform='rotateY('+(x*9)+'deg) rotateX('+(-y*7)+'deg)';
+});
+scene.addEventListener('pointerleave',function(){pv.style.transform=''});
+}
+}catch(e){}
+})();
+</script>
+</body>
+</html>

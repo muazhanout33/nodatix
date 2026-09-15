@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
+  { href: "/interactive", label: "Projects" },
 ]; 
 
 export default function Navbar() {
@@ -25,6 +26,7 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return; // Let Next.js handle page navigation
     e.preventDefault();
     setMenuOpen(false);
     setTimeout(() => {
