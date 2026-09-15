@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useEffect, useCallback, Suspense, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import InteractiveModal from "@/components/interactive/InteractiveModal";
-import CrmErpProject from "@/components/interactive/CrmErpProject";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PROJECTS = [
   {
@@ -14,39 +12,165 @@ const PROJECTS = [
       "Custom CRM + ERP systems built around your business. Leads, deals, inventory, orders, invoices, and payments — one connected workflow.",
     icon: "📊",
     tags: ["CRM", "ERP", "Automation"],
+    src: "/interactive/projects/crm-erp/index.html",
   },
 ];
+
+function ProjectViewer({
+  project,
+  onClose,
+}: {
+  project: (typeof PROJECTS)[number];
+  onClose: () => void;
+}) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(0,0,0,0.8)",
+        backdropFilter: "blur(12px)",
+        padding: "16px",
+      }}
+    >
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: "1400px",
+          height: "calc(100vh - 32px)",
+          maxHeight: "calc(100dvh - 32px)",
+          borderRadius: "16px",
+          overflow: "hidden",
+          background: "#000",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {/* Top bar */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "12px 16px",
+            background: "rgba(10,15,26,0.95)",
+            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            flexShrink: 0,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#e0e0e0",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {project.title}
+          </span>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 8,
+              border: "1px solid rgba(255,255,255,0.1)",
+              background: "rgba(255,255,255,0.04)",
+              color: "#aaa",
+              fontSize: 18,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background 0.15s, color 0.15s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.color = "#fff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+              e.currentTarget.style.color = "#aaa";
+            }}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* iframe fills remaining space */}
+        <iframe
+          ref={iframeRef}
+          src={project.src}
+          title={project.title}
+          style={{
+            flex: 1,
+            width: "100%",
+            border: "none",
+            background: "#fff",
+          }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
 
 function InteractiveContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const projectParam = searchParams.get("project");
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState<string | null>(null);
+  const [viewerProject, setViewerProject] = useState<
+    (typeof PROJECTS)[number] | null
+  >(null);
 
   useEffect(() => {
     if (projectParam) {
       const found = PROJECTS.find((p) => p.id === projectParam);
-      if (found) {
-        setActiveProject(found.id);
-        setModalOpen(true);
-      }
+      if (found) setViewerProject(found);
     }
   }, [projectParam]);
 
   const openProject = useCallback(
-    (id: string) => {
-      setActiveProject(id);
-      setModalOpen(true);
-      router.push(`/interactive?project=${id}`, { scroll: false });
+    (project: (typeof PROJECTS)[number]) => {
+      setViewerProject(project);
+      router.push(`/interactive?project=${project.id}`, { scroll: false });
     },
     [router]
   );
 
-  const closeModal = useCallback(() => {
-    setModalOpen(false);
-    setActiveProject(null);
+  const closeViewer = useCallback(() => {
+    setViewerProject(null);
     router.push("/interactive", { scroll: false });
   }, [router]);
 
@@ -68,8 +192,7 @@ function InteractiveContent() {
               <span className="text-[#0099FF]">Interactive Demos</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl">
-              Click on any project card to open a live interactive experience in
-              a modal overlay.
+              Click on any project card to open a live interactive experience.
             </p>
           </motion.div>
         </div>
@@ -85,7 +208,7 @@ function InteractiveContent() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                onClick={() => openProject(project.id)}
+                onClick={() => openProject(project)}
                 className="text-left group cursor-pointer"
               >
                 <div className="relative bg-[#080E1A] border border-[rgba(0,153,255,0.1)] rounded-2xl p-6 transition-all duration-300 hover:border-[rgba(0,153,255,0.3)] hover:shadow-[0_0_40px_rgba(0,153,255,0.08)] hover:-translate-y-1">
@@ -114,10 +237,12 @@ function InteractiveContent() {
         </div>
       </section>
 
-      {/* Modal */}
-      <InteractiveModal isOpen={modalOpen} onClose={closeModal}>
-        {activeProject === "crm-erp" && <CrmErpProject />}
-      </InteractiveModal>
+      {/* Viewer Modal */}
+      <AnimatePresence>
+        {viewerProject && (
+          <ProjectViewer project={viewerProject} onClose={closeViewer} />
+        )}
+      </AnimatePresence>
     </>
   );
 }
@@ -125,11 +250,13 @@ function InteractiveContent() {
 export default function InteractivePage() {
   return (
     <main className="min-h-screen bg-[#000000] text-white">
-      <Suspense fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-gray-400">Loading...</div>
-        </div>
-      }>
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-gray-400">Loading...</div>
+          </div>
+        }
+      >
         <InteractiveContent />
       </Suspense>
     </main>
