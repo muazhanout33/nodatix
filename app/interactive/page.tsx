@@ -14,6 +14,15 @@ const PROJECTS = [
     tags: ["CRM", "ERP", "Automation"],
     src: "/interactive/projects/crm-erp/index.html",
   },
+  {
+    id: "ai-clinic-automation",
+    title: "AI-Powered Clinic Automation System",
+    description:
+      "AI-driven clinic automation: patient intake, appointment booking, CRM, follow-up, and multi-channel communication — fully automated.",
+    icon: "🏥",
+    tags: ["AI", "Clinic", "Healthcare"],
+    src: "/interactive/projects/ai-clinic-automation/index.html",
+  },
 ];
 
 function ProjectViewer({

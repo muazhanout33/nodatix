@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScalaryX — نظام أتمتة العيادات بالذكاء الاصطناعي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+color-scheme:light;
+--ink:#0C1322;
+--ink-soft:#5B6577;
+--paper:#F4F5F8;
+--paper-raised:#FFFFFF;
+--line:#DEE2E9;
+--line-strong:#A7B1C0;
+--purple:#1C4080;
+--purple-deep:#142F60;
+--purple-soft:#E6EAF2;
+--lavender:#EFF1F5;
+--header-bg:rgba(244,245,248,.85);
+--overlay:rgba(8,13,26,.55);
+--invert-bg:#0C1322;
+--pill-bg:#1C4080;
+--pill-fg:#FFFFFF;
+/* functional colors — navy → silver family */
+--c-brand:#1C4080;   /* navy — intelligence/brand */
+--c-info:#3A5A8C;    /* steel blue — trust/information */
+--c-org:#5D7398;     /* slate — organization/stability */
+--c-action:#7A8AA5;  /* silver-slate — appointment/action */
+--c-success:#274A82; /* deep navy — completed/success */
+--c-followup:#5E6C84;/* dark silver — patient follow-up */
+--soft-info:#E9EDF5;
+--soft-org:#EBEEF3;
+--soft-action:#F0F2F6;
+--soft-success:#E8EDF5;
+--soft-followup:#EFF1F5;
+--line-soft:#C9D1DE;
+}
+html[data-theme="dark"]{
+color-scheme:dark;
+--ink:#E8ECF3;
+--ink-soft:#96A2B6;
+--paper:#05080E;
+--paper-raised:#101828;
+--line:#2C3B54;
+--line-strong:#5A6E8F;
+--purple:#8FA6C9;
+--purple-deep:#A6BAD8;
+--purple-soft:#1B2637;
+--lavender:#141D2C;
+--header-bg:rgba(5,8,14,.85);
+--overlay:rgba(0,0,0,.7);
+--invert-bg:linear-gradient(180deg,#0E1626 0%,#05080E 100%);
+--pill-bg:linear-gradient(135deg,#DFE6EF 0%,#A9B8CD 100%);
+--pill-fg:#0A101C;
+--c-brand:#9FB6DC;
+--c-info:#A9BEDF;
+--c-org:#B4C4DD;
+--c-action:#C3CFE2;
+--c-success:#A9C3EC;
+--c-followup:#8493AB;
+--soft-info:#1A2434;
+--soft-org:#1C2637;
+--soft-action:#1E2938;
+--soft-success:#182640;
+--soft-followup:#1B2432;
+--line-soft:#3A4C6B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans Arabic',sans-serif;overflow-x:hidden;transition:background-color .25s ease,color .25s ease}
+@media(max-width:639px){ body{padding-bottom:64px} }
+.mono{font-family:'IBM Plex Mono',monospace;direction:ltr;display:inline-block}
+.eyebrow{font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;direction:ltr;font-size:.72rem;color:var(--purple);text-transform:uppercase}
+.card{background:var(--paper-raised);border:1px solid var(--line);border-radius:18px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+#rail{position:fixed;top:0;bottom:0;right:18px;width:64px;z-index:40;pointer-events:none;display:none}
+#rail svg{width:100%;height:100%}
+#rail .track{stroke:var(--line);stroke-width:2;fill:none}
+#rail .pulse{stroke:var(--purple);stroke-width:2.5;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(28,64,128,.35))}
+@media(min-width:1024px){#rail{display:block}}
+[dir="ltr"] #rail{right:auto;left:18px}
+
+.btn-primary{background:var(--purple);color:#fff;border-radius:999px;padding:.9rem 1.9rem;font-weight:600;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 8px 20px -8px rgba(28,64,128,.55)}
+.btn-primary:hover{background:var(--purple-deep);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink);border-radius:999px;padding:.9rem 1.9rem;font-weight:600;transition:background .2s,color .2s}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-wa{background:var(--paper-raised);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:.9rem 1.9rem;font-weight:600;transition:border-color .2s,transform .2s}
+.btn-wa:hover{border-color:var(--c-success);transform:translateY(-2px)}
+
+.chip{font-family:'IBM Plex Mono',monospace;direction:ltr;font-size:.72rem;border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem;color:var(--ink-soft);display:inline-flex;align-items:center;gap:.4rem}
+.chip .d{width:6px;height:6px;border-radius:50%;background:var(--purple)}
+
+.bubble-patient{background:var(--paper-raised);border:1px solid var(--line);border-radius:20px 20px 4px 20px}
+.bubble-ai{background:var(--purple);color:#fff;border-radius:20px 20px 20px 4px}
+[dir="ltr"] .bubble-patient{border-radius:20px 20px 20px 4px}
+[dir="ltr"] .bubble-ai{border-radius:20px 20px 4px 20px}
+
+.pipeline-track{position:relative}
+.pipeline-track::before{content:'';position:absolute;top:50%;right:0;left:0;height:2px;background:var(--line);transform:translateY(-50%);z-index:0}
+.pipeline-node{position:relative;z-index:1}
+
+.typewrap{position:relative;display:inline-block}
+.caret{display:inline-block;width:2px;height:1em;background:currentColor;margin-inline-start:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.num{font-family:'IBM Plex Mono',monospace;direction:ltr;font-size:.75rem;color:var(--purple);border:1px solid var(--purple-soft);background:var(--purple-soft);border-radius:8px;padding:.15rem .5rem}
+.divider{height:1px;background:var(--line)}
+::selection{background:var(--purple-soft);color:var(--ink)}
+
+.logo-badge{width:34px;height:34px;border-radius:10px;background:var(--purple);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-badge svg{width:18px;height:18px}
+
+/* header controls (theme + language) */
+.ctrl-btn{width:36px;height:36px;border-radius:999px;border:1px solid var(--line);background:var(--paper-raised);color:var(--ink-soft);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:.72rem;font-weight:600;transition:border-color .2s,color .2s}
+.ctrl-btn:hover{border-color:var(--purple);color:var(--ink)}
+.ctrl-btn svg{width:17px;height:17px}
+html[data-theme="dark"] .icon-sun{display:none}
+html[data-theme="light"] .icon-moon{display:none}
+
+/* journey modal */
+#journeyModal{position:fixed;inset:0;z-index:100;display:none}
+#journeyModal.open{display:block}
+#journeyModal .backdrop{position:absolute;inset:0;background:var(--overlay);backdrop-filter:blur(4px)}
+#journeyModal .panel{position:absolute;inset:0;margin:auto;background:var(--paper);max-width:1000px;width:94%;max-height:88vh;top:6vh;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(12,19,34,.4)}
+.jcard{border:1.5px solid var(--line);border-radius:14px;padding:.9rem 1rem;cursor:pointer;transition:all .2s;background:var(--paper-raised)}
+.jcard:hover{border-color:var(--jc,var(--purple))}
+.jcard.active{border-color:var(--jc,var(--purple));background:var(--jc-soft,var(--purple-soft))}
+.jdot{width:10px;height:10px;border-radius:50%;background:var(--jc,var(--purple));flex-shrink:0}
+
+/* ===== Dark mode — silver-on-black interactive accents (light mode untouched) ===== */
+html[data-theme="dark"] .card{background:linear-gradient(165deg,#131D2E 0%,#0D1420 100%);border-color:#31405C}
+html[data-theme="dark"] .btn-primary{background:linear-gradient(135deg,#DFE6EF 0%,#A9B8CD 100%);color:#0A101C;box-shadow:0 8px 22px -10px rgba(169,184,205,.45)}
+html[data-theme="dark"] .btn-primary:hover{background:linear-gradient(135deg,#F0F4F9 0%,#C0CDDE 100%)}
+html[data-theme="dark"] .logo-badge{background:linear-gradient(135deg,#DFE6EF 0%,#A9B8CD 100%)}
+html[data-theme="dark"] .bubble-ai{color:#0A101C}
+html[data-theme="dark"] .eyebrow{color:#C3D0E2}
+html[data-theme="dark"] #rail .pulse{filter:drop-shadow(0 0 4px rgba(169,184,205,.45))}
+</style>
+<script>try{var t=localStorage.getItem('sx-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+</head>
+<body>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sm:hidden fixed bottom-0 inset-x-0 z-40 backdrop-blur border-t border-[var(--line)] px-4 py-3 flex gap-2" style="background:var(--header-bg)">
+<a href="#" data-cta="telegram" class="flex-1 text-center btn-primary !py-2.5 !px-2 text-sm" data-i18n="m_cta_try">جرّب الرحلة</a>
+<a href="#" data-cta="consult" class="flex-1 text-center btn-ghost !py-2.5 !px-2 text-sm" data-i18n="m_cta_consult">استشارة</a>
+<a href="#" data-cta="whatsapp" class="flex-1 text-center btn-wa !py-2.5 !px-2 text-sm" data-i18n="m_cta_contact">تواصل معنا</a>
+</div>
+
+<div id="rail" aria-hidden="true">
+<svg viewBox="0 0 64 1400" preserveAspectRatio="none">
+<path class="track" d="M32,0 L32,1400"></path>
+<path class="pulse" id="pulsePath" d="M32,0 L32,0"></path>
+</svg>
+</div>
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur border-b border-[var(--line)]" style="background:var(--header-bg)">
+<div class="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="logo-badge" aria-hidden="true"></div>
+<span class="font-semibold tracking-tight text-[15px]">ScalaryX</span>
+</div>
+<nav class="hidden md:flex items-center gap-7 text-sm text-[var(--ink-soft)]">
+<a href="#how" class="hover:text-[var(--ink)] transition" data-i18n="nav_how">كيف يعمل النظام</a>
+<a href="#journey-section" class="hover:text-[var(--ink)] transition" data-i18n="nav_journey">رحلة العميل</a>
+<a href="#crm" class="hover:text-[var(--ink)] transition" data-i18n="nav_crm">سجل المرضى (CRM)</a>
+<a href="#features" class="hover:text-[var(--ink)] transition" data-i18n="nav_features">المزايا</a>
+</nav>
+<div class="flex items-center gap-2">
+<button id="themeToggle" class="ctrl-btn" aria-label="Toggle light / dark mode" title="Light / Dark">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<button id="langToggle" class="ctrl-btn" aria-label="Switch language" title="العربية / English">EN</button>
+<a href="#" data-cta="telegram" class="hidden sm:inline-flex btn-primary !py-2 !px-4 text-sm" data-i18n="nav_cta">جرّب بنفسك</a>
+</div>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-32 pb-20 px-6">
+<div class="max-w-5xl mx-auto">
+<p class="eyebrow mb-5">SMART CLINIC AUTOMATION · SAUDI ARABIA & THE GULF</p>
+<h1 class="text-4xl sm:text-6xl font-semibold leading-[1.15] max-w-3xl" data-i18n="hero_h1">
+من أول رسالة مريض<br>
+إلى <span style="color:var(--purple)">متابعته بعد العلاج</span>. تلقائيًا.
+</h1>
+<p class="mt-7 text-lg sm:text-xl text-[var(--ink-soft)] max-w-2xl leading-relaxed" data-i18n="hero_p">
+نظام أتمتة عيادات متكامل بالذكاء الاصطناعي: يرد على المرضى، يسجّل بياناتهم، يدير مواعيدهم،
+ينظّم كل المحادثات، ويتابع معهم بعد العلاج — بدون تدخل يدوي.
+</p>
+<div class="mt-10 flex flex-wrap gap-4">
+<a href="#" data-cta="telegram" class="btn-primary" data-i18n="hero_btn1">جرّب بنفسك رحلة العميل ←</a>
+<button onclick="openJourney()" class="btn-ghost" data-i18n="hero_btn2">شاهد رحلة المريض</button>
+<a href="#" data-cta="consult" class="btn-wa" data-i18n="hero_consult">احجز استشارة مجانية</a>
+</div>
+
+```
+<div class="mt-16 overflow-x-auto">
+  <div class="flex items-center gap-3 min-w-max text-sm">
+    <span class="chip"><span class="d"></span>Patient Message</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>AI Reception</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>Captured</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>CRM</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>Appointment</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>Follow-up</span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span>Retention</span>
+  </div>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- THE PROBLEM -->
+<section id="how" class="py-24 px-6" data-section>
+<div class="max-w-4xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">The Problem</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="prob_h2">لما الرد يكون يدوي بالكامل</h2>
+<p class="mt-4 text-[var(--ink-soft)]" data-i18n="prob_p">المرضى غالبًا يتواصلون مع أكثر من عيادة قبل ما يقرروا وين يحجزون. العيادة اللي ترد بسرعة، فرصتها أكبر إن المحادثة تكمل معها.</p>
+</div>
+
+```
+<div class="reveal mt-12 overflow-x-auto">
+  <div class="flex items-center gap-3 min-w-max text-sm justify-center">
+    <span class="chip"><span class="d"></span><span data-i18n="chip_msg">رسالة من مريض</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span><span data-i18n="chip_busy">الموظف مشغول</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d" style="background:var(--c-followup)"></span><span data-i18n="chip_delay">الرد يتأخر</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d" style="background:var(--c-followup)"></span><span data-i18n="chip_lost">المريض يكلم عيادة ثانية</span></span>
+  </div>
+</div>
+
+<div class="reveal mt-10 max-w-lg mx-auto text-center">
+  <a href="#" data-cta="whatsapp" class="btn-wa inline-flex" data-i18n="prob_cta">خلنا نشوف كيف ممكن نطبقه على عيادتك</a>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- MANUAL VS AUTOMATED -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">Manual vs. Automated</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="mva_h2">استقبال يدوي على مدار الساعة مقابل تجربة مريض آلية</h2>
+</div>
+
+```
+<div class="reveal mt-12 grid sm:grid-cols-2 gap-6">
+  <div class="card p-7">
+    <p class="eyebrow mb-4" data-i18n="manual_title">العمل اليدوي</p>
+    <ul class="space-y-3 text-sm text-[var(--ink-soft)]">
+      <li class="flex gap-2"><span>—</span><span data-i18n="man1">يحتاج تغطية موظفين مستمرة</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man2">توفر الموظف محدود بساعات العمل</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man3">الأسئلة المتكررة تاخد وقت الفريق</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man4">ممكن تفوت محادثات في أوقات الزحمة</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man5">بيانات المرضى متفرقة بين الشاتات</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man6">المتابعة تعتمد على تذكّر الموظف</span></li>
+      <li class="flex gap-2"><span>—</span><span data-i18n="man7">زيادة التغطية تعني تكلفة تشغيل أعلى</span></li>
+    </ul>
+  </div>
+  <div class="card p-7" style="border-color:var(--purple-soft);background:var(--lavender)">
+    <p class="eyebrow mb-4" data-i18n="auto_title">النظام الآلي</p>
+    <ul class="space-y-3 text-sm">
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut1">متاح 24/7</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut2">رد أول فوري</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut3">يسجّل بيانات المريض تلقائيًا</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut4">ينظّم كل المحادثات في مكان واحد</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut5">يدعم طلبات الحجز والاستشارة الأونلاين</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut6">يؤتمت المتابعة بعد الموعد</span></li>
+      <li class="flex gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="aut7">يخلي فريقك يركّز على اللي يحتاج فعلًا لمسة بشرية</span></li>
+    </ul>
+  </div>
+</div>
+<p class="reveal mt-6 text-center text-xs text-[var(--ink-soft)] max-w-lg mx-auto" data-i18n="mva_note">النظام طبقة أتمتة للاستقبال والعمليات — مو بديل عن الأطباء أو الفريق الطبي.</p>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- MULTI-CHANNEL -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-4xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">Multi-Channel</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="mc_h2">عيادتك متصلة بكل قنوات التواصل المهمة</h2>
+<p class="mt-4 text-[var(--ink-soft)]" data-i18n="mc_p">يمكن ربط عيادتك بالقنوات المناسبة لنشاطك — نبني لك النظام بحيث يستقبل استفسارات المرضى من القنوات اللي تستخدمها عيادتك فعليًا.</p>
+</div>
+
+```
+<div class="reveal mt-12 flex flex-wrap justify-center gap-3">
+  <span class="chip !text-sm !py-2 !px-4">01 · WhatsApp</span>
+  <span class="chip !text-sm !py-2 !px-4">02 · Instagram</span>
+  <span class="chip !text-sm !py-2 !px-4">03 · Telegram</span>
+  <span class="chip !text-sm !py-2 !px-4">04 · Snapchat</span>
+  <span class="chip !text-sm !py-2 !px-4">05 · TikTok</span>
+</div>
+<div class="reveal mt-6 text-center mono text-2xl" style="color:var(--purple)">↓</div>
+<div class="reveal mt-2 text-center">
+  <span class="inline-block px-5 py-2.5 rounded-full text-sm font-medium" style="background:var(--pill-bg);color:var(--pill-fg)" data-i18n="mc_layer">طبقة أتمتة ScalaryX</span>
+</div>
+<div class="reveal mt-6 text-center mono text-2xl" style="color:var(--purple)">↓</div>
+<div class="reveal mt-2 flex flex-wrap justify-center gap-3 text-sm text-[var(--ink-soft)]">
+  <span class="chip">CRM</span><span class="chip">AI Reception</span><span class="chip">Booking</span><span class="chip">Follow-up</span><span class="chip">Patient Records</span>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- PATIENT JOURNEY SECTION -->
+<section id="journey-section" class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">Patient Journey</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="jn_h2">رحلة العميل الكاملة</h2>
+<p class="mt-4 text-[var(--ink-soft)]" data-i18n="jn_p">من أول رسالة، لحد ما يرجع مريض دائم — كل خطوة تدار تلقائيًا.</p>
+<button onclick="openJourney()" class="btn-primary mt-8" data-i18n="jn_btn">افتح رحلة العميل التفاعلية ←</button>
+</div>
+
+```
+<!-- static journey diagram -->
+<div class="reveal mt-16 grid sm:grid-cols-3 lg:grid-cols-6 gap-4">
+  <div class="jcard" style="--jc:var(--c-brand);--jc-soft:var(--purple-soft)"><span class="num" style="color:var(--c-brand);border-color:var(--c-brand);background:transparent">01</span><p class="mt-2 font-medium text-sm" data-i18n="jn1">تواصل المريض</p></div>
+  <div class="jcard" style="--jc:var(--c-info);--jc-soft:var(--soft-info)"><span class="num" style="color:var(--c-info);border-color:var(--c-info);background:transparent">02</span><p class="mt-2 font-medium text-sm" data-i18n="jn2">رد فوري</p></div>
+  <div class="jcard" style="--jc:var(--c-org);--jc-soft:var(--soft-org)"><span class="num" style="color:var(--c-org);border-color:var(--c-org);background:transparent">03</span><p class="mt-2 font-medium text-sm" data-i18n="jn3">تسجيل البيانات</p></div>
+  <div class="jcard" style="--jc:var(--c-action);--jc-soft:var(--soft-action)"><span class="num" style="color:var(--c-action);border-color:var(--c-action);background:transparent">04</span><p class="mt-2 font-medium text-sm" data-i18n="jn4">CRM</p></div>
+  <div class="jcard" style="--jc:var(--c-success);--jc-soft:var(--soft-success)"><span class="num" style="color:var(--c-success);border-color:var(--c-success);background:transparent">05</span><p class="mt-2 font-medium text-sm" data-i18n="jn5">الحجز</p></div>
+  <div class="jcard" style="--jc:var(--c-followup);--jc-soft:var(--soft-followup)"><span class="num" style="color:var(--c-followup);border-color:var(--c-followup);background:transparent">06</span><p class="mt-2 font-medium text-sm" data-i18n="jn6">المتابعة</p></div>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- SECTION 01+02 — MESSAGE + AI RESPONSE -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
+<div class="reveal">
+<span class="num">01 / 02</span>
+<h2 class="mt-4 text-3xl font-semibold leading-snug" data-i18n="s12_h2">المريض يبعت رسالة… ويوصله رد فوري</h2>
+<p class="mt-4 text-[var(--ink-soft)] leading-relaxed" data-i18n="s12_p">أي استفسار أو طلب حجز، مهما كانت الساعة، يوصله رد فوري بلهجة طبيعية — بدون ما ينتظر موظف الاستقبال يكون متفرغ.</p>
+<ul class="mt-8 space-y-3 text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full" style="background:var(--purple)"></span><span data-i18n="s12_li1">رد فوري على مدار الساعة</span></li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full" style="background:var(--purple)"></span><span data-i18n="s12_li2">صفر محادثات ضائعة</span></li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full" style="background:var(--purple)"></span><span data-i18n="s12_li3">يفهم اللهجة ونية المريض تلقائيًا</span></li>
+</ul>
+</div>
+<div class="reveal">
+<div class="card p-5 space-y-3">
+<div class="flex justify-end">
+<div class="bubble-patient px-4 py-3 max-w-[80%] text-sm" data-i18n="chat_patient">السلام عليكم، أبغى أحجز موعد لتنظيف الأسنان.</div>
+</div>
+<div class="flex justify-start">
+<div class="bubble-ai px-4 py-3 max-w-[85%] text-sm leading-relaxed" id="aiTypedLine">
+<span class="typewrap"><span id="aiTyped"></span><span class="caret"></span></span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-[var(--line)]">
+<p class="mono text-[11px] text-[var(--ink-soft)] mb-2">AI PROCESSING</p>
+<div class="space-y-1.5 text-xs" id="procList">
+<div class="flex items-center gap-2 proc-item"><span class="proc-dot w-3.5 h-3.5 rounded-full border border-[var(--line)]"></span> Message received</div>
+<div class="flex items-center gap-2 proc-item"><span class="proc-dot w-3.5 h-3.5 rounded-full border border-[var(--line)]"></span> Language detected — Arabic (Saudi)</div>
+<div class="flex items-center gap-2 proc-item"><span class="proc-dot w-3.5 h-3.5 rounded-full border border-[var(--line)]"></span> Intent detected — Appointment Booking</div>
+<div class="flex items-center gap-2 proc-item"><span class="proc-dot w-3.5 h-3.5 rounded-full border border-[var(--line)]"></span> Service identified — Dental Cleaning</div>
+<div class="flex items-center gap-2 proc-item"><span class="proc-dot w-3.5 h-3.5 rounded-full border border-[var(--line)]"></span> Next action — offer time slots</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- SECTION 03 — PATIENT CAPTURE -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+<div class="reveal order-2 lg:order-1">
+<div class="card p-6">
+<p class="mono text-[11px] text-[var(--ink-soft)] mb-4">Creating Patient Record…</p>
+<div class="grid grid-cols-2 gap-4 text-sm">
+<div><p class="text-[var(--ink-soft)] text-xs mb-1">Patient</p><p class="font-medium" data-i18n="cap_name">أحمد محمد</p></div>
+<div><p class="text-[var(--ink-soft)] text-xs mb-1">Phone</p><p class="font-medium mono">+966 5X XXX XXXX</p></div>
+<div><p class="text-[var(--ink-soft)] text-xs mb-1">Service</p><p class="font-medium">Dental Cleaning</p></div>
+<div><p class="text-[var(--ink-soft)] text-xs mb-1">Source</p><p class="font-medium">Telegram / WhatsApp</p></div>
+</div>
+<div class="mt-5 pt-5 border-t border-[var(--line)] space-y-1.5 text-xs">
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span> Patient profile created</div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span> Conversation linked</div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span> Lead source saved</div>
+</div>
+</div>
+</div>
+<div class="reveal order-1 lg:order-2">
+<span class="num" style="color:var(--c-org);border-color:var(--line-soft);background:var(--soft-org)">03</span>
+<h2 class="mt-4 text-3xl font-semibold leading-snug" data-i18n="cap_h2">المريض يتسجل تلقائيًا</h2>
+<p class="mt-4 text-[var(--ink-soft)] leading-relaxed" data-i18n="cap_p">بدون ما أي موظف ينسخ بيانات من الشات لجدول إكسل. كل محادثة تتحول لسجل مريض منظم من أول لحظة.</p>
+</div>
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- SECTION 04 — CRM -->
+<section id="crm" class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="num" style="color:var(--c-action);border-color:var(--line-soft);background:var(--soft-action)">04</span>
+<h2 class="mt-4 text-3xl font-semibold" data-i18n="crm_h2">كل محادثة تتحول إلى بيانات منظمة</h2>
+<p class="mt-4 text-[var(--ink-soft)]" data-i18n="crm_p">مركز عمليات العيادة — كل مريض له مسار واضح من أول تواصل لحد ما يرجع تاني.</p>
+</div>
+
+```
+<div class="reveal mt-14 pipeline-track flex justify-between text-center text-[11px] sm:text-xs">
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>New Lead</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>Contacted</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--purple)"></div>Qualified</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>Booked</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>Active</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>Follow-up</div>
+  <div class="pipeline-node flex-1"><div class="w-3 h-3 rounded-full mx-auto mb-2" style="background:var(--line)"></div>Returning</div>
+</div>
+
+<div class="reveal mt-10 max-w-md mx-auto card p-5">
+  <div class="flex justify-between items-start">
+    <div>
+      <p class="font-medium" data-i18n="crm_name">أحمد محمد</p>
+      <p class="text-xs text-[var(--ink-soft)] mt-1">Dental Consultation</p>
+    </div>
+    <span class="chip" style="border-color:var(--purple-soft);color:var(--purple)">Qualified</span>
+  </div>
+  <div class="mt-4 pt-4 border-t border-[var(--line)] grid grid-cols-2 gap-3 text-xs">
+    <div><p class="text-[var(--ink-soft)]">Source</p><p class="mt-0.5">Telegram</p></div>
+    <div><p class="text-[var(--ink-soft)]">Intent</p><p class="mt-0.5">Appointment Booking</p></div>
+    <div><p class="text-[var(--ink-soft)]">Appointment</p><p class="mt-0.5">Tomorrow — 6:00 PM</p></div>
+    <div><p class="text-[var(--ink-soft)]">Doctor</p><p class="mt-0.5" data-i18n="crm_doc">د. سارة</p></div>
+    <div><p class="text-[var(--ink-soft)]">Last Interaction</p><p class="mt-0.5">Today</p></div>
+    <div><p class="text-[var(--ink-soft)]">Next Follow-up</p><p class="mt-0.5">In 3 days</p></div>
+  </div>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- SECTION 05 — BOOKING -->
+<section id="features" class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
+<div class="reveal">
+<span class="num" style="color:var(--c-success);border-color:var(--line-soft);background:var(--soft-success)">05</span>
+<h2 class="mt-4 text-3xl font-semibold leading-snug" data-i18n="book_h2">من محادثة… لموعد مؤكد</h2>
+<p class="mt-4 text-[var(--ink-soft)] leading-relaxed" data-i18n="book_p">المريض يختار الوقت المناسب له، والنظام يتكفّل بالباقي: يتأكد من التوفر، يحجز، ويحدّث كل الأنظمة.</p>
+<div class="mt-8 space-y-1.5 text-xs mono text-[var(--ink-soft)]">
+<p>✓ Appointment created</p>
+<p>✓ CRM updated</p>
+<p>✓ Patient notified</p>
+<p>✓ Reminder scheduled</p>
+</div>
+</div>
+<div class="reveal">
+<div class="card p-5">
+<p class="text-xs text-[var(--ink-soft)] mb-3" data-i18n="book_pick">اختر موعدك</p>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<button class="border border-[var(--line)] rounded-xl py-2 hover:border-[var(--purple)] transition" data-i18n="slot1">اليوم — 5:00 م</button>
+<button class="border border-[var(--line)] rounded-xl py-2 hover:border-[var(--purple)] transition" data-i18n="slot2">بكرة — 4:30 م</button>
+<button class="border-2 rounded-xl py-2 font-medium" style="border-color:var(--c-success);background:var(--soft-success)" data-i18n="slot3">بكرة — 6:00 م ✓</button>
+<button class="border border-[var(--line)] rounded-xl py-2 hover:border-[var(--purple)] transition" data-i18n="slot4">بكرة — 8:00 م</button>
+</div>
+<div class="mt-5 pt-5 border-t border-[var(--line)] text-sm space-y-2">
+<div class="flex justify-between"><span class="text-[var(--ink-soft)]" data-i18n="lbl_service">الخدمة</span><span>Dental Cleaning</span></div>
+<div class="flex justify-between"><span class="text-[var(--ink-soft)]" data-i18n="lbl_doctor">الطبيب</span><span data-i18n="book_doc">د. سارة</span></div>
+<div class="flex justify-between"><span class="text-[var(--ink-soft)]" data-i18n="lbl_status">الحالة</span><span style="color:var(--c-success)" class="font-medium" data-i18n="book_confirmed">تم تأكيد الموعد ✓</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- SECTION 07+08 — FOLLOW UP -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="num" style="color:var(--c-followup);border-color:var(--line-soft);background:var(--soft-followup)">06</span>
+<h2 class="mt-4 text-3xl font-semibold" data-i18n="fu_h2">المتابعة ما تنتهيش بعد الحجز</h2>
+<p class="mt-4 text-[var(--ink-soft)]" data-i18n="fu_p">بدون ما أي موظف يفتكر يتابع، النظام يتابع مع المريض في التوقيت الصح.</p>
+</div>
+
+```
+<div class="reveal mt-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+  <div class="card p-5"><p class="mono text-xs text-[var(--ink-soft)]">DAY 0</p><p class="mt-1 font-medium text-sm" data-i18n="fu_d0">الموعد</p></div>
+  <div class="card p-5"><p class="mono text-xs text-[var(--ink-soft)]">DAY 1</p><p class="mt-1 font-medium text-sm" data-i18n="fu_d1">تذكير</p></div>
+  <div class="card p-5">
+    <p class="mono text-xs text-[var(--ink-soft)]">DAY 3</p>
+    <p class="mt-1 font-medium mb-3 text-sm" data-i18n="fu_d3">متابعة بعد الزيارة</p>
+    <div class="bubble-ai px-3 py-2 text-xs rounded-2xl" style="background:var(--c-followup)" data-i18n="fu_msg1">أهلًا أحمد 👋 حبيت نطمن عليك بعد زيارتك للعيادة. كيف حالك الآن؟</div>
+  </div>
+  <div class="card p-5">
+    <p class="mono text-xs text-[var(--ink-soft)]">DAY 14</p>
+    <p class="mt-1 font-medium mb-3 text-sm" data-i18n="fu_d14">تعزيز العلاقة</p>
+    <div class="bubble-ai px-3 py-2 text-xs rounded-2xl" style="background:var(--c-followup)" data-i18n="fu_msg2">أهلًا أحمد 👋 إذا احتجت أي مساعدة أو حابب تتابع مع الطبيب، إحنا موجودين لمساعدتك.</div>
+  </div>
+  <div class="card p-5"><p class="mono text-xs text-[var(--ink-soft)]">FUTURE</p><p class="mt-1 font-medium text-sm" data-i18n="fu_fut">إعادة تفعيل المريض</p></div>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- WHAT WE AUTOMATE -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-5xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">What We Automate</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="wa_h2">وش يشمله النظام؟</h2>
+</div>
+<div class="reveal mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa1">استقبال ذكي</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa1d">يرد على استفسارات المرضى الشائعة فورًا</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa2">تسجيل العملاء</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa2d">يلتقط بيانات المريض من المحادثة</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa3">تأهيل ذكي</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa3d">يفهم وش يحاول المريض يحقق بالضبط</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa4">طلبات المواعيد</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa4d">يوجّه المريض بين الأوقات المتاحة</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa5">استشارة أونلاين</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa5d">يدعم حجز الاستشارات عن بُعد</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa6">CRM</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa6d">ينظّم كل محادثة وكل عميل محتمل</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa7">متابعة تلقائية</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa7d">يجدول تذكيرات ومتابعات بعد الموعد</p></div>
+<div class="card p-5"><p class="font-medium text-sm mb-1" data-i18n="wa8">إعادة تفعيل</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="wa8d">يعيد التواصل مع مرضى سابقين عند المناسب</p></div>
+</div>
+
+```
+<div class="reveal mt-10 text-center">
+  <a href="#" data-cta="whatsapp" class="btn-wa inline-flex" data-i18n="wa_cta">عندك فكرة أو Workflow معيّن في عيادتك؟ خلنا نناقشه</a>
+</div>
+```
+
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- HUMAN HANDOFF -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-4xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">Human Handoff</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="hh_h2">الذكاء الاصطناعي يتكفّل بالتكراري، والفريق يتكفّل بما يحتاج حكم بشري</h2>
+</div>
+
+```
+<div class="reveal mt-12 overflow-x-auto">
+  <div class="flex items-center gap-3 min-w-max text-sm justify-center">
+    <span class="chip"><span class="d"></span><span data-i18n="hh_c1">المريض</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d"></span><span data-i18n="hh_c2">استقبال AI</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d" style="background:var(--c-success)"></span><span data-i18n="hh_c3">استفسار عادي: يكمل AI</span></span>
+  </div>
+  <div class="flex items-center gap-3 min-w-max text-sm justify-center mt-3">
+    <span class="chip"><span class="d" style="background:var(--c-followup)"></span><span data-i18n="hh_c4">طلب طبي/حساس/معقّد</span></span>
+    <span class="mono text-[var(--line-strong)]">→</span>
+    <span class="chip"><span class="d" style="background:var(--c-followup)"></span><span data-i18n="hh_c5">تحويل لفريق العيادة</span></span>
+  </div>
+</div>
+<p class="reveal mt-8 text-center text-sm font-medium" style="color:var(--purple)" data-i18n="hh_note">الذكاء الاصطناعي مو دكتور — ما يشخّص حالات ولا ياخذ قرارات طبية.</p>
+```
+
+</div>
+</section>
+<section id="live-demo" class="py-24 px-6" data-section>
+<div class="max-w-4xl mx-auto reveal text-center">
+<span class="eyebrow">Try It Yourself</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="demo_h2">جرّب بنفسك رحلة العميل</h2>
+<p class="mt-4 text-[var(--ink-soft)] max-w-xl mx-auto" data-i18n="demo_p">كلّم المساعد الذكي بتاع ScalaryX على تيليجرام، وكأنك مريض حقيقي يحجز موعد أو يطلب استشارة أونلاين.</p>
+<a href="#" data-cta="telegram" class="btn-primary inline-flex items-center gap-2 mt-8" data-i18n="hero_btn1">جرّب بنفسك رحلة العميل ←</a>
+
+```
+<div class="mt-16 grid sm:grid-cols-2 gap-5 text-start">
+  <div class="card p-6">
+    <p class="font-medium mb-1" style="color:var(--purple)" data-i18n="demo_t1">تيليجرام — جرّب النظام</p>
+    <p class="text-sm text-[var(--ink-soft)]" data-i18n="demo_t1d">ديمو حي: احجز موعد، اطلب استشارة أونلاين، جرّب المساعد الذكي بنفسك.</p>
+  </div>
+  <div class="card p-6">
+    <p class="font-medium mb-1" style="color:var(--c-success)" data-i18n="demo_w1">واتساب — تواصل معنا</p>
+    <p class="text-sm text-[var(--ink-soft)]" data-i18n="demo_w1d">جاهز تتكلم عن بناء النظام لعيادتك؟ تواصل معنا مباشرة.</p>
+  </div>
+</div>
+
+<div class="mt-8">
+  <a href="#" data-cta="consult" class="btn-wa inline-flex" data-i18n="demo_consult">احجز استشارة مجانية ←</a>
+</div>
+```
+
+</div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-4xl mx-auto">
+<div class="reveal text-center max-w-2xl mx-auto">
+<span class="eyebrow">What You Get</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="get_h2">وش راح تحصل عليه؟</h2>
+</div>
+<div class="reveal mt-12 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g1">Workflow استقبال ذكي</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g2">بنية CRM كاملة</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g3">أتمتة رحلة المريض</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g4">Workflow الحجز</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g5">Workflow الاستشارة الأونلاين</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g6">أتمتة المتابعة</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g7">تحويل بشري (Human Handoff)</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g8">بنية ربط القنوات</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g9">ضمان ودعم 30 يوم</span></div>
+<div class="flex items-center gap-2"><span style="color:var(--c-success)">✓</span><span data-i18n="g10">توثيق وتسليم كامل للنظام</span></div>
+</div>
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- 30-DAY WARRANTY -->
+<section class="py-24 px-6" data-section>
+<div class="max-w-2xl mx-auto text-center reveal">
+<span class="eyebrow">Trust</span>
+<h2 class="mt-4 text-3xl sm:text-4xl font-semibold" data-i18n="war_h2">ضمان 30 يوم</h2>
+<p class="mt-5 text-[var(--ink-soft)] leading-relaxed" data-i18n="war_p">
+بعد تسليم المشروع، نوفر فترة ضمان لمدة 30 يومًا للتأكد من استقرار النظام وتجربة المستخدم، ومعالجة أي مشاكل مرتبطة بالتنفيذ ضمن نطاق المشروع.
+</p>
+</div>
+</section>
+
+<div class="max-w-5xl mx-auto px-6"><div class="divider"></div></div>
+
+<!-- FINAL COOPERATION OFFER -->
+<section class="py-28 px-6" style="background:var(--invert-bg)">
+<div class="max-w-3xl mx-auto text-center reveal">
+<span class="inline-block text-xs font-medium mono px-3 py-1 rounded-full mb-6" style="background:rgba(255,255,255,.1);color:#C9D4E4" data-i18n="fin_chip">مبادرة تعاون</span>
+<h2 class="text-3xl sm:text-4xl font-semibold" style="color:#fff" data-i18n="fin_h2">خلّينا نبدأ من أول خطوة</h2>
+<p class="mt-5 max-w-xl mx-auto leading-relaxed" style="color:#B7C1D1" data-i18n="fin_p">
+جرّب رحلة العميل بنفسك، وإذا شفت إن النظام ممكن يفيد عيادتك، تواصل معنا ونبني لك البداية المناسبة.
+</p>
+<div class="mt-9 flex flex-wrap justify-center gap-4">
+<a href="#" data-cta="telegram" class="btn-primary" data-i18n="fin_b1">جرّب بنفسك رحلة العميل</a>
+<a href="#" data-cta="consult" class="btn-wa" data-i18n="fin_b3">استشارة مجانية</a>
+<a href="#" data-cta="whatsapp" class="btn-wa" data-i18n="fin_b2">خلّينا نناقش عيادتك</a>
+</div>
+<p class="mt-5 text-xs" style="color:#848FA1" data-i18n="fin_note">مبادرة تعاون + 30 يوم ضمان بعد التسليم</p>
+
+```
+<div class="mt-12 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-xs" style="color:#848FA1">
+  <span>Live Demo</span><span>·</span><span>30-Day Warranty</span><span>·</span><span>Collaboration Starter</span>
+</div>
+```
+
+</div>
+</section>
+
+<footer class="py-8 text-center text-xs" style="color:var(--ink-soft)">
+<span data-i18n="footer">ScalaryX — نظام أتمتة عيادات بالذكاء الاصطناعي · قابل للتخصيص لأي عيادة</span>
+</footer>
+
+<!-- JOURNEY MODAL -->
+<div id="journeyModal">
+<div class="backdrop" onclick="closeJourney()"></div>
+<div class="panel">
+<div class="flex items-center justify-between px-6 py-4 border-b border-[var(--line)]">
+<div>
+<p class="eyebrow">Interactive Walkthrough</p>
+<p class="font-semibold mt-0.5" data-i18n="mod_title">رحلة العميل — من رسالة لعلاقة مستمرة</p>
+</div>
+<button onclick="closeJourney()" class="w-9 h-9 rounded-full border border-[var(--line)] flex items-center justify-center hover:bg-[var(--lavender)]">✕</button>
+</div>
+
+```
+<div class="flex-1 overflow-y-auto p-6 grid md:grid-cols-[280px_1fr] gap-6">
+  <div class="space-y-2.5" id="journeyCards">
+    <div class="jcard active" data-step="1" style="--jc:var(--c-brand);--jc-soft:var(--purple-soft)" onclick="setStep(1)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc1t">01 · تواصل المريض</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc1d">المريض يبعت رسالة للعيادة</p></div></div>
+    </div>
+    <div class="jcard" data-step="2" style="--jc:var(--c-info);--jc-soft:var(--soft-info)" onclick="setStep(2)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc2t">02 · رد فوري</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc2d">الذكاء الاصطناعي يرد فورًا</p></div></div>
+    </div>
+    <div class="jcard" data-step="3" style="--jc:var(--c-org);--jc-soft:var(--soft-org)" onclick="setStep(3)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc3t">03 · تسجيل البيانات</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc3d">بيانات المريض تتسجل تلقائيًا</p></div></div>
+    </div>
+    <div class="jcard" data-step="4" style="--jc:var(--c-action);--jc-soft:var(--soft-action)" onclick="setStep(4)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc4t">04 · CRM</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc4d">سجل مريض منظم في مكان واحد</p></div></div>
+    </div>
+    <div class="jcard" data-step="5" style="--jc:var(--c-success);--jc-soft:var(--soft-success)" onclick="setStep(5)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc5t">05 · الحجز</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc5d">موعد أو استشارة أونلاين مؤكدة</p></div></div>
+    </div>
+    <div class="jcard" data-step="6" style="--jc:var(--c-followup);--jc-soft:var(--soft-followup)" onclick="setStep(6)">
+      <div class="flex items-center gap-2.5"><span class="jdot"></span><div><p class="font-medium text-sm" data-i18n="mc6t">06 · المتابعة</p><p class="text-xs text-[var(--ink-soft)]" data-i18n="mc6d">متابعة تلقائية بعد العلاج</p></div></div>
+    </div>
+  </div>
+
+  <div class="card p-6 min-h-[320px]" id="journeyDetail"></div>
+</div>
+
+<div class="px-6 py-4 border-t border-[var(--line)] flex justify-between items-center">
+  <p class="text-xs text-[var(--ink-soft)]" data-i18n="mod_foot">جرّب الرحلة كاملة بنفسك على تيليجرام</p>
+  <a href="#" data-cta="telegram" class="btn-primary !py-2.5 !px-5 text-sm" data-i18n="mod_cta">جرّب بنفسك ←</a>
+</div>
+```
+
+</div>
+</div>
+
+<script>
+// ===== Current language (drives i18n + direction) =====
+let lang = 'ar';
+let currentStep = 1;
+
+// ===== Translations (AR = original content) =====
+const I18N = {
+ar:{
+_title:'ScalaryX — نظام أتمتة العيادات بالذكاء الاصطناعي',
+m_cta_try:'جرّب الرحلة', m_cta_contact:'تواصل معنا', m_cta_consult:'استشارة',
+nav_how:'كيف يعمل النظام', nav_journey:'رحلة العميل', nav_crm:'سجل المرضى (CRM)', nav_features:'المزايا', nav_cta:'جرّب بنفسك',
+hero_h1:'من أول رسالة مريض<br>إلى <span style="color:var(--purple)">متابعته بعد العلاج</span>. تلقائيًا.',
+hero_p:'نظام أتمتة عيادات متكامل بالذكاء الاصطناعي: يرد على المرضى، يسجّل بياناتهم، يدير مواعيدهم، ينظّم كل المحادثات، ويتابع معهم بعد العلاج — بدون تدخل يدوي.',
+hero_btn1:'جرّب بنفسك رحلة العميل ←', hero_btn2:'شاهد رحلة المريض', hero_consult:'احجز استشارة مجانية',
+prob_h2:'لما الرد يكون يدوي بالكامل',
+prob_p:'المرضى غالبًا يتواصلون مع أكثر من عيادة قبل ما يقرروا وين يحجزون. العيادة اللي ترد بسرعة، فرصتها أكبر إن المحادثة تكمل معها.',
+chip_msg:'رسالة من مريض', chip_busy:'الموظف مشغول', chip_delay:'الرد يتأخر', chip_lost:'المريض يكلم عيادة ثانية',
+prob_cta:'خلنا نشوف كيف ممكن نطبقه على عيادتك',
+mva_h2:'استقبال يدوي على مدار الساعة مقابل تجربة مريض آلية',
+manual_title:'العمل اليدوي',
+man1:'يحتاج تغطية موظفين مستمرة', man2:'توفر الموظف محدود بساعات العمل', man3:'الأسئلة المتكررة تاخد وقت الفريق', man4:'ممكن تفوت محادثات في أوقات الزحمة', man5:'بيانات المرضى متفرقة بين الشاتات', man6:'المتابعة تعتمد على تذكّر الموظف', man7:'زيادة التغطية تعني تكلفة تشغيل أعلى',
+auto_title:'النظام الآلي',
+aut1:'متاح 24/7', aut2:'رد أول فوري', aut3:'يسجّل بيانات المريض تلقائيًا', aut4:'ينظّم كل المحادثات في مكان واحد', aut5:'يدعم طلبات الحجز والاستشارة الأونلاين', aut6:'يؤتمت المتابعة بعد الموعد', aut7:'يخلي فريقك يركّز على اللي يحتاج فعلًا لمسة بشرية',
+mva_note:'النظام طبقة أتمتة للاستقبال والعمليات — مو بديل عن الأطباء أو الفريق الطبي.',
+mc_h2:'عيادتك متصلة بكل قنوات التواصل المهمة',
+mc_p:'يمكن ربط عيادتك بالقنوات المناسبة لنشاطك — نبني لك النظام بحيث يستقبل استفسارات المرضى من القنوات اللي تستخدمها عيادتك فعليًا.',
+mc_layer:'طبقة أتمتة ScalaryX',
+jn_h2:'رحلة العميل الكاملة',
+jn_p:'من أول رسالة، لحد ما يرجع مريض دائم — كل خطوة تدار تلقائيًا.',
+jn_btn:'افتح رحلة العميل التفاعلية ←',
+jn1:'تواصل المريض', jn2:'رد فوري', jn3:'تسجيل البيانات', jn4:'CRM', jn5:'الحجز', jn6:'المتابعة',
+s12_h2:'المريض يبعت رسالة… ويوصله رد فوري',
+s12_p:'أي استفسار أو طلب حجز، مهما كانت الساعة، يوصله رد فوري بلهجة طبيعية — بدون ما ينتظر موظف الاستقبال يكون متفرغ.',
+s12_li1:'رد فوري على مدار الساعة', s12_li2:'صفر محادثات ضائعة', s12_li3:'يفهم اللهجة ونية المريض تلقائيًا',
+chat_patient:'السلام عليكم، أبغى أحجز موعد لتنظيف الأسنان.',
+cap_h2:'المريض يتسجل تلقائيًا',
+cap_p:'بدون ما أي موظف ينسخ بيانات من الشات لجدول إكسل. كل محادثة تتحول لسجل مريض منظم من أول لحظة.',
+cap_name:'أحمد محمد',
+crm_h2:'كل محادثة تتحول إلى بيانات منظمة',
+crm_p:'مركز عمليات العيادة — كل مريض له مسار واضح من أول تواصل لحد ما يرجع تاني.',
+crm_name:'أحمد محمد', crm_doc:'د. سارة',
+book_h2:'من محادثة… لموعد مؤكد',
+book_p:'المريض يختار الوقت المناسب له، والنظام يتكفّل بالباقي: يتأكد من التوفر، يحجز، ويحدّث كل الأنظمة.',
+book_pick:'اختر موعدك',
+slot1:'اليوم — 5:00 م', slot2:'بكرة — 4:30 م', slot3:'بكرة — 6:00 م ✓', slot4:'بكرة — 8:00 م',
+lbl_service:'الخدمة', lbl_doctor:'الطبيب', lbl_status:'الحالة',
+book_doc:'د. سارة', book_confirmed:'تم تأكيد الموعد ✓',
+fu_h2:'المتابعة ما تنتهيش بعد الحجز',
+fu_p:'بدون ما أي موظف يفتكر يتابع، النظام يتابع مع المريض في التوقيت الصح.',
+fu_d0:'الموعد', fu_d1:'تذكير', fu_d3:'متابعة بعد الزيارة', fu_d14:'تعزيز العلاقة', fu_fut:'إعادة تفعيل المريض',
+fu_msg1:'أهلًا أحمد 👋 حبيت نطمن عليك بعد زيارتك للعيادة. كيف حالك الآن؟',
+fu_msg2:'أهلًا أحمد 👋 إذا احتجت أي مساعدة أو حابب تتابع مع الطبيب، إحنا موجودين لمساعدتك.',
+wa_h2:'وش يشمله النظام؟',
+wa1:'استقبال ذكي', wa1d:'يرد على استفسارات المرضى الشائعة فورًا',
+wa2:'تسجيل العملاء', wa2d:'يلتقط بيانات المريض من المحادثة',
+wa3:'تأهيل ذكي', wa3d:'يفهم وش يحاول المريض يحقق بالضبط',
+wa4:'طلبات المواعيد', wa4d:'يوجّه المريض بين الأوقات المتاحة',
+wa5:'استشارة أونلاين', wa5d:'يدعم حجز الاستشارات عن بُعد',
+wa6:'CRM', wa6d:'ينظّم كل محادثة وكل عميل محتمل',
+wa7:'متابعة تلقائية', wa7d:'يجدول تذكيرات ومتابعات بعد الموعد',
+wa8:'إعادة تفعيل', wa8d:'يعيد التواصل مع مرضى سابقين عند المناسب',
+wa_cta:'عندك فكرة أو Workflow معيّن في عيادتك؟ خلنا نناقشه',
+hh_h2:'الذكاء الاصطناعي يتكفّل بالتكراري، والفريق يتكفّل بما يحتاج حكم بشري',
+hh_c1:'المريض', hh_c2:'استقبال AI', hh_c3:'استفسار عادي: يكمل AI',
+hh_c4:'طلب طبي/حساس/معقّد', hh_c5:'تحويل لفريق العيادة',
+hh_note:'الذكاء الاصطناعي مو دكتور — ما يشخّص حالات ولا ياخذ قرارات طبية.',
+demo_h2:'جرّب بنفسك رحلة العميل',
+demo_p:'كلّم المساعد الذكي بتاع ScalaryX على تيليجرام، وكأنك مريض حقيقي يحجز موعد أو يطلب استشارة أونلاين.',
+demo_t1:'تيليجرام — جرّب النظام', demo_t1d:'ديمو حي: احجز موعد، اطلب استشارة أونلاين، جرّب المساعد الذكي بنفسك.',
+demo_w1:'واتساب — تواصل معنا', demo_w1d:'جاهز تتكلم عن بناء النظام لعيادتك؟ تواصل معنا مباشرة.',
+demo_consult:'احجز استشارة مجانية ←',
+get_h2:'وش راح تحصل عليه؟',
+g1:'Workflow استقبال ذكي', g2:'بنية CRM كاملة', g3:'أتمتة رحلة المريض', g4:'Workflow الحجز', g5:'Workflow الاستشارة الأونلاين', g6:'أتمتة المتابعة', g7:'تحويل بشري (Human Handoff)', g8:'بنية ربط القنوات', g9:'ضمان ودعم 30 يوم', g10:'توثيق وتسليم كامل للنظام',
+war_h2:'ضمان 30 يوم',
+war_p:'بعد تسليم المشروع، نوفر فترة ضمان لمدة 30 يومًا للتأكد من استقرار النظام وتجربة المستخدم، ومعالجة أي مشاكل مرتبطة بالتنفيذ ضمن نطاق المشروع.',
+fin_chip:'مبادرة تعاون', fin_h2:'خلّينا نبدأ من أول خطوة',
+fin_p:'جرّب رحلة العميل بنفسك، وإذا شفت إن النظام ممكن يفيد عيادتك، تواصل معنا ونبني لك البداية المناسبة.',
+fin_b1:'جرّب بنفسك رحلة العميل', fin_b2:'خلّينا نناقش عيادتك', fin_b3:'استشارة مجانية',
+fin_note:'مبادرة تعاون + 30 يوم ضمان بعد التسليم',
+footer:'ScalaryX — نظام أتمتة عيادات بالذكاء الاصطناعي · قابل للتخصيص لأي عيادة',
+mod_title:'رحلة العميل — من رسالة لعلاقة مستمرة',
+mc1t:'01 · تواصل المريض', mc1d:'المريض يبعت رسالة للعيادة',
+mc2t:'02 · رد فوري', mc2d:'الذكاء الاصطناعي يرد فورًا',
+mc3t:'03 · تسجيل البيانات', mc3d:'بيانات المريض تتسجل تلقائيًا',
+mc4t:'04 · CRM', mc4d:'سجل مريض منظم في مكان واحد',
+mc5t:'05 · الحجز', mc5d:'موعد أو استشارة أونلاين مؤكدة',
+mc6t:'06 · المتابعة', mc6d:'متابعة تلقائية بعد العلاج',
+mod_foot:'جرّب الرحلة كاملة بنفسك على تيليجرام', mod_cta:'جرّب بنفسك ←'
+},
+en:{
+_title:'ScalaryX — AI Clinic Automation System',
+m_cta_try:'Try the Journey', m_cta_contact:'Contact Us', m_cta_consult:'Consult',
+nav_how:'How It Works', nav_journey:'Client Journey', nav_crm:'Patient Records (CRM)', nav_features:'Features', nav_cta:'Try It',
+hero_h1:'From a patient’s first message<br>to <span style="color:var(--purple)">post-treatment follow-up</span>. Automatically.',
+hero_p:'A complete AI-powered clinic automation system: it answers patients, captures their data, manages their appointments, organizes every conversation, and follows up after treatment — with no manual work.',
+hero_btn1:'Try the client journey yourself →', hero_btn2:'Watch the patient journey', hero_consult:'Book a Free Consultation',
+prob_h2:'When Every Reply Is Fully Manual',
+prob_p:'Patients usually contact more than one clinic before deciding where to book. The clinic that replies fastest is far more likely to keep the conversation going.',
+chip_msg:'Patient message', chip_busy:'Staff is busy', chip_delay:'Reply is delayed', chip_lost:'Patient contacts another clinic',
+prob_cta:'Let’s see how we can apply this to your clinic',
+mva_h2:'Around-the-Clock Manual Reception vs. an Automated Patient Experience',
+manual_title:'Manual Work',
+man1:'Requires constant staff coverage', man2:'Staff availability is limited to working hours', man3:'Repeated questions consume your team’s time', man4:'Conversations can slip through during peak hours', man5:'Patient data is scattered across chats', man6:'Follow-up depends on staff remembering', man7:'More coverage means higher operating costs',
+auto_title:'The Automated System',
+aut1:'Available 24/7', aut2:'Instant first response', aut3:'Captures patient data automatically', aut4:'Organizes all conversations in one place', aut5:'Supports booking and online consultation requests', aut6:'Automates post-appointment follow-up', aut7:'Lets your team focus on what truly needs a human touch',
+mva_note:'The system is an automation layer for reception and operations — not a replacement for doctors or medical staff.',
+mc_h2:'Your Clinic Connected to Every Channel That Matters',
+mc_p:'We connect your clinic to the channels that suit your business — the system is built to receive patient inquiries from the channels your clinic actually uses.',
+mc_layer:'ScalaryX Automation Layer',
+jn_h2:'The Complete Client Journey',
+jn_p:'From the first message to a loyal returning patient — every step is handled automatically.',
+jn_btn:'Open the interactive client journey →',
+jn1:'Patient Contact', jn2:'Instant Reply', jn3:'Data Capture', jn4:'CRM', jn5:'Booking', jn6:'Follow-up',
+s12_h2:'The Patient Sends a Message… and Gets an Instant Reply',
+s12_p:'Any inquiry or booking request, at any hour, gets an instant reply in a natural tone — without waiting for a receptionist to be free.',
+s12_li1:'Instant replies around the clock', s12_li2:'Zero missed conversations', s12_li3:'Understands dialect and patient intent automatically',
+chat_patient:'Hello, I’d like to book a teeth cleaning appointment.',
+cap_h2:'The Patient Is Registered Automatically',
+cap_p:'No staff member copying data from chats into spreadsheets. Every conversation becomes an organized patient record from the very first moment.',
+cap_name:'Ahmed Mohammed',
+crm_h2:'Every Conversation Becomes Organized Data',
+crm_p:'Your clinic’s operations hub — every patient has a clear path from first contact to becoming a returning patient.',
+crm_name:'Ahmed Mohammed', crm_doc:'Dr. Sara',
+book_h2:'From a Conversation… to a Confirmed Appointment',
+book_p:'The patient picks the time that suits them, and the system handles the rest: checks availability, books, and updates every system.',
+book_pick:'Pick your slot',
+slot1:'Today — 5:00 PM', slot2:'Tomorrow — 4:30 PM', slot3:'Tomorrow — 6:00 PM ✓', slot4:'Tomorrow — 8:00 PM',
+lbl_service:'Service', lbl_doctor:'Doctor', lbl_status:'Status',
+book_doc:'Dr. Sara', book_confirmed:'Appointment confirmed ✓',
+fu_h2:'Follow-up Doesn’t Stop After Booking',
+fu_p:'Without anyone having to remember, the system follows up with the patient at exactly the right time.',
+fu_d0:'Appointment', fu_d1:'Reminder', fu_d3:'Post-visit follow-up', fu_d14:'Relationship building', fu_fut:'Patient reactivation',
+fu_msg1:'Hi Ahmed 👋 Just checking in after your visit to the clinic. How are you feeling now?',
+fu_msg2:'Hi Ahmed 👋 If you need any help or want to follow up with the doctor, we’re here for you.',
+wa_h2:'What Does the System Include?',
+wa1:'Smart reception', wa1d:'Instantly answers common patient inquiries',
+wa2:'Client capture', wa2d:'Captures patient data from the conversation',
+wa3:'Smart qualification', wa3d:'Understands exactly what the patient is trying to achieve',
+wa4:'Appointment requests', wa4d:'Guides the patient through available time slots',
+wa5:'Online consultation', wa5d:'Supports booking remote consultations',
+wa6:'CRM', wa6d:'Organizes every conversation and every lead',
+wa7:'Automated follow-up', wa7d:'Schedules reminders and post-appointment follow-ups',
+wa8:'Reactivation', wa8d:'Reaches out to past patients at the right time',
+wa_cta:'Have an idea or a specific workflow in your clinic? Let’s discuss it',
+hh_h2:'AI Handles the Repetitive — Your Team Handles What Needs Human Judgment',
+hh_c1:'Patient', hh_c2:'AI Reception', hh_c3:'Normal inquiry: AI continues',
+hh_c4:'Medical / sensitive / complex request', hh_c5:'Handoff to clinic team',
+hh_note:'AI is not a doctor — it doesn’t diagnose cases or make medical decisions.',
+demo_h2:'Try the Client Journey Yourself',
+demo_p:'Chat with ScalaryX’s smart assistant on Telegram, as if you were a real patient booking an appointment or requesting an online consultation.',
+demo_t1:'Telegram — Try the System', demo_t1d:'Live demo: book an appointment, request an online consultation, and try the smart assistant yourself.',
+demo_w1:'WhatsApp — Contact Us', demo_w1d:'Ready to talk about building the system for your clinic? Contact us directly.',
+demo_consult:'Book a Free Consultation →',
+get_h2:'What Will You Get?',
+g1:'Smart reception workflow', g2:'Complete CRM structure', g3:'Patient journey automation', g4:'Booking workflow', g5:'Online consultation workflow', g6:'Follow-up automation', g7:'Human handoff', g8:'Channel integration structure', g9:'30-day warranty & support', g10:'Full documentation & handover',
+war_h2:'30-Day Warranty',
+war_p:'After project delivery, we provide a 30-day warranty period to ensure system stability and a smooth user experience, and to resolve any implementation-related issues within the project scope.',
+fin_chip:'Collaboration Initiative', fin_h2:'Let’s Start With the First Step',
+fin_p:'Try the client journey yourself — if you feel the system could benefit your clinic, contact us and we’ll build the right starting point together.',
+fin_b1:'Try the client journey', fin_b2:'Let’s discuss your clinic', fin_b3:'Free Consultation',
+fin_note:'Collaboration initiative + 30-day warranty after delivery',
+footer:'ScalaryX — AI Clinic Automation System · Customizable for any clinic',
+mod_title:'Client Journey — From a Message to a Lasting Relationship',
+mc1t:'01 · Patient Contact', mc1d:'The patient sends a message to the clinic',
+mc2t:'02 · Instant Reply', mc2d:'AI replies instantly',
+mc3t:'03 · Data Capture', mc3d:'Patient data is recorded automatically',
+mc4t:'04 · CRM', mc4d:'An organized patient record in one place',
+mc5t:'05 · Booking', mc5d:'A confirmed appointment or online consultation',
+mc6t:'06 · Follow-up', mc6d:'Automatic follow-up after treatment',
+mod_foot:'Try the full journey yourself on Telegram', mod_cta:'Try it yourself →'
+}
+};
+function applyLang(l){
+lang = l;
+document.documentElement.lang = l;
+document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+document.title = I18N[l]._title;
+document.querySelectorAll('[data-i18n]').forEach(el=>{
+const v = I18N[l][el.dataset.i18n];
+if(v !== undefined) el.innerHTML = v;
+});
+const lt = document.getElementById('langToggle'); if(lt) lt.textContent = (l === 'ar') ? 'EN' : 'ع';
+renderDetail(currentStep);
+const typedEl = document.getElementById('aiTyped');
+if(typedEl && typed) typedEl.textContent = aiTexts[l];
+refreshCTAs();
+try{ localStorage.setItem('sx-lang', l); }catch(e){}
+}
+
+// ===== Centralized external links config =====
+const CONFIG = {
+TELEGRAM_BOT_URL: 'https://t.me/CHATTIIDDBOT',
+CONSULT_URL: 'https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting',
+WHATSAPP_MESSAGE: {
+ar: 'السلام عليكم، جربت الـScalaryX Demo وحاب أعرف كيف ممكن نطبق نفس الفكرة على عيادتي، خصوصًا في الرد على المرضى وتنظيم الحجوزات والمتابعة.',
+en: 'Hello, I tried the ScalaryX demo and I’d like to know how we can apply the same idea to my clinic — especially replying to patients, organizing bookings, and follow-up.'
+}
+};
+function whatsappURL(){
+// WhatsApp number: 01105920342 (international format with country code)
+const phone = '201105920342';
+return 'https://wa.me/' + phone + '?text=' + encodeURIComponent(CONFIG.WHATSAPP_MESSAGE[lang]);
+}
+function refreshCTAs(){
+document.querySelectorAll('[data-cta="whatsapp"]').forEach(el=>{ el.href = whatsappURL(); el.target = '_blank'; el.rel = 'noopener'; });
+document.querySelectorAll('[data-cta="consult"]').forEach(el=>{ el.href = CONFIG.CONSULT_URL; el.target = '_blank'; el.rel = 'noopener'; });
+}
+document.querySelectorAll('[data-cta="telegram"]').forEach(el=>{ el.href = CONFIG.TELEGRAM_BOT_URL; el.target = '_blank'; el.rel='noopener'; });
+refreshCTAs();
+
+// scroll reveal
+const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } }); },{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// AI processing checklist
+const procIO = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+document.querySelectorAll('#procList .proc-item').forEach((item,i)=>{
+setTimeout(()=>{ item.querySelector('.proc-dot').style.background='var(--purple)'; item.querySelector('.proc-dot').style.borderColor='var(--purple)'; }, i*350);
+});
+procIO.disconnect();
+}
+});
+},{threshold:.4});
+const procEl = document.getElementById('procList'); if(procEl) procIO.observe(procEl);
+
+// typewriter
+const aiTexts = {
+ar: "وعليكم السلام 👋 أكيد، يسعدنا نساعدك في حجز موعد لتنظيف الأسنان. هل تفضل موعد صباحي أم مسائي؟",
+en: "Hello 👋 Of course, we’d be happy to help you book a teeth cleaning appointment. Do you prefer a morning or evening slot?"
+};
+let typed=false;
+const typeIO = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting && !typed){
+typed=true; const el=document.getElementById('aiTyped'); let i=0;
+const t=setInterval(()=>{ el.textContent=aiTexts[lang].slice(0,i); i++; if(i>aiTexts[lang].length) clearInterval(t); },22);
+typeIO.disconnect();
+}
+});
+},{threshold:.5});
+const typeEl=document.getElementById('aiTypedLine'); if(typeEl) typeIO.observe(typeEl);
+
+// pulse rail
+const pulsePath=document.getElementById('pulsePath');
+function updateRail(){ const h=document.documentElement.scrollHeight-window.innerHeight; const p=Math.min(1,window.scrollY/Math.max(h,1)); pulsePath.setAttribute('d',`M32,0 L32,${1400*p}`); }
+document.addEventListener('scroll',updateRail); updateRail();
+
+// ===== Journey modal =====
+const journeyDetails = {
+ar:{
+1:{title:'تواصل المريض', body:'أي قناة (تيليجرام، واتساب) — المريض يبعت رسالة بسيطة.', chat:['المريض','السلام عليكم، أبغى أحجز موعد.']},
+2:{title:'رد فوري', body:'الذكاء الاصطناعي يفهم اللهجة والنية ويرد فورًا، بدون انتظار.', chat:['AI','حياك الله 👋 أبشر، وش الخدمة اللي تحتاجها؟']},
+3:{title:'تسجيل البيانات', body:'اسم المريض، رقمه، والخدمة المطلوبة تتسجل تلقائيًا — بدون نسخ يدوي.', fields:[['Patient','أحمد محمد'],['Service','Dental Cleaning']]},
+4:{title:'CRM', body:'كل مريض يتحول لسجل منظم بحالة واضحة (New Lead → Qualified → Booked...).', fields:[['Status','Qualified'],['Source','Telegram']]},
+5:{title:'الحجز', body:'المريض يختار الوقت المناسب، والنظام يأكد الموعد ويحدّث كل الأنظمة.', fields:[['Appointment','Tomorrow — 6:00 PM'],['Doctor','د. سارة']]},
+6:{title:'المتابعة', body:'بعد 3 أيام و14 يوم، النظام يتابع مع المريض تلقائيًا للحفاظ على العلاقة.', chat:['AI','أهلًا أحمد 👋 حبيت نطمن عليك بعد زيارتك للعيادة.']}
+},
+en:{
+1:{title:'Patient Contact', body:'Any channel (Telegram, WhatsApp) — the patient sends a simple message.', chat:['Patient','Hello, I’d like to book an appointment.']},
+2:{title:'Instant Reply', body:'AI understands the dialect and intent and replies instantly — no waiting.', chat:['AI','Welcome 👋 Happy to help — what do you need?']},
+3:{title:'Data Capture', body:'Patient name, phone, and requested service are recorded automatically — no manual copying.', fields:[['Patient','Ahmed Mohammed'],['Service','Dental Cleaning']]},
+4:{title:'CRM', body:'Every patient becomes an organized record with a clear status (New Lead → Qualified → Booked...).', fields:[['Status','Qualified'],['Source','Telegram']]},
+5:{title:'Booking', body:'The patient picks a suitable time, the system confirms the appointment and updates every system.', fields:[['Appointment','Tomorrow — 6:00 PM'],['Doctor','Dr. Sara']]},
+6:{title:'Follow-up', body:'After 3 and 14 days, the system automatically follows up with the patient to maintain the relationship.', chat:['AI','Hi Ahmed 👋 Just checking in after your visit to the clinic.']}
+}
+};
+function renderDetail(step){
+const d = journeyDetails[lang][step];
+const el = document.getElementById('journeyDetail');
+let html = `<p class="eyebrow mb-2">STEP 0${step}</p><h3 class="text-xl font-semibold mb-3">${d.title}</h3><p class="text-sm text-[var(--ink-soft)] leading-relaxed mb-6">${d.body}</p>`;
+if(d.chat){
+html += `<div class="flex ${d.chat[0]==='AI'?'justify-start':'justify-end'}"><div class="${d.chat[0]==='AI'?'bubble-ai':'bubble-patient'} px-4 py-3 max-w-[85%] text-sm rounded-2xl">${d.chat[1]}</div></div>`;
+}
+if(d.fields){
+html += `<div class="grid grid-cols-2 gap-3 text-xs mt-2">` + d.fields.map(f=>`<div><p class="text-[var(--ink-soft)]">${f[0]}</p><p class="mt-0.5 font-medium">${f[1]}</p></div>`).join('') + `</div>`;
+}
+el.innerHTML = html;
+}
+function setStep(step){
+currentStep = step;
+document.querySelectorAll('#journeyCards .jcard').forEach(c=>c.classList.toggle('active', Number(c.dataset.step)===step));
+renderDetail(step);
+}
+function openJourney(){ document.getElementById('journeyModal').classList.add('open'); document.body.style.overflow='hidden'; setStep(1); }
+function closeJourney(){ document.getElementById('journeyModal').classList.remove('open'); document.body.style.overflow=''; }
+
+// ===== Theme toggle (Light / Dark) =====
+const themeToggle=document.getElementById('themeToggle');
+themeToggle.addEventListener('click',()=>{
+const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+document.documentElement.setAttribute('data-theme', next);
+try{ localStorage.setItem('sx-theme', next); }catch(e){}
+});
+
+// ===== Language toggle (AR / EN) =====
+document.getElementById('langToggle').addEventListener('click',()=>{ applyLang(lang==='ar' ? 'en' : 'ar'); });
+
+// ===== Init saved language (default: Arabic) =====
+let savedLang='ar'; try{ savedLang = localStorage.getItem('sx-lang') || 'ar'; }catch(e){}
+if(savedLang !== 'ar') applyLang(savedLang);
+</script>
+</body>
+</html>
