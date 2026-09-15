@@ -45,8 +45,8 @@ export default function FooterSection({ t }: FooterProps) {
           <div>
             <h5>{t("ft_comp")}</h5>
             <a href="#contact">{t("fc1")}</a>
-            <a href="#privacy">{t("fc2")}</a>
-            <a href="#terms">{t("fc3")}</a>
+            <a href="/privacy-policy" target="_blank" rel="noopener">{t("fc2")}</a>
+            <a href="/terms-of-service" target="_blank" rel="noopener">{t("fc3")}</a>
           </div>
           <div>
             <h5>{t("ft_start")}</h5>
