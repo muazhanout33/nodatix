@@ -42,7 +42,7 @@ html[data-theme="dark"]{
 color-scheme:dark;
 }
 html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
-{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--bg);color:var(--ink);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background-color .25s ease,color .25s ease}
 html[dir="rtl"] body,html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] h4{font-family:'IBM Plex Sans Arabic','Instrument Sans',sans-serif}
@@ -87,7 +87,7 @@ html[dir="rtl"] .ccard .cs,html[dir="rtl"] .vbar .vt b,html[dir="rtl"] .badge{fo
 .tbtn.lang{width:auto;padding:0 12px;font-weight:700;font-size:13px;font-family:var(--fd)}
 .igbtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:grid;place-items:center;color:var(--ink2);transition:.15s;flex:none}
 .igbtn:hover{color:var(--blue);border-color:var(--blue)}
-/ theme icons — swapped by pure CSS, cannot break /
+/* theme icons — swapped by pure CSS, cannot break */
 .tbtn .ic-sun{display:none}
 html[data-theme="dark"] .tbtn .ic-sun{display:block}
 html[data-theme="dark"] .tbtn .ic-moon{display:none}
@@ -251,7 +251,50 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 #toasts{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px}
 .toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:11px;font-size:13.5px;box-shadow:var(--sh-lg);display:flex;gap:10px;align-items:center;max-width:400px}
 #errbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#B3261E;color:#fff;font:12px/1.4 monospace;padding:8px 12px}
-@media(prefers-reduced-motion:reduce){,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}html.anim .rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}html.anim .rv{opacity:1;transform:none}}
+
+/* ══ Mobile Responsive Additions ══ */
+@media (max-width: 768px) {
+    .wrap { padding: 0 18px; }
+    .sec { padding: 64px 0; }
+    .hero { padding: 60px 0 70px; }
+    .hero h1 { font-size: clamp(28px, 8vw, 34px); }
+    .hero p.sub { font-size: 15.5px; }
+    .mnav .wrap { height: 60px; gap: 6px; }
+    .logo { font-size: 17px; }
+    .logo small { display: none; }
+    .mnav .btn.sm { padding: 8px 12px; font-size: 12px; }
+    .tbtn { width: 32px; height: 32px; }
+    .tbtn.lang { padding: 0 8px; font-size: 11px; }
+    .scattered { height: 320px; overflow: hidden; }
+    footer.m .cols { grid-template-columns: 1fr 1fr; gap: 30px; }
+    footer.m .cols > div:first-child { grid-column: 1 / -1; }
+    footer.m .fine { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .band { padding: 40px 24px; flex-direction: column; align-items: flex-start; text-align: left; }
+    html[dir="rtl"] .band { text-align: right; }
+    .band .btn { width: 100%; justify-content: center; }
+    .pad { padding: 18px; }
+    .ccard { padding: 22px; }
+    .solve-panel { padding: 22px; }
+    .hero-cta { width: 100%; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+    .sec-head h2 { font-size: clamp(22px, 5.5vw, 28px); }
+    .solve-panel h3 { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+    .wrap { padding: 0 14px; }
+    .sec { padding: 50px 0; }
+    .hero { padding: 50px 0 50px; }
+    .scattered { height: 260px; }
+    .pv-main { padding: 16px; }
+    .pv-kpis { grid-template-columns: 1fr; gap: 8px; }
+    .contact-grid { gap: 14px; }
+    .ccard { flex-direction: column; align-items: flex-start; }
+    .ccard .cic { margin-bottom: 12px; }
+    .mnav .btn.sm.hide-s { display: none; }
+    .igbtn { display: none; }
+}
 </style>
 </head>
 <body>
@@ -282,8 +325,7 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 
 <div id="marketing">
 <nav class="mnav"><div class="wrap">
-<!-- ══ مكان اللوجو: حط <img src="logo.png" alt="Scalary X"> جوه الـ span الفاضي ده ══ -->
-<a class="logo" href="#top"><span class="logo-slot"></span><span>Scalary X</span> <small data-i18n="brand_tag"></small></a>
+<a class="logo" href="#top"><span class="logo-slot"></span><span>Scalary X</span> <small data-i18n="brand_tag"></small></a>
 <div class="links">
 <a href="#problem" data-i18n="nav_problem"></a>
 <a href="#solution" data-i18n="nav_solution"></a>
@@ -307,7 +349,7 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 <p class="sub" data-i18n="hero_sub"></p>
 <div class="hero-cta">
 <a class="btn wa" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="cta_wa"></span></a>
-<a class="btn o" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="cta_consult"></span> ↗</a>
+<a class="btn o" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="cta_consult"></span> ↗</a>
 </div>
 <a class="hero-alt" href="#request"><span data-i18n="cta_request"></span><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow-ur"/></svg></a>
 <div class="hero-meta">
@@ -434,12 +476,12 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 <div class="cs" data-i18n="ct_mail_s"></div></div></div>
 <div class="ccard"><div class="cic" style="background:var(--sky);color:var(--deep)"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ig"/></svg></div>
 <div><h3 data-i18n="ct_ig_t"></h3><p data-i18n="ct_ig_d"></p>
-<a class="btn" href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener">@scalary_x ↗</a>
+<a class="btn" href="https://www.instagram.com/scalary_x" target="_blank" rel="noopener">@scalary_x ↗</a>
 <div class="cs" data-i18n="ct_ig_s"></div></div></div>
 </div>
 <div class="consult-strip rv">
 <span data-i18n="ct_consult"></span>
-<a class="btn blue sm" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="nav_consult"></span> ↗</a>
+<a class="btn blue sm" href="https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting" target="_blank" rel="noopener"><span data-i18n="nav_consult"></span> ↗</a>
 </div>
 <div class="contact-note rv"><svg width="16" height="16" color="#0E8A5F" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span data-i18n="ct_note"></span></div>
 </div></section>
@@ -528,7 +570,7 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 <div id="errbar"></div>
 
 <script>
-/* ══ 2) ERROR DIAGNOSTIC — لو حصل أي خطأ هيرسم شريط أحمر تحت ══ */
+/* ══ 2) ERROR DIAGNOSTIC ══ */
 window.addEventListener('error',function(e){
 try{
 var b=document.getElementById('errbar');
@@ -537,7 +579,7 @@ b.textContent='⚠ JS Error: '+(e && e.message ? e.message : 'unknown');
 }catch(x){}
 });
 
-/* ══ 3) LANGUAGE ENGINE — standalone ══ */
+/* ══ 3) LANGUAGE ENGINE ══ */
 window.LANG=(function(){try{var v=String(localStorage.getItem('sx_lang')||'en').replace(/"/g,'').trim().toLowerCase();return v==='ar'?'ar':'en'}catch(e){return 'en'}})();
 var DICT={
 en:{
@@ -673,7 +715,7 @@ applyLang();
 try{sxTab(0)}catch(e){}
 };
 
-/* ══ 4) SYSTEM TABS — standalone, inline onclick ══ */
+/* ══ 4) SYSTEM TABS ══ */
 window.sxTab=function(i){
 var d=function(k){var v=T(k);return v!=null?String(v).replace(/</g,'<').replace(/>/g,'>'):''};
 var h='<h3>'+d('sv'+(i+1)+'t')+'</h3><div class="lede">'+d('sv'+(i+1)+'l')+'</div><ul>';
@@ -716,7 +758,7 @@ var tabs=document.querySelectorAll('#solveTabs .solve-tab');
 for(var k=0;k<tabs.length;k++)tabs[k].classList.toggle('on',k===i);
 };
 
-/* ══ 5) REQUEST FORM — standalone ══ */
+/* ══ 5) REQUEST FORM ══ */
 window.sxSubmit=function(e){
 e.preventDefault();
 var f=document.getElementById('reqForm');
@@ -725,7 +767,7 @@ qsa('input,select,textarea',f).forEach(function(inp){
 var bad=false;
 if(inp.hasAttribute('required')&&!String(inp.value).trim())bad=true;
 if(inp.name==='email'&&inp.value&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inp.value))bad=true;
-    if(inp.name==='phone'&&inp.value&&!/^[+0-9 ()-]{7,}$/.test(inp.value))bad=true;
+if(inp.name==='phone'&&inp.value&&!/^[+0-9 ()-]{7,}$/.test(inp.value))bad=true;
 if(inp.closest('.field'))inp.closest('.field').classList.toggle('bad',bad);
 if(bad)ok=false;
 });
@@ -755,7 +797,7 @@ setTimeout(function(){t.remove()},3800);
 }catch(e){}
 }
 
-/* ══ 6) DOC MODALS — standalone ══ */
+/* ══ 6) DOC MODALS ══ */
 window.sxDoc=function(id){
 var t=T(id+'_t'),b=T(id+'_b');
 var bg=document.createElement('div');bg.className='modal-bg';
@@ -766,7 +808,7 @@ document.body.appendChild(bg);
 bg.addEventListener('click',function(e){if(e.target===bg)bg.remove()});
 };
 
-/* ══ 7) BOOT — every piece isolated ══ */
+/* ══ 7) BOOT ══ */
 (function(){
 try{applyLang()}catch(e){}
 try{sxTab(0)}catch(e){}

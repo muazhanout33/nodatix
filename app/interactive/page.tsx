@@ -23,6 +23,15 @@ const PROJECTS = [
     tags: ["AI", "Clinic", "Healthcare"],
     src: "/interactive/projects/ai-clinic-automation/index.html",
   },
+  {
+    id: "ai-research-automation",
+    title: "AI Research Automation System",
+    description:
+      "Automate research workflows: video processing, PDF analysis, web research, and organized document generation — all in one AI pipeline.",
+    icon: "🔬",
+    tags: ["AI", "Research", "Automation"],
+    src: "/interactive/projects/ai-research-automation/index.html",
+  },
 ];
 
 function ProjectViewer({
