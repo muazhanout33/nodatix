@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
       aria-label="Chat on WhatsApp"
       className="fixed bottom-6 right-6 z-50 group"
     >
-      <div className="relative w-14 h-14 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-[0_4px_24px_rgba(37,211,102,0.35)] transition-all duration-300 hover:scale-110 hover:shadow-[0_6px_32px_rgba(37,211,102,0.55)]">
+      <div className="relative w-14 h-14 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
         <svg
           className="w-7 h-7 fill-white transition-transform duration-300 group-hover:scale-105"
           viewBox="0 0 24 24"

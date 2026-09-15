@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
-import NetworkOverlay from "./NetworkOverlay";
 
 const contactItems = [
   {
@@ -43,23 +42,8 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-28 px-6 relative overflow-hidden cyber-network">
-      {/* Mesh Gradient Background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(ellipse 50% 40% at 50% 50%, rgba(47,107,255,0.06) 0%, transparent 60%),
-            radial-gradient(ellipse 35% 30% at 40% 45%, rgba(90,155,255,0.04) 0%, transparent 55%),
-            linear-gradient(180deg, transparent 0%, rgba(6,6,8,0.4) 50%, transparent 100%)
-          `,
-        }}
-      />
-      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
-
+    <section id="contact" className="py-28 px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
-        <NetworkOverlay columns={3} />
-        {/* Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -67,21 +51,15 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
-            Contact
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-5 leading-tight">
-            Let&apos;s Start{" "}
-            <span className="gradient-text">Building</span>{" "}
-            Together
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight">
+            Get in touch
           </h2>
-          <p className="text-gray-400 leading-relaxed max-w-xl mx-auto">
+          <p className="text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto">
             Have a question or want to explore what automation or marketing could do for your business?
             Drop us a message and we&apos;ll get back to you within 24 hours.
           </p>
         </motion.div>
 
-        {/* Contact Info Cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -98,15 +76,15 @@ export default function Contact() {
             >
               <div className="card-sweep" />
               <div className="relative flex flex-col items-center text-center gap-3 z-10">
-                <div className="card-icon w-11 h-11 text-[#0084FF] group-hover:bg-[#0084FF]/15 group-hover:border-[rgba(0,132,255,0.3)] transition-all duration-300">
+                <div className="card-icon w-10 h-10 text-[var(--accent)] group-hover:bg-[var(--accent)]/10 transition-all duration-300">
                   {item.icon}
                 </div>
                 <div>
-                  <div className="text-[11px] text-gray-500 uppercase tracking-wider mb-1">{item.label}</div>
+                  <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mb-1">{item.label}</div>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-white hover:text-[#0084FF] transition-colors font-medium text-sm"
+                      className="text-white hover:text-[var(--accent)] transition-colors font-medium text-sm"
                     >
                       {item.value}
                     </a>
@@ -119,31 +97,20 @@ export default function Contact() {
           ))}
         </motion.div>
 
-        {/* Book a Call CTA Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative rounded-2xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-[var(--surface)]"
         >
-          {/* Gradient border glow */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#0084FF]/20 via-[#2F6BFF]/10 to-[#0084FF]/20 p-[1px]">
-            <div className="w-full h-full rounded-2xl bg-[#0a0e17]" />
-          </div>
-
-          {/* Soft glow edges */}
-            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.08] blur-[40px] pointer-events-none" />
-            <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[300px] h-[100px] bg-[#0084FF] opacity-[0.06] blur-[40px] pointer-events-none" />
-
-          {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center py-12 px-8 gap-4">
-            <h3 className="text-3xl sm:text-4xl font-black text-white">
-              Ready to get <span className="gradient-text">similar results?</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+              Ready to get started?
             </h3>
-            <p className="text-gray-400 max-w-md mx-auto mb-2">
+            <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-2">
               Let&apos;s build your automation system
             </p>
-            <BookCallButton className="px-10 py-4 rounded-xl bg-[#0084FF] text-black font-bold text-base hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 mt-2 shadow-[0_0_30px_rgba(0,132,255,0.25)] hover:shadow-[0_0_40px_rgba(0,132,255,0.4)]" />
+            <BookCallButton className="btn-primary px-8 py-4 text-base mt-2" />
           </div>
         </motion.div>
       </div>

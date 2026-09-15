@@ -2,7 +2,6 @@ export interface Project {
   slug: string;
   title: string;
   shortDescription: string;
-  icon: string;
   tags: string[];
   interactiveUrl: string;
   category: string;
@@ -20,7 +19,6 @@ export const PROJECTS: Project[] = [
     title: "Scalary X — CRM + ERP Systems",
     shortDescription:
       "Custom CRM + ERP systems built around your business. Leads, deals, inventory, orders, invoices, and payments — one connected workflow.",
-    icon: "📊",
     tags: ["CRM", "ERP", "Automation"],
     interactiveUrl: "/interactive/projects/crm-erp/index.html",
     category: "Business Automation",
@@ -65,7 +63,6 @@ export const PROJECTS: Project[] = [
     title: "AI-Powered Clinic Automation System",
     shortDescription:
       "AI-driven clinic automation: patient intake, appointment booking, CRM, follow-up, and multi-channel communication — fully automated.",
-    icon: "🏥",
     tags: ["AI", "Clinic", "Healthcare"],
     interactiveUrl: "/interactive/projects/ai-clinic-automation/index.html",
     category: "Healthcare Automation",
@@ -110,7 +107,6 @@ export const PROJECTS: Project[] = [
     title: "AI Research Automation System",
     shortDescription:
       "Automate research workflows: video processing, PDF analysis, web research, and organized document generation — all in one AI pipeline.",
-    icon: "🔬",
     tags: ["AI", "Research", "Automation"],
     interactiveUrl: "/interactive/projects/ai-research-automation/index.html",
     category: "Research Automation",

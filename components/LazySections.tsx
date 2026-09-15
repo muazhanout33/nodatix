@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const AutomationSamples = dynamic(() => import("@/components/AutomationSamples"), { ssr: false });
+const InteractiveProjects = dynamic(() => import("@/components/InteractiveProjects"), { ssr: false });
 const Problems = dynamic(() => import("@/components/Problems"), { ssr: false });
 const Services = dynamic(() => import("@/components/Services"), { ssr: false });
 const Benefits = dynamic(() => import("@/components/Benefits"), { ssr: false });
@@ -15,7 +15,7 @@ const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: false });
 export default function LazySections() {
   return (
     <>
-      <AutomationSamples />
+      <InteractiveProjects />
       <Problems />
       <Services />
       <Benefits />

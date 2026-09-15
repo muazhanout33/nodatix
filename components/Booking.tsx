@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
-import NetworkOverlay from "./NetworkOverlay";
 
 const testimonials = [
   {
@@ -43,23 +42,8 @@ export default function Booking() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="testimonials" className="py-28 px-6 relative overflow-hidden cyber-network">
-      {/* Mesh Gradient Background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(ellipse 45% 35% at 60% 45%, rgba(47,107,255,0.06) 0%, transparent 60%),
-            radial-gradient(ellipse 35% 30% at 40% 55%, rgba(90,155,255,0.04) 0%, transparent 55%),
-            linear-gradient(180deg, transparent 0%, rgba(6,6,8,0.4) 50%, transparent 100%)
-          `,
-        }}
-      />
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[60px] pointer-events-none" />
-
+    <section id="testimonials" className="py-28 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <NetworkOverlay columns={3} />
-        {/* Section Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -67,20 +51,15 @@ export default function Booking() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
-            Testimonials
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            What Our{" "}
-            <span className="gradient-text">Clients Say</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Results
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
             Real results from businesses using ScalaryX automation systems
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
           {testimonials.map((testimonial, i) => (
             <motion.div
               key={testimonial.name}
@@ -91,26 +70,21 @@ export default function Booking() {
               className="card-premium p-6 group"
             >
               <div className="card-sweep" />
-              {/* Quote Icon */}
-              <div className="card-icon w-10 h-10 text-[#5A9BFF] text-xl mb-4 relative z-10">
-                "
+              <div className="card-icon w-9 h-9 text-[var(--accent)] text-lg mb-4 relative z-10">
+                &ldquo;
               </div>
-
-              {/* Quote Text */}
-              <p className="text-[#B0BEC5] leading-relaxed mb-6 text-sm relative z-10">
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-6 text-sm relative z-10">
                 {testimonial.quote}
               </p>
-
-              {/* Client Info */}
-              <div className="flex items-center gap-3 pt-4 border-t border-[rgba(0,132,255,0.08)] relative z-10">
-                <div className="card-icon w-10 h-10 text-[#5A9BFF] font-bold text-sm">
+              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] relative z-10">
+                <div className="card-icon w-9 h-9 text-[var(--text-muted)] font-semibold text-xs">
                   {testimonial.initials}
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">
+                  <div className="text-white font-medium text-sm">
                     {testimonial.name}
                   </div>
-                  <div className="text-[#6B7A8D] text-xs">
+                  <div className="text-[var(--text-muted)] text-xs">
                     {testimonial.role}
                   </div>
                 </div>
@@ -119,16 +93,16 @@ export default function Booking() {
           ))}
         </div>
 
-        {/* Trust badges */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500"
+          className="mt-10 flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--text-muted)]"
         >
-          {["✓ 50+ Automations Built", "✓ 10k+ Hours Saved", "✓ 12+ Industries Served"].map((item) => (
-            <span key={item} className="flex items-center gap-1">
+          {["50+ Automations Built", "10k+ Hours Saved", "12+ Industries Served"].map((item) => (
+            <span key={item} className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-[var(--accent)]" />
               {item}
             </span>
           ))}

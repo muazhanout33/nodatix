@@ -30,32 +30,24 @@ export default function Blog() {
 
   return (
     <section id="blog" className="py-28 px-6 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute right-0 top-1/2 w-[400px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[60px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
-            Blog
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Latest <span className="gradient-text">Insights</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            From the blog
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-[var(--text-secondary)] max-w-xl">
             Practical guides on AI automation, workflow systems, and marketing
             growth — built for business owners who want results.
           </p>
         </motion.div>
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {blogPosts.map((post, i) => (
             <motion.article
               key={i}
@@ -66,13 +58,13 @@ export default function Blog() {
               className="card-premium p-6 group cursor-pointer"
             >
               <div className="card-sweep" />
-              <span className="card-tag inline-block text-xs text-[#0084FF] font-medium px-3 py-1 rounded-full mb-4 relative z-10">
+              <span className="card-tag inline-block text-xs text-[var(--text-muted)] font-medium px-3 py-1 rounded-full mb-4 relative z-10">
                 {post.tag}
               </span>
-              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#5A9BFF] transition-colors duration-300 leading-snug relative z-10">
+              <h3 className="text-base font-semibold text-white mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug relative z-10">
                 {post.title}
               </h3>
-              <p className="text-[#8899B0] text-sm leading-relaxed relative z-10">
+              <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">
                 {post.excerpt}
               </p>
             </motion.article>

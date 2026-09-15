@@ -13,7 +13,7 @@ const navLinks = [
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
   { href: "/interactive", label: "Projects" },
-]; 
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("#")) return; // Let Next.js handle page navigation
+    if (!href.startsWith("#")) return;
     e.preventDefault();
     setMenuOpen(false);
     setTimeout(() => {
@@ -38,44 +38,40 @@ export default function Navbar() {
   };
 
   return (
-<motion.header
+    <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-[rgba(0,153,255,0.2)]"
+          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">  
-          <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-12 sm:h-14 w-auto" priority />
-          <span className="text-xl sm:text-3xl font-bold">
-            <span className="text-white">Scalary</span><span className="text-[#0099FF]">X</span>
+        <a href="#" className="flex items-center gap-2 group">
+          <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-10 sm:h-12 w-auto" priority />
+          <span className="text-lg sm:text-xl font-bold tracking-tight">
+            <span className="text-white">Scalary</span><span className="text-[var(--accent)]">X</span>
           </span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors duration-200"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <BookCallButton className="px-5 py-2.5 rounded-lg bg-[#0099FF] text-black text-sm font-semibold hover:bg-[#0066cc] transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer" />
+          <BookCallButton className="btn-primary" />
         </div>
 
-        {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden p-2"
@@ -89,7 +85,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -97,7 +92,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#000000] border-t border-[rgba(0,153,255,0.2)] overflow-hidden"
+            className="md:hidden bg-[#000000] border-t border-white/[0.06] overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
@@ -105,18 +100,13 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-300 hover:text-[#0099FF] transition-colors py-2 text-lg"
+                  className="text-[var(--text-secondary)] hover:text-white transition-colors py-2 text-lg"
                 >
                   {link.label}
                 </a>
               ))}
-              <div 
-                onClick={() => setMenuOpen(false)}
-                className="mt-2"
-              >
-                <BookCallButton 
-                  className="px-5 py-2.5 rounded-lg bg-[#0099FF] text-black text-sm font-semibold text-center cursor-pointer" 
-                />
+              <div onClick={() => setMenuOpen(false)} className="mt-2">
+                <BookCallButton className="btn-primary w-full" />
               </div>
             </div>
           </motion.div>

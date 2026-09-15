@@ -9,18 +9,14 @@ export const metadata: Metadata = {
 
 export default function TermsOfService() {
   return (
-    <main className="min-h-screen bg-[#000000] overflow-x-hidden">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
       <section className="py-28 px-6 relative">
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0084FF] opacity-[0.04] blur-[120px] pointer-events-none" />
         <div className="max-w-4xl mx-auto">
-          <span className="inline-block text-xs text-[#0084FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0084FF]/20 bg-[#0084FF]/5">
-            Legal
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Terms of <span className="gradient-text">Service</span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Terms of Service
           </h1>
-          <p className="text-gray-400 mb-12">Last updated: May 2026</p>
+          <p className="text-[var(--text-secondary)] mb-12">Last updated: May 2026</p>
 
           <div className="space-y-8 text-gray-300 leading-relaxed">
             <section>
@@ -140,7 +136,7 @@ export default function TermsOfService() {
               <p>
                 For questions or concerns about these Terms, please contact us at:
               </p>
-              <p className="mt-2 text-[#0084FF]">scalaryx@gmail.com</p>
+              <p className="mt-2 text-[var(--accent)]">scalaryx@gmail.com</p>
             </section>
           </div>
         </div>

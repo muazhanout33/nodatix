@@ -61,7 +61,7 @@ function FAQItem({
           {faq.question}
         </span>
         <span
-          className={`text-[#0099FF] text-xl flex-shrink-0 transition-transform duration-300 ${
+          className={`text-[var(--accent)] text-xl flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-45" : ""
           }`}
         >
@@ -77,7 +77,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 text-gray-300 text-sm leading-relaxed">
+            <div className="px-6 pb-6 text-[var(--text-secondary)] text-sm leading-relaxed">
               {faq.answer}
             </div>
           </motion.div>
@@ -92,27 +92,21 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-28 px-6 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#0084FF] opacity-[0.03] blur-[120px] pointer-events-none" />
-
       <div className="max-w-4xl mx-auto relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-xs text-[#0099FF] font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border border-[#0099FF]/20 bg-[#0099FF]/5">
+          <span className="inline-block text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-white/[0.06] bg-white/[0.02]">
             FAQ
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Frequently Asked{" "}
-            <span className="gradient-text">Questions</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Frequently Asked Questions
           </h2>
-          <p className="text-gray-300 max-w-xl mx-auto">
+          <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
             Everything you need to know about AI automation and how we can help
             your business grow.
           </p>
         </div>
 
-        {/* Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, i) => (
             <FAQItem
               key={i}
