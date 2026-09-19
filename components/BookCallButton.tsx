@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const CAL_URL = "https://cal.com/mezo-hanout-0qmbfk/scalaryx-meeting";
+const CAL_URL = "https://cal.com/scalary-x-4qdg27/scalaryx-meeting";
 
 declare global {
   interface Window {
@@ -91,7 +91,7 @@ export function BookCallButton({
   return (
     <a
       href={CAL_URL}
-      data-cal-link="mezo-hanout-0qmbfk/scalaryx-meeting"
+      data-cal-link="scalary-x-4qdg27/scalaryx-meeting"
       data-cal-config='{"layout":"month_view"}'
       className={className}
       onClick={handleClick}
