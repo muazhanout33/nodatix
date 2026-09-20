@@ -119,7 +119,7 @@ function ServiceCard({
           {t[service.tagKey as keyof typeof t]}
         </span>
       </div>
-      <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
+      <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
         {t[service.titleKey as keyof typeof t]}
       </h3>
       <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">
@@ -135,7 +135,7 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-28 px-6 relative overflow-hidden">
+    <section id="services" className="py-28 px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
@@ -144,7 +144,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.services_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">

@@ -84,10 +84,10 @@ export default function Benefits() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="inline-block text-xs text-[var(--accent)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-[var(--border-accent)] bg-[var(--accent)]/5">
+          <span className="badge-brand mb-4 inline-flex">
             {t.benefits_kicker}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.benefits_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">
@@ -106,7 +106,7 @@ export default function Benefits() {
               className="card-premium p-6 group relative overflow-hidden"
             >
               <div className="card-sweep" />
-              <div className="absolute top-4 right-4 text-4xl font-bold text-white/[0.03] select-none z-0">
+              <div className="absolute top-4 right-4 text-4xl font-bold text-[var(--text-primary)] opacity-5 select-none z-0">
                 {benefit.stat}
               </div>
 
@@ -116,7 +116,7 @@ export default function Benefits() {
 
               {benefit.stat && (
                 <div className="flex items-baseline gap-2 mb-1 relative z-10">
-                  <span className="text-xl font-bold text-white">
+                  <span className="text-xl font-bold text-[var(--text-primary)]">
                     {benefit.stat}
                   </span>
                   <span className="text-xs text-[var(--text-muted)] uppercase tracking-wider">
@@ -125,7 +125,7 @@ export default function Benefits() {
                 </div>
               )}
 
-              <h3 className="text-base font-semibold text-white mt-2 mb-2 relative z-10">
+              <h3 className="text-base font-semibold text-[var(--text-primary)] mt-2 mb-2 relative z-10">
                 {t[benefit.titleKey as keyof typeof t]}
               </h3>
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">

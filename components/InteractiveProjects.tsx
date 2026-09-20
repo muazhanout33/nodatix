@@ -40,7 +40,7 @@ export default function InteractiveProjects() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">
             {t.interactive_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">
@@ -71,7 +71,7 @@ export default function InteractiveProjects() {
                         </svg>
                       )}
                     </div>
-                    <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[var(--accent)] transition-colors">
+                    <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors">
                       {project.title}
                     </h3>
                     <p className="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed line-clamp-2">
@@ -81,7 +81,7 @@ export default function InteractiveProjects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[var(--text-muted)]"
+                          className="card-tag text-xs font-mono px-3 py-1 rounded-full"
                         >
                           {tag}
                         </span>

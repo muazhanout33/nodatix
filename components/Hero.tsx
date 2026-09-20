@@ -9,14 +9,11 @@ const Hero = memo(function Hero() {
   const { t } = useI18n();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Subtle background gradient */}
+      {/* Dynamic background gradient */}
       <div
         className="absolute inset-0"
         style={{
-          background: `
-            radial-gradient(ellipse 60% 50% at 60% 45%, rgba(0,153,255,0.06) 0%, transparent 70%),
-            linear-gradient(180deg, #000000 0%, #08090d 100%)
-          `,
+          background: "var(--hero-gradient)",
         }}
       />
 
@@ -25,7 +22,7 @@ const Hero = memo(function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[var(--text-secondary)] text-xs font-medium mb-8"
+          className="badge-brand mb-8 inline-flex"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
           {t.hero_kicker}
@@ -72,15 +69,15 @@ const Hero = memo(function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
         >
-          <div className="card-premium p-6">
+          <div className="card-premium p-6 text-start">
             <div className="card-sweep" />
             <div className="relative z-10">
               <div className="card-icon w-11 h-11 mb-4">
-                <svg className="w-5 h-5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.25-11.396c.251.023.501.05.75.082M12 21a8.966 8.966 0 0 1-5.982-2.275M12 21a8.966 8.966 0 0 0 5.982-2.275M15.75 3.186a24.286 24.286 0 0 1 2.25.082m-10 0c-.251-.023-.501-.05-.75-.082m10 0c.251.023.501.05.75.082" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
                 {t.hero_card1_title}
               </h3>
               <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
@@ -88,15 +85,15 @@ const Hero = memo(function Hero() {
               </p>
             </div>
           </div>
-          <div className="card-premium p-6">
+          <div className="card-premium p-6 text-start">
             <div className="card-sweep" />
             <div className="relative z-10">
               <div className="card-icon w-11 h-11 mb-4">
-                <svg className="w-5 h-5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 17l6-6 4 4 8-8M21 7h-6m6 0v6" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
                 {t.hero_card2_title}
               </h3>
               <p className="text-[var(--text-secondary)] leading-relaxed text-sm">

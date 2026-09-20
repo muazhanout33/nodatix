@@ -69,11 +69,11 @@ export default function SocialProof() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="flex items-center gap-4 group"
             >
-              <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.06] text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:border-[var(--border-accent)] transition-colors duration-300">
+              <div className="card-icon w-11 h-11 text-[var(--accent)] group-hover:scale-105 transition-transform duration-300">
                 {stat.icon}
               </div>
               <div>
-                <div className="text-xl sm:text-2xl font-bold text-white leading-none">
+                <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] leading-none">
                   {stat.number}
                 </div>
                 <div className="text-xs sm:text-sm text-[var(--text-muted)] mt-1">

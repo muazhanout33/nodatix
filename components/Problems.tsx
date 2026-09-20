@@ -65,7 +65,7 @@ export default function Problems() {
           <span className="inline-block text-xs text-[var(--danger)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-[var(--danger)]/20 bg-[var(--danger)]/5">
             {t.problems_kicker}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.problems_title_1} <span className="text-[var(--accent)]">{t.problems_title_accent}</span>
           </h2>
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg leading-relaxed">
@@ -84,14 +84,14 @@ export default function Problems() {
               className="card-premium p-6 group relative"
             >
               <div className="card-sweep" />
-              <div className="absolute top-5 right-5 text-5xl font-bold text-white/[0.03] select-none z-0">
+              <div className="absolute top-5 right-5 text-5xl font-bold text-[var(--text-primary)] opacity-5 select-none z-0">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
               <div className="card-icon w-12 h-12 mb-5 relative z-10 text-[var(--danger)]">
                 {problem.icon}
               </div>
-              <h3 className="text-base font-semibold text-white mb-3 relative z-10" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+              <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3 relative z-10" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
                 {problem.title}
               </h3>
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-5 relative z-10">
@@ -114,7 +114,7 @@ export default function Problems() {
         >
           <p className="text-[var(--text-secondary)] text-sm">
             {t.problems_cta}{" "}
-            <a href="#services" className="text-[var(--accent)] hover:text-white transition-colors underline">
+            <a href="#services" className="text-[var(--accent)] hover:underline font-medium transition-colors">
               {t.problems_cta_link}
             </a>
           </p>

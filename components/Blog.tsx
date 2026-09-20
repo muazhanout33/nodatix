@@ -37,7 +37,7 @@ export default function Blog() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.blog_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">
@@ -59,7 +59,7 @@ export default function Blog() {
               <span className="card-tag inline-block text-xs text-[var(--text-muted)] font-medium px-3 py-1 rounded-full mb-4 relative z-10">
                 {t[post.tagKey as keyof typeof t]}
               </span>
-              <h3 className="text-base font-semibold text-white mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug relative z-10">
+              <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug relative z-10">
                 {t[post.titleKey as keyof typeof t]}
               </h3>
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">

@@ -44,7 +44,7 @@ export default function Booking() {
   const { t } = useI18n();
 
   return (
-    <section id="testimonials" className="py-28 px-6 relative overflow-hidden">
+    <section id="testimonials" className="py-28 px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
@@ -53,7 +53,7 @@ export default function Booking() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.testimonials_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
@@ -78,12 +78,12 @@ export default function Booking() {
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6 text-sm relative z-10">
                 {t[testimonial.quoteKey as keyof typeof t]}
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] relative z-10">
+              <div className="flex items-center gap-3 pt-4 border-t border-[var(--border)] relative z-10">
                 <div className="card-icon w-9 h-9 text-[var(--text-muted)] font-semibold text-xs">
                   {testimonial.initials}
                 </div>
                 <div>
-                  <div className="text-white font-medium text-sm">
+                  <div className="text-[var(--text-primary)] font-medium text-sm">
                     {t[testimonial.nameKey as keyof typeof t]}
                   </div>
                   <div className="text-[var(--text-muted)] text-xs">

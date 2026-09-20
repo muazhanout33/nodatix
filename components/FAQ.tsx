@@ -32,7 +32,7 @@ function FAQItem({
         className="w-full flex items-center justify-between p-6 text-left cursor-pointer relative z-10"
         aria-expanded={isOpen}
       >
-        <span className="text-white font-semibold text-base pr-4">
+        <span className="text-[var(--text-primary)] font-semibold text-base pr-4">
           {question}
         </span>
         <span
@@ -67,13 +67,13 @@ export default function FAQ() {
   const { t } = useI18n();
 
   return (
-    <section id="faq" className="py-28 px-6 relative overflow-hidden">
+    <section id="faq" className="py-28 px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-white/[0.06] bg-white/[0.02]">
+          <span className="badge-brand mb-4 inline-flex">
             {t.faq_kicker}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.faq_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl mx-auto">

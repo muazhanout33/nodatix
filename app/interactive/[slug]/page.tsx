@@ -97,7 +97,7 @@ export default function ProjectDetailsPage() {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[var(--text-muted)]"
+                  className="card-tag text-xs font-mono px-3 py-1 rounded-full"
                 >
                   {tag}
                 </span>
@@ -212,7 +212,7 @@ export default function ProjectDetailsPage() {
             <div className="flex flex-wrap items-center gap-3">
               {project.workflowSteps.map((step, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="px-4 py-2 rounded-lg bg-white/[0.04] border border-white/[0.06] text-sm font-medium text-[var(--accent)]">
+                  <div className="card-tag px-4 py-2 rounded-lg text-sm font-medium">
                     {step}
                   </div>
                   {i < project.workflowSteps.length - 1 && (

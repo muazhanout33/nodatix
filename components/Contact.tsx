@@ -53,7 +53,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-5 leading-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.contact_title}
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto">
@@ -85,12 +85,12 @@ export default function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-white hover:text-[var(--accent)] transition-colors font-medium text-sm"
+                      className="text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors font-medium text-sm"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <span className="text-white font-medium text-sm">{item.value}</span>
+                    <span className="text-[var(--text-primary)] font-medium text-sm">{item.value}</span>
                   )}
                 </div>
               </div>
@@ -102,10 +102,10 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-[var(--surface)]"
+          className="card-premium overflow-hidden"
         >
           <div className="relative z-10 flex flex-col items-center text-center py-12 px-8 gap-4">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
               {t.contact_cta_title}
             </h3>
             <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-2">
