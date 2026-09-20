@@ -24,12 +24,6 @@ export type TranslationKeys = {
   hero_card2_title: string;
   hero_card2_desc: string;
 
-  // SocialProof
-  stat1_label: string;
-  stat2_label: string;
-  stat3_label: string;
-  stat4_label: string;
-
   // Problems
   problems_kicker: string;
   problems_title_1: string;
@@ -53,9 +47,6 @@ export type TranslationKeys = {
   // Services
   services_title: string;
   services_subtitle: string;
-  services_s1_title: string;
-  services_s1_desc: string;
-  services_s1_tag: string;
   services_s2_title: string;
   services_s2_desc: string;
   services_s2_tag: string;
@@ -65,9 +56,6 @@ export type TranslationKeys = {
   services_s4_title: string;
   services_s4_desc: string;
   services_s4_tag: string;
-  services_s5_title: string;
-  services_s5_desc: string;
-  services_s5_tag: string;
   services_s6_title: string;
   services_s6_desc: string;
   services_s6_tag: string;
@@ -109,14 +97,12 @@ export type TranslationKeys = {
   about_p2: string;
   about_p3: string;
   about_p4: string;
-  about_cta_book: string;
   about_cta_services: string;
-  about_muaz_role: string;
-  about_muaz_quote: string;
-  about_omar_role: string;
-  about_omar_quote: string;
+  about_highlight1_value: string;
   about_highlight1_label: string;
+  about_highlight2_value: string;
   about_highlight2_label: string;
+  about_highlight3_value: string;
   about_highlight3_label: string;
 
   // Blog
@@ -219,7 +205,6 @@ export type TranslationKeys = {
 
   // Misc
   founder: string;
-  founder_label: string;
 };
 
 const ar: TranslationKeys = {
@@ -249,12 +234,6 @@ const ar: TranslationKeys = {
   hero_card2_desc:
     "نمّي البراند بتاعك وجذب عملاء محتملين مؤهلين وحوّل الاهتمام لعملاء حقيقيين باستخدام استراتيجيات تسويق مبنية على بيانات.",
 
-  // SocialProof
-  stat1_label: "أنظمة ذكاء اصطناعي تم بناؤها",
-  stat2_label: "ساعة تم توفيرها",
-  stat3_label: "حملة تسويقية",
-  stat4_label: "قطاع تم خدمته",
-
   // Problems
   problems_kicker: "المشكلة",
   problems_title_1: "المشكلة دي",
@@ -283,10 +262,6 @@ const ar: TranslationKeys = {
   services_title: "الخدمات",
   services_subtitle:
     "بنبني أنظمة أتمتة n8n وأتمتة تسويقية بتحل الشغل اليدوي المتكرر — توفّر الوقت وتقلل التكاليف وتنمّي بيزنسك أوتوماتيكياً.",
-  services_s1_title: "أنظمة أتمتة بالذكاء الاصطناعي",
-  services_s1_desc:
-    "أنابيب أتمتة أعمال متكاملة تزيل الشغل اليدوي. بنصمم ونبني ونشرّع أنظمة AI شغّالة 24/7 — بتقلل التكاليف وتزوّد الإنتاجية.",
-  services_s1_tag: "خدمة أساسية",
   services_s2_title: "أتمتة إدارة العملاء المحتملين",
   services_s2_desc:
     "مش هتخسر عميل محتمل تاني. أنظمتنا بتاخد البيانات وتؤهل العملاء وتتابع وتربّي العملاء المحتملين أوتوماتيكياً — بتملا الـ pipeline من غير ما تلمس صبّعك.",
@@ -299,10 +274,6 @@ const ar: TranslationKeys = {
   services_s4_desc:
     "وكلاء AI مصممين حسب احتياجات بيزنسك. من خدمة العملاء والمبيعات للعمليات، بنعمل مساعدين ذكين يتكاملوا مع أدواتك الحالية.",
   services_s4_tag: "AI متقدم",
-  services_s5_title: "التسويق بالأداء",
-  services_s5_desc:
-    "أنظمة تسويق مبنية على البيانات مصممة لتوليد نمو ثابت وقابل للتوسع. من حملات الإعلانات لقنوات التحويل، كل خطوة محسّنة.",
-  services_s5_tag: "خدمة أساسية",
   services_s6_title: "الإعلانات المدفوعة وتوليد العملاء",
   services_s6_desc:
     "حملات إعلانية عالية الأداء بتجيبلك عملاء محتملين مؤهلين — مش بس زيارات — مع تعظيم العائد على الاستثمار في Meta و Google.",
@@ -357,16 +328,12 @@ const ar: TranslationKeys = {
   about_p3: "هدفنا بسيط: نساعد الشركات تشتغل أذكى وتنمو أسرع وتتوسع من غير حدود.",
   about_p4:
     "سواء كانت الأتمتة على العمليات أو تحسين أداء التسويق، ScalaryX بتقدم أنظمة عملية بتحقق نتائج حقيقية.",
-  about_cta_book: "استشارة مجانية",
   about_cta_services: "شوف الخدمات",
-  about_muaz_role: "متخصص أتمتة بالذكاء الاصطناعي",
-  about_muaz_quote:
-    "\"متخصص في أتمتة الـ AI وببني واجهات أمامية حديثة لإنشاء أنظمة متكاملة وقابلة للتوسع.\"",
-  about_omar_role: "متخصص تسويق رقمي",
-  about_omar_quote:
-    "\"متخصص في التسويق الرقمي — ببني استراتيجيات بتحوّل الزيارات الباردة لعملاء أوفياء وإيرادات حقيقية.\"",
+  about_highlight1_value: "50+",
   about_highlight1_label: "أنظمة AI تم بناؤها",
+  about_highlight2_value: "10,000+",
   about_highlight2_label: "ساعة تم توفيرها للعملاء",
+  about_highlight3_value: "12+",
   about_highlight3_label: "قطاع تم خدمته",
 
   // Blog
@@ -487,7 +454,6 @@ const ar: TranslationKeys = {
 
   // Misc
   founder: "مؤسس",
-  founder_label: "مؤسس @ ScalaryX",
 };
 
 const en: TranslationKeys = {
@@ -517,12 +483,6 @@ const en: TranslationKeys = {
   hero_card2_desc:
     "Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.",
 
-  // SocialProof
-  stat1_label: "AI Systems Built",
-  stat2_label: "Hours Saved",
-  stat3_label: "Marketing Campaigns",
-  stat4_label: "Industries Served",
-
   // Problems
   problems_kicker: "The Problem",
   problems_title_1: "Sound",
@@ -551,10 +511,6 @@ const en: TranslationKeys = {
   services_title: "Services",
   services_subtitle:
     "We build n8n automation and marketing automation systems that replace repetitive human work — saving time, cutting costs, and scaling your business on autopilot.",
-  services_s1_title: "AI Automation Systems",
-  services_s1_desc:
-    "End-to-end business automation pipelines that eliminate manual work. We design, build, and deploy AI workflows that run 24/7 — reducing costs and boosting output.",
-  services_s1_tag: "Core Service",
   services_s2_title: "Lead Management Automation",
   services_s2_desc:
     "Never lose a lead again. Our AI systems capture, qualify, follow up, and nurture prospects automatically — keeping your pipeline full without lifting a finger.",
@@ -567,10 +523,6 @@ const en: TranslationKeys = {
   services_s4_desc:
     "Purpose-built AI agents designed around your business workflows. From customer support and sales to operations, we create intelligent assistants that integrate with your existing tools.",
   services_s4_tag: "Advanced AI",
-  services_s5_title: "Performance Marketing",
-  services_s5_desc:
-    "Data-driven marketing systems designed to generate consistent, scalable growth. From ad campaigns to conversion funnels, every step is optimized to turn traffic into revenue.",
-  services_s5_tag: "Core Service",
   services_s6_title: "Paid Ads & Lead Generation",
   services_s6_desc:
     "High-performance ad campaigns that bring you qualified leads — not just traffic — while maximizing your ROI across Meta and Google.",
@@ -624,16 +576,12 @@ const en: TranslationKeys = {
   about_p3: "Our goal is simple: help businesses work smarter, grow faster, and scale without limits.",
   about_p4:
     "Whether it's automating operations or improving marketing performance, ScalaryX delivers practical systems that produce real results.",
-  about_cta_book: "Free Consultation",
   about_cta_services: "See Services",
-  about_muaz_role: "AI Automation Specialist",
-  about_muaz_quote:
-    "\"I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.\"",
-  about_omar_role: "Digital Marketing Specialist",
-  about_omar_quote:
-    "\"I specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.\"",
+  about_highlight1_value: "50+",
   about_highlight1_label: "AI Automations Built",
+  about_highlight2_value: "10,000+",
   about_highlight2_label: "Hours Saved for Clients",
+  about_highlight3_value: "12+",
   about_highlight3_label: "Industries Served",
 
   // Blog
@@ -754,7 +702,6 @@ const en: TranslationKeys = {
 
   // Misc
   founder: "Founder",
-  founder_label: "Founder @ ScalaryX",
 };
 
 export const translations: Record<Locale, TranslationKeys> = { ar, en };
