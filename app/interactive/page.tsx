@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { PROJECTS } from "./data/projects";
+import { useI18n } from "@/lib/i18n";
 
 const ICONS: Record<string, React.JSX.Element> = {
   "crm-erp": (
@@ -23,8 +24,10 @@ const ICONS: Record<string, React.JSX.Element> = {
 };
 
 export default function InteractivePage() {
+  const { t } = useI18n();
+
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen text-white" style={{ background: "var(--interactive-page-bg)", color: "var(--text-primary)" }}>
       <section className="pt-32 pb-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -33,14 +36,16 @@ export default function InteractivePage() {
             transition={{ duration: 0.6 }}
           >
             <span className="font-mono text-xs tracking-[0.16em] uppercase text-[var(--accent)] font-semibold">
-              Interactive Projects
+              {t.interactive_kicker}
             </span>
-            <h1 className="text-4xl sm:text-5xl font-bold mt-4 mb-4">
-              Explore Our Interactive Demos
+            <h1
+              className="text-4xl sm:text-5xl font-bold mt-4 mb-4"
+              style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}
+            >
+              {t.interactive_title}
             </h1>
             <p className="text-[var(--text-secondary)] text-lg max-w-2xl">
-              Click on any project to view its case study and open the live
-              interactive experience.
+              {t.interactive_subtitle}
             </p>
           </motion.div>
         </div>
@@ -87,7 +92,7 @@ export default function InteractivePage() {
                         ))}
                       </div>
                       <div className="flex items-center gap-2 text-sm font-medium text-[var(--accent)] group-hover:gap-3 transition-all">
-                        View Project
+                        {t.interactive_view_project}
                         <svg
                           width="16"
                           height="16"

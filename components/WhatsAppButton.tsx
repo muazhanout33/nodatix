@@ -1,13 +1,16 @@
 "use client";
 
+import { useI18n } from "@/lib/i18n";
+
 export default function WhatsAppButton() {
+  const { dir } = useI18n();
   return (
     <a
       href="https://wa.me/201004983587"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 group"
+      className={`fixed bottom-6 ${dir === "rtl" ? "left-6" : "right-6"} z-50 group`}
     >
       <div className="relative w-14 h-14 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
         <svg

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { getProjectBySlug } from "../data/projects";
 import ProjectViewer from "../components/ProjectViewer";
+import { useI18n } from "@/lib/i18n";
 
 const ICONS: Record<string, React.JSX.Element> = {
   "crm-erp": (
@@ -30,10 +31,11 @@ export default function ProjectDetailsPage() {
   const slug = params.slug as string;
   const project = getProjectBySlug(slug);
   const [viewerOpen, setViewerOpen] = useState(false);
+  const { t } = useI18n();
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-black text-white flex items-center justify-center">
+      <main className="min-h-screen flex items-center justify-center" style={{ background: "var(--project-detail-bg)", color: "var(--text-primary)" }}>
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
           <p className="text-[var(--text-secondary)] mb-8">
@@ -43,7 +45,7 @@ export default function ProjectDetailsPage() {
             href="/interactive"
             className="text-[var(--accent)] hover:underline text-sm font-medium"
           >
-            &larr; Back to Projects
+            &larr; {t.interactive_view_all}
           </Link>
         </div>
       </main>
@@ -51,14 +53,14 @@ export default function ProjectDetailsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen" style={{ background: "var(--project-detail-bg)", color: "var(--text-primary)" }}>
       <div className="pt-28 pb-4 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <Link
             href="/interactive"
             className="text-[var(--text-muted)] hover:text-[var(--accent)] text-sm font-medium transition-colors"
           >
-            &larr; Back to Projects
+            &larr; {t.interactive_view_all}
           </Link>
         </div>
       </div>
@@ -82,7 +84,10 @@ export default function ProjectDetailsPage() {
                 {project.category}
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+            <h1
+              className="text-4xl sm:text-5xl font-bold mb-6 leading-tight"
+              style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}
+            >
               {project.title}
             </h1>
             <p className="text-[var(--text-secondary)] text-lg max-w-3xl leading-relaxed">
@@ -125,7 +130,7 @@ export default function ProjectDetailsPage() {
               >
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
-              View Interactive Project
+              {t.interactive_view_project}
             </button>
           </motion.div>
         </div>
@@ -137,10 +142,11 @@ export default function ProjectDetailsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-[var(--surface)] border border-white/[0.06] rounded-2xl p-8"
+            className="border rounded-2xl p-8"
+            style={{ background: "var(--project-detail-card-bg)", borderColor: "var(--project-detail-card-border)" }}
           >
             <span className="font-mono text-xs tracking-[0.16em] uppercase text-[var(--danger)] font-semibold">
-              The Problem
+              {t.problems_kicker}
             </span>
             <p className="mt-4 text-[var(--text-secondary)] leading-relaxed text-sm">
               {project.problem}
@@ -150,7 +156,8 @@ export default function ProjectDetailsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-[var(--surface)] border border-white/[0.06] rounded-2xl p-8"
+            className="border rounded-2xl p-8"
+            style={{ background: "var(--project-detail-card-bg)", borderColor: "var(--project-detail-card-border)" }}
           >
             <span className="font-mono text-xs tracking-[0.16em] uppercase text-[var(--accent)] font-semibold">
               The Solution
@@ -176,7 +183,8 @@ export default function ProjectDetailsPage() {
               {project.features.map((feature, i) => (
                 <div
                   key={i}
-                  className="bg-[var(--surface)] border border-white/[0.06] rounded-xl p-5 hover:border-[var(--border-accent)] transition-colors"
+                  className="border rounded-xl p-5 hover:border-[var(--border-accent)] transition-colors"
+                  style={{ background: "var(--project-detail-card-bg)", borderColor: "var(--project-detail-card-border)" }}
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-[var(--accent)] mt-0.5 text-lg">&#10003;</span>
@@ -231,7 +239,8 @@ export default function ProjectDetailsPage() {
               {project.technologies.map((tech, i) => (
                 <span
                   key={i}
-                  className="px-4 py-2 rounded-lg bg-[var(--surface)] border border-white/[0.06] text-sm font-medium text-[var(--text-secondary)] hover:border-[var(--border-accent)] hover:text-[var(--accent)] transition-colors"
+                  className="px-4 py-2 rounded-lg border text-sm font-medium text-[var(--text-secondary)] hover:border-[var(--border-accent)] hover:text-[var(--accent)] transition-colors"
+                  style={{ background: "var(--project-detail-card-bg)", borderColor: "var(--project-detail-card-border)" }}
                 >
                   {tech}
                 </span>
@@ -272,13 +281,17 @@ export default function ProjectDetailsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-[var(--surface)] border border-[var(--border-accent)] rounded-2xl p-10 text-center"
+            className="border rounded-2xl p-10 text-center"
+            style={{ background: "var(--project-detail-cta-bg)", borderColor: "var(--project-detail-cta-border)" }}
           >
-            <h2 className="text-2xl font-bold mb-4">
-              Ready to see it in action?
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}
+            >
+              {t.contact_cta_title}
             </h2>
             <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
-              Open the interactive demo and explore the complete project.
+              {t.interactive_subtitle}
             </p>
             <button
               onClick={() => setViewerOpen(true)}
@@ -296,7 +309,7 @@ export default function ProjectDetailsPage() {
               >
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
-              Open Interactive Demo
+              {t.interactive_view_project}
             </button>
           </motion.div>
         </div>

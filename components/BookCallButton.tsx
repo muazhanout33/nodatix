@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const CAL_URL = "https://cal.com/scalary-x-4qdg27/scalaryx-meeting";
 
@@ -21,6 +22,7 @@ export function BookCallButton({
   onClick?: () => void;
   children?: React.ReactNode;
 }) {
+  const { t } = useI18n();
   const initialized = useRef(false);
 
   useEffect(() => {
@@ -46,7 +48,6 @@ export function BookCallButton({
       document.head.appendChild(script);
     };
 
-    // Only load Cal.com when user interacts with any BookCallButton
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -98,7 +99,7 @@ export function BookCallButton({
       target="_blank"
       rel="noopener noreferrer"
     >
-      {children || "Book Your Free Strategy Call"}
+      {children || t.book_btn_default}
     </a>
   );
 }

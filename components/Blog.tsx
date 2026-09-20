@@ -2,31 +2,30 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const blogPosts = [
   {
-    title: "How AI Automation Is Transforming Small Businesses in 2026",
-    excerpt:
-      "Discover how smart workflow automation tools like n8n and Zapier are helping small businesses save hours every week and scale faster than ever.",
-    tag: "AI Automation",
+    titleKey: "blog_post1_title",
+    excerptKey: "blog_post1_excerpt",
+    tagKey: "blog_post1_tag",
   },
   {
-    title: "The Complete Guide to n8n Workflow Automation for Growing Companies",
-    excerpt:
-      "Learn how n8n automation connects your favorite tools, eliminates manual tasks, and creates powerful business systems — without writing complex code.",
-    tag: "n8n Automation",
+    titleKey: "blog_post2_title",
+    excerptKey: "blog_post2_excerpt",
+    tagKey: "blog_post2_tag",
   },
   {
-    title: "Marketing Automation Strategies That Actually Drive Revenue",
-    excerpt:
-      "Explore proven digital marketing automation tactics that capture leads, nurture prospects, and turn traffic into paying customers on autopilot.",
-    tag: "Marketing Automation",
+    titleKey: "blog_post3_title",
+    excerptKey: "blog_post3_excerpt",
+    tagKey: "blog_post3_tag",
   },
 ];
 
 export default function Blog() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useI18n();
 
   return (
     <section id="blog" className="py-28 px-6 relative overflow-hidden">
@@ -38,12 +37,11 @@ export default function Blog() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            From the blog
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+            {t.blog_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">
-            Practical guides on AI automation, workflow systems, and marketing
-            growth — built for business owners who want results.
+            {t.blog_subtitle}
           </p>
         </motion.div>
 
@@ -59,13 +57,13 @@ export default function Blog() {
             >
               <div className="card-sweep" />
               <span className="card-tag inline-block text-xs text-[var(--text-muted)] font-medium px-3 py-1 rounded-full mb-4 relative z-10">
-                {post.tag}
+                {t[post.tagKey as keyof typeof t]}
               </span>
               <h3 className="text-base font-semibold text-white mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug relative z-10">
-                {post.title}
+                {t[post.titleKey as keyof typeof t]}
               </h3>
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">
-                {post.excerpt}
+                {t[post.excerptKey as keyof typeof t]}
               </p>
             </motion.article>
           ))}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { PROJECTS } from "@/app/interactive/data/projects";
+import { useI18n } from "@/lib/i18n";
 
 const ICONS: Record<string, React.JSX.Element> = {
   "crm-erp": (
@@ -24,6 +25,7 @@ const ICONS: Record<string, React.JSX.Element> = {
 };
 
 export default function InteractiveProjects() {
+  const { t } = useI18n();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const previewProjects = PROJECTS.slice(0, 3);
@@ -39,10 +41,10 @@ export default function InteractiveProjects() {
           className="mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Projects
+            {t.interactive_title}
           </h2>
           <p className="text-[var(--text-secondary)] max-w-xl">
-            Interactive demos of systems we&apos;ve built — explore each project in detail.
+            {t.interactive_subtitle}
           </p>
         </motion.div>
 
@@ -86,7 +88,7 @@ export default function InteractiveProjects() {
                       ))}
                     </div>
                     <div className="flex items-center gap-2 text-sm font-medium text-[var(--accent)] group-hover:gap-3 transition-all">
-                      View Project
+                      {t.interactive_view_project}
                       <svg
                         width="16"
                         height="16"
@@ -113,7 +115,7 @@ export default function InteractiveProjects() {
             href="/interactive"
             className="btn-ghost"
           >
-            View All Projects
+            {t.interactive_view_all}
           </Link>
         </div>
       </div>

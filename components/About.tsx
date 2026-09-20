@@ -4,14 +4,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { BookCallButton } from "./BookCallButton";
+import { useI18n } from "@/lib/i18n";
 
 const highlights = [
-  { label: "AI Automations Built", value: "50+" },
-  { label: "Hours Saved for Clients", value: "10k+" },
-  { label: "Industries Served", value: "12+" },
+  { valueKey: "about_highlight1_value", labelKey: "about_highlight1_label" },
+  { valueKey: "about_highlight2_value", labelKey: "about_highlight2_label" },
+  { valueKey: "about_highlight3_value", labelKey: "about_highlight3_label" },
 ];
 
 export default function About() {
+  const { t } = useI18n();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -25,27 +27,19 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
-              Built for AI Automation & Performance Marketing
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+              {t.about_title}
             </h2>
             <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed">
-              <p>
-                ScalaryX is a modern growth-focused startup helping businesses scale using AI automation systems and high-performance digital marketing strategies.
-              </p>
-              <p>
-                We design and build smart workflow automation systems that replace manual work, optimize business operations, and generate consistent growth through automation and data-driven marketing.
-              </p>
-              <p>
-                Our goal is simple: help businesses work smarter, grow faster, and scale without limits.
-              </p>
-              <p>
-                Whether it&apos;s automating operations or improving marketing performance, ScalaryX delivers practical systems that produce real results.
-              </p>
+              <p>{t.about_p1}</p>
+              <p>{t.about_p2}</p>
+              <p>{t.about_p3}</p>
+              <p>{t.about_p4}</p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <BookCallButton className="btn-primary" />
               <a href="#services" className="btn-ghost">
-                See Services
+                {t.about_cta_services}
               </a>
             </div>
           </motion.div>
@@ -74,12 +68,12 @@ export default function About() {
                   <div className="w-full text-center">
                     <h3 className="text-lg font-semibold text-white tracking-tight">Muaz Hanout</h3>
                     <div className="mt-2 space-y-1">
-                      <p className="text-[var(--accent)] font-medium text-sm">AI Automation Specialist</p>
-                      <p className="text-[var(--text-muted)] text-xs mt-2">Founder @ ScalaryX</p>
+                      <p className="text-[var(--accent)] font-medium text-sm">{t.about_muaz_role}</p>
+                      <p className="text-[var(--text-muted)] text-xs mt-2">{t.founder_label}</p>
                     </div>
                   </div>
                   <p className="text-[var(--text-secondary)] text-sm leading-relaxed border-t border-white/[0.06] pt-4 mt-4 text-center max-w-xs">
-                    &quot;I specialize in AI automation and build modern front-end interfaces to create complete, scalable systems.&quot;
+                    &quot;{t.about_muaz_quote}&quot;
                   </p>
                   <div className="flex items-center gap-3 mt-5">
                     <a
@@ -129,12 +123,12 @@ export default function About() {
                   <div className="w-full text-center">
                     <h3 className="text-lg font-semibold text-white tracking-tight">Omar Gamal</h3>
                     <div className="mt-2 space-y-1">
-                      <p className="text-[var(--accent)] font-medium text-sm">Digital Marketing Specialist</p>
-                      <p className="text-[var(--text-muted)] text-xs mt-2">Founder @ ScalaryX</p>
+                      <p className="text-[var(--accent)] font-medium text-sm">{t.about_omar_role}</p>
+                      <p className="text-[var(--text-muted)] text-xs mt-2">{t.founder_label}</p>
                     </div>
                   </div>
                   <p className="text-[var(--text-secondary)] text-sm leading-relaxed border-t border-white/[0.06] pt-4 mt-4 text-center max-w-xs">
-                    &quot;I specialize in digital marketing — I build strategies that turn cold traffic into loyal customers and real revenue.&quot;
+                    &quot;{t.about_omar_quote}&quot;
                   </p>
                   <div className="flex items-center gap-3 mt-5">
                     <a
@@ -172,15 +166,15 @@ export default function About() {
             <div className="grid grid-cols-3 gap-4">
               {highlights.map((h, i) => (
                 <motion.div
-                  key={h.label}
+                  key={h.labelKey}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className="card-premium p-4 text-center"
                 >
-                  <div className="text-xl font-bold text-white">{h.value}</div>
-                  <div className="text-xs text-[var(--text-muted)] mt-1 leading-tight">{h.label}</div>
+                  <div className="text-xl font-bold text-white">{t[h.valueKey as keyof typeof t]}</div>
+                  <div className="text-xs text-[var(--text-muted)] mt-1 leading-tight">{t[h.labelKey as keyof typeof t]}</div>
                 </motion.div>
               ))}
             </div>

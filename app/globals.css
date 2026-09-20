@@ -16,7 +16,11 @@
   --font-sans: var(--font-inter);
 }
 
-:root {
+/* ============================================================
+   DARK THEME (default)
+   ============================================================ */
+:root,
+[data-theme="dark"] {
   --background: #000000;
   --foreground: #ffffff;
   --accent: #0099FF;
@@ -30,7 +34,77 @@
   --text-muted: #6B7A8D;
   --danger: #ff6b4a;
   --success: #25D366;
-  scroll-behavior: smooth;
+  --nav-bg: rgba(0, 0, 0, 0.9);
+  --mobile-menu-bg: #000000;
+  --card-hover-border: rgba(255, 255, 255, 0.12);
+  --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --scrollbar-track: #000000;
+  --scrollbar-thumb: #333;
+  --scrollbar-thumb-hover: #555;
+  --selection-bg: rgba(0, 153, 255, 0.25);
+  --selection-color: #fff;
+  --page-bg: #08090d;
+  --hero-gradient: linear-gradient(180deg, #000000 0%, #08090d 100%);
+  --section-alt-bg: transparent;
+  --social-proof-border: rgba(255, 255, 255, 0.06);
+  --social-proof-bg: #000000;
+  --footer-bg: #000000;
+  --faq-badge-bg: rgba(255, 255, 255, 0.02);
+  --faq-badge-border: rgba(255, 255, 255, 0.06);
+  --interactive-page-bg: #000000;
+  --project-detail-bg: #000000;
+  --project-detail-card-bg: var(--surface);
+  --project-detail-card-border: rgba(255, 255, 255, 0.06);
+  --project-detail-check: var(--accent);
+  --project-detail-bullet: var(--accent);
+  --project-detail-cta-bg: var(--surface);
+  --project-detail-cta-border: var(--border-accent);
+}
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #111827;
+  --accent: #0077CC;
+  --accent-hover: #005fa3;
+  --surface: #f8fafc;
+  --surface-elevated: #f1f5f9;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(0, 119, 204, 0.2);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --mobile-menu-bg: #ffffff;
+  --card-hover-border: rgba(0, 0, 0, 0.12);
+  --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+  --selection-bg: rgba(0, 119, 204, 0.15);
+  --selection-color: #111827;
+  --page-bg: #ffffff;
+  --hero-gradient: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  --section-alt-bg: #f8fafc;
+  --social-proof-border: rgba(0, 0, 0, 0.06);
+  --social-proof-bg: #f8fafc;
+  --footer-bg: #f8fafc;
+  --faq-badge-bg: rgba(0, 0, 0, 0.02);
+  --faq-badge-border: rgba(0, 0, 0, 0.06);
+  --interactive-page-bg: #ffffff;
+  --project-detail-bg: #ffffff;
+  --project-detail-card-bg: #f8fafc;
+  --project-detail-card-border: rgba(0, 0, 0, 0.08);
+  --project-detail-check: var(--accent);
+  --project-detail-bullet: var(--accent);
+  --project-detail-cta-bg: #f8fafc;
+  --project-detail-cta-border: var(--border-accent);
 }
 
 * {
@@ -44,11 +118,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: rgba(0, 153, 255, 0.25);
-  color: #fff;
+  background: var(--selection-bg);
+  color: var(--selection-color);
 }
 
 ::-webkit-scrollbar {
@@ -56,16 +131,28 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ============================================================
+   RTL SUPPORT
+   ============================================================ */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
 }
 
 /* ============================================================
@@ -78,11 +165,17 @@ body {
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
+    var(--card-shadow),
     inset 0 1px 0 rgba(255, 255, 255, 0.03);
   overflow: hidden;
   transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   will-change: transform;
+}
+
+[data-theme="light"] .card-premium {
+  box-shadow:
+    var(--card-shadow),
+    inset 0 1px 0 rgba(0, 0, 0, 0.03);
 }
 
 .card-premium::before {
@@ -103,12 +196,21 @@ body {
   z-index: 3;
 }
 
+[data-theme="light"] .card-premium::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.02) 15%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.02) 85%,
+    transparent 100%
+  );
+}
+
 .card-premium:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .card-sweep {
@@ -130,9 +232,17 @@ body {
   transition: all 0.35s ease;
 }
 
+[data-theme="light"] .card-icon {
+  background: rgba(0, 0, 0, 0.03);
+}
+
 .card-premium:hover .card-icon {
   background: rgba(0, 153, 255, 0.08);
   border-color: var(--border-accent);
+}
+
+[data-theme="light"] .card-premium:hover .card-icon {
+  background: rgba(0, 119, 204, 0.08);
 }
 
 .card-tag {
@@ -141,9 +251,19 @@ body {
   transition: all 0.35s ease;
 }
 
+[data-theme="light"] .card-tag {
+  background: rgba(0, 119, 204, 0.06);
+  border-color: rgba(0, 119, 204, 0.12);
+}
+
 .card-premium:hover .card-tag {
   border-color: rgba(0, 153, 255, 0.18);
   background: rgba(0, 153, 255, 0.08);
+}
+
+[data-theme="light"] .card-premium:hover .card-tag {
+  border-color: rgba(0, 119, 204, 0.2);
+  background: rgba(0, 119, 204, 0.1);
 }
 
 /* ============================================================
@@ -190,8 +310,16 @@ body {
 }
 
 .btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--card-hover-border);
   color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-ghost {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .btn-ghost:hover {
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================================

@@ -4,20 +4,24 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { BookCallButton } from "./BookCallButton";
-
-const navLinks = [
-  { href: "#problems", label: "Problems" },
-  { href: "#services", label: "Services" },
-  { href: "#benefits", label: "Benefits" },
-  { href: "#about", label: "About" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-  { href: "/interactive", label: "Projects" },
-];
+import { useI18n } from "@/lib/i18n";
+import { useTheme } from "@/lib/theme";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, locale, setLocale, dir } = useI18n();
+  const { theme, toggleTheme } = useTheme();
+
+  const navLinks = [
+    { href: "#problems", label: t.nav_problems },
+    { href: "#services", label: t.nav_services },
+    { href: "#benefits", label: t.nav_benefits },
+    { href: "#about", label: t.nav_about },
+    { href: "#faq", label: t.nav_faq },
+    { href: "#contact", label: t.nav_contact },
+    { href: "/interactive", label: t.nav_projects },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -44,15 +48,19 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#000000]/90 backdrop-blur-xl border-b border-white/[0.06]"
+          ? "backdrop-blur-xl border-b"
           : "bg-transparent"
       }`}
+      style={{
+        background: scrolled ? "var(--nav-bg)" : "transparent",
+        borderColor: scrolled ? "var(--border)" : "transparent",
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
         <a href="#" className="flex items-center gap-2 group">
           <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-10 sm:h-12 w-auto" priority />
-          <span className="text-lg sm:text-xl font-bold tracking-tight">
-            <span className="text-white">Scalary</span><span className="text-[var(--accent)]">X</span>
+          <span className="text-lg sm:text-xl font-bold tracking-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+            <span style={{ color: "var(--text-primary)" }}>Scalary</span><span style={{ color: "var(--accent)" }}>X</span>
           </span>
         </a>
 
@@ -61,28 +69,121 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors duration-200"
+              className="text-sm transition-colors duration-200"
+              style={{ color: "var(--text-secondary)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
+          {/* Language Switcher */}
+          <button
+            onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border"
+            style={{
+              color: "var(--text-secondary)",
+              borderColor: "var(--border)",
+              background: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-accent)";
+              e.currentTarget.style.color = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.color = "var(--text-secondary)";
+            }}
+            aria-label={locale === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+            {locale === "ar" ? "EN" : "عربي"}
+          </button>
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 border"
+            style={{
+              color: "var(--text-secondary)",
+              borderColor: "var(--border)",
+              background: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-accent)";
+              e.currentTarget.style.color = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.color = "var(--text-secondary)";
+            }}
+            aria-label={theme === "dark" ? "Switch to light mode" : "التبديل إلى الوضع الداكن"}
+          >
+            {theme === "dark" ? (
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            )}
+          </button>
+
           <BookCallButton className="btn-primary" />
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2"
-          aria-label="Toggle menu"
-        >
-          <div className="flex flex-col gap-1.5">
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </div>
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Language Switcher */}
+          <button
+            onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
+            className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold transition-all duration-200 border"
+            style={{
+              color: "var(--text-secondary)",
+              borderColor: "var(--border)",
+              background: "transparent",
+            }}
+            aria-label={locale === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+          >
+            {locale === "ar" ? "EN" : "عربي"}
+          </button>
+
+          {/* Mobile Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="flex items-center justify-center w-8 h-8 rounded-md transition-all duration-200"
+            style={{ color: "var(--text-secondary)" }}
+            aria-label={theme === "dark" ? "Switch to light mode" : "التبديل إلى الوضع الداكن"}
+          >
+            {theme === "dark" ? (
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            )}
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2"
+            aria-label="Toggle menu"
+          >
+            <div className="flex flex-col gap-1.5">
+              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45) translateY(8px)" : "" }} />
+              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", opacity: menuOpen ? 0 : 1 }} />
+              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "-rotate(45) translateY(-8px)" : "" }} />
+            </div>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -92,7 +193,8 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#000000] border-t border-white/[0.06] overflow-hidden"
+            className="md:hidden border-t overflow-hidden"
+            style={{ background: "var(--mobile-menu-bg)", borderColor: "var(--border)" }}
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
@@ -100,7 +202,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-[var(--text-secondary)] hover:text-white transition-colors py-2 text-lg"
+                  className="transition-colors py-2 text-lg"
+                  style={{ color: "var(--text-secondary)" }}
                 >
                   {link.label}
                 </a>

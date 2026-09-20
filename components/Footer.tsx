@@ -1,30 +1,33 @@
 "use client";
 
 import Image from "next/image";
-
-const footerLinks = {
-  Services: [
-    { label: "AI Automation Systems", href: "#services" },
-    { label: "Lead Management", href: "#services" },
-    { label: "Content Automation", href: "#services" },
-    { label: "Custom AI Agents", href: "#services" },
-  ],
-  Marketing: [
-    { label: "Digital Marketing Strategy", href: "#services" },
-    { label: "Paid Ads & Lead Generation", href: "#services" },
-    { label: "Conversion Optimization Funnels", href: "#services" },
-  ],
-  Company: [
-    { label: "About", href: "#about" },
-    { label: "Benefits", href: "#benefits" },
-    { label: "Book a Call", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
-  ],
-};
+import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useI18n();
+
+  const footerLinks = {
+    [t.footer_services]: [
+      { label: t.footer_svc1, href: "#services" },
+      { label: t.footer_svc2, href: "#services" },
+      { label: t.footer_svc3, href: "#services" },
+      { label: t.footer_svc4, href: "#services" },
+    ],
+    [t.footer_marketing]: [
+      { label: t.footer_mkt1, href: "#services" },
+      { label: t.footer_mkt2, href: "#services" },
+      { label: t.footer_mkt3, href: "#services" },
+    ],
+    [t.footer_company]: [
+      { label: t.footer_cpy1, href: "#about" },
+      { label: t.footer_cpy2, href: "#benefits" },
+      { label: t.footer_cpy3, href: "#testimonials" },
+      { label: t.footer_cpy4, href: "#contact" },
+    ],
+  };
+
   return (
-    <footer className="border-t border-white/[0.06] pt-16 pb-8 px-6 bg-black">
+    <footer className="border-t border-white/[0.06] pt-16 pb-8 px-6" style={{ background: "var(--footer-bg)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
@@ -41,8 +44,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-[var(--text-secondary)] text-sm leading-relaxed max-w-xs">
-              AI Automation & Marketing Agency helping businesses save time, reduce errors,
-              and scale faster with intelligent systems and high-performance marketing.
+              {t.footer_desc}
             </p>
             <div className="mt-5 flex gap-3">
               <a
@@ -89,20 +91,20 @@ export default function Footer() {
 
         <div className="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[var(--text-muted)] text-xs">
-            &copy; {new Date().getFullYear()} ScalaryX. All rights reserved.
+            &copy; {new Date().getFullYear()} ScalaryX. {t.footer_rights}
           </p>
           <div className="flex gap-5">
             <a
               href="/privacy-policy"
               className="text-[var(--text-muted)] text-xs hover:text-[var(--text-secondary)] transition-colors"
             >
-              Privacy Policy
+              {t.footer_privacy}
             </a>
             <a
               href="/terms-of-service"
               className="text-[var(--text-muted)] text-xs hover:text-[var(--text-secondary)] transition-colors"
             >
-              Terms of Service
+              {t.footer_terms}
             </a>
           </div>
         </div>
