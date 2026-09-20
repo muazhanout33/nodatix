@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { BookCallButton } from "./BookCallButton";
+import { FreeStructureButton } from "./FreeStructureButton";
 import { useI18n } from "@/lib/i18n";
 
 const highlights = [
@@ -38,6 +39,7 @@ export default function About() {
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
               <BookCallButton className="btn-primary" />
+              <FreeStructureButton className="btn-secondary" />
               <a href="#services" className="btn-ghost">
                 {t.about_cta_services}
               </a>
@@ -95,7 +97,7 @@ export default function About() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
                     <a
-                      href="https://wa.me/201004983587"
+                      href="https://wa.me/201105920342"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2.5 rounded-xl bg-[var(--badge-bg)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--success)] hover:border-[var(--success)]/30 transition-all duration-200"
@@ -132,7 +134,7 @@ export default function About() {
                   </p>
                   <div className="flex items-center gap-3 mt-5">
                     <a
-                      href="https://wa.me/201067822800"
+                      href="https://wa.me/201105920342"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2.5 rounded-xl bg-[var(--badge-bg)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--success)] hover:border-[var(--success)]/30 transition-all duration-200"

@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { BookCallButton } from "./BookCallButton";
+import { FreeStructureButton } from "./FreeStructureButton";
 import { useI18n } from "@/lib/i18n";
 
 const Hero = memo(function Hero() {
@@ -58,8 +59,9 @@ const Hero = memo(function Hero() {
           <BookCallButton className="btn-primary px-8 py-4 text-base">
             {t.hero_cta_book}
           </BookCallButton>
-          <a href="#services" className="btn-ghost px-8 py-4">
-            {t.hero_cta_how}
+          <FreeStructureButton className="btn-secondary px-8 py-4 text-base" />
+          <a href="#projects" className="btn-ghost px-6 py-4 text-sm font-medium">
+            {t.hero_cta_how} &rarr;
           </a>
         </motion.div>
 

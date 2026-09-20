@@ -33,7 +33,7 @@ export default function ProjectViewer({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.15 }}
       onClick={onClose}
       style={{
         position: "fixed",
@@ -42,16 +42,16 @@ export default function ProjectViewer({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(0,0,0,0.8)",
-        backdropFilter: "blur(12px)",
+        background: "rgba(10, 15, 26, 0.88)",
         padding: "16px",
+        willChange: "opacity",
       }}
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
+        initial={{ scale: 0.98, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        exit={{ scale: 0.98, opacity: 0 }}
+        transition={{ duration: 0.15, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
         style={{
           position: "relative",
@@ -61,10 +61,11 @@ export default function ProjectViewer({
           maxHeight: "calc(100dvh - 32px)",
           borderRadius: "16px",
           overflow: "hidden",
-          background: "#000",
-          boxShadow: "0 24px 80px rgba(0,0,0,0.6)",
+          background: "#090d16",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.7)",
           display: "flex",
           flexDirection: "column",
+          willChange: "transform, opacity",
         }}
       >
         <div
@@ -73,8 +74,8 @@ export default function ProjectViewer({
             alignItems: "center",
             justifyContent: "space-between",
             padding: "12px 16px",
-            background: "rgba(10,15,26,0.95)",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(15,23,42,0.95)",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
             flexShrink: 0,
           }}
         >
@@ -82,7 +83,7 @@ export default function ProjectViewer({
             style={{
               fontSize: 13,
               fontWeight: 600,
-              color: "#e0e0e0",
+              color: "#e2e8f0",
               letterSpacing: "0.02em",
             }}
           >
@@ -96,8 +97,8 @@ export default function ProjectViewer({
               height: 32,
               borderRadius: 8,
               border: "1px solid rgba(255,255,255,0.1)",
-              background: "rgba(255,255,255,0.04)",
-              color: "#aaa",
+              background: "rgba(255,255,255,0.06)",
+              color: "#94a3b8",
               fontSize: 18,
               cursor: "pointer",
               display: "flex",
@@ -106,12 +107,12 @@ export default function ProjectViewer({
               transition: "background 0.15s, color 0.15s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.background = "rgba(255,255,255,0.12)";
               e.currentTarget.style.color = "#fff";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-              e.currentTarget.style.color = "#aaa";
+              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+              e.currentTarget.style.color = "#94a3b8";
             }}
           >
             ✕
@@ -122,11 +123,12 @@ export default function ProjectViewer({
           ref={iframeRef}
           src={src}
           title={title}
+          loading="eager"
           style={{
             flex: 1,
             width: "100%",
             border: "none",
-            background: "#fff",
+            background: "#0b0f19",
           }}
         />
       </motion.div>

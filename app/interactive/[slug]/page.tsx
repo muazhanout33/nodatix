@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { getProjectBySlug } from "../data/projects";
 import ProjectViewer from "../components/ProjectViewer";
+import { BookCallButton } from "@/components/BookCallButton";
+import { FreeStructureButton } from "@/components/FreeStructureButton";
 import { useI18n } from "@/lib/i18n";
 
 const ICONS: Record<string, React.JSX.Element> = {
@@ -293,24 +295,28 @@ export default function ProjectDetailsPage() {
             <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
               {t.interactive_subtitle}
             </p>
-            <button
-              onClick={() => setViewerOpen(true)}
-              className="btn-primary px-8 py-4 text-lg"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() => setViewerOpen(true)}
+                className="btn-primary px-8 py-4 text-base"
               >
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-              {t.interactive_view_project}
-            </button>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                {t.interactive_view_project}
+              </button>
+              <FreeStructureButton className="btn-secondary px-8 py-4 text-base" />
+              <BookCallButton className="btn-ghost px-6 py-4 text-sm" />
+            </div>
           </motion.div>
         </div>
       </section>

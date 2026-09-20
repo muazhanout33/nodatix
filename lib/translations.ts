@@ -211,8 +211,11 @@ export type TranslationKeys = {
   interactive_view_project: string;
   interactive_view_all: string;
 
-  // BookCallButton
+  // CTAs & Phone
   book_btn_default: string;
+  cta_free_structure: string;
+  cta_free_structure_short: string;
+  contact_phone: string;
 
   // Misc
   founder: string;
@@ -228,17 +231,17 @@ const ar: TranslationKeys = {
   nav_faq: "الاسئلة الشائعة",
   nav_contact: "تواصل معنا",
   nav_projects: "المشاريع",
-  nav_book_call: "احجز مكالمة",
+  nav_book_call: "استشارة مجانية",
 
   // Hero
-  hero_kicker: "自动化 وتسويق بالذكاء الاصطناعي",
+  hero_kicker: "أتمتة وتسويق بالذكاء الاصطناعي",
   hero_title_1: "أنظمة الأتمتة والتسويق",
   hero_title_accent: "بالذكاء الاصطناعي",
   hero_title_2: "للمشاريع النامية",
   hero_subtitle:
     "نبني أنظمة n8n ذكية توفر ساعات من العمل اليدوي، تُبسّط العمليات، وتدعم استراتيجيات تسويق فعّالة — عشان تركز على النمو بينما الأتمتة تتكفل بالباقي.",
-  hero_cta_book: "احجز مكالمة مجانية",
-  hero_cta_how: "شوف ازاي بنشتغل",
+  hero_cta_book: "استشارة مجانية",
+  hero_cta_how: "شوف إزاي بيشتغل",
   hero_card1_title: "أتمتة بالذكاء الاصطناعي",
   hero_card1_desc:
     "أتمت المهام المتكررة وأدر الم workflowات وبسّط عملياتك باستخدام أنظمة ذكية — عشان تركز على النمو.",
@@ -274,7 +277,7 @@ const ar: TranslationKeys = {
     "الميزانية بتضيع على الإعلانات والمحتوى مش منتظم والحملات مش محسّنة. بتجيب زيارات بس مش بيكفيك عملاء محتملين مؤهلين.",
   problems_p4_pain: "ميزانية ضايعة = عائد متراجع",
   problems_cta: "احنا بنزيل كل المشاكل دي — بأنظمة مبنية خصيصاً لبيزنسك.",
-  problems_cta_link: "شوف ازاي",
+  problems_cta_link: "شوف إزاي بيشتغل",
 
   // Services
   services_title: "الخدمات",
@@ -354,7 +357,7 @@ const ar: TranslationKeys = {
   about_p3: "هدفنا بسيط: نساعد الشركات تشتغل أذكى وتنمو أسرع وتتوسع من غير حدود.",
   about_p4:
     "سواء كانت الأتمتة على العمليات أو تحسين أداء التسويق، ScalaryX بتقدم أنظمة عملية بتحقق نتائج حقيقية.",
-  about_cta_book: "احجز مكالمة",
+  about_cta_book: "استشارة مجانية",
   about_cta_services: "شوف الخدمات",
   about_muaz_role: "متخصص أتمتة بالذكاء الاصطناعي",
   about_muaz_quote:
@@ -463,7 +466,7 @@ const ar: TranslationKeys = {
   footer_company: "الشركة",
   footer_cpy1: "من نحن",
   footer_cpy2: "المميزات",
-  footer_cpy3: "احجز مكالمة",
+  footer_cpy3: "استشارة مجانية",
   footer_cpy4: "تواصل معنا",
   footer_rights: "جميع الحقوق محفوظة.",
   footer_privacy: "سياسة الخصوصية",
@@ -476,8 +479,11 @@ const ar: TranslationKeys = {
   interactive_view_project: "شوف المشروع",
   interactive_view_all: "شوف كل المشاريع",
 
-  // BookCallButton
-  book_btn_default: "احجز مكالمة مجانية",
+  // CTAs & Phone
+  book_btn_default: "استشارة مجانية",
+  cta_free_structure: "احصل علي هيكله مجانيه لمشروعك",
+  cta_free_structure_short: "استشرنا مجانًا",
+  contact_phone: "01105920342",
 
   // Misc
   founder: "مؤسس",
@@ -493,7 +499,7 @@ const en: TranslationKeys = {
   nav_faq: "FAQ",
   nav_contact: "Contact",
   nav_projects: "Projects",
-  nav_book_call: "Book a Call",
+  nav_book_call: "Free Consultation",
 
   // Hero
   hero_kicker: "AI Automation & Workflow Systems",
@@ -502,7 +508,7 @@ const en: TranslationKeys = {
   hero_title_2: "For Growing Businesses",
   hero_subtitle:
     "We build intelligent n8n workflows that save hours of manual work, streamline operations, and support high-performing marketing strategies — so you can focus on growth while automation handles the rest.",
-  hero_cta_book: "Book Your Free Strategy Call",
+  hero_cta_book: "Free Consultation",
   hero_cta_how: "See How It Works",
   hero_card1_title: "AI Automation",
   hero_card1_desc:
@@ -618,7 +624,7 @@ const en: TranslationKeys = {
   about_p3: "Our goal is simple: help businesses work smarter, grow faster, and scale without limits.",
   about_p4:
     "Whether it's automating operations or improving marketing performance, ScalaryX delivers practical systems that produce real results.",
-  about_cta_book: "Book a Call",
+  about_cta_book: "Free Consultation",
   about_cta_services: "See Services",
   about_muaz_role: "AI Automation Specialist",
   about_muaz_quote:
@@ -727,7 +733,7 @@ const en: TranslationKeys = {
   footer_company: "Company",
   footer_cpy1: "About",
   footer_cpy2: "Benefits",
-  footer_cpy3: "Book a Call",
+  footer_cpy3: "Free Consultation",
   footer_cpy4: "Contact",
   footer_rights: "All rights reserved.",
   footer_privacy: "Privacy Policy",
@@ -740,8 +746,11 @@ const en: TranslationKeys = {
   interactive_view_project: "View Project",
   interactive_view_all: "View All Projects",
 
-  // BookCallButton
-  book_btn_default: "Book Your Free Strategy Call",
+  // CTAs & Phone
+  book_btn_default: "Free Consultation",
+  cta_free_structure: "Get a Free Structure",
+  cta_free_structure_short: "Get a Free Structure",
+  contact_phone: "01105920342",
 
   // Misc
   founder: "Founder",

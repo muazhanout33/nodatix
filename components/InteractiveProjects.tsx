@@ -31,7 +31,7 @@ export default function InteractiveProjects() {
   const previewProjects = PROJECTS.slice(0, 3);
 
   return (
-    <section className="py-28 px-6 relative overflow-hidden">
+    <section id="projects" className="py-28 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}

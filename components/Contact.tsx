@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookCallButton } from "./BookCallButton";
+import { FreeStructureButton } from "./FreeStructureButton";
 import { useI18n } from "@/lib/i18n";
 
 export default function Contact() {
@@ -11,6 +12,16 @@ export default function Contact() {
   const { t } = useI18n();
 
   const contactItems = [
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.499-5.24-3.843-6.739-6.739l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+        </svg>
+      ),
+      label: t.contact_phone ? (t.contact_phone === "01105920342" ? "الهاتف / واتساب" : "Phone / WhatsApp") : "Phone",
+      value: "01105920342",
+      href: "https://wa.me/201105920342",
+    },
     {
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -65,7 +76,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12"
         >
           {contactItems.map((item, i) => (
             <motion.div
@@ -85,7 +96,9 @@ export default function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors font-medium text-sm"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors font-medium text-sm dir-ltr inline-block"
                     >
                       {item.value}
                     </a>
@@ -111,7 +124,10 @@ export default function Contact() {
             <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-2">
               {t.contact_cta_subtitle}
             </p>
-            <BookCallButton className="btn-primary px-8 py-4 text-base mt-2" />
+            <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+              <BookCallButton className="btn-primary px-8 py-4 text-base" />
+              <FreeStructureButton className="btn-secondary px-8 py-4 text-base" />
+            </div>
           </div>
         </motion.div>
       </div>

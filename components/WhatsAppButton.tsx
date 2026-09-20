@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
   const { dir } = useI18n();
   return (
     <a
-      href="https://wa.me/201004983587"
+      href="https://wa.me/201105920342"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
