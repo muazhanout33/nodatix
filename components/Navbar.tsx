@@ -56,10 +56,10 @@ export default function Navbar() {
         borderColor: scrolled ? "var(--border)" : "transparent",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
-        <a href="#" className="flex items-center gap-2 group">
-          <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-10 sm:h-12 w-auto" priority />
-          <span className="text-lg sm:text-xl font-bold tracking-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between h-14 sm:h-20">
+        <a href="#" className="flex items-center gap-1.5 sm:gap-2 group">
+          <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-8 sm:h-10 md:h-12 w-auto" priority />
+          <span className="text-base sm:text-xl font-bold tracking-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             <span style={{ color: "var(--text-primary)" }}>Scalary</span><span style={{ color: "var(--accent)" }}>X</span>
           </span>
         </a>
@@ -138,11 +138,11 @@ export default function Navbar() {
           <BookCallButton className="btn-primary" />
         </div>
 
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-1">
           {/* Mobile Language Switcher */}
           <button
             onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
-            className="flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold transition-all duration-200 border"
+            className="flex items-center px-2 py-1 rounded text-[11px] font-semibold transition-all duration-200 border min-w-[36px] justify-center"
             style={{
               color: "var(--text-primary)",
               borderColor: "var(--border)",
@@ -156,7 +156,7 @@ export default function Navbar() {
           {/* Mobile Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="flex items-center justify-center w-8 h-8 rounded-md transition-all duration-200 border"
+            className="flex items-center justify-center w-8 h-8 rounded transition-all duration-200 border"
             style={{
               color: "var(--text-primary)",
               borderColor: "var(--border)",
@@ -178,13 +178,13 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2"
+            className="flex items-center justify-center w-8 h-8"
             aria-label="Toggle menu"
           >
-            <div className="flex flex-col gap-1.5">
-              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45deg) translateY(8px)" : "" }} />
-              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", opacity: menuOpen ? 0 : 1 }} />
-              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "" }} />
+            <div className="flex flex-col gap-1 items-center justify-center w-5 h-5">
+              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45deg)" : "" }} />
+              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300" style={{ background: "var(--text-primary)", opacity: menuOpen ? 0 : 1, transform: menuOpen ? "scaleX(0)" : "" }} />
+              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(-45deg)" : "" }} />
             </div>
           </button>
         </div>
@@ -200,20 +200,20 @@ export default function Navbar() {
             className="md:hidden border-t overflow-hidden"
             style={{ background: "var(--mobile-menu-bg)", borderColor: "var(--border)" }}
           >
-            <div className="flex flex-col px-6 py-4 gap-4">
+            <div className="flex flex-col px-4 py-3 gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="transition-colors py-2 text-lg"
+                  className="transition-colors py-2 px-3 text-sm font-medium rounded"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   {link.label}
                 </a>
               ))}
-              <div onClick={() => setMenuOpen(false)} className="mt-2">
-                <BookCallButton className="btn-primary w-full" />
+              <div onClick={() => setMenuOpen(false)} className="mt-1">
+                <BookCallButton className="btn-primary w-full py-3 text-sm" />
               </div>
             </div>
           </motion.div>

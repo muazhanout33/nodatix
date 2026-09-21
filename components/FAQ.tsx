@@ -29,14 +29,14 @@ function FAQItem({
     <div className="card-premium overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-6 text-left cursor-pointer relative z-10"
+        className="w-full flex items-center justify-between p-4 sm:p-6 text-left cursor-pointer relative z-10"
         aria-expanded={isOpen}
       >
-        <span className="text-[var(--text-primary)] font-semibold text-base pr-4">
+        <span className="text-[var(--text-primary)] font-semibold text-sm sm:text-base pr-3 sm:pr-4">
           {question}
         </span>
         <span
-          className={`text-[var(--accent)] text-xl flex-shrink-0 transition-transform duration-300 ${
+          className={`text-[var(--accent)] text-lg sm:text-xl flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-45" : ""
           }`}
         >
@@ -52,7 +52,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 text-[var(--text-secondary)] text-sm leading-relaxed">
+            <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -67,9 +67,9 @@ export default function FAQ() {
   const { t } = useI18n();
 
   return (
-    <section id="faq" className="py-28 px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
+    <section id="faq" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-16">
           <span className="badge-brand mb-4 inline-flex">
             {t.faq_kicker}
           </span>
@@ -81,7 +81,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {faqKeys.map((faq, i) => (
             <FAQItem
               key={i}

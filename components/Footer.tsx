@@ -27,9 +27,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[var(--footer-border)] pt-16 pb-8 px-6" style={{ background: "var(--footer-bg)" }}>
+    <footer className="border-t border-[var(--footer-border)] pt-10 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6" style={{ background: "var(--footer-bg)" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
           <div>
             <a href="#" className="flex items-center gap-2 mb-4">
               <Image
@@ -43,7 +43,7 @@ export default function Footer() {
                 Scalary<span className="text-[var(--accent)]">X</span>
               </span>
             </a>
-            <p className="text-[var(--text-secondary)] text-sm leading-relaxed max-w-xs">
+            <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed max-w-xs">
               {t.footer_desc}
             </p>
             <div className="mt-5 flex gap-3">
@@ -70,15 +70,15 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <div className="text-[var(--text-primary)] font-semibold text-sm mb-5 uppercase tracking-wider">
+              <div className="text-[var(--text-primary)] font-semibold text-xs sm:text-sm mb-3 sm:mb-5 uppercase tracking-wider">
                 {group}
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-[var(--text-secondary)] text-sm hover:text-[var(--accent)] transition-colors duration-200"
+                      className="text-[var(--text-secondary)] text-xs sm:text-sm hover:text-[var(--accent)] transition-colors duration-200"
                     >
                       {link.label}
                     </a>
@@ -89,7 +89,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-[var(--footer-border)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[var(--footer-border)] pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <p className="text-[var(--text-muted)] text-xs">
             &copy; {new Date().getFullYear()} ScalaryX. {t.footer_rights}
           </p>

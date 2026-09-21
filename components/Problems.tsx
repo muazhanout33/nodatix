@@ -53,14 +53,14 @@ export default function Problems() {
   ];
 
   return (
-    <section id="problems" className="py-28 px-6 relative">
+    <section id="problems" className="py-16 sm:py-28 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
           <span className="inline-block text-xs text-[var(--danger)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-[var(--danger)]/20 bg-[var(--danger)]/5">
             {t.problems_kicker}
@@ -68,7 +68,7 @@ export default function Problems() {
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.problems_title_1} <span className="text-[var(--accent)]">{t.problems_title_accent}</span>
           </h2>
-          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             {t.problems_subtitle}
           </p>
         </motion.div>
@@ -81,20 +81,20 @@ export default function Problems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="card-premium p-6 group relative"
+              className="card-premium p-4 sm:p-6 group relative"
             >
               <div className="card-sweep" />
               <div className="absolute top-5 right-5 text-5xl font-bold text-[var(--text-primary)] opacity-5 select-none z-0">
                 {String(i + 1).padStart(2, "0")}
               </div>
 
-              <div className="card-icon w-12 h-12 mb-5 relative z-10 text-[var(--danger)]">
+              <div className="card-icon w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-5 relative z-10 text-[var(--danger)]">
                 {problem.icon}
               </div>
-              <h3 className="text-base font-semibold text-[var(--text-primary)] mb-3 relative z-10" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
+              <h3 className="text-sm sm:text-base font-semibold text-[var(--text-primary)] mb-2 sm:mb-3 relative z-10" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
                 {problem.title}
               </h3>
-              <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-5 relative z-10">
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed mb-3 sm:mb-5 relative z-10">
                 {problem.description}
               </p>
               <div className="inline-flex items-center gap-2 text-xs text-[var(--accent)] font-medium relative z-10">

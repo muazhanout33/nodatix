@@ -75,14 +75,14 @@ export default function Benefits() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="benefits" className="py-28 px-6 relative">
+    <section id="benefits" className="py-16 sm:py-28 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <span className="badge-brand mb-4 inline-flex">
             {t.benefits_kicker}
@@ -103,32 +103,32 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card-premium p-6 group relative overflow-hidden"
+              className="card-premium p-4 sm:p-6 group relative overflow-hidden"
             >
               <div className="card-sweep" />
               <div className="absolute top-4 right-4 text-4xl font-bold text-[var(--text-primary)] opacity-5 select-none z-0">
                 {benefit.stat}
               </div>
 
-              <div className="card-icon w-11 h-11 mb-4 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
+              <div className="card-icon w-9 h-9 sm:w-11 sm:h-11 mb-3 sm:mb-4 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
                 {benefit.icon}
               </div>
 
               {benefit.stat && (
-                <div className="flex items-baseline gap-2 mb-1 relative z-10">
-                  <span className="text-xl font-bold text-[var(--text-primary)]">
+                <div className="flex items-baseline gap-2 mb-0.5 sm:mb-1 relative z-10">
+                  <span className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">
                     {benefit.stat}
                   </span>
-                  <span className="text-xs text-[var(--text-muted)] uppercase tracking-wider">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-muted)] uppercase tracking-wider">
                     {t[benefit.statKey as keyof typeof t]}
                   </span>
                 </div>
               )}
 
-              <h3 className="text-base font-semibold text-[var(--text-primary)] mt-2 mb-2 relative z-10">
+              <h3 className="text-sm sm:text-base font-semibold text-[var(--text-primary)] mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 relative z-10">
                 {t[benefit.titleKey as keyof typeof t]}
               </h3>
-              <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed relative z-10">
                 {t[benefit.descKey as keyof typeof t]}
               </p>
             </motion.div>

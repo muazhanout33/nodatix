@@ -31,14 +31,14 @@ export default function InteractiveProjects() {
   const previewProjects = PROJECTS.slice(0, 3);
 
   return (
-    <section id="projects" className="py-28 px-6 relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">
             {t.interactive_title}
@@ -61,27 +61,27 @@ export default function InteractiveProjects() {
                 href={`/interactive/${project.slug}`}
                 className="block text-left group"
               >
-                <div className="card-premium p-6 h-full">
+                <div className="card-premium p-4 sm:p-6 h-full">
                   <div className="card-sweep" />
                   <div className="relative z-10">
-                    <div className="card-icon w-11 h-11 mb-4 text-[var(--accent)]">
+                    <div className="card-icon w-9 h-9 sm:w-11 sm:h-11 mb-3 sm:mb-4 text-[var(--accent)]">
                       {ICONS[project.slug] || (
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
                         </svg>
                       )}
                     </div>
-                    <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors">
+                    <h3 className="text-sm sm:text-base font-semibold text-[var(--text-primary)] mb-1.5 sm:mb-2 group-hover:text-[var(--accent)] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed line-clamp-2">
+                    <p className="text-[var(--text-secondary)] text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-2">
                       {project.shortDescription}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-5">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="card-tag text-xs font-mono px-3 py-1 rounded-full"
+                          className="card-tag text-[10px] sm:text-xs font-mono px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full"
                         >
                           {tag}
                         </span>

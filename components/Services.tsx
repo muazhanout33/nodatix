@@ -88,7 +88,7 @@ function ServiceCard({
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="card-premium p-6 cursor-default group"
+      className="card-premium p-4 sm:p-6 cursor-default group"
     >
       <div className="card-sweep" />
       <div className="flex items-start justify-between mb-4 relative z-10">
@@ -115,14 +115,14 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-28 px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
+    <section id="services" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8 sm:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.services_title}
