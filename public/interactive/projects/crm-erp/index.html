@@ -42,7 +42,7 @@ html[data-theme="dark"]{
 color-scheme:dark;
 }
 html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
-{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--bg);color:var(--ink);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased;transition:background-color .25s ease,color .25s ease}
 html[dir="rtl"] body,html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] h4{font-family:'IBM Plex Sans Arabic','Instrument Sans',sans-serif}
@@ -251,7 +251,7 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 #toasts{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px}
 .toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:11px;font-size:13.5px;box-shadow:var(--sh-lg);display:flex;gap:10px;align-items:center;max-width:400px}
 #errbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#B3261E;color:#fff;font:12px/1.4 monospace;padding:8px 12px}
-@media(prefers-reduced-motion:reduce){,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}html.anim .rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}html.anim .rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>

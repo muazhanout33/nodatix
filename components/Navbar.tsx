@@ -182,9 +182,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <div className="flex flex-col gap-1.5">
-              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45) translateY(8px)" : "" }} />
+              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45deg) translateY(8px)" : "" }} />
               <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", opacity: menuOpen ? 0 : 1 }} />
-              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "-rotate(45) translateY(-8px)" : "" }} />
+              <span className="block w-6 h-0.5 transition-all duration-300" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "" }} />
             </div>
           </button>
         </div>
