@@ -9,7 +9,7 @@ import { useI18n } from "@/lib/i18n";
 const Hero = memo(function Hero() {
   const { t } = useI18n();
   return (
-    <section className="relative min-h-[85svh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-14 sm:pt-20">
+    <section className="relative min-h-[80svh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-14 sm:pt-20">
       {/* Dynamic background gradient */}
       <div
         className="absolute inset-0"
@@ -69,9 +69,10 @@ const Hero = memo(function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
+          className="sm:grid sm:grid-cols-2 sm:gap-5 max-w-4xl mx-auto"
         >
-          <div className="card-premium p-4 sm:p-6 text-start">
+          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            <div className="card-premium p-4 sm:p-6 text-start">
             <div className="card-sweep" />
             <div className="relative z-10">
               <div className="card-icon w-9 h-9 sm:w-11 sm:h-11 mb-3 sm:mb-4">
@@ -102,6 +103,7 @@ const Hero = memo(function Hero() {
                 {t.hero_card2_desc}
               </p>
             </div>
+          </div>
           </div>
         </motion.div>
       </div>

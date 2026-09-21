@@ -18,7 +18,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="py-16 sm:py-28 px-4 sm:px-6 relative">
+    <section id="about" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}

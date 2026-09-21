@@ -103,7 +103,21 @@ html[dir="rtl"] .logo small{letter-spacing:.04em}
 .mnav .links{display:flex;gap:22px;margin-left:auto}
 .mnav .links a{font-size:14px;font-weight:500;color:var(--ink2)}
 .mnav .links a:hover{color:var(--blue)}
-@media(max-width:960px){.mnav .links{display:none}.mnav .hide-s{display:none}}
+@media(max-width:960px){.mnav .links{display:none}.mnav .hide-s{display:none}.mnav .hamb{display:flex}}
+.mnav .hamb{display:none;width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--card);align-items:center;justify-content:center;cursor:pointer;flex:none}
+.mnav .hamb span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:background .2s}
+.mnav .hamb span::before,.mnav .hamb span::after{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s}
+.mnav .hamb span::before{top:-6px}
+.mnav .hamb span::after{top:6px}
+.mnav .hamb.on span{background:transparent}
+.mnav .hamb.on span::before{top:0;transform:rotate(45deg)}
+.mnav .hamb.on span::after{top:0;transform:rotate(-45deg)}
+.mnav-mobile{display:none;position:fixed;top:68px;left:0;right:0;background:var(--card);border-bottom:1px solid var(--line);z-index:59;padding:16px 28px;box-shadow:var(--sh)}
+.mnav-mobile.show{display:block}
+.mnav-mobile a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--ink2);border-bottom:1px solid var(--line)}
+.mnav-mobile a:last-child{border-bottom:none}
+.mnav-mobile a:hover{color:var(--blue)}
+@media(max-width:640px){.sec{padding:56px 0}.hero{padding:56px 0 64px}.hero .wrap{gap:32px}.ccard{padding:20px}.statline{margin-top:20px}.statline>div{padding:18px 20px}.statline b{font-size:18px}.pv-kpis{grid-template-columns:repeat(2,1fr)}.trust div{min-width:140px;padding:16px 18px;font-size:13px}.band{padding:32px 20px;gap:24px}.band h2{font-size:22px}.footer.m .cols{grid-template-columns:1fr 1fr;gap:24px}html[dir="rtl"] footer.m .cols{grid-template-columns:1fr 1fr}.scattered{height:260px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch}.snode{position:relative;display:inline-flex;animation:none;transform:none;margin:4px}.scenter{position:relative;left:auto;top:auto;transform:none;display:inline-flex;margin:12px auto}.scattered{display:flex;flex-direction:column;align-items:center}.wrap>table,.ccard table,.card table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
 .hero{padding:84px 0 96px;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:64px;align-items:center}
 @media(max-width:1080px){.hero .wrap{grid-template-columns:1fr;gap:52px}}
@@ -296,9 +310,18 @@ footer.m .soc:hover{color:#fff;border-color:#fff}
 <svg class="ic-moon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-moon"/></svg>
 </button>
 <button type="button" class="tbtn lang" data-lang-btn onclick="sxLang()">عربي</button>
+<button type="button" class="hamb" onclick="this.classList.toggle('on');document.getElementById('mobMenu').classList.toggle('show')" aria-label="Menu"><span></span></button>
 <a class="btn o sm hide-s" href="https://cal.com/scalary-x-4qdg27/scalaryx-meeting" target="_blank" rel="noopener" data-i18n="nav_consult"></a>
 <a class="btn wa sm" href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wa"/></svg><span data-i18n="nav_wa"></span></a>
 </div></nav>
+<div id="mobMenu" class="mnav-mobile">
+<a href="#problem" data-i18n="nav_problem" onclick="document.getElementById('mobMenu').classList.remove('show');document.querySelector('.hamb').classList.remove('on')"></a>
+<a href="#solution" data-i18n="nav_solution" onclick="document.getElementById('mobMenu').classList.remove('show');document.querySelector('.hamb').classList.remove('on')"></a>
+<a href="#system" data-i18n="nav_system" onclick="document.getElementById('mobMenu').classList.remove('show');document.querySelector('.hamb').classList.remove('on')"></a>
+<a href="#contact" data-i18n="nav_contact" onclick="document.getElementById('mobMenu').classList.remove('show');document.querySelector('.hamb').classList.remove('on')"></a>
+<a href="https://cal.com/scalary-x-4qdg27/scalaryx-meeting" target="_blank" rel="noopener" data-i18n="nav_consult"></a>
+<a href="https://wa.me/201105920342?text=Hello%2C I'm interested in a CRM %2B ERP system for my business" target="_blank" rel="noopener" data-i18n="nav_wa"></a>
+</div>
 
 <header class="hero" id="top"><div class="wrap">
 <div>

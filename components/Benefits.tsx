@@ -75,14 +75,14 @@ export default function Benefits() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="benefits" className="py-16 sm:py-28 px-4 sm:px-6 relative">
+    <section id="benefits" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-16"
+          className="mb-6 sm:mb-12 md:mb-16"
         >
           <span className="badge-brand mb-4 inline-flex">
             {t.benefits_kicker}
@@ -95,8 +95,9 @@ export default function Benefits() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {benefits.map((benefit, i) => (
+        <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            {benefits.map((benefit, i) => (
             <motion.div
               key={benefit.titleKey}
               initial={{ opacity: 0, y: 40 }}
@@ -133,6 +134,7 @@ export default function Benefits() {
               </p>
             </motion.div>
           ))}
+          </div>
         </div>
       </div>
     </section>

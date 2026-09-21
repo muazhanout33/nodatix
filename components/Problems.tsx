@@ -53,14 +53,14 @@ export default function Problems() {
   ];
 
   return (
-    <section id="problems" className="py-16 sm:py-28 px-4 sm:px-6 relative">
+    <section id="problems" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-16"
+          className="text-center mb-6 sm:mb-12 md:mb-16"
         >
           <span className="inline-block text-xs text-[var(--danger)] font-semibold uppercase tracking-wider mb-4 px-3 py-1 rounded-full border border-[var(--danger)]/20 bg-[var(--danger)]/5">
             {t.problems_kicker}
@@ -73,8 +73,9 @@ export default function Problems() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {problems.map((problem, i) => (
+        <div className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5">
+          <div className="mobile-scroll mobile-scroll-wide sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            {problems.map((problem, i) => (
             <motion.div
               key={problem.title}
               initial={{ opacity: 0, y: 40 }}
@@ -103,6 +104,7 @@ export default function Problems() {
               </div>
             </motion.div>
           ))}
+          </div>
         </div>
 
         <motion.div

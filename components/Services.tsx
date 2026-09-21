@@ -91,18 +91,18 @@ function ServiceCard({
       className="card-premium p-4 sm:p-6 cursor-default group"
     >
       <div className="card-sweep" />
-      <div className="flex items-start justify-between mb-4 relative z-10">
-        <div className="card-icon w-11 h-11 group-hover:text-[var(--accent)] transition-colors duration-300">
+      <div className="flex items-start justify-between mb-3 sm:mb-4 relative z-10">
+        <div className="card-icon w-9 h-9 sm:w-11 sm:h-11 group-hover:text-[var(--accent)] transition-colors duration-300">
           {service.icon}
         </div>
-        <span className="card-tag text-xs text-[var(--text-muted)] font-medium px-3 py-1 rounded-full">
+        <span className="card-tag text-[10px] sm:text-xs text-[var(--text-muted)] font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
           {t[service.tagKey as keyof typeof t]}
         </span>
       </div>
-      <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
+      <h3 className="text-sm sm:text-base font-semibold text-[var(--text-primary)] mb-1.5 sm:mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 relative z-10">
         {t[service.titleKey as keyof typeof t]}
       </h3>
-      <p className="text-[var(--text-secondary)] text-sm leading-relaxed relative z-10">
+      <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed relative z-10">
         {t[service.descKey as keyof typeof t]}
       </p>
     </motion.div>
@@ -115,14 +115,14 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
+    <section id="services" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-16"
+          className="mb-6 sm:mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.services_title}
@@ -132,10 +132,12 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, i) => (
-            <ServiceCard key={service.titleKey} service={service} index={i} t={t} />
-          ))}
+        <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            {services.map((service, i) => (
+              <ServiceCard key={service.titleKey} service={service} index={i} t={t} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

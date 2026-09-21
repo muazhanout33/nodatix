@@ -67,9 +67,9 @@ export default function FAQ() {
   const { t } = useI18n();
 
   return (
-    <section id="faq" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
+    <section id="faq" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden" style={{ background: "var(--section-alt-bg)" }}>
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="text-center mb-8 sm:mb-16">
+        <div className="text-center mb-6 sm:mb-12 md:mb-16">
           <span className="badge-brand mb-4 inline-flex">
             {t.faq_kicker}
           </span>

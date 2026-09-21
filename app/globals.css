@@ -318,3 +318,96 @@ body {
 .gradient-text {
   color: var(--accent);
 }
+
+/* ============================================================
+   MOBILE HORIZONTAL SCROLL (Scroll-Snap)
+   ============================================================ */
+@media (max-width: 639px) {
+  .mobile-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll > * {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .mobile-scroll-wide > * {
+    flex: 0 0 75%;
+  }
+
+  .mobile-scroll-tight > * {
+    flex: 0 0 90%;
+  }
+}
+
+/* Horizontal scroll fade indicators */
+.mobile-scroll-wrapper {
+  position: relative;
+}
+
+.mobile-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to left, var(--section-alt-bg, var(--background)), transparent);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.mobile-scroll-wrapper.no-fade::after {
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .mobile-scroll-wrapper::after {
+    display: none;
+  }
+}
+
+/* Swipe hint dot indicators */
+.scroll-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.scroll-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+  opacity: 1;
+  background: var(--accent);
+  width: 18px;
+  border-radius: 3px;
+}
+
+@media (min-width: 640px) {
+  .scroll-dots {
+    display: none;
+  }
+}

@@ -31,14 +31,14 @@ export default function InteractiveProjects() {
   const previewProjects = PROJECTS.slice(0, 3);
 
   return (
-    <section id="projects" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
+    <section id="projects" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-16"
+          className="mb-6 sm:mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4">
             {t.interactive_title}
@@ -48,8 +48,9 @@ export default function InteractiveProjects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {previewProjects.map((project, i) => (
+        <div className="sm:grid sm:grid-cols-3 sm:gap-5">
+          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            {previewProjects.map((project, i) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 40 }}
@@ -108,9 +109,10 @@ export default function InteractiveProjects() {
               </Link>
             </motion.div>
           ))}
+          </div>
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-8 sm:mt-10 text-center">
           <Link
             href="/interactive"
             className="btn-ghost"

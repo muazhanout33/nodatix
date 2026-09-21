@@ -29,6 +29,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith("#")) return;
     e.preventDefault();
@@ -56,8 +65,8 @@ export default function Navbar() {
         borderColor: scrolled ? "var(--border)" : "transparent",
       }}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between h-14 sm:h-20">
-        <a href="#" className="flex items-center gap-1.5 sm:gap-2 group">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-20">
+        <a href="#" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
           <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-8 sm:h-10 md:h-12 w-auto" priority />
           <span className="text-base sm:text-xl font-bold tracking-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             <span style={{ color: "var(--text-primary)" }}>Scalary</span><span style={{ color: "var(--accent)" }}>X</span>
@@ -80,7 +89,6 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          {/* Language Switcher */}
           <button
             onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border"
@@ -105,7 +113,6 @@ export default function Navbar() {
             {locale === "ar" ? "EN" : "عربي"}
           </button>
 
-          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 border"
@@ -138,11 +145,10 @@ export default function Navbar() {
           <BookCallButton className="btn-primary" />
         </div>
 
-        <div className="flex md:hidden items-center gap-1">
-          {/* Mobile Language Switcher */}
+        <div className="flex md:hidden items-center gap-1.5">
           <button
             onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
-            className="flex items-center px-2 py-1 rounded text-[11px] font-semibold transition-all duration-200 border min-w-[36px] justify-center"
+            className="flex items-center px-2 py-1.5 rounded text-[11px] font-semibold transition-all duration-200 border min-w-[36px] justify-center"
             style={{
               color: "var(--text-primary)",
               borderColor: "var(--border)",
@@ -153,7 +159,6 @@ export default function Navbar() {
             {locale === "ar" ? "EN" : "عربي"}
           </button>
 
-          {/* Mobile Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="flex items-center justify-center w-8 h-8 rounded transition-all duration-200 border"
@@ -175,16 +180,34 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex items-center justify-center w-8 h-8"
             aria-label="Toggle menu"
           >
-            <div className="flex flex-col gap-1 items-center justify-center w-5 h-5">
-              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(45deg)" : "" }} />
-              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300" style={{ background: "var(--text-primary)", opacity: menuOpen ? 0 : 1, transform: menuOpen ? "scaleX(0)" : "" }} />
-              <span className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center" style={{ background: "var(--text-primary)", transform: menuOpen ? "rotate(-45deg)" : "" }} />
+            <div className="flex flex-col gap-[5px] items-center justify-center w-5 h-5">
+              <span
+                className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center"
+                style={{
+                  background: "var(--text-primary)",
+                  transform: menuOpen ? "rotate(45deg) translate(0, 0)" : "",
+                }}
+              />
+              <span
+                className="block w-5 h-[1.5px] rounded-full transition-all duration-300"
+                style={{
+                  background: "var(--text-primary)",
+                  opacity: menuOpen ? 0 : 1,
+                  transform: menuOpen ? "scaleX(0)" : "",
+                }}
+              />
+              <span
+                className="block w-5 h-[1.5px] rounded-full transition-all duration-300 origin-center"
+                style={{
+                  background: "var(--text-primary)",
+                  transform: menuOpen ? "rotate(-45deg) translate(0, 0)" : "",
+                }}
+              />
             </div>
           </button>
         </div>
@@ -196,23 +219,25 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden border-t overflow-hidden"
             style={{ background: "var(--mobile-menu-bg)", borderColor: "var(--border)" }}
           >
-            <div className="flex flex-col px-4 py-3 gap-1">
+            <div className="flex flex-col px-4 py-3 gap-0.5" style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}>
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="transition-colors py-2 px-3 text-sm font-medium rounded"
+                  className="transition-colors py-2.5 px-3 text-sm font-medium rounded-lg"
                   style={{ color: "var(--text-secondary)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
                 >
                   {link.label}
                 </a>
               ))}
-              <div onClick={() => setMenuOpen(false)} className="mt-1">
+              <div onClick={() => setMenuOpen(false)} className="mt-2">
                 <BookCallButton className="btn-primary w-full py-3 text-sm" />
               </div>
             </div>

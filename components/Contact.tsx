@@ -55,14 +55,14 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-16 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
+    <section id="contact" className="py-10 sm:py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-14"
+          className="text-center mb-6 sm:mb-10 md:mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-5 leading-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             {t.contact_title}
@@ -76,9 +76,10 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12"
+          className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5 mb-12"
         >
-          {contactItems.map((item, i) => (
+          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+            {contactItems.map((item, i) => (
             <motion.div
               key={item.label}
               initial={{ opacity: 0, y: 20 }}
@@ -109,6 +110,7 @@ export default function Contact() {
               </div>
             </motion.div>
           ))}
+          </div>
         </motion.div>
 
         <motion.div
