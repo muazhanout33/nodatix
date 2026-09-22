@@ -353,6 +353,13 @@ body {
   }
 }
 
+/* Desktop: make mobile-scroll a "ghost" so its children become direct grid children */
+@media (min-width: 640px) {
+  .mobile-scroll {
+    display: contents;
+  }
+}
+
 /* Horizontal scroll fade indicators */
 .mobile-scroll-wrapper {
   position: relative;
