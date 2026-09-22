@@ -23,6 +23,7 @@ export type TranslationKeys = {
   hero_card1_desc: string;
   hero_card2_title: string;
   hero_card2_desc: string;
+  hero_supporting: string;
 
   // Problems
   problems_kicker: string;
@@ -220,11 +221,11 @@ const ar: TranslationKeys = {
 
   // Hero
   hero_kicker: "أتمتة وتسويق بالذكاء الاصطناعي",
-  hero_title_1: "أنظمة الأتمتة والتسويق",
-  hero_title_accent: "بالذكاء الاصطناعي",
-  hero_title_2: "للمشاريع النامية",
+  hero_title_1: "طوّر أعمالك مع",
+  hero_title_accent: "ScalaryX",
+  hero_title_2: "",
   hero_subtitle:
-    "نبني أنظمة n8n ذكية توفر ساعات من العمل اليدوي، تُبسّط العمليات، وتدعم استراتيجيات تسويق فعّالة — عشان تركز على النمو بينما الأتمتة تتكفل بالباقي.",
+    "نبني مواقع إلكترونية وأنظمة تسويق وأتمتة أعمال تشتغل مع بعض لتبسيط عملياتك وتساعدك توسّع شغلك.",
   hero_cta_book: "استشارة مجانية",
   hero_cta_how: "شوف إزاي بيشتغل",
   hero_card1_title: "أتمتة بالذكاء الاصطناعي",
@@ -233,6 +234,8 @@ const ar: TranslationKeys = {
   hero_card2_title: "التسويق الرقمي",
   hero_card2_desc:
     "نمّي البراند بتاعك وجذب عملاء محتملين مؤهلين وحوّل الاهتمام لعملاء حقيقيين باستخدام استراتيجيات تسويق مبنية على بيانات.",
+  hero_supporting:
+    "من بناء حضورك الرقمي لتحسين رحلة العميل وأتمتة العمليات اليومية، ScalaryX يحوّل العمليات المفككة لأنظمة أذكى وأكتر قابلية للتوسع — عشان تقلل الوقت في إدارة الشغل وتكرس وقت أكتر للنمو.",
 
   // Problems
   problems_kicker: "المشكلة",
@@ -469,11 +472,11 @@ const en: TranslationKeys = {
 
   // Hero
   hero_kicker: "AI Automation & Workflow Systems",
-  hero_title_1: "AI Automation & Marketing",
-  hero_title_accent: "Systems",
-  hero_title_2: "For Growing Businesses",
+  hero_title_1: "Scale Your Business Operations with",
+  hero_title_accent: "ScalaryX",
+  hero_title_2: "",
   hero_subtitle:
-    "We build intelligent n8n workflows that save hours of manual work, streamline operations, and support high-performing marketing strategies — so you can focus on growth while automation handles the rest.",
+    "We build websites, marketing systems, and business automation that work together to streamline your operations and help your business scale.",
   hero_cta_book: "Free Consultation",
   hero_cta_how: "See How It Works",
   hero_card1_title: "AI Automation",
@@ -482,6 +485,8 @@ const en: TranslationKeys = {
   hero_card2_title: "Digital Marketing",
   hero_card2_desc:
     "Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.",
+  hero_supporting:
+    "From building your digital presence to improving customer journeys and automating day-to-day operations, ScalaryX turns disconnected processes into smarter, scalable systems — so your business can spend less time managing work and more time growing.",
 
   // Problems
   problems_kicker: "The Problem",

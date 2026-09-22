@@ -45,9 +45,18 @@ const Hero = memo(function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-base sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed"
+          className="text-base sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-4 sm:mb-6 leading-relaxed"
         >
           {t.hero_subtitle}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-sm sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed"
+        >
+          {t.hero_supporting}
         </motion.p>
 
         <motion.div

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import MobileScrollFix from "@/components/MobileScrollFix";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
@@ -184,6 +185,7 @@ export default function RootLayout({
           <I18nProvider>
             {children}
             <AnalyticsTracker />
+            <MobileScrollFix />
             <WhatsAppButton />
           </I18nProvider>
         </ThemeProvider>
