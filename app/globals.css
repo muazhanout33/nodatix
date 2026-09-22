@@ -329,6 +329,7 @@ body {
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     gap: 12px;
     padding-bottom: 8px;
     scrollbar-width: none;
