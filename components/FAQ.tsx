@@ -26,7 +26,7 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="card-premium overflow-hidden">
+    <div className="card-premium">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-4 sm:p-6 text-left cursor-pointer relative z-10"

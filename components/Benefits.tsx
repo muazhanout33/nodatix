@@ -104,7 +104,7 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card-premium p-4 sm:p-6 group relative overflow-hidden"
+              className="card-premium p-4 sm:p-6 group relative"
             >
               <div className="card-sweep" />
               <div className="absolute top-4 right-4 text-4xl font-bold text-[var(--text-primary)] opacity-5 select-none z-0">

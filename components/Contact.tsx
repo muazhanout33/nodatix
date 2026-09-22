@@ -117,7 +117,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="card-premium overflow-hidden"
+          className="card-premium"
         >
           <div className="relative z-10 flex flex-col items-center text-center py-8 sm:py-12 px-6 sm:px-8 gap-3 sm:gap-4">
             <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
