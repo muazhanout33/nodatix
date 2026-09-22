@@ -325,9 +325,10 @@ body {
 @media (max-width: 639px) {
   .mobile-scroll {
     display: flex;
-    overflow-x: auto;
+    /* A/B TEST: temporarily disabled to confirm root cause */
+    /* overflow-x: auto; */
+    /* scroll-snap-type: x mandatory; */
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
     gap: 12px;
