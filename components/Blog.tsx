@@ -45,8 +45,8 @@ export default function Blog() {
           </p>
         </motion.div>
 
-        <div className="sm:grid sm:grid-cols-3 sm:gap-5">
-          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="mobile-scroll">
             {blogPosts.map((post, i) => (
             <motion.article
               key={i}

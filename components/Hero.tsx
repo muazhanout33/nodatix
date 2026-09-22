@@ -69,9 +69,9 @@ const Hero = memo(function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="sm:grid sm:grid-cols-2 sm:gap-5 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
         >
-          <div className="mobile-scroll sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+          <div className="mobile-scroll">
             <div className="card-premium p-4 sm:p-6 text-start">
             <div className="card-sweep" />
             <div className="relative z-10">

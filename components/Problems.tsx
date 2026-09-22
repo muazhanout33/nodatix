@@ -73,8 +73,8 @@ export default function Problems() {
           </p>
         </motion.div>
 
-        <div className="sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5">
-          <div className="mobile-scroll mobile-scroll-wide sm:!flex sm:!overflow-visible sm:!scroll-snap-none sm:!gap-0 sm:!pb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="mobile-scroll mobile-scroll-wide">
             {problems.map((problem, i) => (
             <motion.div
               key={problem.title}
