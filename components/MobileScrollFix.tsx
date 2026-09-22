@@ -4,63 +4,68 @@ import { useEffect } from "react";
 
 export default function MobileScrollFix() {
   useEffect(() => {
-    const isMobile = () => window.innerWidth < 640;
-    if (!isMobile()) return;
+    if (window.innerWidth >= 640) return;
 
-    const containers = new Map<
-      Element,
-      { startX: number; startY: number; decided: boolean; horizontal: boolean }
-    >();
+    const attached = new WeakSet<Element>();
+    const cleanups: (() => void)[] = [];
 
-    const onTouchStart = (e: TouchEvent) => {
-      const target = (e.target as Element).closest(".mobile-scroll");
-      if (!target) return;
+    function attach(el: HTMLElement) {
+      if (attached.has(el)) return;
+      attached.add(el);
 
-      containers.set(target, {
-        startX: e.touches[0].clientX,
-        startY: e.touches[0].clientY,
-        decided: false,
-        horizontal: false,
+      let startX = 0;
+      let startY = 0;
+      let decided = false;
+      let horizontal = false;
+
+      const onTouchStart = (e: TouchEvent) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        decided = false;
+        horizontal = false;
+      };
+
+      const onTouchMove = (e: TouchEvent) => {
+        if (!decided) {
+          const dx = Math.abs(e.touches[0].clientX - startX);
+          const dy = Math.abs(e.touches[0].clientY - startY);
+          if (dx > 8 || dy > 8) {
+            decided = true;
+            horizontal = dx > dy;
+          }
+        }
+
+        if (decided && !horizontal) {
+          e.preventDefault();
+        }
+      };
+
+      el.addEventListener("touchstart", onTouchStart, { passive: true });
+      el.addEventListener("touchmove", onTouchMove, { passive: false });
+
+      cleanups.push(() => {
+        el.removeEventListener("touchstart", onTouchStart);
+        el.removeEventListener("touchmove", onTouchMove);
       });
-    };
+    }
 
-    const onTouchMove = (e: TouchEvent) => {
-      const target = (e.target as Element).closest(".mobile-scroll");
-      if (!target) return;
+    document.querySelectorAll<HTMLElement>(".mobile-scroll").forEach(attach);
 
-      const state = containers.get(target);
-      if (!state) return;
-
-      if (!state.decided) {
-        const dx = Math.abs(e.touches[0].clientX - state.startX);
-        const dy = Math.abs(e.touches[0].clientY - state.startY);
-
-        if (dx > 8 || dy > 8) {
-          state.decided = true;
-          state.horizontal = dx > dy;
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        for (const node of m.addedNodes) {
+          if (node instanceof HTMLElement) {
+            if (node.classList.contains("mobile-scroll")) attach(node);
+            node.querySelectorAll<HTMLElement>(".mobile-scroll").forEach(attach);
+          }
         }
       }
-
-      if (state.decided && !state.horizontal) {
-        e.preventDefault();
-      }
-    };
-
-    const onTouchEnd = (_e: TouchEvent) => {
-      const target = (_e.target as Element).closest(".mobile-scroll");
-      if (target) {
-        containers.delete(target);
-      }
-    };
-
-    document.addEventListener("touchstart", onTouchStart, { passive: true });
-    document.addEventListener("touchmove", onTouchMove, { passive: false });
-    document.addEventListener("touchend", onTouchEnd, { passive: true });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      document.removeEventListener("touchstart", onTouchStart);
-      document.removeEventListener("touchmove", onTouchMove);
-      document.removeEventListener("touchend", onTouchEnd);
+      observer.disconnect();
+      cleanups.forEach((fn) => fn());
     };
   }, []);
 
