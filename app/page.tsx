@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden" style={{ background: "var(--page-bg)" }}>
+    <main className="min-h-screen overflow-x-clip" style={{ background: "var(--page-bg)" }}>
       <Navbar />
       <Hero />
       <LazySections />

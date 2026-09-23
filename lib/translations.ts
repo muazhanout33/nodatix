@@ -46,26 +46,27 @@ export type TranslationKeys = {
   problems_cta_link: string;
 
   // Services
+  services_kicker: string;
   services_title: string;
   services_subtitle: string;
-  services_s2_title: string;
-  services_s2_desc: string;
-  services_s2_tag: string;
-  services_s3_title: string;
-  services_s3_desc: string;
-  services_s3_tag: string;
-  services_s4_title: string;
-  services_s4_desc: string;
-  services_s4_tag: string;
-  services_s6_title: string;
-  services_s6_desc: string;
-  services_s6_tag: string;
-  services_s7_title: string;
-  services_s7_desc: string;
-  services_s7_tag: string;
-  services_s8_title: string;
-  services_s8_desc: string;
-  services_s8_tag: string;
+  services_stage1_title: string;
+  services_stage1_desc: string;
+  services_stage2_title: string;
+  services_stage2_desc: string;
+  services_stage3_title: string;
+  services_stage3_desc: string;
+  services_stage4_title: string;
+  services_stage4_desc: string;
+  services_stage5_title: string;
+  services_stage5_desc: string;
+  services_final_title: string;
+  services_final_l1: string;
+  services_final_l2: string;
+  services_final_l3: string;
+  services_final_l4: string;
+  services_final_l5: string;
+  services_final_connect: string;
+  services_final_cta: string;
 
   // Benefits
   benefits_kicker: string;
@@ -262,33 +263,33 @@ const ar: TranslationKeys = {
   problems_cta_link: "شوف إزاي بيشتغل",
 
   // Services
-  services_title: "الخدمات",
+  services_kicker: "التوسّع في الأعمال بالذكاء الاصطناعي",
+  services_title: "نبني أعمالاً تتوسّع.",
   services_subtitle:
-    "بنبني أنظمة أتمتة n8n وأتمتة تسويقية بتحل الشغل اليدوي المتكرر — توفّر الوقت وتقلل التكاليف وتنمّي بيزنسك أوتوماتيكياً.",
-  services_s2_title: "أتمتة إدارة العملاء المحتملين",
-  services_s2_desc:
-    "مش هتخسر عميل محتمل تاني. أنظمتنا بتاخد البيانات وتؤهل العملاء وتتابع وتربّي العملاء المحتملين أوتوماتيكياً — بتملا الـ pipeline من غير ما تلمس صبّعك.",
-  services_s2_tag: "CRM والمبيعات",
-  services_s3_title: "أتمتة المحتوى",
-  services_s3_desc:
-    "ولّد مقالات ومحتوى سوشيال وإيميلات ونسخ إعلانات بالجملة باستخدام الـ AI. كن ثابت ومرئي في كل القنوات بسهولة.",
-  services_s3_tag: "التسويق",
-  services_s4_title: "وكلاء ذكاء اصطناعي مخصصين",
-  services_s4_desc:
-    "وكلاء AI مصممين حسب احتياجات بيزنسك. من خدمة العملاء والمبيعات للعمليات، بنعمل مساعدين ذكين يتكاملوا مع أدواتك الحالية.",
-  services_s4_tag: "AI متقدم",
-  services_s6_title: "الإعلانات المدفوعة وتوليد العملاء",
-  services_s6_desc:
-    "حملات إعلانية عالية الأداء بتجيبلك عملاء محتملين مؤهلين — مش بس زيارات — مع تعظيم العائد على الاستثمار في Meta و Google.",
-  services_s6_tag: "محرك النمو",
-  services_s7_title: "استراتيجية تسويق المحتوى",
-  services_s7_desc:
-    "محتوى استراتيجي يبني الثقة ويزيد التفاعل ويوصّل البراند بتاعك ك-choice الواضحة في سوقك.",
-  services_s7_tag: "المحتوى والبراند",
-  services_s8_title: "القنوات وتحسين التحويل",
-  services_s8_desc:
-    "قنوات مركّزة على التحويل بتحوّل الزوار لعملاء عن طريق تحليل وتحسين كل خطوة في الرحلة.",
-  services_s8_tag: "تركيز التحويل",
+    "نجمع بين الاستراتيجية والتقنية والذكاء الاصطناعي وأنظمة النمو لتحويل الأعمال إلى عمليات أذكى وأكثر قابلية للتوسّع.",
+  services_stage1_title: "تجارب رقمية تبيع",
+  services_stage1_desc:
+    "مواقع وصفحات هبوط ومنصات وواجهات وتجارب رقمية مبنية حول أهداف البيزنس.",
+  services_stage2_title: "يجدونك. ويختارونك.",
+  services_stage2_desc:
+    "التسويق والمحتوى والحملات المدفوعة وتوليد العملاء وأنظمة اكتساب العملاء.",
+  services_stage3_title: "حوّل الاهتمام إلى فرصة",
+  services_stage3_desc:
+    "قنوات بيع وتحسين التحويل وتربية العملاء المحتملين ورحلات العميل.",
+  services_stage4_title: "اجعل بيزنسك يعمل بذكاء",
+  services_stage4_desc:
+    "أتمتة العمليات وأتمتة سير العمل والتكاملات وأنظمة CRM والأنظمة التشغيلية.",
+  services_stage5_title: "وظّف الذكاء الاصطناعي",
+  services_stage5_desc:
+    "وكلاء AI ومساعدون أذكياء وسلاسل عمل ذكية وأنظمة AI مخصصة تحسّن طريقة عمل البيزنس.",
+  services_final_title: "بيزنس واحد. نظام نمو واحد.",
+  services_final_l1: "موقعك بيجيب الناس.",
+  services_final_l2: "التسويق بيبني الفرص.",
+  services_final_l3: "أنظمةك بتحوّلهم لعملاء.",
+  services_final_l4: "الأتمتة بتشغّل كل حاجة.",
+  services_final_l5: "والذكاء الاصطناعي بيخلي العملية كلها أذكى.",
+  services_final_connect: "بنربط كل حاجة مع بعض.",
+  services_final_cta: "ابدأ نظام النمو بتاعك",
 
   // Benefits
   benefits_kicker: "ليه تأتمت؟",
@@ -513,33 +514,33 @@ const en: TranslationKeys = {
   problems_cta_link: "See how",
 
   // Services
-  services_title: "Services",
+  services_kicker: "Scale Business with AI",
+  services_title: "We Build Businesses That Scale.",
   services_subtitle:
-    "We build n8n automation and marketing automation systems that replace repetitive human work — saving time, cutting costs, and scaling your business on autopilot.",
-  services_s2_title: "Lead Management Automation",
-  services_s2_desc:
-    "Never lose a lead again. Our AI systems capture, qualify, follow up, and nurture prospects automatically — keeping your pipeline full without lifting a finger.",
-  services_s2_tag: "CRM & Sales",
-  services_s3_title: "Content Automation",
-  services_s3_desc:
-    "Generate high-quality blog posts, social captions, emails, and ad copy at scale using AI. Stay consistent and visible across every channel effortlessly.",
-  services_s3_tag: "Marketing",
-  services_s4_title: "Custom AI Agents",
-  services_s4_desc:
-    "Purpose-built AI agents designed around your business workflows. From customer support and sales to operations, we create intelligent assistants that integrate with your existing tools.",
-  services_s4_tag: "Advanced AI",
-  services_s6_title: "Paid Ads & Lead Generation",
-  services_s6_desc:
-    "High-performance ad campaigns that bring you qualified leads — not just traffic — while maximizing your ROI across Meta and Google.",
-  services_s6_tag: "Growth Engine",
-  services_s7_title: "Content Marketing Strategy",
-  services_s7_desc:
-    "Strategic content that builds trust, increases engagement, and positions your brand as the obvious choice in your market.",
-  services_s7_tag: "Content & Branding",
-  services_s8_title: "Funnels & Optimization",
-  services_s8_desc:
-    "Conversion-focused funnels that turn visitors into customers by testing, analyzing, and optimizing every step of the journey.",
-  services_s8_tag: "Conversion Focus",
+    "We combine strategy, technology, AI and growth systems to turn businesses into smarter, more scalable operations.",
+  services_stage1_title: "Digital Experiences That Sell",
+  services_stage1_desc:
+    "Websites, landing pages, platforms, UX/UI and digital experiences built around business goals.",
+  services_stage2_title: "Get Found. Get Chosen.",
+  services_stage2_desc:
+    "Marketing, content, paid campaigns, lead generation and customer acquisition systems.",
+  services_stage3_title: "Turn Attention Into Opportunity",
+  services_stage3_desc:
+    "Funnels, conversion optimization, lead nurturing and customer journeys.",
+  services_stage4_title: "Make Your Business Run Smarter",
+  services_stage4_desc:
+    "Business automation, workflow automation, integrations, CRM systems and operational systems.",
+  services_stage5_title: "Put AI to Work",
+  services_stage5_desc:
+    "AI agents, AI assistants, intelligent workflows and custom AI systems that improve how the business operates.",
+  services_final_title: "One Business. One Growth System.",
+  services_final_l1: "Your website brings people in.",
+  services_final_l2: "Your marketing creates opportunities.",
+  services_final_l3: "Your systems convert them.",
+  services_final_l4: "Your automation keeps everything moving.",
+  services_final_l5: "Your AI makes the whole operation smarter.",
+  services_final_connect: "We connect it all.",
+  services_final_cta: "Build Your Growth System",
 
   // Benefits
   benefits_kicker: "Why Automate",
