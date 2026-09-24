@@ -167,6 +167,15 @@ body {
   transform: scaleX(-1);
 }
 
+/* Shift section — strike/underline grow from reading start */
+.shift-line {
+  transform-origin: left;
+}
+
+[dir="rtl"] .shift-line {
+  transform-origin: right;
+}
+
 /* ============================================================
    CARD DESIGN SYSTEM
    ============================================================ */

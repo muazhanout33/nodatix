@@ -4,6 +4,7 @@ export type TranslationKeys = {
   // Navbar
   nav_problems: string;
   nav_services: string;
+  nav_process: string;
   nav_benefits: string;
   nav_about: string;
   nav_faq: string;
@@ -20,25 +21,19 @@ export type TranslationKeys = {
   hero_cta_how: string;
   hero_supporting: string;
 
-  // Problems
-  problems_kicker: string;
-  problems_title_1: string;
-  problems_title_accent: string;
-  problems_subtitle: string;
-  problems_p1_title: string;
-  problems_p1_desc: string;
-  problems_p1_pain: string;
-  problems_p2_title: string;
-  problems_p2_desc: string;
-  problems_p2_pain: string;
-  problems_p3_title: string;
-  problems_p3_desc: string;
-  problems_p3_pain: string;
-  problems_p4_title: string;
-  problems_p4_desc: string;
-  problems_p4_pain: string;
-  problems_cta: string;
-  problems_cta_link: string;
+  // Problems — The Noise
+  problems_noise_kicker: string;
+  problems_noise_calm1: string;
+  problems_noise_calm2: string;
+  problems_noise_w1: string;
+  problems_noise_w2: string;
+  problems_noise_w3: string;
+  problems_noise_w4: string;
+  problems_noise_w5: string;
+  problems_noise_w6: string;
+  problems_noise_w7: string;
+  problems_noise_resolve1: string;
+  problems_noise_resolve2: string;
 
   // Services
   services_kicker: string;
@@ -63,30 +58,74 @@ export type TranslationKeys = {
   services_final_connect: string;
   services_final_cta: string;
 
-  // Benefits
-  benefits_kicker: string;
-  benefits_title: string;
-  benefits_subtitle: string;
-  benefits_b1_title: string;
-  benefits_b1_desc: string;
-  benefits_b1_stat: string;
-  benefits_b1_stat_label: string;
-  benefits_b2_title: string;
-  benefits_b2_desc: string;
-  benefits_b2_stat: string;
-  benefits_b2_stat_label: string;
-  benefits_b3_title: string;
-  benefits_b3_desc: string;
-  benefits_b3_stat: string;
-  benefits_b3_stat_label: string;
-  benefits_b4_title: string;
-  benefits_b4_desc: string;
-  benefits_b5_title: string;
-  benefits_b5_desc: string;
-  benefits_b5_stat: string;
-  benefits_b5_stat_label: string;
-  benefits_b6_title: string;
-  benefits_b6_desc: string;
+  // Process — Assemble
+  process_kicker: string;
+  process_title: string;
+  process_p1: string;
+  process_p2: string;
+  process_p3: string;
+  process_p4: string;
+  process_p5: string;
+  process_p6: string;
+  process_end1: string;
+  process_end2: string;
+
+  // Receipt — Case results
+  receipt_kicker: string;
+  receipt_title: string;
+  receipt_before: string;
+  receipt_after: string;
+  receipt_r1_before: string;
+  receipt_r1_after: string;
+  receipt_r2_before: string;
+  receipt_r2_after: string;
+  receipt_r3_before: string;
+  receipt_r3_after: string;
+  receipt_r4_before: string;
+  receipt_r4_after: string;
+  receipt_r5_before: string;
+  receipt_r5_after: string;
+
+  // Capabilities
+  cap_kicker: string;
+  cap_lead: string;
+  cap_w1: string;
+  cap_w2: string;
+  cap_w3: string;
+  cap_w4: string;
+  cap_w5: string;
+  cap_w6: string;
+
+  // Final CTA — The Decision
+  cta_l1: string;
+  cta_l2: string;
+  cta_l3: string;
+
+  // Benefits — The Shift
+  benefits_shift_kicker: string;
+  benefits_shift_title: string;
+  benefits_s1_from: string;
+  benefits_s1_to: string;
+  benefits_s2_from: string;
+  benefits_s2_to: string;
+  benefits_s3_from: string;
+  benefits_s3_to: string;
+  benefits_s4_from: string;
+  benefits_s4_to: string;
+  benefits_s5_from: string;
+  benefits_s5_to: string;
+  benefits_shift_end1: string;
+  benefits_shift_end2: string;
+
+  // Why Scale — The Layer
+  layer_kicker: string;
+  layer_title: string;
+  layer_support: string;
+  layer_center: string;
+  layer_l1: string;
+  layer_l2: string;
+  layer_l3: string;
+  layer_l4: string;
 
   // About
   about_title: string;
@@ -139,15 +178,9 @@ export type TranslationKeys = {
   testimonials_stat3: string;
 
   // Contact
-  contact_title: string;
-  contact_subtitle: string;
   contact_email_label: string;
   contact_response_label: string;
   contact_response_value: string;
-  contact_available_label: string;
-  contact_available_value: string;
-  contact_cta_title: string;
-  contact_cta_subtitle: string;
 
   // FAQ
   faq_kicker: string;
@@ -163,10 +196,6 @@ export type TranslationKeys = {
   faq_a4: string;
   faq_q5: string;
   faq_a5: string;
-  faq_q6: string;
-  faq_a6: string;
-  faq_q7: string;
-  faq_a7: string;
 
   // Footer
   footer_desc: string;
@@ -209,6 +238,7 @@ const ar: TranslationKeys = {
   // Navbar
   nav_problems: "المشاكل",
   nav_services: "الخدمات",
+  nav_process: "آلية العمل",
   nav_benefits: "المميزات",
   nav_about: "من نحن",
   nav_faq: "الاسئلة الشائعة",
@@ -227,29 +257,19 @@ const ar: TranslationKeys = {
   hero_supporting:
     "من بناء حضورك الرقمي لتحسين رحلة العميل وأتمتة العمليات اليومية، ScalaryX يحوّل العمليات المفككة لأنظمة أذكى وأكتر قابلية للتوسع — عشان تقلل الوقت في إدارة الشغل وتكرس وقت أكتر للنمو.",
 
-  // Problems
-  problems_kicker: "المشكلة",
-  problems_title_1: "المشكلة دي",
-  problems_title_accent: "تعرفها؟",
-  problems_subtitle: "دي المشاكل اللي بتقتل نموك كل يوم. احنا بنينا حلول لكل واحدة فيهم.",
-  problems_p1_title: "غرق في الشغل المتكرر",
-  problems_p1_desc:
-    "فريقك بيقضي 25-40 ساعة كل شهر على إدخال البيانات يدوي والمتابعة والعمليات المتكررة — ساعات أنظمة الأتمتة الذكية ممكن تسترجعها فوراً.",
-  problems_p1_pain: "وقت ضايع = نمو محدود",
-  problems_p2_title: "تحويل ضعيف للمعملاء والمتابعة",
-  problems_p2_desc:
-    "العملاء المحتملين بيفصلوا بسبب متابعة بطيئة أو غير منتظمة. كل متابعة فاتتك بتحقق خسارة في الإيرادات — عملاء محتملين بيمشوا كل يوم من غير أتمتة.",
-  problems_p2_pain: "متابعة فاتت = إيرادات ضايعة",
-  problems_p3_title: "تنفيذ بطيء للتسويق والمحتوى",
-  problems_p3_desc:
-    "إنك تبني محتوى وإعلانات وحملات يدوي بيثّط نموك. وأنت واقف، المنافسين اللي بيستخدموا أنظمة تسويق بالذكاء الاصطناعي بيمشوا 3 أضعاف أسرع.",
-  problems_p3_pain: "تنفيذ بطيء = حضور سلبي في السوق",
-  problems_p4_title: "كفاءة تسويقية ضعيفة",
-  problems_p4_desc:
-    "الميزانية بتضيع على الإعلانات والمحتوى مش منتظم والحملات مش محسّنة. بتجيب زيارات بس مش بيكفيك عملاء محتملين مؤهلين.",
-  problems_p4_pain: "ميزانية ضايعة = عائد متراجع",
-  problems_cta: "احنا بنزيل كل المشاكل دي — بأنظمة مبنية خصيصاً لبيزنسك.",
-  problems_cta_link: "شوف إزاي بيشتغل",
+  // Problems — The Noise
+  problems_noise_kicker: "الضوضاء",
+  problems_noise_calm1: "بيزنسك شغال.",
+  problems_noise_calm2: "بس هل النظام شغال؟",
+  problems_noise_w1: "شغل يدوي",
+  problems_noise_w2: "عملاء ضايعين",
+  problems_noise_w3: "متابعة متأخرة",
+  problems_noise_w4: "أدوات متفرقة",
+  problems_noise_w5: "مهام متكررة",
+  problems_noise_w6: "حضور رقمي ضعيف",
+  problems_noise_w7: "مفيش نظام واضح",
+  problems_noise_resolve1: "المشكلة مش في المجهود.",
+  problems_noise_resolve2: "المشكلة في النظام.",
 
   // Services
   services_kicker: "التوسّع في الأعمال بالذكاء الاصطناعي",
@@ -278,39 +298,76 @@ const ar: TranslationKeys = {
   services_final_l4: "الأتمتة بتشغّل كل حاجة.",
   services_final_l5: "والذكاء الاصطناعي بيخلي العملية كلها أذكى.",
   services_final_connect: "بنربط كل حاجة مع بعض.",
+
+  // Process — Assemble
+  process_kicker: "آلية العمل",
+  process_title: "بنركّب النظام.",
+  process_p1: "استراتيجية",
+  process_p2: "تصميم",
+  process_p3: "تقنية",
+  process_p4: "تسويق",
+  process_p5: "أتمتة",
+  process_p6: "ذكاء اصطناعي",
+  process_end1: "مبنٍ حول بيزنسك.",
+  process_end2: "مش حوالين طريقة شغلنا.",
+
+  // Receipt — Case results
+  receipt_kicker: "الإثبات",
+  receipt_title: "إيه اللي اتغير بعد ما النظام اتبنى؟",
+  receipt_before: "قبل",
+  receipt_after: "بعد",
+  receipt_r1_before: "3 أيام في البحث عن عملاء",
+  receipt_r1_after: "أقل من 15 دقيقة",
+  receipt_r2_before: "ساعات شغل يدوي",
+  receipt_r2_after: "بيتم في ثواني",
+  receipt_r3_before: "أدوات متفرقة",
+  receipt_r3_after: "نظام واحد متصل",
+  receipt_r4_before: "ميزانية إعلانات مش محسّنة",
+  receipt_r4_after: "حملات محسّنة",
+  receipt_r5_before: "تقارير يدوية",
+  receipt_r5_after: "مراقبة أوتوماتيكية",
+
+  // Capabilities
+  cap_kicker: "إيه اللي ممكن نغيّره؟",
+  cap_lead: "نقدر نساعدك توصل لأكتر",
+  cap_w1: "عملاء محتملين",
+  cap_w2: "عملاء",
+  cap_w3: "كفاءة",
+  cap_w4: "سرعة",
+  cap_w5: "تحكم",
+  cap_w6: "نمو",
+
+  // Final CTA — The Decision
+  cta_l1: "بيزنسك مش محتاج أدوات أكتر.",
+  cta_l2: "محتاج نظام أحسن.",
+  cta_l3: "يلا نبنيه.",
   services_final_cta: "ابدأ نظام النمو بتاعك",
 
-  // Benefits
-  benefits_kicker: "ليه تأتمت؟",
-  benefits_title: "المميزات واضحة",
-  benefits_subtitle:
-    "أي بيزنس يطبّق أتمتة بالذكاء الاصطناعي بيكتسب ميزة تراكمية على المنافسين اللي لسه بيشتغلوا يدوي.",
-  benefits_b1_title: "وفّر 50-80% من وقتك",
-  benefits_b1_desc:
-    "استبدل ساعات الشغل اليدوي بأنظمة أوتوماتيكية بتنفّذ المهام في ثواني — freeing فريقك يركز على أنشطة عالية التأثير.",
-  benefits_b1_stat: "80%",
-  benefits_b1_stat_label: "وقت موفر",
-  benefits_b2_title: "زوّد الإنتاجية",
-  benefits_b2_desc:
-    "أنظمة الـ AI بتاعتك شغّالة 24/7، مش بتاخد بريك، وبتتعامل مع مزامين شغل في نفس الوقت — بتضاعف إنتاجية فريقك من غير ما تزوّد الموظفين.",
-  benefits_b2_stat: "3X",
-  benefits_b2_stat_label: "إنتاجية",
-  benefits_b3_title: "قلل أخطاء الإنسان",
-  benefits_b3_desc:
-    "المهام الأوتوماتيكية بتتّبع القواعد بدقة كل مرة. مفيش متابعة نسيتها، مفيش أخطاء copy-paste، مفيش تناقض في بياناتك.",
-  benefits_b3_stat: "~0",
-  benefits_b3_stat_label: "معدل الخطأ",
-  benefits_b4_title: "عائد استثمار أعلى",
-  benefits_b4_desc:
-    "بطل تخمين وابدأ تنمّي. كل دولار بتنفقه بيتعقّب ويتحسّن ويتحوّل لنتائج قابلة للقياس.",
-  benefits_b5_title: "قلل التكاليف التشغيلية",
-  benefits_b5_desc:
-    "استبدل العمالة اليدوية المتكررة بالأتمتة الذكية. قلّل التكاليف الثابتة وأزيل العوائق ونمّي بيزنسك من غير ما تزوّد مصروفاتك.",
-  benefits_b5_stat: "60%",
-  benefits_b5_stat_label: "تخفيض التكاليف",
-  benefits_b6_title: "استهداف دقيق",
-  benefits_b6_desc:
-    "وصّل للناس اللي محتاجين منتجك — بالسن والاهتمام والسلوك والموقع.",
+  // Benefits — The Shift
+  benefits_shift_kicker: "التحول",
+  benefits_shift_title: "بيزنسك لما النظام يشتغل.",
+  benefits_s1_from: "يدوي",
+  benefits_s1_to: "أوتوماتيكي",
+  benefits_s2_from: "متفرق",
+  benefits_s2_to: "متصل",
+  benefits_s3_from: "بطيء",
+  benefits_s3_to: "أسرع",
+  benefits_s4_from: "رد فعل",
+  benefits_s4_to: "استباقي",
+  benefits_s5_from: "تخمين",
+  benefits_s5_to: "ذكاء",
+  benefits_shift_end1: "احتكاك أقل.",
+  benefits_shift_end2: "زخم أكثر.",
+
+  // Why Scale — The Layer
+  layer_kicker: "الطبقة",
+  layer_title: "مش بنضيف أداة جديدة. بنبني الطبقة اللي تربطهم كلهم.",
+  layer_support: "موقع، تسويق، أتمتة، وذكاء اصطناعي — تحت نظام واحد.",
+  layer_center: "BUSINESS",
+  layer_l1: "EXPERIENCE",
+  layer_l2: "MARKETING",
+  layer_l3: "AUTOMATION",
+  layer_l4: "AI",
 
   // About
   about_title: "نبني لنجعل بيزنسك يشتغل أفضل وينمو أسرع",
@@ -375,42 +432,24 @@ const ar: TranslationKeys = {
   testimonials_stat3: "12+ قطاع تم خدمته",
 
   // Contact
-  contact_title: "تواصل معنا",
-  contact_subtitle:
-    "عندك سؤال أو عايز تكتشف إزاي الأتمتة أو التسويق ممكن يفيد بيزنسك؟ ابعتلنا رسالة وهنرد عليك خلال 24 ساعة.",
   contact_email_label: "الإيميل",
   contact_response_label: "وقت الرد",
   contact_response_value: "خلال 24 ساعة",
-  contact_available_label: "التوفر",
-  contact_available_value: "عالمي · عن بُعد",
-  contact_cta_title: "جاهز تبدأ؟",
-  contact_cta_subtitle: "هنبنى نظام الأتمتة بتاعك",
 
   // FAQ
-  faq_kicker: "الاسئلة الشائعة",
-  faq_title: "الاسئلة الشائعة",
-  faq_subtitle: "كل اللي محتاج تعرفه عن أتمتة الذكاء الاصطناعي وإزاي ممكن نساعد بيزنسك ينمو.",
-  faq_q1: "إيه هي أتمتة الذكاء الاصطناعي؟",
-  faq_a1:
-    "أتمتة الذكاء الاصطناعي إنك تستخدم أدوات ذكية — زي ChatGPT و n8n و Zapier — تتعامل مع مهام العمل المتكررة أوتوماتيكياً. ده بيشمل الرد على العملاء وإرسال الإيميلات وتوليد العملاء المحتملين وإدارة الـ workflowات، كل ده من غير جهد يدوي.",
-  faq_q2: "إزاي الأتمتة ممكن تساعد بيزنسي؟",
-  faq_a2:
-    "الأتمتة بتحرّر فريقك من المهام المستهلكة للوقت عن طريق التعامل مع ردود خدمة العملاء وتوليد العملاء المحتملين وحملات التسويق بالإيميل ونشر المحتوى على السوشيال — عشان تركز على النمو بدل العمليات.",
-  faq_q3: "أتمتة بتكلف كام؟",
-  faq_a3:
-    "السعر بيعتمد على احتياجات بيزنسك وتعقيد النظام. الأتمتة البسيطة ممكن تبدأ بميزانية منخفضة، بينما الـ workflowات المعقدة بالـ AI بتتسعّر حسب التكاملات والأدوات المطلوبة.",
-  faq_q4: "بتتعاملوا مع الشركات الصغيرة؟",
-  faq_a4:
-    "أكيد. في الواقع، أتمتة Businesses من أقوى المميزات للشركات الصغيرة والمتوسطة — بتخليها تتنافس مع الشركات الكبيرة من غير ما محتاجة فريق كبير.",
-  faq_q5: "بتستخدموا إيه من الأدوات؟",
-  faq_a5:
-    "بنستخدم stack تقني حديث بيشمل n8n لأتمتة الـ workflow و Zapier و Make للتكاملات و OpenAI APIs للمهام بالـ AI و Google Sheets و CRMs ومنصات التسويق بالإيميل الرائدة.",
-  faq_q6: "إزاي بتشتغل أتمتة التسويق الرقمي؟",
-  faq_a6:
-    "بنجمع استراتيجيات تسويق رقمي مجربة مع أدوات أتمتة ناخد عملاء محتملين أوتوماتيكياً ونبعت تسلسلات إيميل مخصصة ونتبع سلوك العملاء ونشغل حملات بجهد يدوي بسيط.",
-  faq_q7: "بياخد قد إيه الوقت؟",
-  faq_a7:
-    "معظم أنظمة الأتمتة بتكون جاهزة في خلال أيام لأسبوعين حسب نطاق وتعقيد متطلبات بيزنسك.",
+  faq_kicker: "نظام مفتوح",
+  faq_title: "اسألنا مباشرة.",
+  faq_subtitle: "أجابات قصيرة من غير لف.",
+  faq_q1: "محتاج AI أصلاً؟",
+  faq_a1: "بس في المواضع اللي بتعمل قيمة حقيقية لبيزنسك.",
+  faq_q2: "بتبنيوا مواقع بس؟",
+  faq_a2: "لأ. بنبني النظام اللي حوالين الموقع — تسويق وأتمتة وربط بينهم.",
+  faq_q3: "تقدروا تشتغلوا مع الأدوات اللي عندنا؟",
+  faq_a3: "أيوة. بنربط اللي شغال ونستبدل اللي مش شغال.",
+  faq_q4: "التكلفة بتعتمد على إيه؟",
+  faq_a4: "على نطاق الشغل والنتائج المطلوبة. الأنظمة البسيطة تبدأ بميزانية خفيفة، والمشاريع الأكبر بتتقاس حسب الهدف منها.",
+  faq_q5: "بياخد قد إيه الوقت؟",
+  faq_a5: "معظم الأنظمة بتكون جاهزة في أيام لأسبوعين حسب النطاق والتعقيد.",
 
   // Footer
   footer_desc:
@@ -454,6 +493,7 @@ const en: TranslationKeys = {
   // Navbar
   nav_problems: "Problems",
   nav_services: "Services",
+  nav_process: "Process",
   nav_benefits: "Benefits",
   nav_about: "About",
   nav_faq: "FAQ",
@@ -472,29 +512,19 @@ const en: TranslationKeys = {
   hero_supporting:
     "From building your digital presence to improving customer journeys and automating day-to-day operations, ScalaryX turns disconnected processes into smarter, scalable systems — so your business can spend less time managing work and more time growing.",
 
-  // Problems
-  problems_kicker: "The Problem",
-  problems_title_1: "Sound",
-  problems_title_accent: "Familiar?",
-  problems_subtitle: "These are the exact problems killing your growth every day. We've built solutions for all of them.",
-  problems_p1_title: "Drowning in Repetitive Work",
-  problems_p1_desc:
-    "Your team wastes 25–40 hours every month on manual data entry, follow-ups, and repetitive operations — hours that smart AI automation systems can reclaim instantly.",
-  problems_p1_pain: "Lost time = lost scalability",
-  problems_p2_title: "Poor Lead Conversion & Follow-Up",
-  problems_p2_desc:
-    "Leads go cold due to slow or inconsistent follow-ups. Every missed follow-up costs you revenue — potential customers slip away every single day without automation.",
-  problems_p2_pain: "Missed follow-ups = lost revenue",
-  problems_p3_title: "Slow Marketing & Content Execution",
-  problems_p3_desc:
-    "Creating content, ads, and campaigns manually slows your growth. While you're stuck, competitors using AI-driven marketing systems are moving 3x faster and scaling harder.",
-  problems_p3_pain: "Slow execution = weak market presence",
-  problems_p4_title: "Marketing Inefficiency",
-  problems_p4_desc:
-    "Ad spend is wasted, content isn't consistent, and campaigns aren't optimized. You're getting traffic but not enough qualified leads or conversions.",
-  problems_p4_pain: "Wasted spend = shrinking ROI",
-  problems_cta: "We eliminate all of these — with systems built specifically for your business.",
-  problems_cta_link: "See how",
+  // Problems — The Noise
+  problems_noise_kicker: "The Noise",
+  problems_noise_calm1: "Your business is working.",
+  problems_noise_calm2: "But is the system working?",
+  problems_noise_w1: "MANUAL WORK",
+  problems_noise_w2: "MISSED LEADS",
+  problems_noise_w3: "SLOW FOLLOW-UP",
+  problems_noise_w4: "DISCONNECTED TOOLS",
+  problems_noise_w5: "REPETITIVE TASKS",
+  problems_noise_w6: "WEAK ONLINE PRESENCE",
+  problems_noise_w7: "NO CLEAR SYSTEM",
+  problems_noise_resolve1: "The problem isn't effort.",
+  problems_noise_resolve2: "It's the system.",
 
   // Services
   services_kicker: "Scale Business with AI",
@@ -523,38 +553,76 @@ const en: TranslationKeys = {
   services_final_l4: "Your automation keeps everything moving.",
   services_final_l5: "Your AI makes the whole operation smarter.",
   services_final_connect: "We connect it all.",
+
+  // Process — Assemble
+  process_kicker: "The Process",
+  process_title: "Assemble the system.",
+  process_p1: "STRATEGY",
+  process_p2: "DESIGN",
+  process_p3: "TECHNOLOGY",
+  process_p4: "MARKETING",
+  process_p5: "AUTOMATION",
+  process_p6: "AI",
+  process_end1: "Built around your business.",
+  process_end2: "Not around our process.",
+
+  // Receipt — Case results
+  receipt_kicker: "The Receipt",
+  receipt_title: "What changed after the system was built?",
+  receipt_before: "BEFORE",
+  receipt_after: "AFTER",
+  receipt_r1_before: "3 days finding clients",
+  receipt_r1_after: "Under 15 minutes",
+  receipt_r2_before: "Hours of manual tasks",
+  receipt_r2_after: "Done in seconds",
+  receipt_r3_before: "Scattered tools",
+  receipt_r3_after: "One connected system",
+  receipt_r4_before: "Unoptimized ad spend",
+  receipt_r4_after: "Optimized campaigns",
+  receipt_r5_before: "Manual reporting",
+  receipt_r5_after: "Automated monitoring",
+
+  // Capabilities
+  cap_kicker: "What can we change?",
+  cap_lead: "We can help you get more",
+  cap_w1: "LEADS",
+  cap_w2: "CUSTOMERS",
+  cap_w3: "EFFICIENCY",
+  cap_w4: "SPEED",
+  cap_w5: "CONTROL",
+  cap_w6: "GROWTH",
+
+  // Final CTA — The Decision
+  cta_l1: "Your business doesn't need more tools.",
+  cta_l2: "It needs a better system.",
+  cta_l3: "Let's build it.",
   services_final_cta: "Build Your Growth System",
 
-  // Benefits
-  benefits_kicker: "Why Automate",
-  benefits_title: "The Benefits Are Clear",
-  benefits_subtitle:
-    "Every business that implements AI automation gains a compounding advantage over competitors who are still doing things manually.",
-  benefits_b1_title: "Save 50–80% of Your Time",
-  benefits_b1_desc:
-    "Replace hours of manual work with automated systems that execute tasks in seconds — freeing your team to focus on high-impact activities.",
-  benefits_b1_stat: "80%",
-  benefits_b1_stat_label: "Time Saved",
-  benefits_b2_title: "Increase Productivity",
-  benefits_b2_desc: "Your AI systems work 24/7, never take breaks, and handle multiple workflows simultaneously — multiplying your team's output without multiplying headcount.",
-  benefits_b2_stat: "3X",
-  benefits_b2_stat_label: "Output",
-  benefits_b3_title: "Reduce Human Errors",
-  benefits_b3_desc:
-    "Automated workflows follow rules precisely every time. No forgotten follow-ups, no copy-paste mistakes, no inconsistencies in your data or messaging.",
-  benefits_b3_stat: "~0",
-  benefits_b3_stat_label: "Error Rate",
-  benefits_b4_title: "Higher ROI",
-  benefits_b4_desc:
-    "Stop guessing, start growing. Every dollar you spend is tracked, optimized, and turned into measurable results.",
-  benefits_b5_title: "Cut Operational Costs",
-  benefits_b5_desc:
-    "Replace repetitive human labor with intelligent automation. Reduce overhead, eliminate bottlenecks, and scale your business without scaling your expenses.",
-  benefits_b5_stat: "60%",
-  benefits_b5_stat_label: "Cost Reduction",
-  benefits_b6_title: "Laser-Sharp Targeting",
-  benefits_b6_desc:
-    "Reach the exact people who need your product — by age, interest, behavior, and location.",
+  // Benefits — The Shift
+  benefits_shift_kicker: "The Shift",
+  benefits_shift_title: "Your business, when the system works.",
+  benefits_s1_from: "MANUAL",
+  benefits_s1_to: "AUTOMATED",
+  benefits_s2_from: "SCATTERED",
+  benefits_s2_to: "CONNECTED",
+  benefits_s3_from: "SLOW",
+  benefits_s3_to: "FASTER",
+  benefits_s4_from: "REACTIVE",
+  benefits_s4_to: "PROACTIVE",
+  benefits_s5_from: "GUESSWORK",
+  benefits_s5_to: "INTELLIGENCE",
+  benefits_shift_end1: "Less friction.",
+  benefits_shift_end2: "More momentum.",
+
+  // Why Scale — The Layer
+  layer_kicker: "The Layer",
+  layer_title: "We don't add another tool. We build the layer that connects them.",
+  layer_support: "Website, marketing, automation, and AI — under one system.",
+  layer_center: "BUSINESS",
+  layer_l1: "EXPERIENCE",
+  layer_l2: "MARKETING",
+  layer_l3: "AUTOMATION",
+  layer_l4: "AI",
 
   // About
   about_title: "Built to Make Your Business Work Better and Grow Faster",
@@ -619,42 +687,24 @@ const en: TranslationKeys = {
   testimonials_stat3: "12+ Industries Served",
 
   // Contact
-  contact_title: "Get in touch",
-  contact_subtitle:
-    "Have a question or want to explore what automation or marketing could do for your business? Drop us a message and we'll get back to you within 24 hours.",
   contact_email_label: "Email",
   contact_response_label: "Response Time",
   contact_response_value: "Within 24 hours",
-  contact_available_label: "Available",
-  contact_available_value: "Worldwide · Remote",
-  contact_cta_title: "Ready to get started?",
-  contact_cta_subtitle: "Let's build your automation system",
 
   // FAQ
-  faq_kicker: "FAQ",
-  faq_title: "Frequently Asked Questions",
-  faq_subtitle: "Everything you need to know about AI automation and how we can help your business grow.",
-  faq_q1: "What is AI Automation?",
-  faq_a1:
-    "AI Automation is using artificial intelligence tools — like ChatGPT, n8n, and Zapier — to handle repetitive business tasks automatically. This includes replying to customers, sending emails, generating leads, and managing workflows, all without manual effort.",
-  faq_q2: "How can automation help my business?",
-  faq_a2:
-    "Automation frees your team from time-consuming tasks by handling things like customer support replies, lead generation, email marketing campaigns, and social media posting — so you can focus on growth instead of operations.",
-  faq_q3: "How much does automation cost?",
-  faq_a3:
-    "Pricing depends on your business needs and the complexity of the system. Simple automations can start at a low budget, while advanced AI-powered workflows are scoped and priced based on integrations and tools required.",
-  faq_q4: "Do you work with small businesses?",
-  faq_a4:
-    "Absolutely. In fact, business automation is one of the most powerful advantages for small and medium-sized businesses — it lets them compete with larger companies without needing a large team.",
-  faq_q5: "What tools do you use?",
-  faq_a5:
-    "We use a modern tech stack including n8n for workflow automation, Zapier and Make for integrations, OpenAI APIs for AI-driven tasks, Google Sheets, CRMs, and leading email marketing platforms.",
-  faq_q6: "How does digital marketing automation work?",
-  faq_a6:
-    "We combine proven digital marketing strategies with automation tools to capture leads automatically, send personalized email sequences, track customer behavior, and run campaigns with minimal manual effort.",
-  faq_q7: "How long does setup take?",
-  faq_a7:
-    "Most automation systems are ready within a few days to a few weeks, depending on the scope and complexity of your business requirements.",
+  faq_kicker: "Open System",
+  faq_title: "Ask us straight.",
+  faq_subtitle: "Short answers, no runaround.",
+  faq_q1: "Do we need AI?",
+  faq_a1: "Only where it creates real value for the business.",
+  faq_q2: "Do you only build websites?",
+  faq_a2: "No. We build the system around them — marketing, automation, and the connections between them.",
+  faq_q3: "Can you work with our existing tools?",
+  faq_a3: "Yes. We connect what already works and replace what doesn't.",
+  faq_q4: "What does a system cost?",
+  faq_a4: "It depends on scope and outcomes. Simple systems start lean; larger builds are scoped around the results you need.",
+  faq_q5: "How long does it take?",
+  faq_a5: "Most systems go live in a few days to a couple of weeks, depending on scope and complexity.",
 
   // Footer
   footer_desc:

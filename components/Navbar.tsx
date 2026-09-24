@@ -10,12 +10,13 @@ import { useTheme } from "@/lib/theme";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { t, locale, setLocale, dir } = useI18n();
+  const { t, locale, setLocale } = useI18n();
   const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { href: "#problems", label: t.nav_problems },
     { href: "#services", label: t.nav_services },
+    { href: "#process", label: t.nav_process },
     { href: "#benefits", label: t.nav_benefits },
     { href: "#about", label: t.nav_about },
     { href: "#faq", label: t.nav_faq },
@@ -73,12 +74,12 @@ export default function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm transition-colors duration-200"
+              className="text-[13px] xl:text-sm transition-colors duration-200"
               style={{ color: "var(--text-secondary)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
@@ -88,7 +89,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <button
             onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border"
@@ -145,7 +146,7 @@ export default function Navbar() {
           <BookCallButton className="btn-primary" />
         </div>
 
-        <div className="flex md:hidden items-center gap-1.5">
+        <div className="flex lg:hidden items-center gap-1.5">
           <button
             onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
             className="flex items-center px-2 py-1.5 rounded text-[11px] font-semibold transition-all duration-200 border min-w-[36px] justify-center"
@@ -220,7 +221,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden border-t overflow-hidden"
+            className="lg:hidden border-t overflow-hidden"
             style={{ background: "var(--mobile-menu-bg)", borderColor: "var(--border)" }}
           >
             <div className="flex flex-col px-4 py-3 gap-0.5" style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}>

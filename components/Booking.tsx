@@ -4,40 +4,46 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useI18n } from "@/lib/i18n";
 
-const testimonials = [
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/* All before/after facts are drawn from existing client testimonials — nothing invented */
+const ROWS = [
   {
+    beforeKey: "receipt_r1_before",
+    afterKey: "receipt_r1_after",
     quoteKey: "testimonial1_quote",
     nameKey: "testimonial1_name",
     roleKey: "testimonial1_role",
-    initials: "AM",
   },
   {
+    beforeKey: "receipt_r2_before",
+    afterKey: "receipt_r2_after",
     quoteKey: "testimonial2_quote",
     nameKey: "testimonial2_name",
     roleKey: "testimonial2_role",
-    initials: "SG",
   },
   {
+    beforeKey: "receipt_r3_before",
+    afterKey: "receipt_r3_after",
     quoteKey: "testimonial3_quote",
     nameKey: "testimonial3_name",
     roleKey: "testimonial3_role",
-    initials: "MK",
   },
   {
+    beforeKey: "receipt_r4_before",
+    afterKey: "receipt_r4_after",
     quoteKey: "testimonial4_quote",
     nameKey: "testimonial4_name",
     roleKey: "testimonial4_role",
-    initials: "YL",
   },
   {
+    beforeKey: "receipt_r5_before",
+    afterKey: "receipt_r5_after",
     quoteKey: "testimonial5_quote",
     nameKey: "testimonial5_name",
     roleKey: "testimonial5_role",
-    initials: "NR",
   },
 ];
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function Booking() {
   const ref = useRef(null);
@@ -47,88 +53,110 @@ export default function Booking() {
   return (
     <section
       id="testimonials"
-      className="py-8 sm:py-14 md:py-16 px-4 sm:px-6 relative overflow-hidden"
+      className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 relative"
       style={{ background: "var(--section-alt-bg)" }}
     >
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto" ref={ref}>
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: EASE }}
-          className="mb-6 sm:mb-10"
+          className="mb-8 sm:mb-12"
         >
+          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)] block mb-4">
+            {t.receipt_kicker}
+          </span>
           <h2
-            className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-2 sm:mb-3 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] leading-tight"
             style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}
           >
-            {t.testimonials_title}
+            {t.receipt_title}
           </h2>
-          <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-xl">
-            {t.testimonials_subtitle}
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-10">
-          <div className="mobile-scroll">
-            {testimonials.map((testimonial, i) => (
-              <motion.div
-                key={testimonial.nameKey}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.07, ease: EASE }}
-                className="card-premium p-4 sm:p-5 group h-full"
-              >
-                <div className="card-sweep" />
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
-                    <span className="card-tag px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)]">
-                      {t[testimonial.roleKey as keyof typeof t]}
-                    </span>
-                    <span
-                      className="text-[var(--accent)] text-lg leading-none opacity-60"
-                      aria-hidden="true"
-                    >
-                      &ldquo;
-                    </span>
-                  </div>
-                  <p className="text-[var(--text-secondary)] leading-relaxed mb-3 sm:mb-4 text-xs sm:text-sm line-clamp-3 flex-1">
-                    {t[testimonial.quoteKey as keyof typeof t]}
-                  </p>
-                  <div className="flex items-center gap-2.5 pt-2.5 sm:pt-3 border-t border-[var(--border)]">
-                    <div className="card-icon w-7 h-7 sm:w-8 sm:h-8 text-[var(--text-muted)] font-semibold text-[10px] flex items-center justify-center shrink-0">
-                      {testimonial.initials}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-[var(--text-primary)] font-medium text-xs sm:text-sm truncate">
-                        {t[testimonial.nameKey as keyof typeof t]}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
+        {/* Compact stat strip */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-          className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
+          className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 sm:mb-12"
         >
           {[t.testimonials_stat1, t.testimonials_stat2, t.testimonials_stat3].map((item) => (
             <span
               key={item}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 sm:px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-[var(--text-primary)]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3 py-1.5 text-[11px] sm:text-xs font-medium text-[var(--text-secondary)]"
             >
               <span className="w-1 h-1 rounded-full bg-[var(--accent)]" />
               {item}
             </span>
           ))}
         </motion.div>
+
+        {/* Editorial before → after rows */}
+        <div>
+          {ROWS.map((row, i) => (
+            <motion.div
+              key={row.nameKey}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
+              className="py-5 sm:py-6 border-t border-[var(--border)] last:border-b"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-2">
+                <div className="flex-1 min-w-0">
+                  <span className="block text-[10px] font-mono font-semibold tracking-[0.18em] text-[var(--text-muted)] mb-1">
+                    {t.receipt_before}
+                  </span>
+                  <span className="text-base sm:text-lg font-medium text-[var(--text-muted)] line-through decoration-[var(--text-muted)]/50">
+                    {t[row.beforeKey as keyof typeof t]}
+                  </span>
+                </div>
+
+                <svg
+                  className="w-5 h-5 text-[var(--accent)] shrink-0 rtl-flip hidden sm:block"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <svg
+                  className="w-5 h-5 text-[var(--accent)] shrink-0 rotate-90 sm:hidden"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+
+                <div className="flex-1 min-w-0">
+                  <span className="block text-[10px] font-mono font-semibold tracking-[0.18em] text-[var(--accent)] mb-1">
+                    {t.receipt_after}
+                  </span>
+                  <span className="text-base sm:text-lg font-bold text-[var(--text-primary)]">
+                    {t[row.afterKey as keyof typeof t]}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed line-clamp-2 mb-1.5">
+                &ldquo;{t[row.quoteKey as keyof typeof t]}&rdquo;
+              </p>
+              <p className="text-[11px] text-[var(--text-muted)]">
+                <span className="text-[var(--text-secondary)] font-medium">
+                  {t[row.nameKey as keyof typeof t]}
+                </span>
+                {" · "}
+                {t[row.roleKey as keyof typeof t]}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -148,7 +148,7 @@ export default function ProjectDetailsPage() {
             style={{ background: "var(--project-detail-card-bg)", borderColor: "var(--project-detail-card-border)" }}
           >
             <span className="font-mono text-xs tracking-[0.16em] uppercase text-[var(--danger)] font-semibold">
-              {t.problems_kicker}
+              The Problem
             </span>
             <p className="mt-4 text-[var(--text-secondary)] leading-relaxed text-sm">
               {project.problem}
@@ -290,7 +290,7 @@ export default function ProjectDetailsPage() {
               className="text-2xl font-bold mb-4"
               style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}
             >
-              {t.contact_cta_title}
+              {t.cta_l3}
             </h2>
             <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
               {t.interactive_subtitle}
