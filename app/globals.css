@@ -857,8 +857,21 @@ body {
 
 /* Reduced motion: keep story short transitions but no layout shift surprises */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .svc-meter-fill,
   .svc-rail-dot::before {
     transition: none;
+  }
+
+  .card-premium,
+  .card-sweep,
+  .card-icon,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    transition: none !important;
   }
 }

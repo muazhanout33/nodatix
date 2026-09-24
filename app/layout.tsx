@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import MotionProvider from "@/components/MotionProvider";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
@@ -182,9 +183,11 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
           <I18nProvider>
-            {children}
-            <AnalyticsTracker />
-            <WhatsAppButton />
+            <MotionProvider>
+              {children}
+              <AnalyticsTracker />
+              <WhatsAppButton />
+            </MotionProvider>
           </I18nProvider>
         </ThemeProvider>
       </body>

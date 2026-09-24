@@ -24,7 +24,7 @@ export default function About() {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl mx-auto"
         >
           <h2 className="text-2xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4 sm:mb-6 leading-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
@@ -45,23 +45,31 @@ export default function About() {
           </div>
         </motion.div>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-8 sm:mt-12 max-w-3xl mx-auto">
-          {highlights.map((h, i) => (
-            <motion.div
-              key={h.labelKey}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 + i * 0.1 }}
-              className="card-premium p-3 sm:p-4 text-center"
-            >
-              <div className="text-base sm:text-xl font-bold text-[var(--text-primary)]">{t[h.valueKey as keyof typeof t]}</div>
-              <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-0.5 sm:mt-1 leading-tight">{t[h.labelKey as keyof typeof t]}</div>
-            </motion.div>
-          ))}
-        </div>
+          <div className="mt-7 sm:mt-10 max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+                {t.about_stats_label}
+              </span>
+              <span className="h-px flex-1 bg-[var(--border)]" />
+            </div>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {highlights.map((h, i) => (
+                <motion.div
+                  key={h.labelKey}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 + i * 0.08, duration: 0.5 }}
+                  className="card-premium p-3 sm:p-4 text-center"
+                >
+                  <div className="text-lg sm:text-2xl font-bold text-[var(--text-primary)]">{t[h.valueKey as keyof typeof t]}</div>
+                  <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-0.5 sm:mt-1 leading-tight">{t[h.labelKey as keyof typeof t]}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
-        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-5 sm:mt-7">
           {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python", "Meta Ads", "Google Ads"].map((tag) => (
             <span
               key={tag}

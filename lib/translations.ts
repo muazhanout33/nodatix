@@ -12,17 +12,12 @@ export type TranslationKeys = {
   nav_book_call: string;
 
   // Hero
-  hero_kicker: string;
   hero_title_1: string;
   hero_title_accent: string;
   hero_title_2: string;
   hero_subtitle: string;
   hero_cta_book: string;
   hero_cta_how: string;
-  hero_card1_title: string;
-  hero_card1_desc: string;
-  hero_card2_title: string;
-  hero_card2_desc: string;
   hero_supporting: string;
 
   // Problems
@@ -106,6 +101,7 @@ export type TranslationKeys = {
   about_highlight2_label: string;
   about_highlight3_value: string;
   about_highlight3_label: string;
+  about_stats_label: string;
 
   // Blog
   blog_title: string;
@@ -221,7 +217,6 @@ const ar: TranslationKeys = {
   nav_book_call: "استشارة مجانية",
 
   // Hero
-  hero_kicker: "أتمتة وتسويق بالذكاء الاصطناعي",
   hero_title_1: "طوّر أعمالك مع",
   hero_title_accent: "ScalaryX",
   hero_title_2: "",
@@ -229,12 +224,6 @@ const ar: TranslationKeys = {
     "نبني مواقع إلكترونية وأنظمة تسويق وأتمتة أعمال تشتغل مع بعض لتبسيط عملياتك وتساعدك توسّع شغلك.",
   hero_cta_book: "استشارة مجانية",
   hero_cta_how: "شوف إزاي بيشتغل",
-  hero_card1_title: "أتمتة بالذكاء الاصطناعي",
-  hero_card1_desc:
-    "أتمت المهام المتكررة وأدر الم workflowات وبسّط عملياتك باستخدام أنظمة ذكية — عشان تركز على النمو.",
-  hero_card2_title: "التسويق الرقمي",
-  hero_card2_desc:
-    "نمّي البراند بتاعك وجذب عملاء محتملين مؤهلين وحوّل الاهتمام لعملاء حقيقيين باستخدام استراتيجيات تسويق مبنية على بيانات.",
   hero_supporting:
     "من بناء حضورك الرقمي لتحسين رحلة العميل وأتمتة العمليات اليومية، ScalaryX يحوّل العمليات المفككة لأنظمة أذكى وأكتر قابلية للتوسع — عشان تقلل الوقت في إدارة الشغل وتكرس وقت أكتر للنمو.",
 
@@ -324,21 +313,22 @@ const ar: TranslationKeys = {
     "وصّل للناس اللي محتاجين منتجك — بالسن والاهتمام والسلوك والموقع.",
 
   // About
-  about_title: "مبنين لأتمتة الذكاء الاصطناعي والتسويق بالأداء",
+  about_title: "نبني لنجعل بيزنسك يشتغل أفضل وينمو أسرع",
   about_p1:
-    "ScalaryX شركة حديثة تتمحور حول النمو، بتساعد الشركات تنمو باستخدام أنظمة أتمتة بالذكاء الاصطناعي واستراتيجيات تسويق رقمي عالية الأداء.",
+    "ScalaryX بتساعد الشركات تبني حضور رقمي أقوى وعمليات أذكى من خلال مواقع إلكترونية عالية الأداء وتسويق رقمي استراتيجي وأنظمة أتمتة عملية.",
   about_p2:
-    "بنصمم ونبني أنظمة أتمتة ذكية بتحل الشغل اليدوي وتُحسّن عمليات الأعمال وتولّد نمو ثابت من خلال الأتمتة والتسويق المبني على البيانات.",
-  about_p3: "هدفنا بسيط: نساعد الشركات تشتغل أذكى وتنمو أسرع وتتوسع من غير حدود.",
-  about_p4:
-    "سواء كانت الأتمتة على العمليات أو تحسين أداء التسويق، ScalaryX بتقدم أنظمة عملية بتحقق نتائج حقيقية.",
+    "نجمع موقعك والتسويق وعمليات بيزنسك مع بعض لنصنع مسار أوضح من جذب العملاء لإنجاز الشغل اللي ورا الكواليس.",
+  about_p3:
+    "من بناء موقع يحوّل الزوار لعملاء، لبناء أنظمة تسويق تجيب الفرص المناسبة، لأتمتة العمليات المتكررة — بنبني الحلول حول طريقة بيزنسك الفعلية في الشغل.",
+  about_p4: "الهدف بسيط: احتكاك أقل، أداء أفضل، وبизنس جاهز يتوسع.",
   about_cta_services: "شوف الخدمات",
   about_highlight1_value: "50+",
-  about_highlight1_label: "أنظمة AI تم بناؤها",
+  about_highlight1_label: "عملاء تم خدمتهم",
   about_highlight2_value: "10,000+",
   about_highlight2_label: "ساعة تم توفيرها للعملاء",
   about_highlight3_value: "12+",
   about_highlight3_label: "قطاع تم خدمته",
+  about_stats_label: "ScalaryX في أرقام",
 
   // Blog
   blog_title: "من المدونة",
@@ -359,7 +349,7 @@ const ar: TranslationKeys = {
 
   // Testimonials
   testimonials_title: "النتائج",
-  testimonials_subtitle: "نتائج حقيقية من شركات بتستخدم أنظمة أتمتة ScalaryX",
+  testimonials_subtitle: "نتائج حقيقية من الشركات اللي ساعدناها تنمو",
   testimonial1_quote:
     "ScalaryX بنيلنا نظام بيشتغل كل حاجة 24/ كنا بنقضي 3 أيام ندور على عملاء، دلوقتي بياخد أقل من 15 دقيقة. بجد من أحسن الاستثمارات اللي عملناها.",
   testimonial1_name: "أحمد محمود",
@@ -380,7 +370,7 @@ const ar: TranslationKeys = {
     "من أكبر التغييرات بالنسبة لنا كانت أتمتة التسويق. دلوقتي بنوفر وقت كبير في التقارير والمراقبة، وكل حاجة بتشتغل أسرع وأوضح وأكتر كفاءة.",
   testimonial5_name: "نور رضا",
   testimonial5_role: "مديرة تسويق رقمي",
-  testimonials_stat1: "50+ أتمتة تم بناؤها",
+  testimonials_stat1: "50+ عميل تم خدمتهم",
   testimonials_stat2: "10,000+ ساعة تم توفيرها",
   testimonials_stat3: "12+ قطاع تم خدمته",
 
@@ -472,7 +462,6 @@ const en: TranslationKeys = {
   nav_book_call: "Free Consultation",
 
   // Hero
-  hero_kicker: "AI Automation & Workflow Systems",
   hero_title_1: "Scale Your Business Operations with",
   hero_title_accent: "ScalaryX",
   hero_title_2: "",
@@ -480,12 +469,6 @@ const en: TranslationKeys = {
     "We build websites, marketing systems, and business automation that work together to streamline your operations and help your business scale.",
   hero_cta_book: "Free Consultation",
   hero_cta_how: "See How It Works",
-  hero_card1_title: "AI Automation",
-  hero_card1_desc:
-    "Automate repetitive tasks, manage workflows, and streamline your operations using smart AI systems — so you can focus on growth.",
-  hero_card2_title: "Digital Marketing",
-  hero_card2_desc:
-    "Grow your brand, attract qualified leads, and convert attention into customers using data-driven marketing strategies.",
   hero_supporting:
     "From building your digital presence to improving customer journeys and automating day-to-day operations, ScalaryX turns disconnected processes into smarter, scalable systems — so your business can spend less time managing work and more time growing.",
 
@@ -574,21 +557,22 @@ const en: TranslationKeys = {
     "Reach the exact people who need your product — by age, interest, behavior, and location.",
 
   // About
-  about_title: "Built for AI Automation & Performance Marketing",
+  about_title: "Built to Make Your Business Work Better and Grow Faster",
   about_p1:
-    "ScalaryX is a modern growth-focused startup helping businesses scale using AI automation systems and high-performance digital marketing strategies.",
+    "ScalaryX helps businesses build a stronger digital presence and smarter operations through high-performance websites, strategic digital marketing, and practical automation systems.",
   about_p2:
-    "We design and build smart workflow automation systems that replace manual work, optimize business operations, and generate consistent growth through automation and data-driven marketing.",
-  about_p3: "Our goal is simple: help businesses work smarter, grow faster, and scale without limits.",
-  about_p4:
-    "Whether it's automating operations or improving marketing performance, ScalaryX delivers practical systems that produce real results.",
+    "We bring your website, marketing, and business processes together to create a smoother path from attracting customers to managing the work behind the scenes.",
+  about_p3:
+    "From building a website that converts, to creating marketing systems that bring in the right opportunities, to automating repetitive operations — we build solutions around how your business actually works.",
+  about_p4: "The goal is simple: less friction, better performance, and a business that is ready to scale.",
   about_cta_services: "See Services",
   about_highlight1_value: "50+",
-  about_highlight1_label: "AI Automations Built",
+  about_highlight1_label: "Clients Served",
   about_highlight2_value: "10,000+",
   about_highlight2_label: "Hours Saved for Clients",
   about_highlight3_value: "12+",
   about_highlight3_label: "Industries Served",
+  about_stats_label: "ScalaryX at a glance",
 
   // Blog
   blog_title: "From the blog",
@@ -609,7 +593,7 @@ const en: TranslationKeys = {
 
   // Testimonials
   testimonials_title: "Results",
-  testimonials_subtitle: "Real results from businesses using ScalaryX automation systems",
+  testimonials_subtitle: "Real results from the businesses we've helped grow",
   testimonial1_quote:
     "ScalaryX built us a system that runs everything 24/7. We used to spend 3 days finding clients, now it takes less than 15 minutes. Honestly one of the best investments we've made.",
   testimonial1_name: "Ahmed Mahmoud",
@@ -630,7 +614,7 @@ const en: TranslationKeys = {
     "One of the biggest changes for us was marketing automation. We now save a huge amount of time on reporting and monitoring, and everything runs faster, cleaner, and more efficiently.",
   testimonial5_name: "Nour Reda",
   testimonial5_role: "Digital Marketing Manager",
-  testimonials_stat1: "50+ Automations Built",
+  testimonials_stat1: "50+ Clients Served",
   testimonials_stat2: "10k+ Hours Saved",
   testimonials_stat3: "12+ Industries Served",
 
