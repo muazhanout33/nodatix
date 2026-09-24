@@ -56,7 +56,7 @@ export default function Capabilities() {
           </span>
 
           <span
-            className="relative inline-flex items-center justify-center min-w-[10ch] sm:min-w-[12ch] h-[1.4em] sm:h-[1.3em] overflow-hidden"
+            className="relative inline-flex items-center justify-center text-2xl sm:text-4xl md:text-5xl min-w-[86.25px] sm:min-w-[103.5px] h-[1.4em] sm:h-[1.3em] overflow-hidden shrink-0"
             aria-live="polite"
           >
             <AnimatePresence mode="wait" initial={false}>

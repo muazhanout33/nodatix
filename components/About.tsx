@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import type { CSSProperties } from "react";
 import { BookCallButton } from "./BookCallButton";
 import { FreeStructureButton } from "./FreeStructureButton";
 import { useI18n } from "@/lib/i18n";
@@ -11,6 +12,32 @@ const highlights = [
   { valueKey: "about_highlight2_value", labelKey: "about_highlight2_label" },
   { valueKey: "about_highlight3_value", labelKey: "about_highlight3_label" },
 ];
+
+const TOOLS = [
+  { file: "n8n.svg", name: "n8n" },
+  { file: "make.svg", name: "Make" },
+  { file: "openai.svg", name: "OpenAI" },
+  { file: "langchain.svg", name: "LangChain" },
+  { file: "zapier.svg", name: "Zapier" },
+  { file: "gohighlevel.png", name: "GoHighLevel" },
+  { file: "python.svg", name: "Python" },
+  { file: "meta.svg", name: "Meta" },
+  { file: "googleads.svg", name: "Google Ads" },
+];
+
+function logoMaskStyle(file: string): CSSProperties {
+  const maskUrl = `url(/logos/${file})`;
+  return {
+    WebkitMaskImage: maskUrl,
+    maskImage: maskUrl,
+    WebkitMaskRepeat: "no-repeat",
+    maskRepeat: "no-repeat",
+    WebkitMaskPosition: "center",
+    maskPosition: "center",
+    WebkitMaskSize: "contain",
+    maskSize: "contain",
+  };
+}
 
 export default function About() {
   const { t } = useI18n();
@@ -69,15 +96,28 @@ export default function About() {
             </div>
           </div>
 
-        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-5 sm:mt-7">
-          {["n8n", "Make.com", "OpenAI", "LangChain", "Zapier", "GoHighLevel", "Python", "Meta Ads", "Google Ads"].map((tag) => (
-            <span
-              key={tag}
-              className="card-tag px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs text-[var(--text-muted)]"
-            >
-              {tag}
+        <div className="mt-8 sm:mt-12 max-w-3xl mx-auto">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+              {t.about_tech_title}
             </span>
-          ))}
+            <span className="h-px flex-1 bg-[var(--border)]" />
+          </div>
+          <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed mb-5">
+            {t.about_tech_desc}
+          </p>
+          <ul className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-4">
+            {TOOLS.map((tool) => (
+              <li key={tool.name} className="group flex items-center" title={tool.name}>
+                <span
+                  role="img"
+                  aria-label={tool.name}
+                  className="block w-6 h-6 sm:w-7 sm:h-7 bg-current text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors duration-200"
+                  style={logoMaskStyle(tool.file)}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

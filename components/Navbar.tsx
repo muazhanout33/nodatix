@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { BookCallButton } from "./BookCallButton";
 import { useI18n } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -16,12 +17,12 @@ export default function Navbar() {
   const navLinks = [
     { href: "#problems", label: t.nav_problems },
     { href: "#services", label: t.nav_services },
+    { href: "#projects", label: t.nav_projects },
     { href: "#process", label: t.nav_process },
     { href: "#benefits", label: t.nav_benefits },
     { href: "#about", label: t.nav_about },
     { href: "#faq", label: t.nav_faq },
     { href: "#contact", label: t.nav_contact },
-    { href: "/interactive", label: t.nav_projects },
   ];
 
   useEffect(() => {
@@ -67,12 +68,12 @@ export default function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-20">
-        <a href="#" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
           <Image src="/favicon.ico.webp" alt="ScalaryX" width={56} height={56} className="h-8 sm:h-10 md:h-12 w-auto" priority />
           <span className="text-base sm:text-xl font-bold tracking-tight" style={{ fontFamily: "'IBM Plex Sans Arabic', var(--font-sans), system-ui, sans-serif" }}>
             <span style={{ color: "var(--text-primary)" }}>Scalary</span><span style={{ color: "var(--accent)" }}>X</span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((link) => (

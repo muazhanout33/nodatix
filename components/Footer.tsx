@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
@@ -31,7 +32,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
           <div>
-            <a href="#" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
                 src="/favicon.ico.webp"
                 alt="ScalaryX Logo"
@@ -42,7 +43,7 @@ export default function Footer() {
               <span className="text-[var(--text-primary)] font-bold text-lg tracking-tight">
                 Scalary<span className="text-[var(--accent)]">X</span>
               </span>
-            </a>
+            </Link>
             <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed max-w-xs">
               {t.footer_desc}
             </p>

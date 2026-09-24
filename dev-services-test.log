@@ -25,3 +25,9 @@
  GET / 200 in 151ms (next.js: 6ms, application-code: 145ms)
 ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3123". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
  GET / 200 in 484ms (next.js: 101ms, application-code: 383ms)
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3123". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET / 200 in 548ms (next.js: 82ms, application-code: 466ms)
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3123". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET / 200 in 674ms (next.js: 122ms, application-code: 552ms)
+ GET /interactive 200 in 2.7s (next.js: 2.5s, application-code: 236ms)
+[?25h

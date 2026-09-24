@@ -147,6 +147,8 @@ export type TranslationKeys = {
   about_highlight3_value: string;
   about_highlight3_label: string;
   about_stats_label: string;
+  about_tech_title: string;
+  about_tech_desc: string;
 
   // Blog
   blog_title: string;
@@ -397,6 +399,9 @@ const ar: TranslationKeys = {
   about_highlight3_value: "12+",
   about_highlight3_label: "قطاع تم خدمته",
   about_stats_label: "ScalaryX في أرقام",
+  about_tech_title: "مبنية حول التقنية المناسبة",
+  about_tech_desc:
+    "نشتغل على أبرز منصات الذكاء الاصطناعي والأتمتة والتطوير والنمو عشان نبني النظام المناسب لكل بزنس.",
 
   // Blog
   blog_title: "من المدونة",
@@ -485,8 +490,9 @@ const ar: TranslationKeys = {
 
   // Interactive Projects
   interactive_kicker: "المشاريع التفاعلية",
-  interactive_title: "استكشف عروضنا التفاعلية",
-  interactive_subtitle: "اضغط على أي مشروع تشوف دراسة الحالة وتفتح التجربة التفاعلية الحية.",
+  interactive_title: "استكشف أعمالنا",
+  interactive_subtitle:
+    "نظرة أقرب على كيف نحوّل تحديات الأعمال إلى تجارب رقمية وأنظمة أذكى وحلول قابلة للتوسع. استكشف كل مشروع عشان تشوف الشغل على أرض الواقع.",
   interactive_view_project: "شوف المشروع",
   interactive_view_all: "شوف كل المشاريع",
 
@@ -656,7 +662,10 @@ const en: TranslationKeys = {
   about_highlight2_label: "Hours Saved for Clients",
   about_highlight3_value: "12+",
   about_highlight3_label: "Industries Served",
-  about_stats_label: "ScalaryX at a glance",
+  about_stats_label: "ScalaryX at a Glance",
+  about_tech_title: "Built Around the Right Technology",
+  about_tech_desc:
+    "We work across leading AI, automation, development, and growth platforms to build the right system for each business.",
 
   // Blog
   blog_title: "From the blog",
@@ -745,8 +754,9 @@ const en: TranslationKeys = {
 
   // Interactive Projects
   interactive_kicker: "Interactive Projects",
-  interactive_title: "Explore Our Interactive Demos",
-  interactive_subtitle: "Click on any project to view its case study and open the live interactive experience.",
+  interactive_title: "Explore Our Work",
+  interactive_subtitle:
+    "A closer look at how we turn business challenges into digital experiences, smarter systems, and scalable solutions. Explore each project to see the work in action.",
   interactive_view_project: "View Project",
   interactive_view_all: "View All Projects",
 
