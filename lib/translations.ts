@@ -13,13 +13,19 @@ export type TranslationKeys = {
   nav_book_call: string;
 
   // Hero
-  hero_title_1: string;
-  hero_title_accent: string;
-  hero_title_2: string;
-  hero_subtitle: string;
+  hero_eyebrow: string;
+  hero_headline: string;
+  hero_supporting: string;
+  hero_secondary: string;
   hero_cta_book: string;
   hero_cta_how: string;
-  hero_supporting: string;
+  hero_v_node1: string;
+  hero_v_node2: string;
+  hero_v_node3: string;
+  hero_v_node4: string;
+  hero_v_node5: string;
+  hero_v_core: string;
+  hero_v_scale: string;
 
   // Problems — The Noise
   problems_noise_kicker: string;
@@ -247,15 +253,20 @@ const ar: TranslationKeys = {
   nav_book_call: "استشارة مجانية",
 
   // Hero
-  hero_title_1: "طوّر أعمالك مع",
-  hero_title_accent: "ScalaryX",
-  hero_title_2: "",
-  hero_subtitle:
+  hero_eyebrow: "BUSINESS SYSTEMS × AI",
+  hero_headline: "وسّع عمليات بيزنسك.",
+  hero_supporting:
     "نبني مواقع إلكترونية وأنظمة تسويق وأتمتة أعمال تشتغل مع بعض لتبسيط عملياتك وتساعدك توسّع شغلك.",
+  hero_secondary: "نظام واحد متصل. احتكاك تشغيلي أقل. مساحة أكبر للنمو.",
   hero_cta_book: "استشارة مجانية",
   hero_cta_how: "شوف إزاي بيشتغل",
-  hero_supporting:
-    "من بناء حضورك الرقمي لتحسين رحلة العميل وأتمتة العمليات اليومية، ScalaryX يحوّل العمليات المفككة لأنظمة أذكى وأكتر قابلية للتوسع — عشان تقلل الوقت في إدارة الشغل وتكرس وقت أكتر للنمو.",
+  hero_v_node1: "WEBSITE",
+  hero_v_node2: "MARKETING",
+  hero_v_node3: "CUSTOMERS",
+  hero_v_node4: "AUTOMATION",
+  hero_v_node5: "AI",
+  hero_v_core: "SCALARYX SYSTEM",
+  hero_v_scale: "SCALE",
 
   // Problems — The Noise
   problems_noise_kicker: "الضوضاء",
@@ -502,15 +513,20 @@ const en: TranslationKeys = {
   nav_book_call: "Free Consultation",
 
   // Hero
-  hero_title_1: "Scale Your Business Operations with",
-  hero_title_accent: "ScalaryX",
-  hero_title_2: "",
-  hero_subtitle:
+  hero_eyebrow: "BUSINESS SYSTEMS × AI",
+  hero_headline: "Scale Your Business Operations.",
+  hero_supporting:
     "We build websites, marketing systems, and business automation that work together to streamline your operations and help your business scale.",
+  hero_secondary: "One connected system. Less operational friction. More room to grow.",
   hero_cta_book: "Free Consultation",
   hero_cta_how: "See How It Works",
-  hero_supporting:
-    "From building your digital presence to improving customer journeys and automating day-to-day operations, ScalaryX turns disconnected processes into smarter, scalable systems — so your business can spend less time managing work and more time growing.",
+  hero_v_node1: "WEBSITE",
+  hero_v_node2: "MARKETING",
+  hero_v_node3: "CUSTOMERS",
+  hero_v_node4: "AUTOMATION",
+  hero_v_node5: "AI",
+  hero_v_core: "SCALARYX SYSTEM",
+  hero_v_scale: "SCALE",
 
   // Problems — The Noise
   problems_noise_kicker: "The Noise",
